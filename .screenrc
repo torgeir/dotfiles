@@ -1,0 +1,32 @@
+# flere her
+# http://en.gentoo-wiki.com/wiki/Screen
+#
+# denne var litt kul
+# hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+#
+# nice, men mangler feedback paa endrede vinduer
+# caption always '%{= dg} %H %{G}| %{B}%l %{G}|%=%?%{d}%-w%?%{r}(%{d}%n %t%? {%u} %?%{r})%{d}%?%+w%?%=%{G}| %{B}%M %d %c:%s '
+
+hardstatus alwayslastline 
+
+# denne fra han med ipadden
+hardstatus string '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR} (%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][ %{=b C}%m/%d %c:%s ]'
+
+# Set the default monitoring status for new windows.
+# http://aperiodic.net/screen/monitoring
+defmonitor on
+
+# no annoying audible bell, please
+vbell on
+
+# detach on hangup
+autodetach on
+
+# Change the activity message to include a timestamp and window title, as well as beep.
+activity "%c: Activity -> %n%f %t^G"
+
+#screen -t bash
+#screen -t vim vim
+#screen -t finch finch
+#screen -t "man screen" man screen
+#screen -t "man finch" man finch
