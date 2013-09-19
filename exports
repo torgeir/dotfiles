@@ -1,0 +1,42 @@
+# full name of user
+#export USER_FULLNAME=`osascript -e "long user name of (system info)"`
+
+# open folder in finder
+alias cdf='eval `osascript /Applications/OpenTerminal.app/Contents/Resources/Scripts/OpenTerminal.scpt`'
+
+# node
+export NODE_ENV=development
+#export NODE_PATH=/usr/local/lib/jsctags/:$NODE_PATH
+
+# buster
+export BUSTER_REPORTER=specification
+
+# nvm
+source ~/.nvm/nvm.sh
+
+# git
+export VISUAL=mvim
+
+# rvm
+if [[ -s /Users/torgeir/.rvm/scripts/rvm ]] ; then source /Users/torgeir/.rvm/scripts/rvm ; fi
+
+# local bin
+export PATH=$PATH:$HOME/bin
+
+# android
+#export ANDROID_HOME=~/Developer/adt-bundle-mac/sdk/
+
+# custom scala build
+#export PATH=$HOME/Code/Scala/kepler/dists/latest/bin:$PATH
+
+export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
+
+# io language
+#export DYLD_LIBRARY_PATH=/usr/local/Cellar/io/2011.09.12/lib/
+
+# marks
+export MARKPATH=$HOME/.marks
+
+# prompt
+export PS1='`prompt`\n\[$(tput setaf 2)\]\u\[$(tput sgr0)\]@\[$(tput setaf 1)\]\h\[$(tput setaf 4 sgr0)\] \w\[$(tput setaf 5)\]`__git_prompt` \n\[$(tput sgr0)\]$ '
+

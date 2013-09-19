@@ -1,0 +1,17 @@
+[user]
+  email = torgeir.thoresen@gmail.com
+  name = Torgeir Thoresen
+
+[alias]
+  br = branch
+  ci = commit
+  co = checkout
+  df = diff
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+  log = log --graph --decorate=full --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  st = status
+
+[color]
+  branch = auto
+  diff = auto
+  status = auto

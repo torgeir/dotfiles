@@ -1,0 +1,138 @@
+# ssh autocomplete
+complete -W "$(echo $(cat ~/.ssh/known_hosts | \
+    cut -f 1 -d ' ' | sed -e s/,.*//g | \
+    sort -u | grep -v "\["))" ssh
+
+# git autocomplete
+source /usr/local/etc/bash_completion.d/git-completion.bash
+source /usr/local/etc/bash_completion.d/git-prompt.sh
+
+function __git_prompt {
+  GIT_PS1_SHOWDIRTYSTATE=1
+  __git_ps1 " %s" | sed 's/ \([+*]\{1,\}\)$/\1/'
+}
+
+# clone github repo url and open project in macvim
+function cloneopen_github_repo {
+  URL=$1
+  DATE=`date`
+  mkdir -p ~/Code/github/
+  cd ~/Code/github/
+  REPO=`echo $URL | awk '{ split($0, url, "/"); print url[5] }'`
+  FOLDER=`echo "$REPO-$DATE" | sed -E "s/ /-/g"`
+  git clone $URL".git" $FOLDER
+  mvim $FOLDER
+}
+
+# copy with progress
+cp_p () {
+  pv < $1 > $2;
+}
+
+# mkdir and cd
+function md () {
+  mkdir -p "$@" && cd "$@"
+}
+
+# find shorthand
+function f () {
+    find . -name "$1"
+}
+
+# pretty print json
+function json () {
+  if [ -p /dev/stdin ]; then # piping
+    prettyjson
+  else
+    prettyjson "$*"
+  fi
+}
+
+# export repo without .git
+function gitexport () {
+  mkdir -p "$1"
+  git archive master | tar -x -C "$1"
+}
+
+# gzipped size
+function gz () {
+  ORIG=`cat "$1" | wc -c | sed -E "s/ //g"`
+  GZIP=`gzip -c "$1" | wc -c | sed -E "s/ //g"`
+  echo "$ORIG => $GZIP"
+}
+
+# escape utf-8 char into 3-byte format
+function escape () {
+  printf "\\\x%s" $(printf "$@" | xxd -p -c1 -u)
+  echo # newline
+}
+
+# decode \x{ABCD} unicode escape sequences
+function unidecode () {
+  perl -e "binmode(STDOUT, ':utf8'); print \"$@\""
+  echo # newline
+}
+
+# extract archives
+function extract () {
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2) tar xjf $1 ;;
+      *.tar.gz) tar xzf $1 ;;
+      *.bz2) bunzip2 $1 ;;
+      *.rar) rar x $1 ;;
+      *.gz) gunzip $1 ;;
+      *.tar) tar xf $1 ;;
+      *.tbz2) tar xjf $1 ;;
+      *.tgz) tar xzf $1 ;;
+      *.zip) unzip $1 ;;
+      *.Z) uncompress $1 ;;
+      *.7z) 7z x $1 ;;
+      *) echo "'$1' cannot be extracted via extract()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+# marks - jump around folders
+function jump {
+    cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
+}
+
+function mark {
+    mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
+}
+
+function unmark {
+    rm -i "$MARKPATH/$1"
+}
+
+function marks {
+  \ls -l "$MARKPATH" | tail -n +2 | sed 's/  / /g' | cut -d' ' -f9- | awk -F ' -> ' '{printf "%-10s -> %s\n", $1, $2}'
+}
+
+# autocomplete marks
+_completemarks() {
+  local curw=${COMP_WORDS[COMP_CWORD]}
+  local wordlist=$(find $MARKPATH -type l -printf "%f\n")
+  COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
+  return 0
+}
+
+complete -F _completemarks jump unmark
+
+# serve as web root
+function serve {
+  open http://localhost:3000/ &
+  http-server . -p 3000
+}
+
+function prompt {
+  q="- $(date +%T)"; while [[ ${#q} -lt $COLUMNS ]]; do q="${q:0:1}$q"; done; echo -e "\033[0;90m$q"
+}
+
+whatsmyip () {
+  curl --silent http://canihazip.com/s/
+  echo
+}

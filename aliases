@@ -1,0 +1,7 @@
+# ls
+alias ll="ls -laG"
+alias grep="grep --color=always"
+alias ls="ls -G"
+
+# open gitx
+alias gitx="open /Applications/GitX.app"

@@ -1,0 +1,27 @@
+# flere her
+# http://en.gentoo-wiki.com/wiki/Screen
+
+# region title
+caption splitonly '%{= dd}%?%F%{w}(%{m}*%{= dw})%?%{d} %n%f %t'
+
+# tab bar
+hardstatus string '%{= dd} %H %{= db})%=%{= dd} %?%-Lw%?%{w}(%{= m}%n%f %t%?{%u}%?%{= dw})%{d}%?%+Lw%=%{db}(%{=b C} %c:%s %d/%m '
+
+# Set the default monitoring status for new windows.
+defmonitor on
+
+# no bell
+vbell on
+
+# more scrollback
+defscrollback 1000
+
+# detach on hangup
+autodetach on
+
+# activity message on monitor event
+activity "activity in %n"
+
+# skip between regions
+bind k focus up
+bind j focus down
