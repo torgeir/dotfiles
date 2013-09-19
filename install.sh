@@ -18,6 +18,7 @@ for dotfile in \
   gitconfig    \
   aliases      \
   functions    \
+  inputrc      \
   exports;
   do
     echo installing .$dotfile
