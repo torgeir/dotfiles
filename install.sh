@@ -22,7 +22,7 @@ for dotfile in \
   exports;
   do
     echo installing .$dotfile
-    ln -sf ~/dotfiles/$dotfile ~/.$dotfile
+    ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
   done
 
 touch ~/.marks
