@@ -136,3 +136,8 @@ whatsmyip () {
   curl --silent http://canihazip.com/s/
   echo
 }
+
+function cd () {
+  builtin cd "$@";
+  ls -l;
+}
