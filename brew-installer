@@ -1,0 +1,36 @@
+# latest homebrew
+ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+brew update
+
+# upgrade installs
+brew upgrade
+
+# os x ones are outdated
+brew install coreutils
+brew install findutils
+
+# bash 4
+brew install bash
+
+# stuff
+brew install git
+
+brew install tree
+brew install wget
+
+brew install maven
+brew install sbt
+brew install scala
+
+brew install mongodb
+brew install redis
+
+brew install ngrep
+brew install pcre
+
+brew install phantomjs
+
+brew install webkit2png
+
+# remove outdated
+brew cleanup

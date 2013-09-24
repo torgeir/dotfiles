@@ -1,0 +1,5 @@
+echo installing rvm:
+\curl -L https://get.rvm.io | bash -s stable
+
+echo installing ruby 1.9.3:
+rvm --default use 1.9.3

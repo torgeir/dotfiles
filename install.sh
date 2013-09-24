@@ -13,16 +13,18 @@ npm install -g prettyjson
 npm install -g http-server
 
 echo installing dotfiles:
-for dotfile in \
-  screenrc     \
-  gitconfig    \
-  aliases      \
-  functions    \
-  inputrc      \
+for dotfile in   \
+  rvm-installer  \
+  brew-installer \
+  screenrc       \
+  gitconfig      \
+  aliases        \
+  functions      \
+  inputrc        \
   exports;
   do
     echo installing .$dotfile
     ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
   done
 
-touch ~/.marks
+touch $HOME/.marks
