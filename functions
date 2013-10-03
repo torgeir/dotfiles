@@ -18,8 +18,8 @@ function cloneopen_github_repo {
   DATE=`date`
   mkdir -p ~/Code/github/
   cd ~/Code/github/
-  REPO=`echo $URL | awk '{ split($0, url, "/"); print url[5] }'`
-  FOLDER=`echo "$REPO-$DATE" | sed -E "s/ /-/g"`
+  REPO=`echo $URL | awk '{ split($0, url, "/"); print url[4] "-" url[5] }'`
+  FOLDER=`echo "$REPO-$DATE" | sed -E "s/[ :]/-/g"`
   git clone $URL".git" $FOLDER
   mvim $FOLDER
 }

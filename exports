@@ -24,7 +24,7 @@ export VISUAL="mvim -f"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # local bin
-export PATH=$PATH:$HOME/bin
+export PATH=$HOME/bin:$PATH
 
 # android
 #export ANDROID_HOME=~/Developer/adt-bundle-mac/sdk/
