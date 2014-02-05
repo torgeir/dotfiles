@@ -30,4 +30,4 @@ alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && 
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 # Logout os x
-alias logout="/System/Library/CoreServices/Menu Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias lout="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
