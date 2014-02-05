@@ -3,7 +3,7 @@
 echo installing nvm:
 curl -s https://raw.github.com/creationix/nvm/master/install.sh | sh
 source ~/.nvm/nvm.sh
-NODE=0.10.24
+NODE=0.10.25
 nvm install v$NODE
 nvm alias default v$NODE
 nvm use v$NODE
@@ -19,6 +19,7 @@ for dotfile in   \
   rvm-installer  \
   brew-installer \
   screenrc       \
+  tmux.conf      \
   gitconfig      \
   aliases        \
   functions      \
