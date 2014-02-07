@@ -25,9 +25,12 @@ done
 # empty all the Trash
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash"
 
-# Hide/show all desktop icons (useful when presenting)
+# hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
-# Logout os x
+# logout os x
 alias lout="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# wait for internet connection
+alias waitforinternet='while true; do ping -c 1 -t 2 vg.no && say "we gotz internet" && break; sleep 2; done'
