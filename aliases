@@ -33,4 +33,4 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 alias lout="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
 # wait for internet connection
-alias waitforinternet='while true; do ping -c 1 -t 2 vg.no && say "we gotz internet" && break; sleep 2; done'
+alias waitforinternet='while true; do ping -c 1 -t 2 vg.no && say "we gotz internet" && date && break; sleep 2; done'
