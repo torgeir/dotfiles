@@ -13,6 +13,7 @@ npm install -g prettyjson
 npm install -g http-server
 npm install -g connect
 npm install -g harp
+npm install -g jshint
 
 echo installing dotfiles:
 for dotfile in   \
