@@ -14,6 +14,7 @@ npm install -g http-server
 npm install -g connect
 npm install -g harp
 npm install -g jshint
+npm install -g jsdom
 
 echo installing dotfiles:
 for dotfile in   \

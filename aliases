@@ -34,3 +34,6 @@ alias lout="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resourc
 
 # wait for internet connection
 alias waitforinternet='while true; do ping -c 1 -t 2 vg.no && say "we gotz internet" && date && break; sleep 2; done'
+
+# run local module from node_modules/bin
+alias npm-exec='PATH=$(npm bin):$PATH'

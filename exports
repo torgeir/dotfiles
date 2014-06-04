@@ -17,8 +17,8 @@ export BUSTER_REPORTER=specification
 # utf-8!
 export LANG="no_NO.UTF-8"
 
-# git, -f not to fork
-export VISUAL="mvim -f"
+# git
+export VISUAL="vim"
 
 # rvm (as a shell function)
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"

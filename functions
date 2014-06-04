@@ -40,13 +40,13 @@ function f () {
 }
 
 # pretty print json
-function json () {
-  if [ -p /dev/stdin ]; then # piping
-    prettyjson
-  else
-    prettyjson "$*"
-  fi
-}
+# function json () {
+#   if [ -p /dev/stdin ]; then # piping
+#     json
+#   else
+#     json "$*"
+#   fi
+# }
 
 # export repo without .git
 function gitexport () {
