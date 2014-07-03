@@ -19,4 +19,4 @@ let var = macro {
   }
 }
 
-// export (var);
+export (var);
