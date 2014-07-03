@@ -9,7 +9,7 @@ nvm alias default v$NODE
 nvm use v$NODE
 
 echo installing npm modules:
-npm install -g sjs
+npm install -g sweet.js
 npm install -g prettyjson
 npm install -g http-server
 npm install -g connect
