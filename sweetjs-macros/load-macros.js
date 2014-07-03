@@ -13,7 +13,7 @@ var modules = fs
 
 // ripped out of /Users/torgeir/.nvm/v0.10.28/lib/node_modules/sweet.js/lib/sjs.js
 var options = {
-  readableNames: false,
+  readableNames: true,
   escodegen: { format: { indent: { style: Array(2 + 1).join(' ') } } },
   modules: modules.map(function (path) {
     return sweetjs.loadNodeModule(__dirname, path);
