@@ -11,7 +11,7 @@ let function = macro {
       : null;
 
     return #{
-      function ($arg (,) ..., $rest) {
+      function $name ($arg (,) ..., $rest) {
         $rest = [].slice.call(arguments, $numArgsWithoutRestStx, arguments.length);
         $body ...
       }
