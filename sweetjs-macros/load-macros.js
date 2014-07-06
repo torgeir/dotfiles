@@ -2,7 +2,7 @@
 var sweetjs = require('sweet.js');
 var fs      = require('fs');
 
-var MACROS_FOLDER = '.';
+var MACROS_FOLDER = process.env.HOME + '/.sweetjs-macros/';
 var prefixMacrosFolder = function (macro) { return MACROS_FOLDER + "/" + macro; };
 var isMacro = function (filename) { return filename.indexOf('.sjs') !== -1; };
 
@@ -20,13 +20,15 @@ var options = {
   })
 };
 
-var code = fs.readFileSync('/dev/stdin', 'utf-8').toString();
-// console.log(code);
+var src = fs.readFileSync('/dev/stdin', 'utf-8').toString();
+var compiled = sweetjs.compile(src, options);
+var code = compiled.code;
 
-var compiled = sweetjs.compile(code, options);
-
-// show compiled code
-// console.log(compiled.code);
-
-// run compiled code
-eval(compiled.code);
+var showCompiledCode = !!(Number(process.argv[2]));
+if (showCompiledCode) {
+  console.log(code);
+}
+else {
+  // run compiled code
+  eval(code);
+}
