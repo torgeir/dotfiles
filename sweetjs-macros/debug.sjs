@@ -1,3 +1,4 @@
+// https://github.com/jlongster/es6-macros/tree/master/macros
 macro _debug {
   case { $expr ... } => {
     function collapse(stx) {
