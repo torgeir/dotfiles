@@ -1,4 +1,13 @@
-function name (one, two, ...therest) {
-  console.log(therest);
-
+function name (one, ...alt) {
+  console.log(alt);
+}
 name(1, 2, 3, 4, 5);
+
+(function (one, two, ...alt) {
+  console.log(alt);
+}).call(null, 1, 2, 3, 4, 5);
+
+var f = function (one, two, three, ...alt) {
+  console.log(alt);
+};
+f(1, 2, 3, 4, 5);
