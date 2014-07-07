@@ -1,3 +1,4 @@
+// https://github.com/natefaubion/sparkler
 macro (->) {
   rule infix { $a:ident | { $body ... } } => {
     function($a) { $body ... }
