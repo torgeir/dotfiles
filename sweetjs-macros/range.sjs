@@ -1,3 +1,4 @@
+// https://github.com/locks/candyshop/blob/master/range.sjs
 macro (..) {
   case infix {
     $start:lit | _ $end:lit
