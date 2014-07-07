@@ -1,3 +1,4 @@
+// https://github.com/jlongster/es6-macros/tree/master/macros
 macro bind_args {
   case { $ctx $args $body ... } => {
     var stx = #{ $body ... };

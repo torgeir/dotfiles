@@ -1,3 +1,4 @@
+// https://github.com/jlongster/es6-macros/tree/master/macros
 macro destructor {
   rule { [ $arr:arr_destructor (,) ... ] } => { (arr $arr ...) }
   rule { { $obj:obj_destructor (,) ... } } => { (obj $obj ...) }

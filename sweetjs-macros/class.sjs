@@ -1,5 +1,4 @@
 // http://people.mozilla.org/~jorendorff/es6-draft.html#sec-class-definitions
-
 macro install_super {
   case { $ctx $cls { $body ... } } => {
     var stx = #{ $body ... };
