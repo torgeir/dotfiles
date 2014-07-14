@@ -36,5 +36,7 @@ if (showCompiledCode) {
 }
 else {
   // run compiled code
-  eval(code);
+  var context = { console: console };
+  var vm = require('vm');
+  vm.runInContext(code, vm.createContext(context));
 }
