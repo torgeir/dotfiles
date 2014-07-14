@@ -1,4 +1,3 @@
-// @jlongster
 macroclass arg {
   pattern {
     rule { $name:ident = $val:expr }
