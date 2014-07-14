@@ -29,6 +29,7 @@ let function = macro {
   } => {
     return #{ _function $name ($arg ...) $rest { $body ... } };
   }
+
   case {
     _ ($arg:ident (,) ... $[...] $rest:ident) { $body ... }
   } => {

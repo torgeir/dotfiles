@@ -5,10 +5,16 @@ var fs      = require('fs');
 var MACROS_FOLDER = process.env.HOME + '/.sweetjs-macros/';
 var prefixMacrosFolder = function (macro) { return MACROS_FOLDER + "/" + macro; };
 var isMacro = function (filename) { return filename.indexOf('.sjs') !== -1; };
+var isNotXed = function (filename) { return filename.indexOf('x-') == -1; };
 
 var modules = fs
   .readdirSync(MACROS_FOLDER)
   .filter(isMacro)
+  .filter(isNotXed)
+  // .map(function (el) { // log order
+  //   console.log(el);
+  //   return el;
+  // })
   .map(prefixMacrosFolder);
 
 // ripped out of /Users/torgeir/.nvm/v0.10.28/lib/node_modules/sweet.js/lib/sjs.js
