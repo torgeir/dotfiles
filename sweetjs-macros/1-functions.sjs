@@ -34,6 +34,13 @@ let function = macro {
     function $id () { $body ... }
   }
 
+  // anonymous functions without arguments
+  rule {
+    () { $body ... }
+  } => {
+    function () { $body ... }
+  }
+
   // named functions, with rest
   rule {
     $id ($arg:arg (,) ... $[...] $rest:ident) { $body ...  }
