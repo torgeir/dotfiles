@@ -86,7 +86,7 @@ macro => {
   case infix { ($arg:arg (,) ... $[...] $rest:ident) | $ctx $guard:expr } => {
     letstx $args = [makeIdent('__fa_args', #{$ctx})];
     return #{
-      function ($args, $arg$name (,) ...) {
+      function ($args, $arg$name (,) ..., $rest) {
         $($arg$default) (;) ...
         rest_args $args $rest ($arg$name ...)
         return bind_args $args $guard;

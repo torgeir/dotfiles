@@ -36,7 +36,14 @@ if (showCompiledCode) {
 }
 else {
   // run compiled code
-  var context = { console: console };
-  var vm = require('vm');
-  vm.runInContext(code, vm.createContext(context));
+  var vm = require('vm')
+  var script = vm.createScript(code, 'macro-expanded-code-from-vim-buffer.js');
+  script.runInNewContext(createContext());
+}
+
+function createContext() {
+  var ctx = {};
+  ctx.console = console;
+  ctx.require = require;
+  return ctx;
 }

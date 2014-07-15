@@ -1,2 +1,2 @@
-var arr = (1 .. 100);
+var arr = (13 .. 23);
 console.log(arr);

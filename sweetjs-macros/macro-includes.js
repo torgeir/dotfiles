@@ -1,3 +1,4 @@
+// sweet.js needs this, to not do hygiene
 curry = function curry (fn) {
   var numargs = fn.length;
   return createRecurser([]);
@@ -19,3 +20,5 @@ curry = function curry (fn) {
     }
   }
 };
+
+module.exports.curry = global.curry = curry;

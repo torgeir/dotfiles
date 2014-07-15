@@ -31,7 +31,7 @@ let function = macro {
   rule {
     $id ($arg:arg (,) ... $[...] $rest:ident) { $body ...  }
   } => {
-    function $id ($arg$name ...) {
+    function $id ($arg$name ..., $rest) {
       $($arg$default) (;) ...;
       rest_args arguments $rest ($arg$name ...)
       $body ...
@@ -52,7 +52,7 @@ let function = macro {
   rule {
     ($arg:arg (,) ... $[...] $rest:ident) { $body ...  }
   } => {
-    function ($arg$name ...) {
+    function ($arg$name ..., $rest) {
       $($arg$default) (;) ...;
       rest_args arguments $rest ($arg$name ...)
       $body ...

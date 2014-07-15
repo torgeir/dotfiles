@@ -1,4 +1,4 @@
-require('./includes');
+curry = require('./macro-includes').curry;
 
 var arr = [1, 2, 3];
 

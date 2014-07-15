@@ -21,10 +21,20 @@ c(3);
 
 var d = function (a, b = 4096) {
   console.log(a, b);
-}
+};
 d(4);
 
 var e = function (a, b = 4096, ...rest) {
   console.log(rest);
-}
+};
 e(4, undefined, 5, 6, 7);
+
+(function (one, two, ...alt) {
+  console.log(alt);
+}).call(null, 1, 2, 3, 4, 5);
+
+var f = function (one = 1, two, three, ...alt) {
+  console.log(one);
+  console.log(alt);
+};
+f(1, 2, 3, 4, 5);
