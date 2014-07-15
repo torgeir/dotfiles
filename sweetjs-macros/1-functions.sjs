@@ -27,6 +27,13 @@ macro rest_args {
 
 let function = macro {
 
+  // named functions without arguments
+  rule {
+    $id () { $body ... }
+  } => {
+    function $id () { $body ... }
+  }
+
   // named functions, with rest
   rule {
     $id ($arg:arg (,) ... $[...] $rest:ident) { $body ...  }
