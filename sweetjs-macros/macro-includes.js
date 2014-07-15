@@ -1,6 +1,10 @@
 // sweet.js needs this, to not do hygiene
 curry = function curry (fn) {
   var numargs = fn.length;
+  if (numargs == 1) {
+    return fn;
+  }
+
   return createRecurser([]);
 
   function createRecurser (acc) {
