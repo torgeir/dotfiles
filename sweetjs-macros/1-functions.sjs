@@ -13,14 +13,14 @@ macroclass arg {
 // NB differs from the fat-arrow-one
 macro rest_args {
   case {
-    $name $args $rest ($arg ...)
+    $name $rest ($arg ...)
   } => {
     var args = #{$arg ...};
     var numArgs = args.length;
     var stx = #{$rest}; // use rest's lexical scope for new values
     letstx $numArgsStx = [makeValue(numArgs, stx)]
     return #{
-      $rest = [].slice.call(($args || arguments), $numArgsStx, ($args || arguments).length);
+      $rest = [].slice.call(arguments, $numArgsStx, arguments.length);
     };
   }
 }
@@ -46,7 +46,7 @@ let function = macro {
     $id ($[...] $rest:ident) { $body ...  }
   } => {
     function $id ($rest) {
-      rest_args arguments $rest ()
+      rest_args $rest ()
       $body ...
     }
   }
@@ -57,7 +57,7 @@ let function = macro {
   } => {
     function $id ($arg$name ..., $rest) {
       $($arg$default) (;) ...;
-      rest_args arguments $rest ($arg$name ...)
+      rest_args $rest ($arg$name ...)
       $body ...
     }
   }
@@ -72,26 +72,26 @@ let function = macro {
     }
   }
 
+  // anonymous functions, only rest
+  rule {
+    ($[...] $rest:ident) { $body ...  }
+  } => {
+    function ($rest) {
+      rest_args $rest ()
+      $body ...
+    }
+  }
+
   // anonymous functions, with rest
   rule {
     ($arg:arg (,) ... $[...] $rest:ident) { $body ...  }
   } => {
     function ($arg$name ..., $rest) {
       $($arg$default) (;) ...;
-      rest_args arguments $rest ($arg$name ...)
+      rest_args $rest ($arg$name ...)
       $body ...
     }
   }
-  // anonymous functions, only rest
-  rule {
-    ($[...] $rest:ident) { $body ...  }
-  } => {
-    function ($rest) {
-      rest_args arguments $rest ()
-      $body ...
-    }
-  }
-
 
   // anonymous functions
   rule {

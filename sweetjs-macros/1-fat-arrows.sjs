@@ -1,14 +1,14 @@
 // handle ...rest args
 macro rest_args {
   case {
-    $name $args $rest ($arg ...)
+    $name $rest ($arg ...)
   } => {
     var args = #{$arg ...};
     var numArgs = args.length + 1; // 1 is __fa_args
     var stx = #{$rest}; // use rest's lexical scope for new values
     letstx $numArgsStx = [makeValue(numArgs, stx)]
     return #{
-      $rest = [].slice.call(($args || arguments), $numArgsStx, ($args|| arguments).length);
+      $rest = [].slice.call(arguments, $numArgsStx, arguments.length);
     };
   }
 }
@@ -59,13 +59,24 @@ macroclass arg {
 
 macro => {
 
+  // (...rest) => { return rest }
+  case infix { ($[...] $rest:ident) | $ctx { $body ... } } => {
+    letstx $args = [makeIdent('__fa_args', #{$ctx})];
+    return #{
+      function ($args, $rest) {
+        rest_args $rest ()
+        bind_args $args ($body ...)
+      }.bind(this, typeof arguments !== "undefined" ? arguments : undefined)
+    }
+  }
+
   // (a, b, ...rest) => { return rest }
   case infix { ($arg:arg (,) ... $[...] $rest:ident) | $ctx { $body ... } } => {
     letstx $args = [makeIdent('__fa_args', #{$ctx})];
     return #{
       function ($args, $arg$name (,) ..., $rest) {
         $($arg$default) (;) ...
-        rest_args $args $rest ($arg$name ...)
+        rest_args $rest ($arg$name ...)
         bind_args $args ($body ...)
       }.bind(this, typeof arguments !== "undefined" ? arguments : undefined)
     }
@@ -83,12 +94,23 @@ macro => {
   }
 
   // (a, b, ...rest) => rest
+  case infix { ($[...] $rest:ident) | $ctx $guard:expr } => {
+    letstx $args = [makeIdent('__fa_args', #{$ctx})];
+    return #{
+      function ($args, $rest) {
+        rest_args $rest ()
+        return bind_args $args $guard;
+      }.bind(this, typeof arguments !== "undefined" ? arguments : undefined)
+    }
+  }
+
+  // (a, b, ...rest) => rest
   case infix { ($arg:arg (,) ... $[...] $rest:ident) | $ctx $guard:expr } => {
     letstx $args = [makeIdent('__fa_args', #{$ctx})];
     return #{
       function ($args, $arg$name (,) ..., $rest) {
         $($arg$default) (;) ...
-        rest_args $args $rest ($arg$name ...)
+        rest_args $rest ($arg$name ...)
         return bind_args $args $guard;
       }.bind(this, typeof arguments !== "undefined" ? arguments : undefined)
     }
