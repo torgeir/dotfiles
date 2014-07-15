@@ -10,6 +10,7 @@ nvm use v$NODE
 
 echo installing npm modules:
 npm install -g sweet.js
+npm install -g bluebird
 npm install -g prettyjson
 npm install -g http-server
 npm install -g connect
