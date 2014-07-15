@@ -41,6 +41,16 @@ let function = macro {
     function () { $body ... }
   }
 
+  // named function, only rest
+  rule {
+    $id ($[...] $rest:ident) { $body ...  }
+  } => {
+    function $id ($rest) {
+      rest_args arguments $rest ()
+      $body ...
+    }
+  }
+
   // named functions, with rest
   rule {
     $id ($arg:arg (,) ... $[...] $rest:ident) { $body ...  }
@@ -72,6 +82,16 @@ let function = macro {
       $body ...
     }
   }
+  // anonymous functions, only rest
+  rule {
+    ($[...] $rest:ident) { $body ...  }
+  } => {
+    function ($rest) {
+      rest_args arguments $rest ()
+      $body ...
+    }
+  }
+
 
   // anonymous functions
   rule {
