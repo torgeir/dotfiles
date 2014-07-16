@@ -26,7 +26,7 @@ var options = {
   })
 };
 
-var src = fs.readFileSync(process.env.HOME + '/tmp/js-macro-from-vim-buffer.js', 'utf-8').toString();
+var src = fs.readFileSync('/dev/stdin', 'utf-8').toString() || fs.readFileSync(process.env.HOME + '/tmp/js-macro-from-vim-buffer.js', 'utf-8').toString();
 var compiled = sweetjs.compile(src, options);
 var code = compiled.code;
 
