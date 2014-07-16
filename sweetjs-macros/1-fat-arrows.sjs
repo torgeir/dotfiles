@@ -59,6 +59,16 @@ macroclass arg {
 
 macro => {
 
+  // () =>
+  case infix { () | $ctx $guard:expr } => {
+    letstx $args = [makeIdent('__fa_args', #{$ctx})];
+    return #{
+      function ($args) {
+        return bind_args $args $guard;
+      }.bind(this, typeof arguments !== "undefined" ? arguments : undefined)
+    }
+  }
+
   // (...rest) => { return rest }
   case infix { ($[...] $rest:ident) | $ctx { $body ... } } => {
     letstx $args = [makeIdent('__fa_args', #{$ctx})];
@@ -93,7 +103,7 @@ macro => {
     }
   }
 
-  // (a, b, ...rest) => rest
+  // (...rest) => rest
   case infix { ($[...] $rest:ident) | $ctx $guard:expr } => {
     letstx $args = [makeIdent('__fa_args', #{$ctx})];
     return #{
