@@ -122,6 +122,18 @@ macro install_super {
   }
 }
 
+macro without_new {
+  rule {
+    $type
+  } => {
+    if (!(this instanceof $type)) {
+      var inst = Object.create($type.prototype);
+      $type.apply(inst, arguments);
+      return inst;
+    }
+  }
+}
+
 let class = macro {
   rule {
     $typename extends $parent {
@@ -129,36 +141,42 @@ let class = macro {
       $($mname $mparams $mbody) ...
     }
   } => {
-    function $typename $cparams { install_super $typename $cbody }
+    function $typename $cparams {
+      without_new $typename
+      install_super $typename $cbody
+    }
 
     $typename.prototype = Object.create($parent.prototype);
-    $($typename.prototype.$mname = function $mname $mparams 
+    $($typename.prototype.$mname = function $mname $mparams
       { install_super $typename $mbody };) ...
   }
 
-      rule {
-        $typename {
-          constructor $cparams $cbody
-          $($mname $mparams $mbody) ...
-        }
-      } => {
-        function $typename $cparams $cbody
+  rule {
+    $typename {
+      constructor $cparams $cbody
+      $($mname $mparams $mbody) ...
+    }
+  } => {
+    function $typename $cparams {
+      without_new $typename
+      $cbody
+    }
 
-        $($typename.prototype.$mname = function $mname $mparams $mbody;) ...
+    $($typename.prototype.$mname = function $mname $mparams $mbody;) ...
+  }
+
+  rule {
+    $typename $extends ... {
+      $methods ...
+    }
+  } => {
+    class_constructor $typename $extends ... {
+      constructor() {
+        Object.getPrototypeOf($typename.prototype).constructor.apply(this, arguments);
       }
-
-        rule {
-          $typename $extends ... {
-            $methods ...
-          }
-        } => {
-          class_constructor $typename $extends ... {
-            constructor() {
-              Object.getPrototypeOf($typename.prototype).constructor.apply(this, arguments);
-            }
-            $methods ...
-          }
-        }
+      $methods ...
+    }
+  }
 }
 
 // hack to recurse down into `class` (which needs to be a let macro
