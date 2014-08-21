@@ -141,3 +141,9 @@ function cd () {
   builtin cd "$@";
   ls -l;
 }
+
+# unmarks and marks the current directory
+function mark-cur {
+  yes | unmark cur
+  mark cur
+}
