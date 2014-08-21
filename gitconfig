@@ -11,10 +11,18 @@
   log = log --graph --decorate=full --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   serve = daemon --reuseaddr --verbose  --port=4000 --base-path=. --export-all ./.git
   st = status -sb
+  pr = pull --rebase
+
+[core]
+  autocrlf = input
+  # norwegian chars in commits
+  quotepath = false
+  precomposeunicode = true #
 
 [color]
   branch = auto
   diff = auto
   status = auto
+
 [github]
   user = torgeir
