@@ -26,3 +26,5 @@
 
 [github]
   user = torgeir
+[merge]
+  tool = vimdiff
