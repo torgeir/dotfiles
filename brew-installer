@@ -2,9 +2,11 @@
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 brew update
 
-# upgrade installs
+# upgrade
 brew upgrade
+brew upgrade brew-cask
 brew cleanup
+brew cask cleanup
 
 # stuff
 brew install coreutils # os x ones are outdated
@@ -26,7 +28,6 @@ brew install webkit2png
 brew install wget
 
 # https://github.com/caskroom/homebrew-cask
-brew upgrade brew-cask
 brew install caskroom/cask/brew-cask
 
 # applications
