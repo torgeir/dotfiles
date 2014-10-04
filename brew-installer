@@ -56,3 +56,4 @@ brew cask install webp-quicklook
 
 # remove outdated
 brew cleanup
+brew cask cleanup
