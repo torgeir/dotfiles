@@ -33,6 +33,8 @@ brew install caskroom/cask/brew-cask
 
 # applications
 brew cask install alfred
+brew cask install chromecast
+brew cask install dash
 brew cask install atom
 brew cask install dropbox
 brew cask install gitx
@@ -42,12 +44,15 @@ brew cask install slack
 brew cask install spotify
 brew cask install vagrant
 brew cask install virtualbox
+brew cask install intellij-idea
+brew cask install robomongo
+brew cask install send-to-kindle
 
 # quick look plugins - https://github.com/sindresorhus/quick-look-plugins
-brew cask install betterzipql
-brew cask install qlcolorcode
 brew cask install qlmarkdown
 brew cask install qlprettypatch
+brew cask install betterzipql
+brew cask install qlcolorcode
 brew cask install qlstephen
 brew cask install quicklook-csv
 brew cask install quicklook-json
