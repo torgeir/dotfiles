@@ -20,15 +20,16 @@ npm install -g jsdom
 
 echo installing dotfiles:
 for dotfile in   \
-  rvm-installer  \
-  brew-installer \
-  screenrc       \
-  tmux.conf      \
-  gitconfig      \
   aliases        \
+  brew-installer \
   functions      \
+  gitconfig      \
   inputrc        \
+  mackup.cfg     \
+  rvm-installer  \
+  screenrc       \
   sweetjs-macros \
+  tmux.conf      \
   exports;
   do
     echo installing .$dotfile
