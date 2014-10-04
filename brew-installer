@@ -65,6 +65,6 @@ brew cask install webp-quicklook
 brew tap homebrew/dupes
 brew install homebrew/dupes/grep # os x ones are outdated
 
-# remove outdated
+# remove tmp files
 brew cleanup
 brew cask cleanup
