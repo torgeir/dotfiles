@@ -1,9 +1,6 @@
 # full name of user
 #export USER_FULLNAME=`osascript -e "long user name of (system info)"`
 
-# open folder in finder
-alias cdf='eval `osascript /Applications/OpenTerminal.app/Contents/Resources/Scripts/OpenTerminal.scpt`'
-
 # node
 export NODE_ENV=development
 #export NODE_PATH=/usr/local/lib/jsctags/:$NODE_PATH
