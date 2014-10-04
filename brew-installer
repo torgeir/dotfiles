@@ -13,12 +13,8 @@ brew install gnupg
 brew install coreutils
 brew install findutils
 
-# bash 4
-brew install bash
-
-# stuff
 brew install git
-
+brew install bash # bash 4
 brew install tmux
 brew install tree
 brew install wget
@@ -43,14 +39,15 @@ brew install caskroom/cask/brew-cask
 
 # applications
 brew cask install alfred
+brew cask install atom
 brew cask install dropbox
+brew cask install gitx
+brew cask install google-chrome
+brew cask install iterm2
 brew cask install slack
 brew cask install spotify
 brew cask install vagrant
 brew cask install virtualbox
-brew cask install iterm2
-brew cask install atom
-brew cask install google-chrome
 
 # quick look plugins - https://github.com/sindresorhus/quick-look-plugins
 brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook suspicious-package
