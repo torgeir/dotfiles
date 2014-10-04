@@ -48,6 +48,9 @@ brew cask install intellij-idea
 brew cask install robomongo
 brew cask install send-to-kindle
 
+# show cask installs in alfred
+brew cask alfred link
+
 # quick look plugins - https://github.com/sindresorhus/quick-look-plugins
 brew cask install qlmarkdown
 brew cask install qlprettypatch
