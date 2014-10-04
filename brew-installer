@@ -6,16 +6,6 @@ brew update
 brew upgrade
 brew cleanup
 
-# https://github.com/caskroom/homebrew-cask
-brew upgrade brew-cask
-brew install caskroom/cask/brew-cask
-
-# applications
-brew cask install alfred dropbox slack spotify vagrant virtualbox iterm2 atom google-chrome
-
-# quick look plugins - https://github.com/sindresorhus/quick-look-plugins
-brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook suspicious-package
-
 # pgp
 brew install gnupg
 
@@ -46,6 +36,16 @@ brew install pcre
 brew install phantomjs
 
 brew install webkit2png
+
+# https://github.com/caskroom/homebrew-cask
+brew upgrade brew-cask
+brew install caskroom/cask/brew-cask
+
+# applications
+brew cask install alfred dropbox slack spotify vagrant virtualbox iterm2 atom google-chrome
+
+# quick look plugins - https://github.com/sindresorhus/quick-look-plugins
+brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql webp-quicklook suspicious-package
 
 # remove outdated
 brew cleanup
