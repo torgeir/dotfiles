@@ -20,6 +20,9 @@ export VISUAL="vim"
 # local bin
 export PATH=$HOME/bin:$PATH
 
+# coreutils
+export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
+
 # android
 #export ANDROID_HOME=~/Developer/adt-bundle-mac/sdk/
 
