@@ -17,6 +17,8 @@ npm install -g connect
 npm install -g harp
 npm install -g jshint
 npm install -g jsdom
+npm install -g mversion
+npm install -g mrun
 
 echo installing dotfiles:
 for dotfile in   \
