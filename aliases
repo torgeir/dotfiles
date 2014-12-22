@@ -27,8 +27,8 @@ alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && 
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 # hide/show hidden files
-alias hidehidden="defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder"
-alias showhidden="defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder"
+alias hidehidden="defaults write com.apple.finder AppleShowAllFiles -boolean false && killall Finder"
+alias showhidden="defaults write com.apple.finder AppleShowAllFiles -boolean true && killall Finder"
 
 # logout os x
 alias lout="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
