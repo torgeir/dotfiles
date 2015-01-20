@@ -30,6 +30,8 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 alias hidehidden="defaults write com.apple.finder AppleShowAllFiles -boolean false && killall Finder"
 alias showhidden="defaults write com.apple.finder AppleShowAllFiles -boolean true && killall Finder"
 
+alias flushyosemitedns="sudo discoveryutil mdnsflushcache;sudo discoveryutil udnsflushcaches"
+
 # logout os x
 alias lout="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
