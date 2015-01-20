@@ -13,6 +13,7 @@ brew install coreutils # os x ones are outdated
 brew install findutils
 brew install bash # bash 4
 brew install git
+brew install jq # cmd line json parsing
 brew install mackup # backup config for brew installed stuff
 brew install maven
 brew install mongodb
