@@ -112,6 +112,10 @@ function marks {
   \ls -l "$MARKPATH" | tail -n +2 | sed 's/  / /g' | cut -d' ' -f9- | awk -F ' -> ' '{printf "%-10s -> %s\n", $1, $2}'
 }
 
+function isup {
+  nc -zG 3 -L 2 $1 $2 &> /dev/null && echo "$1:$2 up"
+}
+
 # autocomplete marks
 _completemarks() {
   local curw=${COMP_WORDS[COMP_CWORD]}
