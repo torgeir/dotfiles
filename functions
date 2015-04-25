@@ -1,3 +1,11 @@
+function wn {
+  if [ -z "$1" ]
+  then
+    date +%V
+  else
+    date -d $1 +%V
+  fi
+}
 # ssh autocomplete
 complete -W "$(echo $(cat ~/.ssh/known_hosts | \
     cut -f 1 -d ' ' | sed -e s/,.*//g | \
