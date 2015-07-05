@@ -12,7 +12,7 @@ export NODE_ENV=development
 export LANG="no_NO.UTF-8"
 
 # git
-export VISUAL="vim"
+export VISUAL="emacsclient -t"
 
 # rvm (as a shell function)
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
