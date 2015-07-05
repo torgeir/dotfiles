@@ -40,3 +40,9 @@ alias waitforinternet='while true; do ping -c 1 -t 2 vg.no && say "we gotz inter
 
 # run local module from node_modules/bin
 alias npm-exec='PATH=$(npm bin):$PATH'
+
+# making the move?
+alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
+alias emdkill="ps x | ack 'Emacs\ --daemon' | awk '{print \$1}' | xargs kill"
+alias e="emacsclient -tc"
+alias vim=e
