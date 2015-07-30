@@ -13,6 +13,7 @@ brew install coreutils # os x ones are outdated
 brew install findutils
 brew install bash # bash 4
 brew install git
+brew install ctags-exuberant
 brew install macvim --override-system-vim --with-python3
 brew install emacs --with-cocoa --with-imagemagic --with-mailutils --with-gnutls
 brew install jq # cmd line json parsing
