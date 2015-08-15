@@ -3,10 +3,10 @@
 echo installing nvm:
 curl -s https://raw.github.com/creationix/nvm/master/install.sh | sh
 source ~/.nvm/nvm.sh
-NODE=0.10.32
-nvm install v$NODE v0.11
-nvm alias default v$NODE
-nvm use v$NODE
+IOJS=iojs-v3.0.0
+nvm install $IOJS v0.12
+nvm alias default $IOJS
+nvm use $IOJS
 
 echo installing npm modules:
 npm install -g sweet.js
