@@ -9,16 +9,16 @@ nvm alias default $IOJS
 nvm use $IOJS
 
 echo installing npm modules:
-npm install -g sweet.js
-npm install -g bluebird
-npm install -g prettyjson
-npm install -g http-server
-npm install -g connect
-npm install -g harp
-npm install -g jshint
-npm install -g jsdom
-npm install -g mversion
-npm install -g mrun
+npm i -g bluebird
+npm i -g prettyjson
+npm i -g http-server
+npm i -g connect
+npm i -g harp
+npm i -g eslint babel-eslint
+npm i -g jsdom
+npm i -g mversion
+npm i -g mrun
+npm i -g npm-check-updates
 
 echo installing dotfiles:
 for dotfile in   \
