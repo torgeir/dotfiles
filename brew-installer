@@ -16,6 +16,7 @@ brew install git
 brew install ctags-exuberant
 brew install macvim --override-system-vim --with-python3
 brew install emacs --with-cocoa --with-imagemagic --with-mailutils --with-gnutls
+brew install markdown
 brew install jq # cmd line json parsing
 brew install mackup # backup config for brew installed stuff
 brew install maven
