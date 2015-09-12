@@ -3,10 +3,10 @@
 echo installing nvm:
 curl -s https://raw.github.com/creationix/nvm/master/install.sh | sh
 source ~/.nvm/nvm.sh
-IOJS=iojs-v3.0.0
-nvm install $IOJS v0.12
-nvm alias default $IOJS
-nvm use $IOJS
+NODE=v4.0.0
+nvm install $NODE
+nvm alias default $NODE
+nvm use $NODE
 
 echo installing npm modules:
 npm i -g bluebird
