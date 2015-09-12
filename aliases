@@ -43,6 +43,6 @@ alias npm-exec='PATH=$(npm bin):$PATH'
 
 # making the move?
 alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
-alias emdkill="ps x | ack 'Emacs\ --daemon' | awk '{print \$1}' | xargs kill"
+alias emdkill="ps x | ack 'Emacs\ -nw\ --daemon' | awk '{print \$1}' | xargs kill"
 alias e="emacsclient -tc"
 alias em="emacs -nw"
