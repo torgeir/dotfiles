@@ -9,8 +9,6 @@ nvm alias default $NODE
 nvm use $NODE
 
 echo installing npm modules:
-npm i -g bluebird
-npm i -g prettyjson
 npm i -g http-server
 npm i -g connect
 npm i -g harp
