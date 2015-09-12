@@ -19,6 +19,7 @@ npm i -g jsdom
 npm i -g mversion
 npm i -g mrun
 npm i -g npm-check-updates
+npm i -g browser-sync
 
 echo installing dotfiles:
 for dotfile in   \
