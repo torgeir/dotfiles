@@ -1,3 +1,4 @@
+#!/bin/sh
 function wn {
   if [ -z "$1" ]
   then
@@ -8,8 +9,8 @@ function wn {
 }
 # ssh autocomplete
 complete -W "$(echo $(cat ~/.ssh/known_hosts | \
-    cut -f 1 -d ' ' | sed -e s/,.*//g | \
-    sort -u | grep -v "\["))" ssh
+cut -f 1 -d ' ' | sed -e s/,.*//g | \
+sort -u | grep -v "\["))" ssh
 
 # git autocomplete
 source /usr/local/etc/bash_completion.d/git-completion.bash
@@ -44,7 +45,7 @@ function md () {
 
 # find shorthand
 function f () {
-    find . -name "$1"
+  find . -name "$1"
 }
 
 # pretty print json
@@ -105,15 +106,15 @@ function extract () {
 
 # marks - jump around folders
 function jump {
-    cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
+  cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
 }
 
 function mark {
-    mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
+  mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
 }
 
 function unmark {
-    rm -i "$MARKPATH/$1"
+  rm -i "$MARKPATH/$1"
 }
 
 function marks {
