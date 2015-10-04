@@ -18,6 +18,7 @@
   # norwegian chars in commits
   quotepath = false
   precomposeunicode = true #
+  editor = emacsclient
 
 [color]
   branch = auto
