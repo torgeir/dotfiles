@@ -17,6 +17,8 @@ npm i -g jsdom
 npm i -g mversion
 npm i -g mrun
 npm i -g npm-check-updates
+# emacs uses these
+npm i -g eslint babel-eslint jsonlint eslint-plugin-react
 npm i -g browser-sync
 
 echo installing dotfiles:
