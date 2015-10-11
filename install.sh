@@ -29,6 +29,7 @@ for dotfile in   \
   functions      \
   gitconfig      \
   inputrc        \
+  eslintrc        \
   mackup.cfg     \
   rvm-installer  \
   screenrc       \
