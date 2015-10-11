@@ -20,6 +20,7 @@ npm i -g npm-check-updates
 # emacs uses these
 npm i -g eslint babel-eslint jsonlint eslint-plugin-react
 npm i -g browser-sync
+npm i -g tern
 
 echo installing dotfiles:
 for dotfile in   \
