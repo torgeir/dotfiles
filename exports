@@ -40,6 +40,3 @@ export MARKPATH=$HOME/.marks
 
 # prompt
 export PS1='\n\[$(tput setaf 2)\]`jobs -s | wc -l | sed -e "s/ //g"`:\[$(tput setaf 1)\]\h \[$(tput setaf 3)\]\[$(tput setaf 4 sgr0)\]\w\[$(tput setaf 5)\]`__git_prompt` \n\[$(tput sgr0)\]$ '
-
-# make emacsclient -t start as daemon if not already running as one
-export ALTERNATE_EDITOR=""

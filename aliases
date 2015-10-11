@@ -45,7 +45,5 @@ alias npm-exec='PATH=$(npm bin):$PATH'
 # making the move?
 alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
 alias emdkill="ps x | ack 'Emacs\ (-nw\ )?--daemon' | awk '{print \$1}' | xargs kill"
-# opens gui emacs if open (which does start-server), else terminal (and no start-server)
-alias e="emacsclient -q -n -a emacs"
-# always terminal
+alias e="emacsclient -q -a emacs"
 alias em="emacs -nw"
