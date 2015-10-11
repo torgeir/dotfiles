@@ -19,6 +19,7 @@
   quotepath = false
   precomposeunicode = true #
   editor = emacsclient
+  excludesfile = ~/.gitignore_global
 
 [color]
   branch = auto
