@@ -45,5 +45,6 @@ alias npm-exec='PATH=$(npm bin):$PATH'
 # making the move?
 alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
 alias emdkill="ps x | ack 'Emacs\ (-nw\ )?--daemon' | awk '{print \$1}' | xargs kill"
-alias e="emacsclient -q -a emacs"
-alias em="emacs -nw"
+alias e="emacsclient -q -n -a /Users/torgeir/Applications/Emacs.app/Contents/MacOS/Emacs" # no wait, gui
+alias em="emacsclient -q -nw -a /Users/torgeir/Applications/Emacs.app/Contents/MacOS/Emacs" # frame in current terminal
+alias emn="emacsclient -q -n -c -a /Users/torgeir/Applications/Emacs.app/Contents/MacOS/Emacs" # no wait, new frame, gui
