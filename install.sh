@@ -13,7 +13,6 @@ echo installing npm modules:
 npm i -g http-server
 npm i -g connect
 npm i -g harp
-npm i -g eslint babel-eslint
 npm i -g jsdom
 npm i -g mversion
 npm i -g mrun
