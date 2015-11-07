@@ -1,5 +1,8 @@
 #!/bin/sh
 
+echo "accepting xcode license.."
+sudo xcodebuild -license accept
+
 echo installing nvm:
 curl -s https://raw.github.com/creationix/nvm/master/install.sh | sh
 source ~/.nvm/nvm.sh
