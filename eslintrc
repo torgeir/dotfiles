@@ -1,4 +1,5 @@
 {
+  "extends": "eslint:recommended",
   "parser": "babel-eslint",
   "plugins": ["react"],
   "env": {
@@ -24,7 +25,7 @@
   },
   "rules": {
     "key-spacing": [0],
-    "no-multi-spaces": [0],
+    "no-multi-spaces": [1],
     "no-shadow": [0],
     "quotes": [0],
     "no-multi-str": [1],
@@ -42,13 +43,14 @@
     "radix": [1],
     "wrap-iife": [1],
     "yoda": [1],
-    "consistent-return": [2],
+    "consistent-return": [1],
     "dot-notation": [2, {"allowKeywords": false}],
     "no-constant-condition": [2],
     "no-control-regex": [2],
     "no-dupe-keys": [2],
     "no-duplicate-case": [2],
     "no-else-return": [2],
+    "no-empty-pattern": [1],
     "no-empty": [2],
     "no-empty-character-class": [2],
     "no-ex-assign": [2],
@@ -60,6 +62,7 @@
     "no-irregular-whitespace": [2],
     "no-native-reassign": [2],
     "no-negated-in-lhs": [2],
+    "no-new": 1,
     "no-new-wrappers": [2],
     "no-obj-calls": [2],
     "no-regex-spaces": [2],
@@ -68,11 +71,11 @@
     "no-throw-literal": [2],
     "no-use-before-define": [2, "nofunc"],
     "no-useless-call": [2],
-    "semi": [2],
+    "semi": [1],
     "use-isnan": [2],
     "valid-typeof": [2],
 
-    "no-catch-shadow": [2],
+    "no-catch-shadow": [1],
     "no-delete-var": [2],
     "no-label-var": [2],
     "no-shadow-restricted-names": [2],
@@ -106,8 +109,12 @@
     "no-new-object": [2],
     "no-restricted-syntax": [2, "WithStatement"],
     "no-spaced-func": [1],
-    "no-trailing-spaces": [1],
+    "no-trailing-spaces": [1, { "skipBlankLines": true }],
     "no-unneeded-ternary": [1],
+    "curly": 1,
+    "no-alert": 1,
+    "no-debugger": 1,
+    "no-console": 1,
     "object-curly-spacing": [1, "always"],
     "space-after-keywords": [1, "always"],
     "space-before-keywords": [1, "always"],
@@ -134,6 +141,12 @@
     "prefer-spread": [1],
     "prefer-reflect": [1],
     "prefer-template": [1],
-    "require-yield": [2]
+    "require-yield": [2],
+
+    "react/jsx-no-bind": 1,
+    "react/jsx-no-duplicate-props": 1,
+    "react/no-set-state": 1,
+    "react/no-unknown-property": 1,
+    "react/self-closing-comp": 1
   }
 }
