@@ -42,9 +42,5 @@ alias waitforinternet='while true; do ping -c 1 -t 2 vg.no && say "we gotz inter
 # run local module from node_modules/bin
 alias npm-exec='PATH=$(npm bin):$PATH'
 
-# making the move?
-alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
+# kill emacs daemon
 alias emdkill="ps x | ack 'Emacs\ (-nw\ )?--daemon' | awk '{print \$1}' | xargs kill"
-alias e="emacsclient -q -n -a /usr/local/opt/emacs/Emacs.app/Contents/MacOS/Emacs" # no wait, gui
-alias em="emacsclient -q -nw -a /usr/local/opt/emacs/Emacs.app/Contents/MacOS/Emacs" # frame in current terminal
-alias emn="emacsclient -q -n -c -a /usr/local/opt/emacs/Emacs.app/Contents/MacOS/Emacs" # no wait, new frame, gui
