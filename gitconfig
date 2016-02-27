@@ -28,5 +28,9 @@
 
 [github]
   user = torgeir
+
+[include]
+  path = ~/.gitconfig-private
+
 [merge]
   tool = vimdiff
