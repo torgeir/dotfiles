@@ -33,7 +33,6 @@ for dotfile in   \
   gitconfig      \
   inputrc        \
   eslintrc        \
-  mackup.cfg     \
   rvm-installer  \
   screenrc       \
   sweetjs-macros \
