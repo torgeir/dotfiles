@@ -62,7 +62,6 @@
     "no-irregular-whitespace": [2],
     "no-native-reassign": [2],
     "no-negated-in-lhs": [2],
-    "no-new": 1,
     "no-new-wrappers": [2],
     "no-obj-calls": [2],
     "no-regex-spaces": [2],
