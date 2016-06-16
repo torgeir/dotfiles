@@ -160,7 +160,7 @@ function share () {
 }
 
 function share-vid-as-gif () {
-  gifify $1
+  gifify $1 --good
   share $1".gif"
   echo "public.wa.gd/$1.gif" | pbcopy
 }
