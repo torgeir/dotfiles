@@ -34,3 +34,6 @@
 
 [merge]
   tool = vimdiff
+  
+[rerere]
+  enabled = true
