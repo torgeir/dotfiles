@@ -33,6 +33,10 @@ function cloneopen_github_repo {
   mvim $FOLDER
 }
 
+function git_ignore_locally_only() {
+  git update-index --assume-unchanged "$@"
+}
+
 # copy with progress
 cp_p () {
   pv < $1 > $2;
