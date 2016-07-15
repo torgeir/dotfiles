@@ -33,7 +33,7 @@ function cloneopen_github_repo {
   mvim $FOLDER
 }
 
-function git_ignore_locally_only() {
+function git-ignore-file-in-local-index() {
   git update-index --assume-unchanged "$@"
 }
 
