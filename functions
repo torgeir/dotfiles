@@ -37,6 +37,10 @@ function git-ignore-file-in-local-index() {
   git update-index --assume-unchanged "$@"
 }
 
+function git-find-commit-with-text() {
+  git log -S $1 --source --all --reverse
+}
+
 # copy with progress
 cp_p () {
   pv < $1 > $2;
