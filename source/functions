@@ -7,6 +7,10 @@ function docker-remove-all-untagged-images {
   docker rmi $(docker images | grep "^<none>" | awk '{print $3}')
 }
 
+function chrome () {
+  /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome $* 2>&1 &
+}
+
 # week-number
 function week-number {
   if [ -z "$1" ]
