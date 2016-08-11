@@ -22,10 +22,8 @@ npm i -g tern
 
 echo installing dotfiles:
 for dotfile in   \
-  brew-installer \
   gitconfig      \
   eslintrc       \
-  rvm-installer  \
   screenrc       \
   tmux.conf;
   do
