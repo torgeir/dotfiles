@@ -26,6 +26,9 @@ export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
 # android
 #export ANDROID_HOME=~/Developer/adt-bundle-mac/sdk/
 
+# java
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+
 # custom scala build
 #export PATH=$HOME/Code/Scala/kepler/dists/latest/bin:$PATH
 
