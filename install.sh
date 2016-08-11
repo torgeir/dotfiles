@@ -33,4 +33,4 @@ for dotfile in   \
 
 touch $HOME/.marks
 ln -fs $HOME/.emacs.d/ $HOME/.marks/e
-ln -fs $HOME/.emacs.d/ $HOME/.marks/cur
+ln -fs $HOME/Code/ $HOME/.marks/c
