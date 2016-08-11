@@ -24,6 +24,7 @@ brew install jq # cmd line json parsing
 #brew install mackup # backup config for brew installed stuff
 #brew install maven
 #brew install mongodb
+brew install siege
 brew install ngrep
 brew install pcre
 brew install phantomjs
