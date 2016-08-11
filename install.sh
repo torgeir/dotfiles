@@ -7,7 +7,7 @@ echo installing nvm:
 curl -s https://raw.github.com/creationix/nvm/master/install.sh | sh
 source ~/.nvm/nvm.sh
 
-NODE=v4
+NODE=v6
 nvm install $NODE
 nvm alias default $NODE
 nvm use $NODE
