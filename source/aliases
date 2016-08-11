@@ -45,6 +45,9 @@ alias npm-exec='PATH=$(npm bin):$PATH'
 # kill emacs daemon
 alias emdkill="ps x | ack 'Emacs\ (-nw\ )?--daemon' | awk '{print \$1}' | xargs kill"
 
+# macvim vim
+alias vim='mvim -v'
+
 # jump
 alias j=jump
 
