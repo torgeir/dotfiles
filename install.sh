@@ -15,10 +15,9 @@ nvm use $NODE
 echo installing npm modules:
 npm i -g http-server
 npm i -g npm-check-updates
-# emacs uses these
-npm i -g eslint babel-eslint jsonlint eslint-plugin-react
 npm i -g browser-sync
-npm i -g tern
+# emacs uses these
+npm i -g eslint babel-eslint jsonlint eslint-plugin-react tern
 
 echo installing dotfiles:
 for dotfile in   \
