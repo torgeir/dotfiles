@@ -22,17 +22,12 @@ npm i -g tern
 
 echo installing dotfiles:
 for dotfile in   \
-  aliases        \
   brew-installer \
-  functions      \
   gitconfig      \
-  inputrc        \
-  eslintrc        \
+  eslintrc       \
   rvm-installer  \
   screenrc       \
-  sweetjs-macros \
-  tmux.conf      \
-  exports;
+  tmux.conf;
   do
     echo installing .$dotfile
     ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile

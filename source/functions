@@ -1,5 +1,14 @@
-#!/bin/sh
-function wn {
+#!/bin/bash
+
+# external functions
+source "$HOME/dotfiles/source/fns/tab.bash"
+
+function docker-remove-all-untagged-images {
+  docker rmi $(docker images | grep "^<none>" | awk '{print $3}')
+}
+
+# week-number
+function week-number {
   if [ -z "$1" ]
   then
     date +%V
@@ -7,6 +16,7 @@ function wn {
     date -d $1 +%V
   fi
 }
+
 # ssh autocomplete
 complete -W "$(echo $(cat ~/.ssh/known_hosts | \
 cut -f 1 -d ' ' | sed -e s/,.*//g | \
@@ -31,6 +41,10 @@ function cloneopen_github_repo {
   FOLDER=`echo "$REPO-$DATE" | sed -E "s/[ :]/-/g"`
   git clone $URL".git" $FOLDER
   mvim $FOLDER
+}
+
+function bell {
+  echo -ne '\007'
 }
 
 function git-ignore-file-in-local-index() {
@@ -161,6 +175,10 @@ whatsmyip () {
 function cd () {
   builtin cd "$@";
   ls -l;
+}
+
+function git-root () {
+  git rev-parse --show-toplevel
 }
 
 function share () {

@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 # ls
-alias ll="ls -laG"
+alias ll="ls --color -laGF"
 alias grep="grep --color=always"
-alias ls="ls -G"
+alias ls="ls -GF --color"
 
 # local ip
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -47,3 +47,6 @@ alias emdkill="ps x | ack 'Emacs\ (-nw\ )?--daemon' | awk '{print \$1}' | xargs 
 
 # jump
 alias j=jump
+
+# code
+alias code="cd $HOME/Code"
