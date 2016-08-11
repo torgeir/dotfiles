@@ -14,11 +14,6 @@ nvm use $NODE
 
 echo installing npm modules:
 npm i -g http-server
-npm i -g connect
-npm i -g harp
-npm i -g jsdom
-npm i -g mversion
-npm i -g mrun
 npm i -g npm-check-updates
 # emacs uses these
 npm i -g eslint babel-eslint jsonlint eslint-plugin-react
