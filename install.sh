@@ -21,6 +21,7 @@ npm i -g eslint babel-eslint jsonlint eslint-plugin-react tern
 
 echo installing dotfiles:
 for dotfile in   \
+  inputrc        \
   gitconfig      \
   eslintrc       \
   screenrc       \
