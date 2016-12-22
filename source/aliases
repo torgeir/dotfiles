@@ -43,7 +43,8 @@ alias waitforinternet='while true; do ping -c 1 -t 2 vg.no && say "we gotz inter
 alias npm-exec='PATH=$(npm bin):$PATH'
 
 # kill emacs daemon
-alias emdkill="ps x | ack 'Emacs\ (-nw\ )?--daemon' | awk '{print \$1}' | xargs kill"
+alias emdkillhard="ps x | ack 'Emacs\ (-nw\ )?--daemon' | awk '{print \$1}' | xargs kill"
+alias emdkill="emacsclient -e '(kill-emacs)'"
 
 # macvim vim
 alias vim='mvim -v'
