@@ -51,6 +51,3 @@ alias vim='mvim -v'
 
 # jump
 alias j=jump
-
-# code
-alias code="cd $HOME/Code"
