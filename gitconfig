@@ -30,7 +30,7 @@
   user = torgeir
 
 [include]
-  path = ~/.gitconfig-private
+  path = ~/Dropbox/dotfiles-private/.gitconfig
 
 [merge]
   tool = vimdiff
