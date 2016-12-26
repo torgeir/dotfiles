@@ -5,23 +5,25 @@
 export NODE_ENV=development
 #export NODE_PATH=/usr/local/lib/jsctags/:$NODE_PATH
 
-# nvm
-[[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
-
 # utf-8!
 export LANG="no_NO.UTF-8"
 
 # git
 export VISUAL="emacsclient -t"
 
+# nvm
+#[[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
+# nvm is too slow..
+export PATH=$HOME/.nvm/versions/node/v4.4.2/bin:$PATH
+
 # rvm (as a shell function)
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # local bin
 export PATH=$HOME/bin:$PATH
 
 # coreutils
-export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 
 # android
 #export ANDROID_HOME=~/Developer/adt-bundle-mac/sdk/
