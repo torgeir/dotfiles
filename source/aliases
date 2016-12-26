@@ -1,8 +1,8 @@
 #!/bin/bash
 # ls
-alias ll="ls --color -laGF"
+#alias ll="ls --color -laGF"
 alias grep="grep --color=always"
-alias ls="ls -GF --color"
+#alias ls="ls -GF --color"
 
 # local ip
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
