@@ -31,6 +31,8 @@ for dotfile in   \
     ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
   done
 
+ln -sf $HOME/dotfiles/profile.boot $HOME/.boot/profile.boot
+
 touch $HOME/.marks
 ln -fs $HOME/.emacs.d/ $HOME/.marks/e
 ln -fs $HOME/Code/ $HOME/.marks/c
