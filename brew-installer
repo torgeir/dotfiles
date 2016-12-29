@@ -19,6 +19,7 @@ brew install gifsicle
 brew install ctags-exuberant
 #brew install macvim --override-system-vim --with-python3
 brew install emacs --with-cocoa --with-ctags --with-gnutls --with-imagemagick --with-librsvg
+brew install homebrew/emacs/w3
 
 brew install markdown
 brew install jq # cmd line json parsing
@@ -47,18 +48,18 @@ brew install caskroom/cask/brew-cask
 brew cask install alfred
 brew cask install chromecast
 brew cask install dash
-#brew cask install atom
 brew cask install dropbox
-#brew cask install gitx-rowanj
 brew cask install google-chrome
 brew cask install iterm2
 brew cask install slack
 brew cask install spotify
+brew cask install send-to-kindle
+#brew cask install atom
+#brew cask install gitx-rowanj
 #brew cask install vagrant
 #brew cask install virtualbox
 #brew cask install intellij-idea
 #brew cask install robomongo
-brew cask install send-to-kindle
 
 # show cask installs in alfred
 brew cask alfred link
