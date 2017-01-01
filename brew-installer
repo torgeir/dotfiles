@@ -22,6 +22,7 @@ brew install emacs --with-cocoa --with-ctags --with-gnutls --with-imagemagick --
 brew install homebrew/emacs/w3
 
 brew install markdown
+brew install pup
 brew install jq # cmd line json parsing
 #brew install mackup # backup config for brew installed stuff
 #brew install maven
