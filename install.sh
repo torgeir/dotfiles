@@ -1,10 +1,10 @@
 #!/bin/sh
 
-echo "accepting xcode license.."
-sudo xcodebuild -license accept
+#echo "accepting xcode license.."
+#sudo xcodebuild -license accept
 
-echo installing nvm:
-curl -s https://raw.github.com/creationix/nvm/master/install.sh | sh
+echo "installing nvm:"
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 source ~/.nvm/nvm.sh
 
 NODE=v6
