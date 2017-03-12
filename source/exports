@@ -12,9 +12,9 @@ export LANG="no_NO.UTF-8"
 export VISUAL="emacsclient -t"
 
 # nvm
-#[[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
-# nvm is too slow..
-export PATH=$HOME/.nvm/versions/node/v4.4.2/bin:$PATH
+[[ -s "$HOME/.nvm/nvm.sh" ]] && source "$HOME/.nvm/nvm.sh"
+# nvm is too slow.. https://github.com/creationix/nvm/issues/860
+export PATH=$HOME/.nvm/versions/node/v6.9.5/bin:$PATH
 
 # rvm (as a shell function)
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"

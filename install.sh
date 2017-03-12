@@ -9,8 +9,10 @@ source ~/.nvm/nvm.sh
 
 NODE=v6
 nvm install $NODE
-nvm alias default $NODE
-nvm use $NODE
+# nvm slow down hack
+# https://github.com/dylanpyle/dotfiles/blob/11b341d87686d02c098c214d4c0980d06795fc41/.zshrc#L118
+# nvm alias default $NODE
+# nvm use $NODE
 
 echo installing npm modules:
 npm i -g http-server
@@ -31,9 +33,10 @@ for dotfile in   \
     ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
   done
 
+mkdir -p $HOME/.boot
 ln -sf $HOME/dotfiles/profile.boot $HOME/.boot/profile.boot
 
-touch $HOME/.marks
+mkdir -p $HOME/.marks
 ln -fs $HOME/.emacs.d/ $HOME/.marks/e
 ln -fs $HOME/Code/ $HOME/.marks/c
 ln -fs $HOME/dotfiles/ $HOME/.marks/dot
