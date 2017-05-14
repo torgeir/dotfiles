@@ -221,7 +221,3 @@ gifify() {
     echo "proper usage: gifify <input_movie.mov>. You DO need to include extension."
   fi
 }
-
-function omnstars () {
-  curl -s https://github.com/omniscientjs/omniscient | tr '\n' ' ' |  sed -e 's/.*\/stargazers">\([^<]*\)<.*/\1/' | awk '{print $1}'
-}
