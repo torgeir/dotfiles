@@ -7,14 +7,17 @@
 
 (def v-tools-nrepl "0.2.12")
 (def v-cider-nrepl "0.15.0-SNAPSHOT")
-(def v-refactor-nrepl "2.2.0")
+(def v-refactor-nrepl "2.3.0-SNAPSHOT")
 
-(set-env! :dependencies `[[org.clojure/tools.nrepl ~v-tools-nrepl]
-                          [cider/cider-nrepl ~v-cider-nrepl]
-                          [~'refactor-nrepl ~v-refactor-nrepl]])
-
-(require '[cider.tasks :refer [add-middleware]])
-
-(task-options! add-middleware {:middleware '[cider.nrepl.middleware.apropos/wrap-apropos
-                                             cider.nrepl.middleware.version/wrap-version
-                                             refactor-nrepl.middleware/wrap-refactor]})
+(deftask cider "CIDER profile"
+  []
+  (require 'boot.repl)
+  (swap! @(resolve 'boot.repl/*default-dependencies*)
+         concat `[[org.clojure/tools.nrepl ~v-tools-nrepl]
+                  [cider/cider-nrepl ~v-cider-nrepl]
+                  [~'refactor-nrepl ~v-refactor-nrepl]
+                  [acyclic/squiggly-clojure "0.1.8"]])
+  (swap! @(resolve 'boot.repl/*default-middleware*)
+         concat '[cider.nrepl/cider-middleware
+                  refactor-nrepl.middleware/wrap-refactor])
+  identity)
