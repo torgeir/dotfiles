@@ -15,3 +15,16 @@
          concat '[cider.nrepl/cider-middleware
                   refactor-nrepl.middleware/wrap-refactor])
   identity)
+
+
+(defn get-clipboard []
+  (.getSystemClipboard (java.awt.Toolkit/getDefaultToolkit)))
+
+
+(defn slurp-clipboard []
+  (if-let [contents (.getContents (get-clipboard) nil)]
+    (.getTransferData contents java.awt.datatransfer.DataFlavor/stringFlavor)))
+
+
+(defn spit-clipboard [text]
+  (.setContents (get-clipboard) (java.awt.datatransfer.StringSelection. text) nil))
