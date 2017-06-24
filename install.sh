@@ -14,12 +14,13 @@ nvm install $NODE
 # nvm alias default $NODE
 # nvm use $NODE
 
-echo installing npm modules:
+echo installing modules:
+#brew install yarn --ignore-dependencies
 npm i -g http-server
 npm i -g npm-check-updates
 npm i -g browser-sync
 # emacs uses these
-npm i -g eslint babel-eslint jsonlint eslint-plugin-react tern prettier
+npm i -g eslint babel-eslint jsonlint eslint-plugin-react prettier
 
 echo installing dotfiles:
 for dotfile in   \
