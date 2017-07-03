@@ -17,10 +17,11 @@ brew install bash # bash 4
 brew install git
 brew install gifsicle
 brew install ffmpeg
+brew install ctags
 brew install ctags-exuberant
-brew install yarn
 brew install macvim --override-system-vim --with-python3
-brew install emacs --with-cocoa --with-ctags --with-gnutls --with-imagemagick --with-librsvg
+brew tap d12frosted/emacs-plus
+brew install emacs-plus --HEAD --with-natural-title-bar --without-spacemacs-icon
 brew install homebrew/emacs/w3
 
 brew install markdown
