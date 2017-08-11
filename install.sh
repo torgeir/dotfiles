@@ -7,7 +7,7 @@ echo "installing nvm:"
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
 source ~/.nvm/nvm.sh
 
-NODE=v6
+NODE=v8
 nvm install $NODE
 # nvm slow down hack
 # https://github.com/dylanpyle/dotfiles/blob/11b341d87686d02c098c214d4c0980d06795fc41/.zshrc#L118
@@ -19,7 +19,7 @@ npm i -g http-server
 npm i -g npm-check-updates
 npm i -g browser-sync
 # emacs uses these
-npm i -g eslint babel-eslint jsonlint eslint-plugin-react tern
+npm i -g eslint babel-eslint jsonlint eslint-plugin-react tern prettier
 
 echo installing dotfiles:
 for dotfile in   \
