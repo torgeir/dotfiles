@@ -15,7 +15,6 @@ nvm install $NODE
 # nvm use $NODE
 
 echo installing modules:
-#brew install yarn --ignore-dependencies
 npm i -g http-server
 npm i -g npm-check-updates
 npm i -g browser-sync
