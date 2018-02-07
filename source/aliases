@@ -55,5 +55,7 @@ alias gadd-origin-pr='git config --add remote.origin.fetch \"+refs/pull/*/head:r
 # jump
 alias j=jump
 
+alias gr="cd $(git rev-parse --show-toplevel)"
+
 # less
 #alias less='less -m -N -g -i -J --underline-special --SILENT'
