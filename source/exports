@@ -12,6 +12,7 @@ export LANG="no_NO.UTF-8"
 export VISUAL="emacsclient -t"
 
 # nvm
+#yarn config set prefix $(npm config get prefix) > /dev/null
 #export PATH="$PATH:$HOME/.nvm/versions/node/v12.14.0/bin"
 # nvm: is too slow.. https://github.com/creationix/nvm/issues/860
 . "$HOME/.nvm/nvm.sh" --no-use

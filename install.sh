@@ -15,11 +15,12 @@ nvm install $NODE
 # nvm use $NODE
 
 echo installing modules:
-npm i -g http-server
-npm i -g npm-check-updates
-npm i -g browser-sync
+npm install -g npm
+npm install -g http-server
+npm install -g npm-check-updates
+npm install -g browser-sync
 # emacs uses these
-npm i -g eslint babel-eslint jsonlint eslint-plugin-react prettier
+npm install -g eslint babel-eslint jsonlint eslint-plugin-react prettier
 
 echo installing dotfiles:
 for dotfile in   \
