@@ -26,18 +26,19 @@ export PATH=$HOME/bin:$PATH
 # coreutils
 #export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 
-# android
-#export ANDROID_HOME=~/Developer/adt-bundle-mac/sdk/
-
 # java
+#export JAVA_HOME=`/usr/libexec/java_home -v 9`
 #export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-export JAVA_HOME=`/usr/libexec/java_home -v 9`
+
+# https://www.deps.co/blog/how-to-upgrade-clojure-projects-to-use-java-9/
+# export JAVA_TOOL_OPTIONS='--add-modules "java.xml.bind"' # to only add-modules for java 9
+#export BOOT_JVM_OPTIONS="--add-modules \"java.xml.bind\"" # the same as above for boot
+
+# maven
+export MAVEN_OPTS="-Xmx512m"
 
 # custom scala build
 #export PATH=$HOME/Code/Scala/kepler/dists/latest/bin:$PATH
-
-# sbt
-export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
 
 # io language
 #export DYLD_LIBRARY_PATH=/usr/local/Cellar/io/2011.09.12/lib/
@@ -52,5 +53,4 @@ export MARKPATH=$HOME/.marks
 # prompt
 #export PS1='\n\[$(tput setaf 2)\]`jobs -s | wc -l | sed -e "s/ //g"`:\[$(tput setaf 5)\]\h \[$(tput setaf 4 sgr0)\]\w\[$(tput setaf 3)\]`__git_prompt` \n\[$(tput sgr0)\]$ '
 
-export DOCKER_HOST=tcp://torgqnap:2376 DOCKER_TLS_VERIFY=1
-export DOCKER_API_VERSION=1.23
+export DOCKER_HOST=tcp://torgqnap:2376 DOCKER_TLS_VERIFY=1 DOCKER_API_VERSION=1.23

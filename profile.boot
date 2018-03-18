@@ -1,8 +1,8 @@
 ;; https://github.com/boot-clj/boot/wiki/Cider-REPL
 
-(def v-tools-nrepl "0.2.12")
-(def v-cider-nrepl "0.15.0-SNAPSHOT")
-(def v-refactor-nrepl "2.3.0-SNAPSHOT")
+(def v-tools-nrepl "0.2.13")
+(def v-cider-nrepl "0.17.0-SNAPSHOT")
+(def v-refactor-nrepl "2.4.0-SNAPSHOT")
 
 (deftask cider "CIDER profile"
   []
