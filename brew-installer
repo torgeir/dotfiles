@@ -33,11 +33,13 @@ brew install gnupg
 brew install redis
 brew install sbt
 brew install tmux
+brew install terraform
 brew install reattach-to-user-namespace # tmux os x clipboard support
 brew install tree
 brew install webkit2png
 brew install wget
 brew install unrar
+brew install source-highlight
 
 # https://github.com/caskroom/homebrew-cask
 brew install caskroom/cask/brew-cask
