@@ -29,7 +29,6 @@ brew install maven
 brew install siege
 brew install ngrep
 brew install pcre
-brew install phantomjs
 brew install gnupg
 brew install redis
 brew install sbt
