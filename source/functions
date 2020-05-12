@@ -221,3 +221,9 @@ gifify() {
     echo "proper usage: gifify <input_movie.mov>. You DO need to include extension."
   fi
 }
+
+# take a photo, use this to find the interface
+# ffmpeg -f avfoundation -list_devices true -i ""
+function take-photo {
+  ffmpeg -ss 0.5 -r 10 -f avfoundation -i 0 -frames:v 1 -s 1280x720 ~/Desktop/capture.jpg
+}

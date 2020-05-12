@@ -16,6 +16,7 @@ brew install findutils
 brew install bash # bash 4
 brew install git
 brew install gifsicle
+brew install ffmpeg
 brew install ctags-exuberant
 brew install yarn
 brew install macvim --override-system-vim --with-python3
