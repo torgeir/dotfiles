@@ -7,7 +7,7 @@ echo "installing nvm:"
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
 source ~/.nvm/nvm.sh
 
-NODE=v8
+NODE=v12
 nvm install $NODE
 # nvm slow down hack
 # https://github.com/dylanpyle/dotfiles/blob/11b341d87686d02c098c214d4c0980d06795fc41/.zshrc#L118
