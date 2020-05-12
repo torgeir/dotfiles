@@ -51,3 +51,6 @@ alias vim='mvim -v'
 
 # jump
 alias j=jump
+
+# less
+#alias less='less -m -N -g -i -J --underline-special --SILENT'

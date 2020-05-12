@@ -43,6 +43,10 @@ export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
 # marks
 export MARKPATH=$HOME/.marks
 
+# syntax highlighting in less
+#export LESS=" -R "
+#export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
+
 # prompt
 #export PS1='\n\[$(tput setaf 2)\]`jobs -s | wc -l | sed -e "s/ //g"`:\[$(tput setaf 5)\]\h \[$(tput setaf 4 sgr0)\]\w\[$(tput setaf 3)\]`__git_prompt` \n\[$(tput sgr0)\]$ '
 
