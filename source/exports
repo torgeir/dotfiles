@@ -1,5 +1,5 @@
 # full name of user
-#export USER_FULLNAME=`osascript -e "long user name of (system info)"`
+export USER_FULLNAME=`osascript -e "long user name of (system info)"`
 
 # node
 export NODE_ENV=development
