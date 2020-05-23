@@ -54,3 +54,6 @@ export MARKPATH=$HOME/.marks
 #export PS1='\n\[$(tput setaf 2)\]`jobs -s | wc -l | sed -e "s/ //g"`:\[$(tput setaf 5)\]\h \[$(tput setaf 4 sgr0)\]\w\[$(tput setaf 3)\]`__git_prompt` \n\[$(tput sgr0)\]$ '
 
 export DOCKER_HOST=tcp://torgqnap:2376 DOCKER_TLS_VERIFY=1 DOCKER_API_VERSION=1.23
+
+# make gpg from emacs prompt in shell (may need to open emacs from command line)
+export GPG_TTY=$(tty)
