@@ -234,4 +234,11 @@ function youtube-dl-mp4 {
     youtube-dl --recode-video mp4 $1
   fi
 }
+
+# set global java version
+jdk() {
+  local version=$1
+  export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+  java -version
+}
 }
