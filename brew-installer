@@ -21,7 +21,7 @@ brew install ctags
 brew install ctags-exuberant
 brew install macvim --override-system-vim --with-python3
 brew tap d12frosted/emacs-plus
-brew install emacs-plus --HEAD --with-natural-title-bar --without-spacemacs-icon
+brew install emacs-plus@28 --with-modern-black-variant-icon
 brew install homebrew/emacs/w3
 
 brew install markdown
