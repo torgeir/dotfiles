@@ -241,4 +241,7 @@ jdk() {
   export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
   java -version
 }
+# list available Java versions
+jdks() {
+  /usr/libexec/java_home -V 2>&1 | sed 1d | sed '$d' | cut -d, -f1
 }
