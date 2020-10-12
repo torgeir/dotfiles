@@ -21,14 +21,15 @@ function week-number {
   fi
 }
 
+#[[ $SHELL = "/bin/bash" ]] && echo is bash
+#[[ $SHELL = "/bin/zsh" ]] && echo is zsh
+
 # ssh autocomplete
-#complete -W "$(echo $(cat ~/.ssh/known_hosts | \
-#cut -f 1 -d ' ' | sed -e s/,.*//g | \
-#sort -u | grep -v "\["))" ssh
+[[ $SHELL = "/bin/bash" ]] && complete -W "$(echo $(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | sort -u | grep -v "\["))" ssh
 
 # git autocomplete
-#source /usr/local/etc/bash_completion.d/git-completion.bash
-#source /usr/local/etc/bash_completion.d/git-prompt.sh
+[[ $SHELL = "/bin/bash" ]] && source /usr/local/etc/bash_completion.d/git-completion.bash
+source /usr/local/etc/bash_completion.d/git-prompt.sh
 
 function __git_prompt {
   GIT_PS1_SHOWDIRTYSTATE=1
