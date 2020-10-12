@@ -50,7 +50,7 @@ alias emdkillhard="ps x | ack 'Emacs\ (-nw\ )?--daemon' | awk '{print \$1}' | xa
 alias emdkill="emacsclient -e '(kill-emacs)'"
 
 # macvim vim
-alias vim='mvim -v'
+alias vim='nvim'
 
 # git add remote for prs
 alias gadd-origin-pr='git config --add remote.origin.fetch \"+refs/pull/*/head:refs/remotes/origin/pr/*\"'
