@@ -10,7 +10,7 @@ brew cleanup
 brew cask cleanup
 
 # stuff
-brew install ag
+brew install rg
 brew install coreutils # os x ones are outdated
 brew install findutils
 brew install bash # bash 4
