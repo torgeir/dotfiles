@@ -23,7 +23,6 @@ brew install macvim --override-system-vim --with-python3
 brew tap d12frosted/emacs-plus
 brew install emacs-plus@28 --with-modern-black-variant-icon
 brew install homebrew/emacs/w3
-
 brew install markdown
 brew install pup
 brew install jq # cmd line json parsing
