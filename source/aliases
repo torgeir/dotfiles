@@ -63,6 +63,10 @@ alias gr='cd $(git rev-parse --show-toplevel)'
 
 alias gw=./gradlew
 
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
 # less
 #alias less='less -m -N -g -i -J --underline-special --SILENT'
 

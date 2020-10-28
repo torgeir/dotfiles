@@ -3,6 +3,11 @@
 # external functions
 source "$HOME/dotfiles/fns/tab.bash"
 
+function reload-zshrc {
+  source $HOME/.zshenv
+  source $HOME/.zshrc
+}
+
 function docker-remove-all-untagged-images {
   docker rmi $(docker images | grep "^<none>" | awk '{print $3}')
 }
