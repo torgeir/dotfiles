@@ -29,7 +29,7 @@
 	status = auto
 
 [include]
-	path = ~/Dropbox/dotfiles-private/.gitconfig
+	path = ~/.gitconfig-private
 
 [includeIf "gitdir:/Users/torgeirthoresen/Code/saga/"]
 	path = /Users/torgeirthoresen/Dropbox/dotfiles-work/.gitconfig
@@ -44,3 +44,5 @@
 
 [rerere]
 	enabled = true
+[github]
+	user = torgeir
