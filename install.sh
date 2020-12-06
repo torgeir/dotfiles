@@ -9,10 +9,8 @@ source ~/.nvm/nvm.sh
 
 NODE=v14
 nvm install $NODE
-# nvm slow down hack
-# https://github.com/dylanpyle/dotfiles/blob/11b341d87686d02c098c214d4c0980d06795fc41/.zshrc#L118
-# nvm alias default $NODE
-# nvm use $NODE
+nvm alias default $NODE
+nvm use $NODE
 
 echo installing modules:
 npm install -g npm
