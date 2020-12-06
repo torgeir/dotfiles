@@ -1,8 +1,8 @@
 ;; https://github.com/boot-clj/boot/wiki/Cider-REPL
 
 (def v-tools-nrepl "0.2.13")
-(def v-cider-nrepl "0.17.0-SNAPSHOT")
-(def v-refactor-nrepl "2.4.0-SNAPSHOT")
+(def v-cider-nrepl "0.25.5")
+(def v-refactor-nrepl "2.5.0")
 
 (deftask cider "CIDER profile"
   []
@@ -15,7 +15,6 @@
          concat '[cider.nrepl/cider-middleware
                   refactor-nrepl.middleware/wrap-refactor])
   identity)
-
 
 (defn get-clipboard []
   (.getSystemClipboard (java.awt.Toolkit/getDefaultToolkit)))
