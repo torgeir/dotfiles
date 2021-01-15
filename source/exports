@@ -11,7 +11,7 @@
 export HISTCONTROL=ignoreboth
 
 # full name of user
-export USER_FULLNAME=`osascript -e "long user name of (system info)"`
+export USER_FULLNAME=Torgeir Thoresen
 
 # node
 export NODE_ENV=development

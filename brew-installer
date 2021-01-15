@@ -1,68 +1,71 @@
 #!/bin/sh
 # latest homebrew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew update
+#/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# brew update
 
 # upgrade
 brew upgrade
-brew upgrade brew-cask
 brew cleanup
-brew cask cleanup
 
 # stuff
 brew install rg
-brew install coreutils # os x ones are outdated
-brew install findutils
-brew install bash # bash 4
+#brew install coreutils # os x ones are outdated
+#brew install findutils
+#brew install bash # bash 4
 brew install git
 brew install gifsicle
 brew install gdub # gradlewrapperwrapper gw
-brew install ffmpeg
-brew install ctags
-brew install ctags-exuberant
-brew install macvim --override-system-vim --with-python3
+brew install neovim
+brew install boot-clj
 brew tap d12frosted/emacs-plus
 brew install emacs-plus@28 --with-modern-black-variant-icon
-brew install homebrew/emacs/w3
-brew install markdown
-brew install pup
+#brew install homebrew/emacs/w3
 brew install jq # cmd line json parsing
-brew install maven
-brew install siege
-brew install ngrep
-brew install pcre
 brew install gnupg
-brew install redis
-brew install sbt
 brew install tmux
-brew install terraform
-brew install reattach-to-user-namespace # tmux os x clipboard support
 brew install tree
 brew install webkit2png
 brew install wget
 brew install unrar
-brew install source-highlight
+
+#brew install redis
+#brew install ffmpeg
+#brew install ctags
+#brew install ctags-exuberant
+#brew install markdown
+#brew install pup
+#brew install maven
+#brew install siege
+#brew install ngrep
+#brew install pcre
+#brew install sbt
+#brew install tfenv # terraform
+#brew install reattach-to-user-namespace # tmux os x clipboard support
+#brew install source-highlight
 
 # https://github.com/caskroom/homebrew-cask
-brew install caskroom/cask/brew-cask
+brew tap homebrew/cask
 
 # applications
-brew cask install alfred
-brew cask install dash
-brew cask install dropbox
-brew cask install google-chrome
-brew cask install google-cloud-sdk
-brew cask install iterm2
-brew cask install mactex
-brew cask install slack
-brew cask install spotify
-brew cask install send-to-kindle
+brew install --cask alfred
+brew install --cask dash
+brew install --cask dropbox
+brew install --cask firefox
+brew install --cask google-chrome
+brew install --cask google-cloud-sdk
+brew install --cask iterm2
+brew install --cask intellij
+brew install --cask rectangle
+brew install --cask spotify
+#brew cask install mactex
+#brew cask install slack
+#brew cask install send-to-kindle
 
 # quick look plugins - https://github.com/sindresorhus/quick-look-plugins
-brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql qlimagesize webpquicklook suspicious-package
+#brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql qlimagesize webpquicklook suspicious-package
 
-brew tap homebrew/dupes
-brew install homebrew/dupes/grep # os x ones are outdated
+#brew tap homebrew/dupes
+#brew install homebrew/dupes/grep # os x ones are outdated
 
 # remove tmp files
 brew cleanup
