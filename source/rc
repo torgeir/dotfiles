@@ -1,3 +1,0 @@
-#nvm
-. "$HOME/.nvm/nvm.sh"
-nvm use 12

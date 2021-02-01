@@ -153,6 +153,12 @@ function marks {
   \ls -l "$MARKPATH" | tail -n +2 | sed 's/  / /g' | cut -d' ' -f9- | awk -F ' -> ' '{printf "%-10s -> %s\n", $1, $2}'
 }
 
+# unmarks and marks the current directory
+function mark-cur {
+  yes | unmark cur
+  mark cur
+}
+
 function isup {
   nc -zG 3 -L 2 $1 $2 &> /dev/null && echo "$1:$2 up"
 }
@@ -204,12 +210,6 @@ function share-vid-as-gif () {
 # Change working directory to the top-most Finder window location
 function cdf () {
   cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
-}
-
-# unmarks and marks the current directory
-function mark-cur {
-  yes | unmark cur
-  mark cur
 }
 
 # animated gifs from any video
