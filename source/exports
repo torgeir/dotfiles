@@ -32,7 +32,6 @@ export PATH=$HOME/bin:$PATH
 # java
 #export JAVA_HOME=`/usr/libexec/java_home -v 9`
 #export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-# using jenv instead, see .zshrc
 
 # https://www.deps.co/blog/how-to-upgrade-clojure-projects-to-use-java-9/
 # export JAVA_TOOL_OPTIONS='--add-modules "java.xml.bind"' # to only add-modules for java 9
@@ -47,8 +46,8 @@ export MAVEN_OPTS="-Xmx512m"
 # io language
 #export DYLD_LIBRARY_PATH=/usr/local/Cellar/io/2011.09.12/lib/
 
-# marks
-export MARKPATH=$HOME/.marks
+# marks - switched to autojump
+#export MARKPATH=$HOME/.marks
 
 # syntax highlighting in less
 #export LESS=" -R "
