@@ -56,9 +56,6 @@ alias vim='nvim'
 # git add remote for prs
 alias gadd-origin-pr='git config --add remote.origin.fetch \"+refs/pull/*/head:refs/remotes/origin/pr/*\"'
 
-# jump
-alias j=jump
-
 # go to git root
 alias gr='cd $(git rev-parse --show-toplevel)'
 
