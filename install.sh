@@ -34,8 +34,3 @@ for dotfile in   \
 
 mkdir -p $HOME/.boot
 ln -sf $HOME/dotfiles/profile.boot $HOME/.boot/profile.boot
-
-mkdir -p $HOME/.marks
-ln -fs $HOME/.emacs.d/ $HOME/.marks/e
-ln -fs $HOME/Code/ $HOME/.marks/c
-ln -fs $HOME/dotfiles/ $HOME/.marks/dot
