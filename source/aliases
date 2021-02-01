@@ -1,6 +1,7 @@
 #!/bin/bash
 # ls
-#alias ll="ls --color -laGF"
+alias l="ls -GF"
+alias ll="ls -laGF"
 alias grep="grep --color=always"
 #alias ls="ls -GF --color"
 
