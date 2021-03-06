@@ -26,6 +26,8 @@ for dotfile in   \
   gitconfig      \
   eslintrc       \
   screenrc       \
+  yabairc        \
+  skhdrc         \
   tmux.conf;
   do
     echo installing .$dotfile

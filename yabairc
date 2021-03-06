@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+yabai -m rule --add app="iTerm" space=1
+yabai -m rule --add app="Dash" space=2
+# float system preferences
+yabai -m rule --add app="^System Preferences$" manage=off
+# show digital colour meter topmost and on all spaces
+yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on manage=off
+
+yabai -m config layout bsp
+
+# floating windows are topmost
+yabai -m config window_topmost on
+
+# yabai -m config auto_balance
+
+yabai -m config top_padding    10
+yabai -m config right_padding  10
+yabai -m config bottom_padding 10
+yabai -m config left_padding   10
+yabai -m config window_gap     10

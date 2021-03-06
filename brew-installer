@@ -44,6 +44,11 @@ brew install unrar
 #brew install reattach-to-user-namespace # tmux os x clipboard support
 #brew install source-highlight
 
+brew install koekeishiya/formulae/yabai
+brew services start yabai
+brew install koekeishiya/formulae/skhd
+brew services start skhd
+
 # https://github.com/caskroom/homebrew-cask
 brew tap homebrew/cask
 
