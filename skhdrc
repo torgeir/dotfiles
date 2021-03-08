@@ -1,14 +1,39 @@
 cmd - return : open -a iTerm ~/
 
+hyper - i : open -a IntelliJ
+hyper - d : open -a Dash
+#hyper - h : open -a Finder
+hyper - t : open -a iTerm
+hyper - e : open -a Emacs
+hyper - z : open -a Zoom
+hyper - w : open -a Google\ Chrome
+
+hyper - c : yabai -m window --toggle float;\
+            yabai -m window --grid 11:11:2:1:7:9
+hyper - f : yabai -m window --toggle zoom-fullscreen
+hyper - r : yabai -m space --rotate 90
+hyper - s : yabai -m window --toggle split
+hyper - w : yabai -m window --warp recent
+
+hyper - h : yabai -m window --focus west
+hyper - l : yabai -m window --focus east
+hyper - k : yabai -m window --focus north
+hyper - j : yabai -m window --focus south
+ctrl + alt + cmd + shift - left : yabai -m window --warp west
+ctrl + alt + cmd + shift - right : yabai -m window --warp east
+ctrl + alt + cmd + shift - up : yabai -m window --warp north
+ctrl + alt + cmd + shift - down : yabai -m window --warp south
+
 fn - i : open -a IntelliJ
 fn - d : open -a Dash
 #fn - h : open -a Finder
 fn - t : open -a iTerm
 fn - e : open -a Emacs
+fn - z : open -a Zoom
 fn - w : open -a Google\ Chrome
 
 fn - c : yabai -m window --toggle float;\
-         yabai -m window --grid 11:11:1:1:9:9
+         yabai -m window --grid 11:11:2:1:7:9
 fn - f : yabai -m window --toggle zoom-fullscreen
 fn - r : yabai -m space --rotate 90
 fn - s : yabai -m window --toggle split
@@ -24,12 +49,8 @@ shift + alt + cmd - up : yabai -m window --focus north
 shift + alt + cmd - right : yabai -m window --focus east
 shift + alt + cmd - down : yabai -m window --focus south
 
-ctrl + cmd - right : yabai -m window --resize right:50:0;\
-                     yabai -m window --resize bottom:0:50;\
-                     yabai -m window --move rel:-25:-25
-ctrl + cmd - left : yabai -m window --resize right:-50:0;\
-                    yabai -m window --resize bottom:0:-50;\
-                    yabai -m window --move rel:+25:+25
+ctrl + cmd - right : yabai -m window --resize right:50:0;
+ctrl + cmd - left : yabai -m window --resize right:-50:0;
 ctrl + cmd - up : yabai -m window --resize bottom:0:-50
 ctrl + cmd - down : yabai -m window --resize bottom:0:50
 
@@ -42,8 +63,12 @@ ctrl + alt + cmd - up : yabai -m window --grid 2:2:0:0:2:1
 ctrl + alt + cmd - down : yabai -m window --grid 1:1:0:0:0:0
 ctrl + alt + cmd - left : yabai -m window --grid 1:2:0:0:1:1
 ctrl + alt + cmd - right : yabai -m window --grid 1:2:1:0:1:1
-ctrl + alt + cmd - c: yabai -m window --grid 11:11:1:0:9:11
+ctrl + alt + cmd - c: yabai -m window --grid 7:7:2:1:3:4
 ctrl + alt + cmd - f: yabai -m window --grid 1:1:1:1:1:1
+
+# move to other display, this supports two monitors only
+ctrl + alt + cmd - p: yabai -m window --display $(yabai -m query --displays | jq '.[].index' | grep -v $(yabai -m query --displays --display | jq .index));\
+                      yabai -m display --focus recent;
 
 ctrl + alt + cmd - i : yabai -m window --grid 8:8:0:0:4:4
 ctrl + alt + cmd - l : yabai -m window --grid 8:8:4:4:4:4

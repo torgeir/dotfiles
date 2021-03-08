@@ -2,10 +2,12 @@
 
 yabai -m rule --add app="iTerm" space=1
 yabai -m rule --add app="Dash" space=2
-# float system preferences
+# float some apps
+yabai -m rule --add app="^CloudApp$" manage=off
 yabai -m rule --add app="^System Preferences$" manage=off
 # show digital colour meter topmost and on all spaces
-yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on manage=off
+# this doesnt work without more liberal yabai scripting than you enabled..
+#yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on manage=off
 
 yabai -m config layout bsp
 
@@ -14,8 +16,8 @@ yabai -m config window_topmost on
 
 # yabai -m config auto_balance
 
-yabai -m config top_padding    10
-yabai -m config right_padding  10
-yabai -m config bottom_padding 10
-yabai -m config left_padding   10
-yabai -m config window_gap     10
+yabai -m config top_padding    20
+yabai -m config right_padding  20
+yabai -m config bottom_padding 20
+yabai -m config left_padding   20
+yabai -m config window_gap     20
