@@ -184,7 +184,7 @@ function prompt {
 }
 
 whatsmyip () {
-  curl --silent http://canihazip.com/s/
+  dig +short myip.opendns.com @resolver1.opendns.com
   echo
 }
 
