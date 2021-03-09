@@ -1,79 +1,166 @@
-cmd - return : open -a iTerm ~/
+# linux keyboard has hyper, not fn
 
+hyper - return : open -a iTerm ~/
 hyper - i : open -a IntelliJ
 hyper - d : open -a Dash
-#hyper - h : open -a Finder
+hyper - n : open -a Finder
 hyper - t : open -a iTerm
 hyper - e : open -a Emacs
 hyper - z : open -a Zoom
 hyper - w : open -a Google\ Chrome
 
-hyper - c : yabai -m window --toggle float;\
-            yabai -m window --grid 11:11:2:1:7:9
-hyper - f : yabai -m window --toggle zoom-fullscreen
-hyper - r : yabai -m space --rotate 90
-hyper - s : yabai -m window --toggle split
-hyper - w : yabai -m window --warp recent
+# reload keybindings
+hyper - q: cd && skhd -r
 
+# move window focus
 hyper - h : yabai -m window --focus west
 hyper - l : yabai -m window --focus east
 hyper - k : yabai -m window --focus north
 hyper - j : yabai -m window --focus south
-ctrl + alt + cmd + shift - left : yabai -m window --warp west
-ctrl + alt + cmd + shift - right : yabai -m window --warp east
-ctrl + alt + cmd + shift - up : yabai -m window --warp north
-ctrl + alt + cmd + shift - down : yabai -m window --warp south
 
+# float and center on screen
+hyper - c : yabai -m window --toggle float;\
+            yabai -m window --grid 11:11:2:1:7:9
+
+# float and column in center of screen
+hyper - u : yabai -m window --toggle float;\
+            yabai -m window --grid 11:11:3:0:6:11
+
+hyper - f : yabai -m window --toggle zoom-fullscreen
+
+# change split direction
+hyper - s : yabai -m window --toggle split
+
+# mirror window tree
+hyper - y : yabai -m space --mirror y-axis
+hyper - x : yabai -m space --mirror x-axis
+
+
+# mac keyboard has fn, not hyper
+
+fn - return: open -a iTerm
 fn - i : open -a IntelliJ
 fn - d : open -a Dash
-#fn - h : open -a Finder
+fn - n : open -a Finder
 fn - t : open -a iTerm
 fn - e : open -a Emacs
 fn - z : open -a Zoom
 fn - w : open -a Google\ Chrome
 
-fn - c : yabai -m window --toggle float;\
-         yabai -m window --grid 11:11:2:1:7:9
-fn - f : yabai -m window --toggle zoom-fullscreen
-fn - r : yabai -m space --rotate 90
-fn - s : yabai -m window --toggle split
-fn - w : yabai -m window --warp recent
+# reload keybindings
+fn - q: cd && skhd -r
 
+# move window focus
 fn - h : yabai -m window --focus west
 fn - l : yabai -m window --focus east
 fn - k : yabai -m window --focus north
 fn - j : yabai -m window --focus south
 
-shift + alt + cmd - left : yabai -m window --focus west
-shift + alt + cmd - up : yabai -m window --focus north
+# float and center on screen
+fn - c : yabai -m window --toggle float;\
+         yabai -m window --grid 11:11:2:1:7:9
+
+# float and column in center of screen
+fn - u : yabai -m window --toggle float;\
+         yabai -m window --grid 11:11:3:0:6:11
+
+fn - f : yabai -m window --toggle zoom-fullscreen
+
+# toggle fill parent column
+fn - p : yabai -m window --toggle zoom-parent
+
+# change split direcftion
+fn - s : yabai -m window --toggle split
+
+# mirror window tree
+fn - y : yabai -m space --mirror y-axis
+fn - x : yabai -m space --mirror x-axis
+
+# turn of border when returning to default
+:: default : yabai -m window --toggle border
+
+# gap mode
+:: gap @ : yabai -m window --toggle border
+fn - g ; gap
+gap < z : yabai -m space --padding abs:0:0:0:0;\
+          yabai -m space --gap abs:0
+gap < s : yabai -m space --padding abs:40:10:10:10;\
+          yabai -m space --gap abs:10
+gap < m : yabai -m space --padding abs:50:20:20:20;\
+          yabai -m space --gap abs:20
+gap < l : yabai -m space --padding abs:70:50:50:50;\
+          yabai -m space --gap abs:50
+gap < h : yabai -m space --padding abs:100:100:100:100;\
+          yabai -m space --gap abs:100
+gap < escape ; default
+gap < return ; default
+
+# resize mode
+:: resize @ : yabai -m window --toggle border
+fn - r ; resize
+resize < right : yabai -m window --resize right:50:0
+resize < left :  yabai -m window --resize right:-50:0
+resize < up :    yabai -m window --resize bottom:0:-50
+resize < down :  yabai -m window --resize bottom:0:50
+resize < escape ; default
+resize < return ; default
+
+# move mode
+:: move @ : yabai -m window --toggle border
+fn - m ; move
+move < right : yabai -m window --move rel:+50:0
+move < left :  yabai -m window --move rel:-50:0
+move < up :    yabai -m window --move rel:0:-50
+move < down  : yabai -m window --move rel:0:50
+move < escape ; default
+move < return ; default
+
+# shift window focus
+shift + alt + cmd - left :  yabai -m window --focus west
+shift + alt + cmd - up :    yabai -m window --focus north
 shift + alt + cmd - right : yabai -m window --focus east
-shift + alt + cmd - down : yabai -m window --focus south
+shift + alt + cmd - down :  yabai -m window --focus south
 
-ctrl + cmd - right : yabai -m window --resize right:50:0;
-ctrl + cmd - left : yabai -m window --resize right:-50:0;
-ctrl + cmd - up : yabai -m window --resize bottom:0:-50
-ctrl + cmd - down : yabai -m window --resize bottom:0:50
+# resize windows
+ctrl + cmd - right : yabai -m window --resize right:50:0
+ctrl + cmd - left :  yabai -m window --resize right:-50:0
+ctrl + cmd - up :    yabai -m window --resize bottom:0:-50
+ctrl + cmd - down :  yabai -m window --resize bottom:0:50
 
+# move windows
 ctrl + shift + cmd - right : yabai -m window --move rel:+50:0
-ctrl + shift + cmd - left : yabai -m window --move rel:-50:0
-ctrl + shift + cmd - up : yabai -m window --move rel:0:-50
+ctrl + shift + cmd - left :  yabai -m window --move rel:-50:0
+ctrl + shift + cmd - up :    yabai -m window --move rel:0:-50
 ctrl + shift + cmd - down  : yabai -m window --move rel:0:50
 
-ctrl + alt + cmd - up : yabai -m window --grid 2:2:0:0:2:1
-ctrl + alt + cmd - down : yabai -m window --grid 1:1:0:0:0:0
-ctrl + alt + cmd - left : yabai -m window --grid 1:2:0:0:1:1
-ctrl + alt + cmd - right : yabai -m window --grid 1:2:1:0:1:1
+# center single window
 ctrl + alt + cmd - c: yabai -m window --grid 7:7:2:1:3:4
+
+# fullscreen single window
 ctrl + alt + cmd - f: yabai -m window --grid 1:1:1:1:1:1
+
+# swap location with window in direction
+ctrl + alt + cmd + shift - left :  yabai -m window --warp west
+ctrl + alt + cmd + shift - right : yabai -m window --warp east
+ctrl + alt + cmd + shift - up :    yabai -m window --warp north
+ctrl + alt + cmd + shift - down :  yabai -m window --warp south
 
 # move to other display, this supports two monitors only
 ctrl + alt + cmd - p: yabai -m window --display $(yabai -m query --displays | jq '.[].index' | grep -v $(yabai -m query --displays --display | jq .index));\
                       yabai -m display --focus recent;
 
+# move windows to screen corners
 ctrl + alt + cmd - i : yabai -m window --grid 8:8:0:0:4:4
 ctrl + alt + cmd - l : yabai -m window --grid 8:8:4:4:4:4
 ctrl + alt + cmd - k : yabai -m window --grid 8:8:0:4:4:4
 ctrl + alt + cmd - o : yabai -m window --grid 8:8:4:0:4:4
 
+# move windows to screen edges
+ctrl + alt + cmd - up :    yabai -m window --grid 2:2:0:0:2:1
+ctrl + alt + cmd - down :  yabai -m window --grid 1:1:0:0:0:0
+ctrl + alt + cmd - left :  yabai -m window --grid 1:2:0:0:1:1
+ctrl + alt + cmd - right : yabai -m window --grid 1:2:1:0:1:1
+
+# move windows to screen outer left and right
 shift + ctrl + alt + cmd - h : yabai -m window --grid 12:12:0:0:3:12
 shift + ctrl + alt + cmd - l : yabai -m window --grid 12:12:9:0:3:12

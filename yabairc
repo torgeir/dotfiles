@@ -3,8 +3,17 @@
 yabai -m rule --add app="iTerm" space=1
 yabai -m rule --add app="Dash" space=2
 # float some apps
+yabai -m rule --add app="^Übersicht$" manage=off
 yabai -m rule --add app="^CloudApp$" manage=off
+yabai -m rule --add app="^Install" manage=off
+yabai -m rule --add app="^Dictionary" manage=off
+#yabai -m rule --add app="^Microsoft Teams$" manage=off
 yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^System Information$" manage=off
+yabai -m rule --add app='IntelliJ IDEA' title='^$' manage=off
+yabai -m rule --add app='IntelliJ IDEA' title='Project Structure' manage=off
+yabai -m rule --add app='IntelliJ IDEA' title='Preferences' manage=off
+yabai -m rule --add app='IntelliJ IDEA' title='Edit configuration' manage=off
 # show digital colour meter topmost and on all spaces
 # this doesnt work without more liberal yabai scripting than you enabled..
 #yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on manage=off
@@ -16,8 +25,24 @@ yabai -m config window_topmost on
 
 # yabai -m config auto_balance
 
-yabai -m config top_padding    20
+yabai -m config top_padding    50
 yabai -m config right_padding  20
 yabai -m config bottom_padding 20
 yabai -m config left_padding   20
 yabai -m config window_gap     20
+
+# # simple bar refresh
+yabai -m signal --add event=space_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+yabai -m signal --add event=display_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+yabai -m signal --add event=window_resized action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+yabai -m signal --add event=space_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
+
+yabai -m signal --add event=window_focused action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
+yabai -m signal --add event=window_focused action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+
+yabai -m signal --add event=application_front_switched action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
+yabai -m signal --add event=application_front_switched action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+
+yabai -m signal --add event=window_destroyed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
+yabai -m signal --add event=window_destroyed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+yabai -m signal --add event=window_title_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
