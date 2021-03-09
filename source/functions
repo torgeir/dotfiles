@@ -183,9 +183,9 @@ function prompt {
   q="- $(date +%T)"; while [[ ${#q} -lt $COLUMNS ]]; do q="${q:0:1}$q"; done; echo -e "\033[0;90m$q"
 }
 
-whatsmyip () {
-  dig +short myip.opendns.com @resolver1.opendns.com
-  echo
+function ips {
+  ifconfig | grep 'inet ' | grep -v 127 | awk '{print $2}'
+  ip
 }
 
 function cd () {
