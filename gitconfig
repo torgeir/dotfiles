@@ -31,9 +31,6 @@
 [include]
 	path = ~/.gitconfig-private
 
-[includeIf "gitdir:/Users/torgeirthoresen/Code/saga/"]
-	path = /Users/torgeirthoresen/Dropbox/dotfiles-work/.gitconfig
-
 [merge]
 	#Gtool = vimdiff
 	tool = ediff
@@ -44,5 +41,6 @@
 
 [rerere]
 	enabled = true
+
 [github]
 	user = torgeir

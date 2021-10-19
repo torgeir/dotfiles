@@ -1,13 +1,17 @@
 #!/bin/sh
 
-#echo "accepting xcode license.."
-sudo xcodebuild -license accept
+case $(uname) in
+  Darwin)
+    echo "accepting xcode license.."
+    sudo xcodebuild -license accept
 
-echo "installing nvm:"
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
-source ~/.nvm/nvm.sh
+    echo "installing nvm:"
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+    source ~/.nvm/nvm.sh
+    ;;
+esac
 
-NODE=v14
+NODE=v16
 nvm install $NODE
 nvm alias default $NODE
 nvm use $NODE
@@ -21,18 +25,38 @@ npm install -g browser-sync
 npm install -g eslint babel-eslint jsonlint eslint-plugin-react prettier
 
 echo installing dotfiles:
+case $(uname) in
+  Darwin)
+    for dotfile in   \
+      eslintrc       \
+      screenrc       \
+      yabairc        \
+      skhdrc;
+    do
+      echo installing .$dotfile
+      ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
+    done
+    ;;
+  Linux)
+    for dotfile in   \
+      inputrc        \
+      gitconfig;
+    do
+      echo installing .$dotfile
+      ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
+    done
+    ;;
+esac
+
+# everywhere
 for dotfile in   \
   inputrc        \
   gitconfig      \
-  eslintrc       \
-  screenrc       \
-  yabairc        \
-  skhdrc         \
   tmux.conf;
-  do
-    echo installing .$dotfile
-    ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
-  done
+do
+  echo installing .$dotfile
+  ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
+done
 
 mkdir -p $HOME/.boot
 ln -sf $HOME/dotfiles/profile.boot $HOME/.boot/profile.boot
