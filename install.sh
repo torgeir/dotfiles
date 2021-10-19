@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 case $(uname) in
   Darwin)
@@ -7,8 +7,16 @@ case $(uname) in
 
     echo "installing nvm:"
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-    source ~/.nvm/nvm.sh
     ;;
+esac
+
+case $(uname) in
+  Darwin)
+    source "~/.nvm/nvm.sh"
+    ;;
+  Linux)
+    source "/usr/share/nvm/nvm.sh"
+     ;;
 esac
 
 NODE=v16
