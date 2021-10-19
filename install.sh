@@ -47,9 +47,15 @@ case $(uname) in
     ;;
   Linux)
     for dotfile in \
-      i3 \
+      Xresources \
+        conky.lua \
+        conkyrc.base \
+        gitconfig \
+        gtkrc-2.0 \
+        i3 \
         inputrc \
-        gitconfig;
+        profile \
+        zlogin;
     do
       echo installing ~/.$dotfile
       ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
