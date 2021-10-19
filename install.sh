@@ -47,8 +47,9 @@ case $(uname) in
     ;;
   Linux)
     for dotfile in \
+      i3           \
         inputrc    \
-          gitconfig;
+        gitconfig;
     do
       echo installing .$dotfile
       ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
