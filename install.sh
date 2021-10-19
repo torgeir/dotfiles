@@ -16,7 +16,7 @@ case $(uname) in
     ;;
   Linux)
     source "/usr/share/nvm/nvm.sh"
-     ;;
+    ;;
 esac
 
 NODE=v16
@@ -35,20 +35,20 @@ npm install -g eslint babel-eslint jsonlint eslint-plugin-react prettier
 echo installing dotfiles:
 case $(uname) in
   Darwin)
-    for dotfile in   \
-      eslintrc       \
-      screenrc       \
-      yabairc        \
-      skhdrc;
+    for dotfile in \
+      eslintrc     \
+        screenrc   \
+        yabairc    \
+        skhdrc;
     do
       echo installing .$dotfile
       ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
     done
     ;;
   Linux)
-    for dotfile in   \
-      inputrc        \
-      gitconfig;
+    for dotfile in \
+        inputrc    \
+          gitconfig;
     do
       echo installing .$dotfile
       ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
@@ -57,10 +57,10 @@ case $(uname) in
 esac
 
 # everywhere
-for dotfile in   \
-  inputrc        \
-  gitconfig      \
-  tmux.conf;
+for dotfile in \
+  inputrc      \
+    gitconfig  \
+    tmux.conf;
 do
   echo installing .$dotfile
   ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
