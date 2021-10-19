@@ -36,22 +36,22 @@ echo installing dotfiles:
 case $(uname) in
   Darwin)
     for dotfile in \
-      eslintrc     \
-        screenrc   \
-        yabairc    \
+      eslintrc \
+        screenrc \
+        yabairc \
         skhdrc;
     do
-      echo installing .$dotfile
+      echo installing ~/.$dotfile
       ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
     done
     ;;
   Linux)
     for dotfile in \
-      i3           \
-        inputrc    \
+      i3 \
+        inputrc \
         gitconfig;
     do
-      echo installing .$dotfile
+      echo installing ~/.$dotfile
       ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
     done
 
@@ -78,13 +78,14 @@ esac
 
 # everywhere
 for dotfile in \
-  inputrc      \
-    gitconfig  \
+  inputrc \
+    gitconfig \
     tmux.conf;
 do
-  echo installing .$dotfile
+  echo installing ~/.$dotfile
   ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
 done
 
+# preloads for boot clj
 mkdir -p $HOME/.boot
 ln -sf $HOME/dotfiles/profile.boot $HOME/.boot/profile.boot
