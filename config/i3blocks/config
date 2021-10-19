@@ -1,0 +1,70 @@
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+
+# Global properties
+separator=true
+separator_block_width=15
+markup=pango
+
+[window]
+command=xtitle -s
+interval=persist
+
+# Spotify icon \uF1BC
+[spotify]
+label=
+command=~/bin/spotify.py
+color=#81b7a
+interval=5
+
+[cputemp]
+command=~/.local/share/i3blocks-modules/cputemp -c Tctl -tg '{temp}' '<' 74 -tw '{temp}' '>' 80 -tc '{temp}' '>' 90 -f " Tctl {temp}°C"
+instance=Tctl
+interval=2
+[cputemp]
+command=~/.local/share/i3blocks-modules/cputemp -c Tdie -tg '{temp}' '<' 74 -tw '{temp}' '>' 80 -tc '{temp}' '>' 90 -f " Tdie {temp}°C"
+instance=Tctl
+interval=2
+[cputemp]
+command=~/.local/share/i3blocks-modules/cputemp -c Tccd1 -tg '{temp}' '<' 74 -tw '{temp}' '>' 80 -tc '{temp}' '>' 90 -f " Tccd1 {temp}°C"
+instance=Tctl
+interval=2
+[cputemp]
+command=~/.local/share/i3blocks-modules/cputemp -c Tccd2 -tg '{temp}' '<' 74 -tw '{temp}' '>' 80 -tc '{temp}' '>' 90 -f " Tccd {temp}°C"
+instance=Tctl
+interval=2
+
+[localip]
+command=~/.local/share/i3blocks-modules/iface -cd $(sed -n '5{p;q}' ~/.cache/wal/colors | tr -d '\n')
+interval=10
+
+[onlineip]
+command=~/.local/share/i3blocks-modules/online -cd $(sed -n '5{p;q}' ~/.cache/wal/colors | tr -d '\n')
+interval=10
+
+[disk]
+command=~/.local/share/i3blocks-modules/disk -f " {used}{uunit}/{total}{tunit}" -cd $(sed -n '5{p;q}' ~/.cache/wal/colors | tr -d '\n')
+interval=2
+
+[memory]
+command=~/.local/share/i3blocks-modules/memory -f " {used}{uunit}/{total}{tunit} ({pused}%)" -cd $(sed -n '5{p;q}' ~/.cache/wal/colors | tr -d '\n')
+interval=2
+
+[disk]
+command=~/.local/share/i3blocks-modules/disk -f " {free}{funit}iB/{total}{tunit}iB ({pused}%)" -tc '{pfree}' '<' 20 -tc '{pfree}' '<' 10  -cd $(sed -n '5{p;q}' ~/.cache/wal/colors | tr -d '\n')
+instance=/
+interval=30
+
+[weather]
+command=[ -z "$button" ] && ~/.local/share/i3blocks-modules/weather -c Trondheim -cd $(sed -n '5{p;q}' ~/.cache/wal/colors | tr -d '\n') || xdg-open "https://wttr.in/Trondheim" && ~/.local/share/i3blocks-modules/weather -c Trondheim -cd $(sed -n '5{p;q}' ~/.cache/wal/colors | tr -d '\n')
+interval=3600
+
+[date]
+command=~/.local/share/i3blocks-modules/date -f " {time}" -t "%a %d/%m-%Y %H:%M:%S" -cd $(sed -n '5{p;q}' ~/.cache/wal/colors | tr -d '\n')
+TZ=Europe/Oslo
+interval=1

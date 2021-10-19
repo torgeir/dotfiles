@@ -54,6 +54,25 @@ case $(uname) in
       echo installing .$dotfile
       ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
     done
+
+    # ~/.config/<configs>
+    for config_folder in \
+      alacritty \
+        i3blocks \
+        i3blocks-modules \
+        i3-scrot.conf \
+        mimeapps.list \
+        monitors.xml \
+        picom.conf \
+        regolith \
+        yabridgectl \
+        qt5ct \
+        alacritty \
+        dmenu-recent;
+    do
+      echo installing ~/.config/$config_folder
+      ln -sf $HOME/dotfiles/config/$config_folder $HOME/.config/$config_folder
+    done
     ;;
 esac
 
