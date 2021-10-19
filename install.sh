@@ -73,11 +73,10 @@ case $(uname) in
         regolith \
         yabridgectl \
         qt5ct \
-        alacritty \
         dmenu-recent;
     do
       echo installing ~/.config/$config_folder
-      ln -sf $HOME/dotfiles/config/$config_folder $HOME/.config/$config_folder
+      ln -sf $HOME/dotfiles/config/$config_folder $HOME/.config/
     done
     ;;
 esac
