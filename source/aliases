@@ -67,3 +67,10 @@ alias ....='cd ../../..'
 alias isodate="date +'%Y-%m-%dT%H:%M:%SZ'"
 
 alias jq-paths="jq -c 'path(..)|[.[]|tostring]|join(\"/\")'"
+
+case $(uname) in
+  Linux)
+    # can't live without open . from os x
+    alias open=thunar
+    ;;
+esac

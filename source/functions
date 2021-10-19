@@ -33,8 +33,12 @@ function week-number {
 [[ $SHELL = "/bin/bash" ]] && complete -W "$(echo $(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | sort -u | grep -v "\["))" ssh
 
 # git autocomplete
-[[ $SHELL = "/bin/bash" ]] && source /usr/local/etc/bash_completion.d/git-completion.bash
-source /usr/local/etc/bash_completion.d/git-prompt.sh
+case $(uname) in
+  Darwin)
+    [[ $SHELL = "/bin/bash" ]] && source /usr/local/etc/bash_completion.d/git-completion.bash
+    source /usr/local/etc/bash_completion.d/git-prompt.sh
+    ;;
+esac
 
 function __git_prompt {
   GIT_PS1_SHOWDIRTYSTATE=1
@@ -243,10 +247,30 @@ function youtube-dl-mp4 {
 # set global java version
 jdk() {
   local version=$1
-  export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+  case $(uname) in
+    Darwin)
+      export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+      ;;
+    Linux)
+      sudo archlinux-java set $version
+      ;;
+  esac
   java -version
 }
+
 # list available Java versions
 jdks() {
-  /usr/libexec/java_home -V 2>&1 | sed 1d | sed '$d' | cut -d, -f1
+  case $(uname) in
+    Darwin)
+      /usr/libexec/java_home -V 2>&1 | sed 1d | sed '$d' | cut -d, -f1
+      ;;
+    Linux)
+      ls $(readlink -f /usr/bin/javac | sed "s:/bin/javac::")/.. | grep java-
+      ;;
+  esac
 }
+
+# TODO share parts of zshrc?
+# meta+backspace deletes to previous /in/some/path
+autoload -U select-word-style
+select-word-style bash

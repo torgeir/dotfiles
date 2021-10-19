@@ -11,20 +11,29 @@
 export HISTCONTROL=ignoreboth
 
 # full name of user
-export USER_FULLNAME=Torgeir Thoresen
+export USER_FULLNAME="Torgeir Thoresen"
 
 # node
 export NODE_ENV=development
 #export NODE_PATH=/usr/local/lib/jsctags/:$NODE_PATH
 
 # utf-8!
-export LANG="no_NO.UTF-8"
+case $(uname) in
+  Linux)
+    export LANG="en_US.utf-8"
+    ;;
+  Darwin)
+    export LANG="no_NO.UTF-8"
+    ;;
+esac
 
 # git
 export VISUAL="emacsclient -t"
 
 # local bin
 export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
+
 
 # coreutils
 #export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
@@ -38,7 +47,7 @@ export PATH=$HOME/bin:$PATH
 #export BOOT_JVM_OPTIONS="--add-modules \"java.xml.bind\"" # the same as above for boot
 
 # maven
-export MAVEN_OPTS="-Xmx512m"
+#export MAVEN_OPTS="-Xmx512m"
 
 # custom scala build
 #export PATH=$HOME/Code/Scala/kepler/dists/latest/bin:$PATH
@@ -63,3 +72,16 @@ export PS1='\n\[$(tput setaf 2)\]`jobs -s | wc -l | sed -e "s/ //g"`:\[$(tput se
 #
 # seems this is no longer needed?
 # running gpgconf --kill all followed by starting emacs triggers the gpg prompt
+
+case $(uname) in
+  Linux)
+    # make Native Access.exe work in wine
+    export MESA_GL_VERSION_OVERRIDE=4.5
+
+    # fsync
+    export WINEFSYNC=1
+
+    # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+    export PATH="$PATH:$HOME/.rvm/bin"
+    ;;
+esac
