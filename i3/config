@@ -240,6 +240,7 @@ assign [class="REAPER"] $ws3
 assign [class="Qsynth"] $ws4
 assign [class="Yoshimi"] $ws4
 for_window [title="glances"] move to workspace $ws6
+for_window [class="Slack"] floating enable move scratchpad
 for_window [class="Qsynth"] floating enable
 for_window [class="Yoshimi"] floating enable
 for_window [class="Spotify"] move to workspace $ws5
