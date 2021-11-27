@@ -15,5 +15,10 @@ case $(uname) in
       export PATH="$HOME/.local/share/wine-6.14-staging-tkg-amd64/bin:$PATH"
     fi
     export WINEFSYNC=1
+
+    # To enable compatibility with high-resolution displays, set the following environment variables accordingly:
+    # https://wiki.archlinux.org/title/DaVinci_Resolve
+    export QT_DEVICE_PIXEL_RATIO=1
+    export QT_AUTO_SCREEN_SCALE_FACTOR=true
     ;;
 esac
