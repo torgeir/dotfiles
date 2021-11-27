@@ -281,15 +281,7 @@ for_window [instance="Origin.exe"] floating enable, move to workspace $ws3
 for_window [instance="C:\Program Files (x86)\Origin\Origin.exe"] floating enable, move to workspace $ws3
 for_window [class="Origin"] floating enable, move to workspace $ws3
 for_window [class="Steam"] floating enable, move to workspace $ws3
-for_window [class="Steam" title="^Friends$"] floating enable, move to workspace $ws3
-for_window [class="Steam" title="Steam - News"] floating enable, move to workspace $ws3
-for_window [class="Steam" title=".* - Chat"] floating enable, move to workspace $ws3
-for_window [class="Steam" title="^Settings$"] floating enable, move to workspace $ws3
-for_window [class="Steam" title=".* - event started"] floating enable, move to workspace $ws3
-for_window [class="Steam" title=".* CD key"] floating enable, move to workspace $ws3
-for_window [class="Steam" title="^Steam - Self Updater$"] floating enable, move to workspace $ws3
-for_window [class="Steam" title="^Screenshot Uploader$"] floating enable, move to workspace $ws3
-for_window [class="Steam" title="^Steam Guard - Computer Authorization Required$"] floating enable, move to workspace $ws3
+for_window [class="Steam"] floating enable, move to workspace $ws3
 for_window [title="Steam Keyboard"] floating enable, move to workspace $ws3
 
 # switch to workspace with urgent window automatically
