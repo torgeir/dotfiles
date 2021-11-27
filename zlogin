@@ -1,5 +1,6 @@
 # make first hdmi the primary output
-xrandr --output HDMI-0 --primary
+#xrandr --output HDMI-0 --primary
+xrandr --output DP-0 --primary
 
 # prefer ctrl over caps
 setxkbmap -option ctrl:nocaps
