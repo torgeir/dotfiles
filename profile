@@ -11,9 +11,11 @@ case $(uname) in
     __GL_SHADER_DISK_CACHE=1 #to create a shader cache for a game
     __GL_SHADER_DISK_CACHE_PATH=/home/torgeir/Games/shader-cache # to set the location for the shader cache.
 
-    if [ -d "$HOME/.local/share/wine-6.14-staging-tkg-amd64/bin" ] ; then
-      export PATH="$HOME/.local/share/wine-6.14-staging-tkg-amd64/bin:$PATH"
+    # https://github.com/Kron4ek/Wine-Builds/releases
+    if [ -d "$HOME/.local/share/wine-6.21-staging-tkg-amd64/bin" ] ; then
+      export PATH="$HOME/.local/share/wine-6.21-staging-tkg-amd64/bin:$PATH"
     fi
+
     export WINEFSYNC=1
 
     # To enable compatibility with high-resolution displays, set the following environment variables accordingly:
