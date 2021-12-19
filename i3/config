@@ -351,7 +351,9 @@ exec --no-startup-id clipit
 # make the planck ez work, it assumes apple alu ansi norwegian layout
 # grp changes between language layouts
 # https://unix.stackexchange.com/questions/45447/other-than-alt-shift-to-switch-keyboard-layout-any-other-xorg-key-combination/45499
-exec_always --no-startup-id setxkbmap -model applealu_ansi -layout no -option grp:toggle; xmodmap ~/.Xmodmap
+exec_always --no-startup-id setxkbmap -model applealu_iso -layout no
+#exec_always --no-startup-id setxkbmap -model applealu_ansi -layout no -option mac;grp:toggle; xmodmap ~/.Xmodmap
+#exec_always --no-startup-id setxkbmap -model iso -layout no; xmodmap ~/.Xmodmap
 
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
