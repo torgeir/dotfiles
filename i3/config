@@ -404,7 +404,7 @@ mode "$mode_sound" {
 }
 
 # other useful programs
-exec --no-startup-id i3-msg 'workspace 1; exec firefox; exec slack; workspace 2; exec emacs; workspace 6; exec urxvt -e bashtop; workspace 4; exec carla;'
+exec --no-startup-id i3-msg 'workspace 1; exec firefox; exec slack; workspace 2; exec emacs; workspace 6; exec urxvt -e gtop; workspace 4; exec carla; exec dropbox'
 
 bar {
   i3bar_command i3bar
