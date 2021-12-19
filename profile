@@ -22,5 +22,6 @@ case $(uname) in
     # https://wiki.archlinux.org/title/DaVinci_Resolve
     export QT_DEVICE_PIXEL_RATIO=1
     export QT_AUTO_SCREEN_SCALE_FACTOR=true
+
     ;;
 esac
