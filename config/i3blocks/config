@@ -60,6 +60,11 @@ command=~/.local/share/i3blocks-modules/disk -f " {free}{funit}iB/{total}{tun
 instance=/
 interval=30
 
+[disk]
+command=~/.local/share/i3blocks-modules/disk -f " {free}{funit}iB/{total}{tunit}iB ({pused}%)" -tc '{pfree}' '<' 20 -tc '{pfree}' '<' 10  -cd $(sed -n '5{p;q}' ~/.cache/wal/colors | tr -d '\n')
+instance=/home/
+interval=30
+
 [weather]
 command=[ -z "$button" ] && ~/.local/share/i3blocks-modules/weather -c Trondheim -cd $(sed -n '5{p;q}' ~/.cache/wal/colors | tr -d '\n') || xdg-open "https://wttr.in/Trondheim" && ~/.local/share/i3blocks-modules/weather -c Trondheim -cd $(sed -n '5{p;q}' ~/.cache/wal/colors | tr -d '\n')
 interval=3600
