@@ -89,7 +89,7 @@ bindsym $mod+mod1+d exec xfce4-display-settings
 bindsym $mod+n exec thunar
 bindsym $mod+r exec terminal -e ranger
 #bindsym $mod+Shift+F3 exec pcmanfm_pkexec
-bindsym $mod+F5 exec terminal -e 'mocp'
+bindsym $mod+shift+m exec terminal -e 'mocp'
 bindsym $mod+Shift+t exec --no-startup-id pkill picom
 bindsym $mod+Ctrl+t exec --no-startup-id picom -b --config /home/torgeir/.config/picom.conf
 bindsym $mod+Ctrl+d --release exec "killall dunst; exec notify-send 'restart dunst'"
@@ -162,7 +162,7 @@ bindsym $mod+Ctrl+f focus mode_toggle
 bindsym $mod+p sticky toggle;exec notify-send 'sticky'
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+shift+a focus parent
 
 # move the currently focused window to the scratchpad
 #bindsym $mod+Shift+minus move scratchpad
