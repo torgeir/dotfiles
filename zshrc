@@ -65,35 +65,20 @@ esac
 # complete directories
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
+autoload -U select-word-style
+select-word-style bash
+
 case $(uname) in
-  Linux)
-    autoload -U select-word-style
-    select-word-style bash
-    zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-    autoload -Uz compinit && compinit
-    ;;
   Darwin)
     # zsh git completion needs git-completion.bash
     zstyle ':completion:*:*:git:*' script /usr/local/Cellar/git/2.31.1/share/zsh/site-functions/git-completion.bash
     # load completions from brew
     fpath=(~/.zsh $fpath)
     fpath=($(brew --prefix)/share/zsh/5.8/site-functions $fpath)
-    autoload -Uz compinit && compinit -u
     ;;
 esac
 
-# peder sin gauth
-# source $HOME/Code/gauth/gauth.sh
-
-case $(uname) in
-  Darwin)
-    # The next line updates PATH for the Google Cloud SDK.
-    source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-    # The next line enables zsh completion for gcloud.
-    source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-    ;;
-esac
-
+autoload -Uz compinit && compinit -u
 # enable ctrl-x-e to edit command line
 autoload -U edit-command-line
 
@@ -101,3 +86,15 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
+
+# peder sin gauth
+# source $HOME/Code/gauth/gauth.sh
+
+case $(uname) in
+Darwin)
+# The next line updates PATH for the Google Cloud SDK.
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+# The next line enables zsh completion for gcloud.
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+;;
+esac
