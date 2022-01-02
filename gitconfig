@@ -1,46 +1,49 @@
 [user]
-	name = Torgeir Thoresen
-	email = torgeir.thoresen@gmail.com
+  name = Torgeir Thoresen
+  email = torgeir.thoresen@gmail.com
 
 [alias]
-	br = branch
-	ci = commit
-	co = checkout
-	df = diff
+  br = branch
+  ci = commit
+  co = checkout
+  df = diff
 #  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 #  log = log --graph --decorate=full --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	lg = log --branches --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-	log = log --branches --graph --decorate=full --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	serve = daemon --reuseaddr --verbose  --port=4000 --base-path=. --export-all ./.git
-	st = status -sb
-	pr = pull --rebase
+  lg = log --branches --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+  log = log --branches --graph --decorate=full --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  serve = daemon --reuseaddr --verbose  --port=4000 --base-path=. --export-all ./.git
+  st = status -sb
+  pr = pull --rebase
 
 [core]
-	autocrlf = input
-	# norwegian chars in commits
-	quotepath = false
-	precomposeunicode = true #
-	editor = emacsclient
-	excludesfile = ~/.gitignore_global
+  autocrlf = input
+  # norwegian chars in commits
+  quotepath = false
+  precomposeunicode = true #
+  editor = emacsclient
+  excludesfile = ~/.gitignore_global
 
 [color]
-	branch = auto
-	diff = auto
-	status = auto
+  branch = auto
+  diff = auto
+  status = auto
 
 [include]
-	path = ~/.gitconfig-private
+  path = ~/.gitconfig-private
+
+[includeIf "gitdir:/Users/Torgeir/Code/saga/"]
+  path = /Users/Torgeir/Dropbox/dotfiles-work/.gitconfig
 
 [merge]
-	#Gtool = vimdiff
-	tool = ediff
+  #Gtool = vimdiff
+  tool = ediff
 
 [mergetool.ediff]
-	#cmd = emacsclient -c -a \"\"  --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\"
-	cmd = emacsclient -nw --eval \"(progn (setq ediff-quit-hook 'kill-emacs) (if (file-readable-p \\\"$BASE\\\") (ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\") (ediff-merge-files \\\"$LOCAL\\\" \\\"$REMOTE\\\" nil \\\"$MERGED\\\")))\"
+  #cmd = emacsclient -c -a \"\"  --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\"
+  cmd = emacsclient -nw --eval \"(progn (setq ediff-quit-hook 'kill-emacs) (if (file-readable-p \\\"$BASE\\\") (ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\") (ediff-merge-files \\\"$LOCAL\\\" \\\"$REMOTE\\\" nil \\\"$MERGED\\\")))\"
 
 [rerere]
-	enabled = true
+  enabled = true
 
 [github]
-	user = torgeir
+  user = torgeir
