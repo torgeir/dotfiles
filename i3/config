@@ -361,6 +361,16 @@ exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
+# Sound on launch.
+# No sound from application? Launch pavucontrol and check the apps output.
+
+# start jack with audiofuse as master
+exec --no-startup-id "jackd -R -P98 -dalsa -dhw:'AudioFuse,0' -r48000 -i8 -o8 -n3 -p64"
+# bridge pulseaudio, sleep to wait for jackd
+exec --no-startup-id "sleep 1 && pacmd load-module module-jack-source channels=2; pacmd load-module module-jack-sink channels=2"
+# bridge midi devices, sleep to wait for jackd
+exec --no-startup-id "sleep 1 && a2j_control --ehw; a2j_control --start"
+
 bindsym $mod+shift+s mode "$mode_sound"
 set $mode_sound (a)udiofuse, (c)onnect, (f)luidsynth, (h)elix, (k)ill all sound, (m)idi, bridge (p)ulseaudio, (r)eaper
 mode "$mode_sound" {
