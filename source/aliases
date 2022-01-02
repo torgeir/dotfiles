@@ -8,8 +8,9 @@ alias grep="grep --color=always"
 # local ip
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 
-# recursively delete `.DS_Store` files
+# recursively delete annoying files
 alias cleanup-dsstore="find . -name '*.DS_Store' -type f -ls -delete"
+alias cleanup-nodemodules="find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \;"
 
 # http
 alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
@@ -78,8 +79,6 @@ alias jq-paths="jq -c 'path(..)|[.[]|tostring]|join(\"/\")'"
 # --partial makes rsync keep partially transferred files if the transfer is interrupted
 # --progress shows a progress bar for each transfer, useful if you transfer big files
 alias sync-dirs="rsync -abviuzP"
-
-alias cleanupnodemodules="find . -name 'node_modules' -type d -prune -print -exec rm -rf '{}' \;"
 
 case $(uname) in
   Linux)
