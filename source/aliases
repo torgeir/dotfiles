@@ -1,7 +1,7 @@
 #!/bin/bash
 # ls
 alias l="ls -GF"
-alias ll="ls -laGF"
+alias ll="ls -laGFh"
 alias grep="grep --color=always"
 #alias ls="ls -GF --color"
 
@@ -69,7 +69,12 @@ alias isodate="date +'%Y-%m-%dT%H:%M:%SZ'"
 
 alias latest-changes="find . -type f -printf '%T@ %p\n' | sort -k1,1nr | head -10"
 
+alias yabai-restart="brew services restart yabai"
+alias yabai-window-name="while true; do yabai -m query --windows --window | jq .title; sleep 1; done"
+
 alias jq-paths="jq -c 'path(..)|[.[]|tostring]|join(\"/\")'"
+
+alias merge-pdfs="gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf *.pdf"
 
 # -i turns on the itemized format, which shows more information than the default format
 # -b makes rsync backup files that exist in both folders, appending ~ to the old file. You can control this suffix with --suffix .suf
