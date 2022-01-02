@@ -44,6 +44,7 @@ brew install gng
 #brew install pcre
 #brew install sbt
 #brew install tfenv # terraform
+#brew install tgenv # terragrunt
 #brew install reattach-to-user-namespace # tmux os x clipboard support
 #brew install source-highlight
 
