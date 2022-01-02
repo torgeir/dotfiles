@@ -16,15 +16,14 @@ source $HOME/dotfiles/source/functions
 
 case $(uname) in
   Linux)
-    source "/usr/share/nvm/nvm.sh" --no-use
+    export NVM_DIR="/usr/share/nvm/nvm.sh"
     ;;
   Darwin)
-    #  20211106 reinstalled, too slow
     export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
     ;;
 esac
-
+#  20211106 reinstalled, too slow
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
 
 case $(uname) in
   Linux)
