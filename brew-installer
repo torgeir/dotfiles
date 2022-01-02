@@ -14,7 +14,6 @@ brew install rg
 #brew install bash # bash 4
 brew install git
 brew install gifsicle
-brew install gdub # gradlewrapperwrapper gw
 brew install neovim
 brew install boot-clj
 brew tap d12frosted/emacs-plus
@@ -28,6 +27,10 @@ brew install tree
 brew install webkit2png
 brew install wget
 brew install unrar
+
+# gradlewrapperwrapper gw
+brew tap gdubw/gng
+brew install gng
 
 #brew install redis
 #brew install ffmpeg
