@@ -11,7 +11,7 @@
 export HISTCONTROL=ignoreboth
 
 # full name of user
-export USER_FULLNAME="Torgeir Thoresen"
+export USER_FULLNAME=Torgeir\ Thoresen
 
 # node
 export NODE_ENV=development
@@ -45,7 +45,7 @@ export PATH=$HOME/.local/bin:$PATH
 # export JAVA_TOOL_OPTIONS='--add-modules "java.xml.bind"' # to only add-modules for java 9
 #export BOOT_JVM_OPTIONS="--add-modules \"java.xml.bind\"" # the same as above for boot
 
-# maven
+# maven, don't use maven regularly
 #export MAVEN_OPTS="-Xmx512m"
 
 # custom scala build
@@ -61,13 +61,14 @@ export PATH=$HOME/.local/bin:$PATH
 #export LESS=" -R "
 #export LESSOPEN="| /usr/local/bin/src-hilite-lesspipe.sh %s"
 
-# prompt
-# export PS1='\n\[$(tput setaf 2)\]`jobs -s | wc -l | sed -e "s/ //g"`:\[$(tput setaf 5)\]\h \[$(tput setaf 4 sgr0)\]\w\[$(tput setaf 3)\]`__git_prompt` \n\[$(tput sgr0)\]$ '
+# prompt, no longer used after pk10
+#export PS1='\n\[$(tput setaf 2)\]`jobs -s | wc -l | sed -e "s/ //g"`:\[$(tput setaf 5)\]\h \[$(tput setaf 4 sgr0)\]\w\[$(tput setaf 3)\]`__git_prompt` \n\[$(tput sgr0)\]$ '
 
 #export DOCKER_HOST=tcp://torgqnap:2376 DOCKER_TLS_VERIFY=1 DOCKER_API_VERSION=1.23
 
 # make gpg from emacs prompt in shell (may need to open emacs from command line)
-# export GPG_TTY=$(tty)
+# linux likes this.
+export GPG_TTY=$(tty)
 #
 # seems this is no longer needed?
 # running gpgconf --kill all followed by starting emacs triggers the gpg prompt
@@ -84,3 +85,16 @@ case $(uname) in
     export PATH="$PATH:$HOME/.rvm/bin"
     ;;
 esac
+
+# deno
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+export DVM_DIR="$HOME/.dvm"
+export PATH="$DVM_DIR/bin:$PATH"
+
+# python virtualenv
+export WORKON_HOME="$HOME/.virtualenvs"
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+# its too slow
+#source /usr/local/bin/virtualenvwrapper.sh
