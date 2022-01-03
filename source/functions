@@ -245,6 +245,7 @@ function youtube-dl-mp4 {
 }
 
 # vterm modifications for emacs
+# https://github.com/akermu/emacs-libvterm#message-passing
 vterm_printf(){
   if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ] ); then
     # Tell tmux to pass the escape sequences through
@@ -256,6 +257,23 @@ vterm_printf(){
     printf "\e]%s\e\\" "$1"
   fi
 }
+vterm_cmd() {
+  local vterm_elisp
+  vterm_elisp=""
+  while [ $# -gt 0 ]; do
+    vterm_elisp="$vterm_elisp""$(printf '"%s" ' "$(printf "%s" "$1" | sed -e 's|\\|\\\\|g' -e 's|"|\\"|g')")"
+    shift
+  done
+  vterm_printf "51;E$vterm_elisp"
+}
+findfile() {
+  # torgeir: realpath is from brew coreutils
+  vterm_cmd find-file "$(/usr/local/opt/coreutils/libexec/gnubin/realpath "${@:-.}")"
+}
+# torgeir: y no worky
+#gs() {
+#  vterm_cmd magit-status "$(/usr/local/opt/coreutils/libexec/gnubin/realpath "${@:-.}")"
+#}
 if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
   alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
 fi
@@ -285,8 +303,3 @@ jdks() {
       ;;
   esac
 }
-
-# TODO share parts of zshrc?
-# meta+backspace deletes to previous /in/some/path
-autoload -U select-word-style
-select-word-style bash
