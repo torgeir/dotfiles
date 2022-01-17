@@ -99,5 +99,6 @@ case $(uname) in
     ;;
 esac
 
+# https://github.com/akermu/emacs-libvterm#directory-tracking-and-prompt-tracking
 autoload -U add-zsh-hook
 add-zsh-hook -Uz chpwd (){ vterm_set_directory }
