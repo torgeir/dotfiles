@@ -76,6 +76,9 @@ alias jq-paths="jq -c 'path(..)|[.[]|tostring]|join(\"/\")'"
 
 alias merge-pdfs="gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=merged.pdf *.pdf"
 
+alias gcloud-set-project="gcloud config set proejct"
+alias sourcegauth="source $HOME/Code/gauth/gauth.sh"
+
 # -i turns on the itemized format, which shows more information than the default format
 # -b makes rsync backup files that exist in both folders, appending ~ to the old file. You can control this suffix with --suffix .suf
 # -u makes rsync transfer skip files which are newer in dest than in src
