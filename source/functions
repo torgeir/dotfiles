@@ -270,10 +270,12 @@ findfile() {
   # torgeir: realpath is from brew coreutils
   vterm_cmd find-file "$(/usr/local/opt/coreutils/libexec/gnubin/realpath "${@:-.}")"
 }
-# torgeir: y no worky
-#gs() {
-#  vterm_cmd magit-status "$(/usr/local/opt/coreutils/libexec/gnubin/realpath "${@:-.}")"
-#}
+vterm_set_directory() {
+  vterm_cmd update-pwd "$PWD/"
+}
+gs() {
+  vterm_cmd magit-status "$(/usr/local/opt/coreutils/libexec/gnubin/realpath "${@:-.}")"
+}
 if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
   alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
 fi
