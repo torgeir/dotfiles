@@ -3,7 +3,7 @@ yabai -m rule --add app="iTerm" space=1
 
 # float some apps
 
-yabai -m rule --add app="^Emacs$" manage=off # why tho?
+yabai -m rule --add app="^Emacs$" manage=on
 yabai -m rule --add app="^Emacs$" title="^$" float=on layer=above manage=off # don't manage popups
 yabai -m rule --add app="^Slack" manage=on
 yabai -m rule --add app="^Übersicht$" manage=off
@@ -26,9 +26,9 @@ yabai -m config focus_follows_mouse off
 
 # move and resize with mouse
 # TODO torgeir cmd stjeler cmd+click i chrome...
-yabai -m config mouse_modifier alt
-yabai -m config mouse_action1 move
-yabai -m config mouse_action2 resize
+#yabai -m config mouse_modifier alt
+#yabai -m config mouse_action1 move
+#yabai -m config mouse_action2 resize
 
 # set layout
 yabai -m config layout bsp
