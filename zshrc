@@ -78,6 +78,8 @@ case $(uname) in
     ;;
 esac
 
+setopt interactivecomments
+
 autoload -Uz compinit && compinit -u
 # enable ctrl-x-e to edit command line
 autoload -U edit-command-line
