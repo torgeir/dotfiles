@@ -88,6 +88,9 @@ alias sourcegauth="source $HOME/Code/gauth/gauth.sh"
 # --progress shows a progress bar for each transfer, useful if you transfer big files
 alias sync-dirs="rsync -abviuzP"
 
+# open multi-vterm in emacs
+alias eterm="/usr/local/bin/emacsclient -s torgemacs -e '(let ((default-directory \"~/\")) (select-frame-set-input-focus (selected-frame)) (multi-vterm))'"
+
 case $(uname) in
   Linux)
     # can't live without open . from os x
