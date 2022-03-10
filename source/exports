@@ -99,3 +99,7 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 # its too slow
 #source /usr/local/bin/virtualenvwrapper.sh
+
+
+# https://github.com/GoogleCloudPlatform/gsutil/issues/576#issuecomment-559613825
+export CLOUDSDK_PYTHON=python3
