@@ -1,5 +1,4 @@
-# make first hdmi the primary output
-#xrandr --output HDMI-0 --primary
+# make first display the primary output
 xrandr --output DP-0 --primary
 
 # prefer ctrl over caps
