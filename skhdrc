@@ -1,7 +1,26 @@
 # linux keyboard has hyper, not fn
 # mac keyboard has fn, not hyper
 
-ctrl + alt + cmd + shift - return : osascript ~/bin/chrome-new-tab.applescript
+# inside [], the following means
+# *          : command    key is bound in all apps
+# "terminal" ~            key is unbound in terminal
+cmd + shift - return [
+  "emacs" : osascript ~/bin/chrome-new-tab.applescript
+  "google chrome" : osascript ~/bin/chrome-new-tab.applescript
+  "finder" : osascript ~/bin/chrome-new-tab.applescript
+]
+
+cmd - return [
+  "zoom.us" : eterm
+  "emacs" : eterm
+  "finder" : eterm
+  "google chrome" : eterm
+]
+
+cmd - n [
+  "emacs" : open -a Finder.app
+]
+
 fn - i : open -a IntelliJ
 fn - d : open -a Dash
 fn - n : open -a Finder
@@ -9,7 +28,6 @@ fn - e : open -a Emacs
 fn - o : open -a 'Microsoft Outlook'
 fn - z : open -a Zoom.us
 
-ctrl + alt + cmd - return : open -a iTerm ~/
 hyper - i : open -a IntelliJ
 hyper - d : open -a Dash
 hyper - n : open -a Finder
@@ -43,15 +61,15 @@ shift + ctrl + alt + cmd - down : yabai -m window --warp south
 
 # float and center on screen
 hyper - c : yabai -m window --toggle float;\
-            yabai -m window --grid 11:11:3:2:5:7
+            yabai -m window --grid 11:11:3:1:6:8
 fn - c : yabai -m window --toggle float;\
          yabai -m window --grid 11:11:1:1:9:9
 
 # float and column in center of screen
 hyper - u : yabai -m window --toggle float;\
-            yabai -m window --grid 11:11:3:0:6:11
+            yabai -m window --grid 11:11:3:0:7:11
 fn - u : yabai -m window --toggle float;\
-         yabai -m window --grid 11:11:3:0:6:11
+         yabai -m window --grid 11:11:3:0:7:11
 
 # fullscreen
 hyper - f : yabai -m window --toggle zoom-fullscreen
