@@ -194,7 +194,7 @@ function ips {
 
 function cd () {
   builtin cd "$@";
-  ls -l;
+  ll;
 }
 
 function gr () {
