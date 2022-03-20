@@ -1,5 +1,5 @@
 # i3blocks-modules color configuration
-color_def =$(sed -n '3{p;q}' ~/.cache/wal/colors | tr -d '\n')
+color_def=$(sed -n '3{p;q}' ~/.cache/wal/colors | tr -d '\n')
 color_good=$(sed -n '5{p;q}' ~/.cache/wal/colors | tr -d '\n')
 color_warn=$(sed -n '4{p;q}' ~/.cache/wal/colors | tr -d '\n')
 color_crit=$(sed -n '3{p;q}' ~/.cache/wal/colors | tr -d '\n')
