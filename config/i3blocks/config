@@ -27,16 +27,21 @@ command=~/.local/share/i3blocks-modules/cputemp -c Tctl -tg '{temp}' '<' 74 -tw 
 instance=Tctl
 interval=2
 [cputemp]
-command=~/.local/share/i3blocks-modules/cputemp -c Tdie -tg '{temp}' '<' 74 -tw '{temp}' '>' 80 -tc '{temp}' '>' 90 -f " Tdie {temp}°C"
-instance=Tctl
-interval=2
-[cputemp]
 command=~/.local/share/i3blocks-modules/cputemp -c Tccd1 -tg '{temp}' '<' 74 -tw '{temp}' '>' 80 -tc '{temp}' '>' 90 -f " Tccd1 {temp}°C"
-instance=Tctl
+instance=Tccd1
 interval=2
 [cputemp]
-command=~/.local/share/i3blocks-modules/cputemp -c Tccd2 -tg '{temp}' '<' 74 -tw '{temp}' '>' 80 -tc '{temp}' '>' 90 -f " Tccd {temp}°C"
-instance=Tctl
+command=~/.local/share/i3blocks-modules/cputemp -c Tccd2 -tg '{temp}' '<' 74 -tw '{temp}' '>' 80 -tc '{temp}' '>' 90 -f " Tccd2 {temp}°C"
+instance=Tccd2
+interval=2
+
+[gputemp]
+command=~/.local/share/i3blocks-modules/cputemp -c edge -tg '{temp}' '<' 74 -tw '{temp}' '>' 80 -tc '{temp}' '>' 99 -f "🖥 GPUe {temp}°C"
+instance=edge
+interval=2
+[gputemp]
+command=~/.local/share/i3blocks-modules/cputemp -c junction -tg '{temp}' '<' 60 -tw '{temp}' '>' 70 -tc '{temp}' '>' 80 -f "🖥 GPUj {temp}°C"
+instance=junction
 interval=2
 
 [localip]
