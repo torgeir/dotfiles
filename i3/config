@@ -5,9 +5,8 @@
 set $mod Mod4
 
 # set color theme
-bindsym $mod+w exec "wal -i $HOME/Documents/Backgrounds/Flat -o wal-set; bin/update-conkyrc.sh";
-exec_always --no-startup-id "wal -i $HOME/Documents/Backgrounds/Flat/minimalism-scenic-toon-colors-deer-sun-forest-trees-mountain-others-5458.jpg -o wal-set"
-exec --no-startup-id bin/update-conkyrc.sh
+bindsym $mod+w exec "wal -i $HOME/Documents/Backgrounds/Flat -o wal-set; ~/bin/update-conkyrc.sh";
+exec_always --no-startup-id "wal -i $HOME/Documents/Backgrounds/Flat/minimalism-scenic-toon-colors-deer-sun-forest-trees-mountain-others-5458.jpg -o wal-set; ~/bin/update-conkyrc.sh"
 
 #exec_always --no-startup-id "killall mpv"
 #exec_always --no-startup-id "sleep 1; xwinwrap -ov -g 2560x1440+0+0 -- mpv -wid WID ~/Downloads/Lake-Coast-Lantern-Live-Windows.mp4 --no-osc --no-osd-bar --loop-file --player-operation-mode=cplayer --no-audio --panscan=1.0 --no-input-default-bindings;"
