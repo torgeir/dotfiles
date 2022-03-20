@@ -1,12 +1,12 @@
 #!/bin/bash
 # ls
-alias l="ls -GF"
-alias ll="ls -laGFh"
+alias l="ls -GF --color"
+alias ll="ls -laGFh --color"
 alias grep="grep --color=always"
 #alias ls="ls -GF --color"
 
 # local ip
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias whatsmyip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 # recursively delete annoying files
 alias cleanup-dsstore="find . -name '*.DS_Store' -type f -ls -delete"
@@ -91,9 +91,14 @@ alias sync-dirs="rsync -abviuzP"
 # open multi-vterm in emacs
 alias eterm="/usr/local/bin/emacsclient -s torgemacs -e '(let ((default-directory \"~/\")) (select-frame-set-input-focus (selected-frame)) (multi-vterm))'"
 
+# https://stribika.github.io/2015/01/04/secure-secure-shell.html
+alias generate-ssh-key="ssh-keygen -t rsa -b 4096 -o -a 100"
+
 case $(uname) in
   Linux)
     # can't live without open . from os x
     alias open=thunar
+
+    alias bios="systemctl reboot --firmware-setup"
     ;;
 esac
