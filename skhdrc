@@ -40,14 +40,14 @@ hyper - q : cd && skhd -r
 fn - q: cd && skhd -r
 
 # move window focus
-alt - h : yabai -m window --focus west
-alt - l : yabai -m window --focus east
-alt - k : yabai -m window --focus north
-alt - j : yabai -m window --focus south
-shift + alt + cmd - left : yabai -m window --focus west
-shift + alt + cmd - right : yabai -m window --focus east
-shift + alt + cmd - up : yabai -m window --focus north
-shift + alt + cmd - down : yabai -m window --focus south
+alt - h : yabai -m window --focus west  || yabai -m display --focus west
+alt - l : yabai -m window --focus east  || yabai -m display --focus east
+alt - k : yabai -m window --focus north || yabai -m display --focus north
+alt - j : yabai -m window --focus south || yabai -m display --focus south
+shift + alt + cmd - left : yabai -m window --focus west  || yabai -m display --focus west
+shift + alt + cmd - right : yabai -m window --focus east || yabai -m display --focus east
+shift + alt + cmd - up : yabai -m window --focus north   || yabai -m display --focus north
+shift + alt + cmd - down : yabai -m window --focus south || yabai -m display --focus south
 
 # swap location with window in direction
 alt + shift - h : yabai -m window --warp west
@@ -164,8 +164,8 @@ ctrl + alt + cmd - f: yabai -m window --grid 1:1:1:1:1:1
 ctrl + alt + cmd - p: yabai -m window --display $(yabai -m query --displays | jq '.[].index' | grep -v $(yabai -m query --displays --display | jq .index));\
                       yabai -m display --focus recent;
 
-ctrl + alt + cmd - d: yabai -m window --display 2;\
-                              yabai -m display --focus recent;
+ctrl + alt + cmd - d: WIN_ID=$(yabai -m query --windows --window | jq '.id') && yabai -m window --display recent;\
+                      yabai -m window --focus $WIN_ID
 
 # move windows to screen corners
 ctrl + alt + cmd - i : yabai -m window --grid 8:8:0:0:4:4
