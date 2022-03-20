@@ -100,5 +100,6 @@ case $(uname) in
     alias open=thunar
 
     alias bios="systemctl reboot --firmware-setup"
+    alias rebootwin="sudo grub-reboot 2 && sudo reboot"
     ;;
 esac
