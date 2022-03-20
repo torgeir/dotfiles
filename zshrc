@@ -77,7 +77,11 @@ case $(uname) in
     ;;
 esac
 
+# allow bash style comments in interactive shells
 setopt interactivecomments
+
+# dont store space prefixex commands in history
+setopt HIST_IGNORE_SPACE
 
 autoload -Uz compinit && compinit -u
 # enable ctrl-x-e to edit command line
@@ -97,6 +101,9 @@ case $(uname) in
     source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
     # The next line enables zsh completion for gcloud.
     source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+
+    # don't type the password on every git pull
+    ssh-add -K ~/.ssh/id_rsa > /dev/null 2>&1
     ;;
 esac
 
