@@ -1,7 +1,15 @@
 #!/bin/bash
 # ls
-alias l="ls -GF --color"
-alias ll="ls -laGFh --color"
+case $(uname) in
+  Linux)
+    alias l="ls -GF --color"
+    alias ll="ls -laGFh --color"
+    ;;
+  Darwin)
+    alias l="ls -GF"
+    alias ll="ls -laGFh"
+    ;;
+esac
 alias grep="grep --color=always"
 #alias ls="ls -GF --color"
 
