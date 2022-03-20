@@ -254,6 +254,9 @@ for_window [class="REAPER" title="^FX"] floating disable move to workspace $ws6
 for_window [class="REAPER" title="^VST"] floating disable move to workspace $ws6
 for_window [class="REAPER" title="^Mixer"] floating disable move to workspace $ws6
 for_window [class="spotify"] move to workspace $ws8
+for_window [class="corectrl"] resize set height 680 px
+for_window [class="Psensor"] resize set height 590 px
+for_window [class="Psensor"] move to workspace $ws7
 for_window [class="^Thunderbird"] move to workspace $ws9
 for_window [class="Slack"] floating enable move scratchpad
 for_window [class="Signal"] floating enable move scratchpad
