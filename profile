@@ -11,17 +11,19 @@ case $(uname) in
     __GL_SHADER_DISK_CACHE=1 #to create a shader cache for a game
     __GL_SHADER_DISK_CACHE_PATH=/home/torgeir/Games/shader-cache # to set the location for the shader cache.
 
-    # https://github.com/Kron4ek/Wine-Builds/releases
-    if [ -d "$HOME/.local/share/wine-6.21-staging-tkg-amd64/bin" ] ; then
-      export PATH="$HOME/.local/share/wine-6.21-staging-tkg-amd64/bin:$PATH"
-    fi
-
     export WINEFSYNC=1
 
     # To enable compatibility with high-resolution displays, set the following environment variables accordingly:
     # https://wiki.archlinux.org/title/DaVinci_Resolve
-    export QT_DEVICE_PIXEL_RATIO=1
+
+    # Warning: QT_DEVICE_PIXEL_RATIO is deprecated. Instead use:
+    #  QT_AUTO_SCREEN_SCALE_FACTOR to enable platform plugin controlled per-screen factors.
+    #  QT_SCREEN_SCALE_FACTORS to set per-screen DPI.
+    #  QT_SCALE_FACTOR to set the application global scale factor.
+    #export QT_DEVICE_PIXEL_RATIO=1
     export QT_AUTO_SCREEN_SCALE_FACTOR=true
+
+    $HOME/bin/fix-resolution.sh
 
     ;;
 esac
