@@ -22,8 +22,9 @@ case $(uname) in
     export NVM_DIR="$HOME/.nvm"
     ;;
 esac
-#  20211106 reinstalled, too slow
+# nvm use x is too slow for every shell
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
+# default is set by hand in exports
 
 case $(uname) in
   Linux)
