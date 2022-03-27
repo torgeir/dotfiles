@@ -310,7 +310,8 @@ jdks() {
 autoload -U add-zsh-hook
 _jdk_autoload_hook() {
   if [[ -f .java-version ]]; then
-    jdk "$(cat .java-version)" true
+    echo "Found local .java-version in folder, switching to java version $(cat .java-version)"
+    jdk "$(cat .java-version)"
   fi
 }
 
