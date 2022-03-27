@@ -111,3 +111,8 @@ esac
 # https://github.com/akermu/emacs-libvterm#directory-tracking-and-prompt-tracking
 autoload -U add-zsh-hook
 add-zsh-hook -Uz chpwd (){ vterm_set_directory }
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
