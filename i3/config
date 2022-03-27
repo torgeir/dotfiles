@@ -7,7 +7,7 @@ set $mod Mod4
 # set color theme
 bindsym $mod+w exec "wal -i $HOME/Documents/Backgrounds/Flat -o wal-set; ~/bin/update-conkyrc.sh";
 exec_always --no-startup-id "wal -i $HOME/Documents/Backgrounds/Flat/minimalism-scenic-toon-colors-deer-sun-forest-trees-mountain-others-5458.jpg -o wal-set; ~/bin/update-conkyrc.sh"
-
+exec_always --no-startup-id "killall xephyr-helper; $HOME/bin/xephyr-helper"
 #exec_always --no-startup-id "killall mpv"
 #exec_always --no-startup-id "sleep 1; xwinwrap -ov -g 2560x1440+0+0 -- mpv -wid WID ~/Downloads/Lake-Coast-Lantern-Live-Windows.mp4 --no-osc --no-osd-bar --loop-file --player-operation-mode=cplayer --no-audio --panscan=1.0 --no-input-default-bindings;"
 #exec_always --no-startup-id "sleep 1; xwinwrap -ov -g 2560x1440+0+0 -- mpv -wid WID ~/Downloads/sunset-ocean-water-4k-live-wallpaper.mp4 --no-osc --no-osd-bar --loop-file --player-operation-mode=cplayer --no-audio --panscan=1.0 --no-input-default-bindings;"
@@ -81,7 +81,7 @@ bindsym Mod1+space exec --no-startup-id morc_menu
 
 # Apps
 #bindsym $mod+Shift+b exec terminal -e 'bmenu'
-bindsym $mod+Shift+Return exec firefox
+bindsym $mod+Shift+Return exec ~/bin/torgfox
 # $mod+d conflicts with split window emacs
 bindsym $mod+mod1+d exec xfce4-display-settings
 bindsym $mod+n exec thunar
@@ -181,12 +181,12 @@ workspace 1 output HDMI-A-0
 workspace 2 output HDMI-A-0
 workspace 3 output HDMI-A-0
 workspace 4 output HDMI-A-0
-workspace 5 output DisplayPort-2
-workspace 6 output DisplayPort-2
-workspace 7 output DisplayPort-2
-workspace 8 output DisplayPort-2
-workspace 9 output DisplayPort-2
-workspace 0 output DisplayPort-2
+workspace 5 output DisplayPort-1
+workspace 6 output DisplayPort-1
+workspace 7 output DisplayPort-1
+workspace 8 output DisplayPort-1
+workspace 9 output DisplayPort-1
+workspace 0 output DisplayPort-1
 
 # Workspace names. To display names or symbols instead of plain workspace numbers you can use.
 # something like: set $ws1 1:mail
@@ -321,7 +321,11 @@ for_window [class="^Steam"] floating enable move to workspace $ws1
 
 #forza
 assign [class="steam_app_1293830"] $ws1
-for_window [class="steam_app_1293830"] fullscreen enable move to workspace $ws1
+for_window [class="steam_app_1293830"] move to workspace $ws1
+for_window [class="steam_app_1293830"] fullscreen enable
+assign [title="Forza Horizon 4"] $ws1
+for_window [title="Forza Horizon 4"] move to workspace $ws1
+for_window [title="Forza Horizon 4"] fullscreen enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -410,7 +414,7 @@ exec --no-startup-id "sleep 1 && a2j_control --ehw; a2j_control --start"
 bindsym $mod+shift+s mode "$mode_sound"
 set $mode_sound (a)udiofuse, (c)onnect, (f)luidsynth, (h)elix, (k)ill all sound, (m)idi, bridge (p)ulseaudio, (r)eaper, pa(v)ucontrol
 mode "$mode_sound" {
-  bindsym r exec $HOME/REAPER/reaper, mode "default"
+  bindsym r exec $HOME/bin/reaper.sh, mode "default"
   # control what goes to jack
   bindsym v exec --no-startup-id "pavucontrol", mode "default"
   # kill all sound
@@ -454,7 +458,7 @@ mode "$mode_sound" {
 }
 
 # other useful programs
-exec --no-startup-id i3-msg "workspace 1; exec firefox;\
+exec --no-startup-id i3-msg "workspace 1; exec ~/bin/torgfox;\
  workspace 2; exec emacs;\
  workspace 4; exec carla; exec dropbox;\
  workspace 7; exec xfce4-terminal -e gtop; exec psensor;\
