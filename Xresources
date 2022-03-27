@@ -70,10 +70,10 @@ URxvt.shading: 20
 
 URxvt.depth:                      32
 !URxvt.background:                 [100]#222D31
+URxvt*background: rgba:0000/0000/0200/c800
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true
-URxvt*background:                 black
 URxvt*foreground:                 grey
 URxvt*saveLines:                  5000
 
@@ -88,7 +88,7 @@ URxvt.keysym.Shift-Control-V:     eval:paste_clipboard
 URxvt.keysym.Shift-Control-C:     eval:selection_to_clipboard
 
 ! font size
-URxvt.keysym.C-minus:  command:"\033]50;xft:JetBrains Mono:size=8\007"
+URxvt.keysym.C-minus:  command:"\033]50;xft:JetBrains Mono:size=7\007"
 URxvt.keysym.C-0:      command:"\033]50;xft:JetBrains Mono:size=10\007"
 URxvt.keysym.C-equal:  command:"\033]50;xft:JetBrains Mono:size=12\007"
 
