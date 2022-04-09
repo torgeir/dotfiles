@@ -324,12 +324,13 @@ for_window [class="^steam"] floating enable move to workspace $ws1
 for_window [class="^Steam"] floating enable move to workspace $ws1
 
 #forza
-assign [class="steam_app_1293830"] $ws1
-for_window [class="steam_app_1293830"] move to workspace $ws1
-for_window [class="steam_app_1293830"] fullscreen enable
 assign [title="Forza Horizon 4"] $ws1
 for_window [title="Forza Horizon 4"] move to workspace $ws1
 for_window [title="Forza Horizon 4"] fullscreen enable
+#bf4
+assign [class="steam_app_1238860"] $ws1
+for_window [class="steam_app_1238860"] move to workspace $ws1
+for_window [class="steam_app_1238860"] fullscreen enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
