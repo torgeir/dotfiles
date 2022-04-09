@@ -102,11 +102,15 @@ case $(uname) in
     source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
     # The next line enables zsh completion for gcloud.
     source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-
-    # don't type the password on every git pull
-    ssh-add -K ~/.ssh/id_rsa > /dev/null 2>&1
+    ;;
+  Linux)
+    # launch ssh agent before ssh-add
+    eval `ssh-agent -s` > /dev/null 2>&1
     ;;
 esac
+
+# don't type the password on every git pull
+ssh-add -K ~/.ssh/id_rsa > /dev/null 2>&1
 
 # https://github.com/akermu/emacs-libvterm#directory-tracking-and-prompt-tracking
 autoload -U add-zsh-hook
