@@ -36,6 +36,7 @@ export EDITOR="emacsclient --socket-name torgemacs"
 # local bin
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.emacs.d/bin:$PATH
 
 # coreutils
 #export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
