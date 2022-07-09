@@ -465,7 +465,7 @@ mode "$mode_sound" {
 exec --no-startup-id i3-msg "workspace 1; exec ~/bin/torgfox;\
  workspace 2; exec emacs;\
  workspace 4; exec carla; exec dropbox;\
- workspace 7; exec xfce4-terminal -e gtop; exec psensor;\
+ workspace 7; exec xfce4-terminal -e btop; exec xfce4-terminal -e 'journalctl -f'; exec psensor;\
  workspace 8; exec spotify;"
 # workspace 3; exec ~/REAPER/reaper;\
 # workspace 9; exec thunderbird; exec slack; exec signal-desktop"
