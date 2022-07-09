@@ -306,34 +306,30 @@ for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [title="Picture-in-Picture"] floating enable sticky enable border none
 
 # steam
-for_window [class="steam_app_1182480" title="Origin"] floating enable
-assign [instance="Origin.exe"] $ws1
-assign [instance="origin.exe"] $ws1
-assign [instance="C:\Program Files (x86)\Origin\Origin.exe"] $ws1
-for_window [instance="Origin.exe"] floating enable move to workspace $ws1
-for_window [instance="origin.exe"] floating enable move to workspace $ws1
-for_window [instance="C:\Program Files (x86)\Origin\Origin.exe"] floating enable move to workspace $ws1
-assign [title="Origin"] $ws1
-assign [title="origin"] $ws1
-assign [class="origin"] $ws1
-assign [class="Origin"] $ws1
-for_window [title="Origin"] floating enable move to workspace $ws1
-for_window [title="origin"] floating enable move to workspace $ws1
-for_window [class="origin"] floating enable move to workspace $ws1
-for_window [class="Origin"] floating enable move to workspace $ws1
-assign [class="^steam"] $ws1
-assign [class="^Steam"] $ws1
-for_window [class="^steam"] floating enable move to workspace $ws1
-for_window [class="^Steam"] floating enable move to workspace $ws1
+assign [class="Steam"] $ws1
+for_window [class="Steam"] floating disable
 
-#forza
-assign [title="Forza Horizon 4"] $ws1
-for_window [title="Forza Horizon 4"] move to workspace $ws1
-for_window [title="Forza Horizon 4"] fullscreen enable
+#forza4
+assign [class="steam_app_1293830"] $ws1
+for_window [class="steam_app_1293830" title="Forza Horizon 4"] fullscreen enable
+for_window [class="steam_app_1293830" title="Forza Horizon 4"] move to workspace $ws1
+
+#origin needs to float to launch, bf1, bf4
+assign [class="steam_app_1182480"] $ws1
+for_window [class="steam_app_1182480"] floating enable
+
+#bf1
+assign [class="steam_app_1238840"] $ws1
+for_window [class="steam_app_1238840"] floating enable
+for_window [class="steam_app_1238840"] move to workspace $ws1
 #bf4
 assign [class="steam_app_1238860"] $ws1
-for_window [class="steam_app_1238860"] move to workspace $ws1
 for_window [class="steam_app_1238860"] fullscreen enable
+for_window [class="steam_app_1238860"] move to workspace $ws1
+#bf5, somehow always needs to be moved to ws1 after starting..
+assign [class="steam_app_1238810"] $ws1
+for_window [class="steam_app_1238810"] fullscreen enable
+for_window [class="steam_app_1238810"] move to workspace $ws1
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
