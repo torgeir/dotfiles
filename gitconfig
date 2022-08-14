@@ -20,7 +20,7 @@
   # norwegian chars in commits
   quotepath = false
   precomposeunicode = true #
-  editor = emacsclient
+  #editor = emacsclient
   excludesfile = ~/.gitignore_global
 
 [color]
