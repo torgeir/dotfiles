@@ -1,7 +1,7 @@
 if [ -n "${INSIDE_EMACS+1}" ]; then
   # don't
 else
-  cat ~/.cache/wal/sequences
+  [[ -f "$HOME/.cache/wal/sequences" ]] && cat ~/.cache/wal/sequences
 fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -34,7 +34,10 @@ esac
 
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-source $HOME/Code/powerlevel10k/powerlevel10k.zsh-theme
+# manually
+[[ -d "$HOME/Code/powerlevel10k" ]] && source $HOME/Code/powerlevel10k/powerlevel10k.zsh-theme
+# arch
+[[ -d "/usr/share/zsh-theme-powerlevel10k" ]] && source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -51,12 +54,15 @@ esac
 
 case $(uname) in
   Linux)
-    xmodmap ~/.Xmodmap
+    if command -v xmodmap &> /dev/null
+    then
+      xmodmap ~/.Xmodmap
+    fi
 
     # movement bindings in Thunar, like in os x Finder
-    echo '(gtk_accel_path "<Actions>/ThunarWindow/open-parent" "BackSpace")' >> $HOME/.config/Thunar/accels.scm
-    echo '(gtk_accel_path "<Actions>/ThunarWindow/open-parent" "<Alt>Up")' >> $HOME/.config/Thunar/accels.scm
-    echo '(gtk_accel_path "<Actions>/ThunarLauncher/open" "<Alt>Down")' >> $HOME/.config/Thunar/accels.scm
+    [[ -f "$HOME/.config/Thunar/" ]] && echo '(gtk_accel_path "<Actions>/ThunarWindow/open-parent" "BackSpace")' >> $HOME/.config/Thunar/accels.scm
+    [[ -f "$HOME/.config/Thunar/" ]] && echo '(gtk_accel_path "<Actions>/ThunarWindow/open-parent" "<Alt>Up")' >> $HOME/.config/Thunar/accels.scm
+    [[ -f "$HOME/.config/Thunar/" ]] && echo '(gtk_accel_path "<Actions>/ThunarLauncher/open" "<Alt>Down")' >> $HOME/.config/Thunar/accels.scm
     ;;
   Darwin)
     ;;
@@ -104,8 +110,11 @@ case $(uname) in
     source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
     ;;
   Linux)
-    # launch ssh agent before ssh-add
-    eval `ssh-agent -s` > /dev/null 2>&1
+    if command -v ssh-agent &> /dev/null
+    then
+      # launch ssh agent before ssh-add
+      eval `ssh-agent -s` > /dev/null 2>&1
+    fi
     ;;
 esac
 
