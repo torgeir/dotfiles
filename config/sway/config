@@ -105,6 +105,13 @@ workspace 10 output DP-2
     # Exit sway (logs you out of your Wayland session)
     #bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
     bindsym $mod+Ctrl+e exec 'swaymsg exit'
+    bindsym $mod+Ctrl+s exec 'systemctl suspend'
+    bindsym $mod+Ctrl+p exec 'systemctl poweroff'
+
+    # media buttons
+    bindsym XF86AudioPlay exec playerctl play-pause
+    bindsym XF86AudioNext exec playerctl next
+    bindsym XF86AudioPrev exec playerctl previous
 #
 # Moving around:
 #
@@ -217,5 +224,10 @@ bar {
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
+
+exec --no-startup-id alacritty -e sudo journalctl -f
+exec --no-startup-id corectrl
+
+# TODO torgeir port over whats left of i3
 
 include /etc/sway/config.d/*
