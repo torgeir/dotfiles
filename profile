@@ -23,8 +23,8 @@ case $(uname) in
     #export QT_DEVICE_PIXEL_RATIO=1
     export QT_AUTO_SCREEN_SCALE_FACTOR=true
 
-    # TODO not needed in sway?
-    # $HOME/bin/fix-resolution.sh
-
+    if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+      exec sway
+    fi
     ;;
 esac

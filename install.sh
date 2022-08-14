@@ -52,7 +52,6 @@ case $(uname) in
         conkyrc.base \
         gitconfig \
         gtkrc-2.0 \
-        i3 \
         inputrc \
         profile \
         zshrc \
@@ -66,13 +65,13 @@ case $(uname) in
     # ~/.config/<configs>
     for config_folder in \
       alacritty \
-        i3blocks \
-        i3blocks-modules \
-        i3-scrot.conf \
         mimeapps.list \
         monitors.xml \
         picom.conf \
         regolith \
+        rofi \
+        dunst \
+        sway \
         yabridgectl \
         qt5ct \
         dmenu-recent;
