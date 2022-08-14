@@ -55,11 +55,13 @@ case $(uname) in
         i3 \
         inputrc \
         profile \
+        zshrc \
         zlogin;
     do
       echo installing ~/.$dotfile
       ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
     done
+    ln -sf $HOME/dotfiles/profile $HOME/.zprofile
 
     # ~/.config/<configs>
     for config_folder in \

@@ -23,7 +23,8 @@ case $(uname) in
     #export QT_DEVICE_PIXEL_RATIO=1
     export QT_AUTO_SCREEN_SCALE_FACTOR=true
 
-    $HOME/bin/fix-resolution.sh
+    # TODO not needed in sway?
+    # $HOME/bin/fix-resolution.sh
 
     ;;
 esac
