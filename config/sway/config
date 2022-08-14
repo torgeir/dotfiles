@@ -36,7 +36,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 output HDMI-A-1 resolution 2560x1440 position 0,0 transform 0
-output DP-2 resolution 2560x1440 position 2560,0 transform 270
+output DP-2 resolution 2560x1440 position 2560,1250 transform 270
 workspace 1 output HDMI-A-1
 workspace 2 output HDMI-A-1
 workspace 3 output HDMI-A-1
