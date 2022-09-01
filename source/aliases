@@ -96,9 +96,6 @@ alias sourcegauth="source $HOME/Code/gauth/gauth.sh"
 # --progress shows a progress bar for each transfer, useful if you transfer big files
 alias sync-dirs="rsync -abviuzP"
 
-# open multi-vterm in emacs
-alias eterm="/usr/local/bin/emacsclient -s torgemacs -e '(let ((default-directory \"~/\")) (select-frame-set-input-focus (selected-frame)) (multi-vterm))'"
-
 # https://stribika.github.io/2015/01/04/secure-secure-shell.html
 alias generate-ssh-key="ssh-keygen -t rsa -b 4096 -o -a 100"
 
