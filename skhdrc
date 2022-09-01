@@ -117,31 +117,6 @@ gap < 0x2C :  yabai -m space --gap rel:-20;\
 gap < escape ; default
 gap < return ; default
 
-# resize mode
-:: resize @ : yabai -m window --toggle border
-hyper - r ; resize
-fn - r ; resize
-resize < right : yabai -m window --resize right:50:0
-resize < left :  yabai -m window --resize right:-50:0
-resize < up :    yabai -m window --resize bottom:0:-50
-resize < down :  yabai -m window --resize bottom:0:50
-resize < 0x1B :  yabai -m space --gap rel:20;\
-                 yabai -m space --padding rel:+20:+20:+20:+20
-resize < 0x2C :  yabai -m space --gap rel:-20;\
-                 yabai -m space --padding rel:-20:-20:-20:-20
-resize < escape ; default
-resize < return ; default
-
-# move mode
-:: move @ : yabai -m window --toggle border
-fn - m ; move
-move < right : yabai -m window --move rel:+50:0
-move < left :  yabai -m window --move rel:-50:0
-move < up :    yabai -m window --move rel:0:-50
-move < down  : yabai -m window --move rel:0:50
-move < escape ; default
-move < return ; default
-
 # resize windows
 ctrl + cmd - right : yabai -m window --resize right:50:0
 ctrl + cmd - left :  yabai -m window --resize right:-50:0
