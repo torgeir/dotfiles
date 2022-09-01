@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-yabai -m rule --add app="iTerm" space=1
+
+#yabai -m rule --add app="iTerm" space=1
 
 # float some apps
 
@@ -9,7 +10,7 @@ yabai -m rule --add app="^Slack" manage=on
 yabai -m rule --add app="^Übersicht$" manage=off
 yabai -m rule --add app="^CloudApp$" manage=off
 yabai -m rule --add app="^App Store$" manage=off
-yabai -m rule --add app="^Microsoft" manage=off # Teams, Outlook
+yabai -m rule --add app="^Microsoft" manage=on # Teams, Outlook
 yabai -m rule --add app="^Install" manage=off
 yabai -m rule --add app="^Dictionary" manage=off
 yabai -m rule --add app="^System" manage=off
