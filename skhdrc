@@ -42,14 +42,10 @@ hyper - q : cd && skhd -r
 fn - q: cd && skhd -r
 
 # move window focus
-alt - h : yabai -m window --focus west  || yabai -m display --focus west
-alt - l : yabai -m window --focus east  || yabai -m display --focus east
-alt - k : yabai -m window --focus north || yabai -m display --focus north
-alt - j : yabai -m window --focus south || yabai -m display --focus south
-shift + alt + cmd - left : yabai -m window --focus west  || yabai -m display --focus west
-shift + alt + cmd - right : yabai -m window --focus east || yabai -m display --focus east
-shift + alt + cmd - up : yabai -m window --focus north   || yabai -m display --focus north
-shift + alt + cmd - down : yabai -m window --focus south || yabai -m display --focus south
+alt - h : yabai -m window --focus west  || yabai -m display --focus west  || yabai -m display --focus east
+alt - l : yabai -m window --focus east  || yabai -m display --focus east  || yabai -m display --focus west
+alt - k : yabai -m window --focus north || yabai -m display --focus north || yabai -m display --focus south
+alt - j : yabai -m window --focus south || yabai -m display --focus south || yabai -m display --focus north
 
 # swap location with window in direction
 alt + shift - h : yabai -m window --warp west
