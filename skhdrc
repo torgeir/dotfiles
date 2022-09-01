@@ -154,3 +154,10 @@ ctrl + alt + cmd - right : yabai -m window --grid 1:2:1:0:1:1
 # move windows to screen outer left and right
 shift + ctrl + alt + cmd - h : yabai -m window --grid 12:12:0:0:3:12
 shift + ctrl + alt + cmd - l : yabai -m window --grid 12:12:9:0:3:12
+
+# move windows across spaces without the scripting addition
+alt + shift - 1: yabai -m window --space 1; skhd -k "alt - 1" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 18 using option down'
+alt + shift - 2: yabai -m window --space 2; skhd -k "alt - 2" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 19 using option down'
+alt + shift - 3: yabai -m window --space 3; skhd -k "alt - 3" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 20 using option down'
+alt + shift - 4: yabai -m window --space 4; skhd -k "alt - 4" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 21 using option down'
+
