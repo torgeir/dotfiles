@@ -10,16 +10,18 @@ cmd + shift - return [
   "finder" : osascript ~/bin/chrome-new-tab.applescript
 ]
 
+cmd + shift + alt - return : open -na Google\ Chrome --args --profile-directory=Profile\ 1 "chrome://newtab" # --new-window
+
+cmd + alt + ctrl - e : emacsclient --socket-name torgemacs --eval "(emacs-everywhere)"
+
 cmd - return [
-  "zoom.us" : eterm
-  "emacs" : eterm
-  "finder" : eterm
-  "google chrome" : eterm
+  # "emacs" : # dont catch this, s-return is bound in emacs
+  "zoom.us" : osascript ~/bin/iterm-new-tab.applescript
+  "finder" : osascript ~/bin/iterm-new-tab.applescript
+  "google chrome" : osascript ~/bin/iterm-new-tab.applescript
 ]
 
-cmd - n [
-  "emacs" : open -a Finder.app
-]
+cmd + shift - h : open -a Finder -- ~/
 
 fn - i : open -a IntelliJ
 fn - d : open -a Dash
