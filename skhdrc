@@ -161,3 +161,5 @@ alt + shift - 2: yabai -m window --space 2; skhd -k "alt - 2" # sleep 0.1 && osa
 alt + shift - 3: yabai -m window --space 3; skhd -k "alt - 3" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 20 using option down'
 alt + shift - 4: yabai -m window --space 4; skhd -k "alt - 4" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 21 using option down'
 
+# kanbanize url
+shift + ctrl + alt + cmd - k: obb -e '(let [windows (-> (js/Application "Google Chrome") (.-windows))] (when (pos? (.-length windows)) (let [url (->> (or (-> windows (aget 0) .tabs) []) (map #(.url %)) (filter #(clojure.string/includes? % "kanbanize")) (vec) (first))] (when-let [kb (re-find #"[0-9]{4,}" url)] (str "KB-" (clojure.string/trim-newline kb))))))' | pbcopy && osascript -e 'tell application "System Events" to keystroke "v" using command down'
