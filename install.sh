@@ -68,7 +68,9 @@ case $(uname) in
         mimeapps.list \
         monitors.xml \
         picom.conf \
-        regolith \
+        i3status-rust \
+        pipewire \
+        MangoHud \
         rofi \
         dunst \
         sway \
