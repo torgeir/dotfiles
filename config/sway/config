@@ -1,11 +1,6 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
+# Inspiration
+# - https://github.com/rbnis/dotfiles/blob/master/.config/sway/config
 
-### Variables
-#
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 
@@ -14,9 +9,10 @@ set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
+
 set $term alacritty
 set $browser brave
+
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -27,16 +23,23 @@ input * {
   xkb_model "applealu_iso"
 }
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-output HDMI-A-1 resolution 2560x1440 position 0,0 transform 0
-output DP-2 resolution 2560x1440 position 2560,-1150 transform 270
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+output * {
+  #bg ~/Pictures/Backgrounds/2020/firewatch-landscape-forest-minimalistic-games-6993.jpg fill
+  bg ~/Documents/Backgrounds/Flat/minimalism-scenic-toon-colors-deer-sun-forest-trees-mountain-others-5458.jpg fill
+  resolution 2560x1440
+}
+output HDMI-A-1 {
+  position 0,0
+  transform 0
+}
+output DP-2 {
+  # torgeir: this is buggy with sway, sept 2022
+  #position 2560,-1150
+  #position 0,0
+  bg ~/Documents/Backgrounds/Flat/firewatch-deer-forest-night-games-1567.jpg fill
+  transform 270
+}
 workspace 1 output HDMI-A-1
 workspace 2 output HDMI-A-1
 workspace 3 output HDMI-A-1
@@ -47,21 +50,26 @@ workspace 7 output DP-2
 workspace 8 output DP-2
 workspace 9 output DP-2
 workspace 10 output DP-2
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+set $opacity 0.97
+for_window [class=".*"] opacity $opacity
+for_window [app_id=".*"] opacity $opacity
+
+smart_gaps on
+gaps inner 0
+
+default_border pixel 2
+default_floating_border normal
+#hide_edge_borders smart
 
 ### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -c 000000'
 
 ### Input configuration
 #
@@ -78,12 +86,10 @@ workspace 10 output DP-2
 # Read `man 5 sway-input` for more information about this section.
 
 ### Key bindings
-#
-# Basics:
-#
     # Start a terminal
     bindsym $mod+Return exec $term
     bindsym $mod+Shift+Return exec $browser
+    bindsym $mod+n exec dolphin
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -213,21 +219,73 @@ bindsym Ctrl+$mod+Right resize grow width 100px
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position bottom
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-
+    font pango:DejaVu Sans Mono, FontAwesome 10
+    status_command i3status-rs ~/.config/i3status-rust/config.toml
     colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        separator #666666
+        background #222222
+        statusline #dddddd
+        focused_workspace #0088CC #0088CC #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #2f343a #900000 #ffffff
+
     }
 }
 
-exec --no-startup-id alacritty -e sudo journalctl -f
-exec --no-startup-id corectrl
+# toggle sticky
+bindsym $mod+p sticky toggle;exec notify-send 'sticky'
+
+# window classes lookup:
+# swaymsg -t get_tree | rg class
+assign [class="REAPER"] 3
+for_window [class="REAPER"] floating disable
+for_window [class="REAPER" title="REAPER Query"] floating enable
+for_window [class="REAPER" title="REAPER \(loading\)"] floating enable
+for_window [class="REAPER" title="REAPER \(initializing\)"] floating enable
+for_window [class="REAPER" title="Project Load Warning"] floating enable
+for_window [class="REAPER" title="^Routing.*"] floating enable
+for_window [class="REAPER" title="^Build.*"] floating enable
+for_window [class="REAPER" title="^Controls.*"] floating enable
+for_window [class="REAPER" title="^Choose.*"] floating enable
+for_window [class="REAPER" title="FX"] floating enable
+for_window [class="REAPER" title="^LV2.*"] floating enable
+for_window [class="REAPER" title="^JS.*"] floating enable
+for_window [class="REAPER" title="^VST.*"] floating enable
+
+
+# todo
+# funktitj
+# # todo
+for_window [title="Picture-in-Picture"] floating enable sticky enable border none
+for_window [class="Brave-browser" title="Picture in picture"] floating enable sticky enable border none
+
+workspace 7
+exec spotify
+
+workspace 6
+exec dropbox
+exec corectrl
+
+workspace 5
+exec alacritty -e btop
+exec psensor
+exec alacritty -e journalctl -f
+
+workspace 4
+exec qpwgraph
+
+workspace 3
+exec reaper
+
+workspace 2
+exec emacs
+
+workspace 1
+exec brave
+exec mako
 
 # TODO torgeir port over whats left of i3
+# ~/dotfiles/i3/config
 
 include /etc/sway/config.d/*
