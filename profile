@@ -1,10 +1,11 @@
 case $(uname) in
   Linux)
     # needs to be in .profile to load the theme correctly on manjaro
+    unset QT_STYLE_OVERRIDE
     export QT_QPA_PLATFORMTHEME="qt5ct"
-    export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+    #export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
-    export BROWSER=/usr/bin/firefox
+    export BROWSER=/usr/bin/brave
 
     # Shader caching is a strategy to reduce stuttering and improve overall performance by ‘prebaking’ some of the work your GPU has to do before it has to do so in-game.
     __GL_THREADED_OPTIMIZATION=1 #for OpenGL games
@@ -21,10 +22,10 @@ case $(uname) in
     #  QT_SCREEN_SCALE_FACTORS to set per-screen DPI.
     #  QT_SCALE_FACTOR to set the application global scale factor.
     #export QT_DEVICE_PIXEL_RATIO=1
-    export QT_AUTO_SCREEN_SCALE_FACTOR=true
+    #export QT_AUTO_SCREEN_SCALE_FACTOR=true
 
     if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-      exec sway
+      exec dbus-launch sway
     fi
     ;;
 esac
