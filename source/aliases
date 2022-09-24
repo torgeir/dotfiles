@@ -3,12 +3,10 @@
 case $(uname) in
   Linux)
     alias l="ls -GF --color"
-    alias ll="ls -laGFh --color"
     alias la="ls -laGFh --color"
     ;;
   Darwin)
     alias l="ls -GF"
-    alias ll="ls -laGFh"
     alias la="ls -laGFh"
     ;;
 esac
