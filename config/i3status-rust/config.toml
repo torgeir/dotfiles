@@ -1,0 +1,85 @@
+[theme]
+file = "native"
+
+[icons]
+file = "awesome"
+
+# hostname
+[[block]]
+block = "custom"
+command = "cat /etc/hostname"
+interval = "once"
+
+# kernel
+[[block]]
+block = "custom"
+command = "echo `uname` `uname -r`"
+interval = "once"
+
+# cpu
+[[block]]
+block = "custom"
+command = "echo Tctl $(sensors | grep Tctl | awk '{print $2}')"
+interval = 1
+[[block]]
+block = "custom"
+command = "echo Tccd1 $(sensors | grep Tccd1 | awk '{print $2}')"
+interval = 1
+[[block]]
+block = "custom"
+command = "echo Tccd2 $(sensors | grep Tccd2 | awk '{print $2}')"
+interval = 1
+# gpu
+[[block]]
+block = "custom"
+command = "echo edge $(sensors | grep edge | awk '{print $2}')"
+interval = 1
+[[block]]
+block = "custom"
+command = "echo jnct $(sensors | grep junct | awk '{print $2}')"
+interval = 1
+[[block]]
+block = "custom"
+command = "echo gpufan $(sensors | head -n 5 | grep fan1 | awk '{print $2}')"
+interval = 1
+
+[[block]]
+block = "custom"
+command = "sed 's/  //' <(curl 'https://wttr.in/trondheim?format=1' -s)"
+interval = 600
+on_click = "brave 'https://wttr.in/trondheim'"
+
+[[block]]
+block = "custom"
+command = "echo ip $(ip a | rg /24 | awk '{print $2}')"
+interval = 1
+
+[[block]]
+block = "custom"
+command = "echo ip $(drill -V0 myip.opendns.com @resolver1.opendns.com | grep ^myip | awk '{print $5}')"
+interval = 200
+
+[[block]]
+block = "cpu"
+
+[[block]]
+block = "memory"
+display_type = "memory"
+
+[[block]]
+block = "disk_space"
+path = "/"
+info_type = "available"
+unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+format = "{icon} {used}/{total} ({available} free)"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "time"
+interval = 5
+format = "%a %d/%m %R"
