@@ -1,11 +1,11 @@
 plugin_dirs = [
     '/home/torgeir/.wine/drive_c/Program Files/Common Files/VST3',
-    '/home/torgeir/Dropbox/Music/Plugins/vst/linux',
+    '/home/torgeir/Dropbox/Music/Plugins/vst',
 ]
 vst2_location = 'centralized'
 no_verify = false
 blacklist = []
 
 [last_known_config]
-wine_version = 'wine-7.11-188-g29dd8444397 ( TkG Staging Esync Fsync )'
-yabridge_host_hash = -2758888287786536091
+wine_version = 'wine-7.15.r0.g552b03f7 ( TkG Staging Esync Fsync )'
+yabridge_host_hash = -3094479323878875900
