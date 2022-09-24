@@ -28,24 +28,29 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "$method"="lwp-request -m '$method'"
 done
 
-# empty all the Trash
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash"
 
-# hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+case $(uname) in
+  Darwin)
+  # empty all the Trash
+  alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash"
 
-# hide/show hidden files
-alias hidehidden="defaults write com.apple.finder AppleShowAllFiles -boolean false && killall Finder"
-alias showhidden="defaults write com.apple.finder AppleShowAllFiles -boolean true && killall Finder"
+  # hide/show all desktop icons (useful when presenting)
+  alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+  alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
-alias flushyosemitedns="sudo discoveryutil mdnsflushcache;sudo discoveryutil udnsflushcaches"
+  # hide/show hidden files
+  alias hidehidden="defaults write com.apple.finder AppleShowAllFiles -boolean false && killall Finder"
+  alias showhidden="defaults write com.apple.finder AppleShowAllFiles -boolean true && killall Finder"
 
-# logout os x
-alias lout="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+  alias flushyosemitedns="sudo discoveryutil mdnsflushcache;sudo discoveryutil udnsflushcaches"
+
+  # logout os x
+  alias lout="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+;;
+esac
 
 # wait for internet connection
-alias waitforinternet='while true; do ping -c 1 -t 2 vg.no && say "we gotz internet" && date && break; sleep 2; done'
+alias waitforinternet='while true; do ping -c 1 -t 2 nrk.no; say "we gotz internet"; date; break; sleep 2; done'
 
 # restart a hanging os x touch bar
 alias killtouchbar="sudo pkill TouchBarServer; sudo killall ControlStrip"
@@ -106,10 +111,21 @@ alias generate-ssh-key="ssh-keygen -t rsa -b 4096 -o -a 100"
 case $(uname) in
   Linux)
     # can't live without open . from os x
-    alias open=thunar
+    if command -v thunar &> /dev/null
+    then
+      alias open=thunar
+    fi
+    if command -v dolphin &> /dev/null
+    then
+      alias open="dolphin"
+    fi
 
     alias bios="systemctl reboot --firmware-setup"
-    alias rebootwin="sudo grub-reboot 2 && sudo reboot"
+    # dont use grun/win any longer
+    #alias rebootwin="sudo grub-reboot 2 && sudo reboot"
+
+    # open ports
+    alias ports="sudo lsof -i -P -n | rg -i listen"
     ;;
   Darwin)
     alias ports="sudo lsof -i -n -P | rg -i tcp | rg -i listen"
