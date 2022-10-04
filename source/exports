@@ -79,6 +79,13 @@ export GPG_TTY=$(tty)
 # running gpgconf --kill all followed by starting emacs triggers the gpg prompt
 
 case $(uname) in
+  Darwin)
+    export PATH="/usr/local/sbin:$PATH"
+    ;;
+esac
+
+
+case $(uname) in
   Linux)
     # make Native Access.exe work in wine
     export MESA_GL_VERSION_OVERRIDE=4.5
