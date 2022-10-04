@@ -232,6 +232,14 @@ gifify() {
   fi
 }
 
+compress-video() {
+  if [[ -n "$1" ]]; then
+    ffmpeg -i $1 -c:v libvpx-vp9 -b:v 0.33M -c:a libopus -b:a 96k -filter:v "scale=iw:ih , fps=20" $1.compressed.webm
+  else
+    echo "proper usage: compress-video <input_movie.mov>."
+  fi
+}
+
 # take a photo, use this to find the interface
 # ffmpeg -f avfoundation -list_devices true -i ""
 function take-photo {
