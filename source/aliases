@@ -113,4 +113,7 @@ case $(uname) in
     alias bios="systemctl reboot --firmware-setup"
     alias rebootwin="sudo grub-reboot 2 && sudo reboot"
     ;;
+  Darwin)
+    alias ports="sudo lsof -i -n -P | rg -i tcp | rg -i listen"
+    ;;
 esac
