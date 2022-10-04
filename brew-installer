@@ -8,7 +8,10 @@ brew upgrade
 brew cleanup
 
 # stuff
+brew install --cask terminus
+brew install --cask terminus17
 brew install rg
+brew install gh
 brew install borkdude/brew/babashka
 brew install babashka/brew/obb # cljs scripting, like babashka
 brew install coreutils # os x ones are outdated
