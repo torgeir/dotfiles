@@ -42,23 +42,23 @@ hyper - q : cd && skhd -r
 fn - q: cd && skhd -r
 
 # move window focus
-alt - h : yabai -m window --focus west  || yabai -m display --focus west  || yabai -m display --focus east
-alt - l : yabai -m window --focus east  || yabai -m display --focus east  || yabai -m display --focus west
-alt - k : yabai -m window --focus north || yabai -m display --focus north || yabai -m display --focus south
-alt - j : yabai -m window --focus south || yabai -m display --focus south || yabai -m display --focus north
+alt - h : yabai -m window --focus west  || yabai -m display --focus west
+alt - l : yabai -m window --focus east  || yabai -m display --focus east
+alt - k : yabai -m window --focus north || yabai -m display --focus north
+alt - j : yabai -m window --focus south || yabai -m display --focus south
 
 # swap location with window in direction
-alt + shift - h : yabai -m window --warp west  || $(WIN_ID=$(yabai -m query --windows --window | jq '.id') && (yabai -m window --display west || yabai -m window --display east) && yabai -m window --focus $WIN_ID);
-alt + shift - l : yabai -m window --warp east || $(WIN_ID=$(yabai -m query --windows --window | jq '.id') && (yabai -m window --display east || yabai -m window --display west) && yabai -m window --focus $WIN_ID);
-alt + shift - k : yabai -m window --warp north || $(WIN_ID=$(yabai -m query --windows --window | jq '.id') && (yabai -m window --display north || yabai -m window --display south) && yabai -m window --focus $WIN_ID);
-alt + shift - j : yabai -m window --warp south || $(WIN_ID=$(yabai -m query --windows --window | jq '.id') && (yabai -m window --display south || yabai -m window --display north) && yabai -m window --focus $WIN_ID);
+alt + shift - h : yabai -m window --warp west  || $(WIN_ID=$(yabai -m query --windows --window | jq '.id') && yabai -m window --display west && yabai -m window --focus $WIN_ID);
+alt + shift - l : yabai -m window --warp east || $(WIN_ID=$(yabai -m query --windows --window | jq '.id') && yabai -m window --display east && yabai -m window --focus $WIN_ID);
+alt + shift - k : yabai -m window --warp north || $(WIN_ID=$(yabai -m query --windows --window | jq '.id') && yabai -m window --display north && yabai -m window --focus $WIN_ID);
+alt + shift - j : yabai -m window --warp south || $(WIN_ID=$(yabai -m query --windows --window | jq '.id') && yabai -m window --display south && yabai -m window --focus $WIN_ID);
 
 fn - 0 : yabai -m space --balance
 fn - r : yabai -m space --rotate 90
 
 # float and center on screen
-alt + shift - f : yabai -m window --toggle float;\
-                  yabai -m window --grid 11:11:3:1:6:8
+# alt + shift - f : yabai -m window --toggle float;\
+#                   yabai -m window --grid 11:11:3:1:6:8
 hyper - c : yabai -m window --toggle float;\
             yabai -m window --grid 11:11:3:1:6:8
 fn - c : yabai -m window --toggle float;\
@@ -79,17 +79,17 @@ hyper - p : yabai -m window --toggle zoom-parent
 fn - p : yabai -m window --toggle zoom-parent
 
 # change split direction
-hyper - s : yabai -m window --toggle split
-hyper - v : yabai -m window --insert south
-hyper - h : yabai -m window --insert east
+alt - s : yabai -m window --toggle split
+# alt - g : yabai -m window --insert east
+alt - v : yabai -m window --insert south
 fn - s : yabai -m window --toggle split
+fn - g : yabai -m window --insert east
 fn - v : yabai -m window --insert south
-fn - h : yabai -m window --insert east
 
 # mirror window tree
 alt - y : yabai -m space --mirror y-axis
-hyper - y : yabai -m space --mirror y-axis
-hyper - x : yabai -m space --mirror x-axis
+# alt x is m-x in emacs
+alt - u : yabai -m space --mirror x-axis
 fn - y : yabai -m space --mirror y-axis
 fn - x : yabai -m space --mirror x-axis
 
@@ -156,10 +156,15 @@ shift + ctrl + alt + cmd - h : yabai -m window --grid 12:12:0:0:3:12
 shift + ctrl + alt + cmd - l : yabai -m window --grid 12:12:9:0:3:12
 
 # move windows across spaces without the scripting addition
-alt + shift - 1: yabai -m window --space 1; skhd -k "alt - 1" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 18 using option down'
-alt + shift - 2: yabai -m window --space 2; skhd -k "alt - 2" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 19 using option down'
-alt + shift - 3: yabai -m window --space 3; skhd -k "alt - 3" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 20 using option down'
-alt + shift - 4: yabai -m window --space 4; skhd -k "alt - 4" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 21 using option down'
+alt - 1: skhd -k "shift + ctrl - 1" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 18 using option down'
+alt - 2: skhd -k "shift + ctrl - 2" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 19 using option down'
+alt - 3: skhd -k "shift + ctrl - 3" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 20 using option down'
+alt - 4: skhd -k "shift + ctrl - 4" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 21 using option down'
+alt + shift - 1: yabai -m window --space 1; skhd -k "shift + ctrl - 1" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 18 using option down'
+alt + shift - 2: yabai -m window --space 2; skhd -k "shift + ctrl - 2" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 19 using option down'
+alt + shift - 3: yabai -m window --space 3; skhd -k "shift + ctrl - 3" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 20 using option down'
+alt + shift - 4: yabai -m window --space 4; skhd -k "shift + ctrl - 4" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 21 using option down'
 
 # kanbanize url
-shift + ctrl + alt + cmd - k: obb -e '(let [windows (-> (js/Application "Google Chrome") (.-windows))] (when (pos? (.-length windows)) (let [url (->> (or (-> windows (aget 0) .tabs) []) (map #(.url %)) (filter #(clojure.string/includes? % "kanbanize")) (vec) (first))] (when-let [kb (re-find #"[0-9]{4,}" url)] (str "KB-" (clojure.string/trim-newline kb))))))' | pbcopy && osascript -e 'tell application "System Events" to keystroke "v" using command down'
+#
+shift + ctrl + alt + cmd - k: osascript -l JavaScript -e '[].slice.call(((app) => (app && app.windows && app.windows[0] && app.windows[0].tabs) || [])(Application("Google Chrome"))).map((t) => t.url()).filter((url) => url.includes("kanbanize")).map((url) => new RegExp("([0-9]{4,})").exec(url)).filter((matches) => matches != null).map(([kbid]) => `KB-${kbid}`).join(" ").replace(/\r\n/g, "")' | pbcopy && osascript -e 'tell application "System Events" to keystroke "v" using command down';
