@@ -4,13 +4,14 @@
 
 # float some apps
 
-yabai -m rule --add app="^Emacs$" manage=on
-yabai -m rule --add app="^Emacs$" title="^$" layer=above manage=off # don't manage popups
+yabai -m rule --add app="^Emacs$" manage=off # toggle it on manually instead
+yabai -m rule --add app="^Emacs$" title="^$" layer=above manage=off # don't manage popups, make (company +childframe) work in doom emacs
 yabai -m rule --add app="^Slack" manage=on
 yabai -m rule --add app="^Übersicht$" manage=off
 yabai -m rule --add app="^CloudApp$" manage=off
 yabai -m rule --add app="^App Store$" manage=off
 yabai -m rule --add app="^Microsoft" manage=on # Teams, Outlook
+yabai -m rule --add app="Reminders" manage=off # X Reminders
 yabai -m rule --add app="^Install" manage=off
 yabai -m rule --add app="^Dictionary" manage=off
 yabai -m rule --add app="^System" manage=off
