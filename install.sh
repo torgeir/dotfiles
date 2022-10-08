@@ -39,6 +39,7 @@ case $(uname) in
   Darwin)
     for dotfile in \
       eslintrc \
+        gpg-agent.conf \
         screenrc \
         yabairc \
         skhdrc;
