@@ -1,3 +1,5 @@
+[[ -f "$HOME/.profile.priv" ]] && source ~/.profile.priv
+
 case $(uname) in
   Linux)
     # needs to be in .profile to load the theme correctly on manjaro
