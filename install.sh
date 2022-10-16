@@ -6,7 +6,7 @@ case $(uname) in
     sudo xcodebuild -license accept
 
     echo "installing nvm:"
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
     ;;
 esac
 
@@ -30,7 +30,9 @@ npm install -g http-server
 npm install -g npm-check-updates
 npm install -g browser-sync
 # emacs uses these
-npm install -g eslint babel-eslint jsonlint eslint-plugin-react prettier
+# TODO no it doesnt, any more
+#npm install -g eslint babel-eslint jsonlint eslint-plugin-react prettier
+npm install -g prettier typescript-language-server
 
 echo installing dotfiles:
 case $(uname) in
