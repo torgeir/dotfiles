@@ -23,15 +23,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-case $(uname) in
-  Linux)
-    export NVM_DIR="/usr/share/nvm/nvm.sh"
-    ;;
-  Darwin)
-    export NVM_DIR="$HOME/.nvm"
-    ;;
-esac
 # nvm use x is too slow for every shell
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
 # default is set by hand in exports
 
