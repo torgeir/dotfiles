@@ -70,10 +70,6 @@ export PATH=$HOME/.emacs.d/bin:$PATH
 
 #export DOCKER_HOST=tcp://torgqnap:2376 DOCKER_TLS_VERIFY=1 DOCKER_API_VERSION=1.23
 
-# make gpg from emacs prompt in shell (may need to open emacs from command line)
-# linux likes this.
-export GPG_TTY=$(tty)
-
 #
 # seems this is no longer needed?
 # running gpgconf --kill all followed by starting emacs triggers the gpg prompt
