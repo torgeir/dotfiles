@@ -108,6 +108,9 @@ alias sync-dirs="rsync -abviuzP"
 # https://stribika.github.io/2015/01/04/secure-secure-shell.html
 alias generate-ssh-key="ssh-keygen -t rsa -b 4096 -o -a 100"
 
+# preview formatted xml, e.g. with xmlformat *.xml | less
+alias xmlformat="xmllint --format"
+
 case $(uname) in
   Linux)
     # can't live without open . from os x
