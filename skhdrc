@@ -87,7 +87,8 @@ fn - g : yabai -m window --insert east
 fn - v : yabai -m window --insert south
 
 # mirror window tree
-alt - y : yabai -m space --mirror y-axis
+# alt y steals paste from kill ring emacs
+#alt - y : yabai -m space --mirror y-axis
 # alt x is m-x in emacs
 alt - u : yabai -m space --mirror x-axis
 fn - y : yabai -m space --mirror y-axis
