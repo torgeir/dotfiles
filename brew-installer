@@ -8,6 +8,7 @@ brew upgrade
 brew cleanup
 
 # stuff
+brew install --cask 1password/tap/1password-cli
 brew install --cask terminus
 brew install --cask terminus17
 brew install rg
@@ -17,10 +18,11 @@ brew install babashka/brew/obb # cljs scripting, like babashka
 brew install coreutils # os x ones are outdated
 #brew install findutils
 #brew install bash # bash 4
+brew install grip
 brew install git
 brew install gifsicle
 brew install neovim
-brew install boot-clj
+#brew install boot-clj
 brew tap d12frosted/emacs-plus
 brew install emacs-plus@28 --with-modern-black-variant-icon
 #brew install homebrew/emacs/w3
@@ -29,6 +31,7 @@ brew install glances
 brew install gnupg
 brew install tmux
 brew install tree
+brew install watch
 brew install hashicorp/tap/terraform-ls # terraform lsp
 brew install webkit2png
 brew install wget
