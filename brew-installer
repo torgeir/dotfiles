@@ -9,8 +9,8 @@ brew cleanup
 
 # stuff
 brew install --cask 1password/tap/1password-cli
-brew install --cask terminus
-brew install --cask terminus17
+brew install --cask temurin
+brew install --cask temurin17
 brew install rg
 brew install gh
 brew install borkdude/brew/babashka
