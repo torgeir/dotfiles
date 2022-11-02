@@ -79,7 +79,7 @@ select-word-style bash
 case $(uname) in
   Darwin)
     # zsh git completion needs git-completion.bash
-    zstyle ':completion:*:*:git:*' script /usr/local/Cellar/git/2.31.1/share/zsh/site-functions/git-completion.bash
+    zstyle ':completion:*:*:git:*' script /usr/local/Cellar/git/$(git --version | awk '{print $3}')/share/zsh/site-functions/git-completion.bash
     # load completions from brew
     fpath=(~/.zsh $fpath)
     fpath=($(brew --prefix)/share/zsh/5.8/site-functions $fpath)
