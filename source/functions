@@ -267,17 +267,19 @@ vterm_cmd() {
   done
   vterm_printf "51;E$vterm_elisp"
 }
-findfile() {
-  case $(uname) in
-    Darwin)
-      # torgeir: realpath is from brew coreutils
-      vterm_cmd find-file "$(/usr/local/opt/coreutils/libexec/gnubin/realpath "${@:-.}")"
-      ;;
-    Linux)
-      vterm_cmd find-file "$(/usr/bin/realpath "${@:-.}")"
-      ;;
-  esac
-}
+if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
+  e() {
+    case $(uname) in
+      Darwin)
+        # torgeir: realpath is from brew coreutils
+        vterm_cmd find-file "$(/usr/local/opt/coreutils/libexec/gnubin/realpath "${@:-.}")"
+        ;;
+      Linux)
+        vterm_cmd find-file "$(/usr/bin/realpath "${@:-.}")"
+        ;;
+    esac
+  }
+fi
 vterm_set_directory() {
   vterm_cmd update-pwd "$PWD/"
 }
