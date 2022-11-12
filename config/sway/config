@@ -113,6 +113,7 @@ exec swayidle -w \
     bindsym $mod+Ctrl+e exec 'swaymsg exit'
     bindsym $mod+Ctrl+s exec 'systemctl suspend'
     bindsym $mod+Ctrl+p exec 'systemctl poweroff'
+    bindsym $mod+Ctrl+l exec 'swaylock -f -c 000000'
 
     # media buttons
     bindsym XF86AudioPlay exec playerctl play-pause
