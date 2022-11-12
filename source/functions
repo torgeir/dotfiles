@@ -150,7 +150,7 @@ function m {
   echo $PWD > ~/.cur
 }
 function c {
-  if [ -f "~/.cur" ]; then
+  if [ -f "$HOME/.cur" ]; then
     builtin cd "$(cat ~/.cur)"
   else
     echo "No current directory set."
