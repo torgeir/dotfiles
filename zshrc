@@ -16,6 +16,9 @@ umask 77
 # so tty says "not a tty" if it happens after.
 export GPG_TTY=$(tty)
 
+# helps emacs vterm display the prompt
+echo
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -134,6 +137,3 @@ setopt appendhistory
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-
-# helps emacs vterm display the prompt
-echo
