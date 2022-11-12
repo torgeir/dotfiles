@@ -127,8 +127,11 @@ esac
 ssh-add -K ~/.ssh/id_rsa > /dev/null 2>&1
 
 # https://github.com/akermu/emacs-libvterm#directory-tracking-and-prompt-tracking
-autoload -U add-zsh-hook
-add-zsh-hook -Uz chpwd (){ vterm_set_directory }
+if command -v autoload &> /dev/null
+then
+  autoload -U add-zsh-hook
+  add-zsh-hook -Uz chpwd (){ vterm_set_directory }
+fi
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000

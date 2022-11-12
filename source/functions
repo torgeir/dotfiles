@@ -317,7 +317,6 @@ jdks() {
 }
 
 # Automatically change java version from .java-version file
-autoload -U add-zsh-hook
 _jdk_autoload_hook() {
   if [[ -f .java-version ]]; then
     echo "Found local .java-version in folder, switching to java version $(cat .java-version)"
@@ -325,4 +324,8 @@ _jdk_autoload_hook() {
   fi
 }
 
-add-zsh-hook chpwd _jdk_autoload_hook
+if command -v autoload &> /dev/null
+then
+  autoload -U add-zsh-hook
+  add-zsh-hook chpwd _jdk_autoload_hook
+fi
