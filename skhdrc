@@ -7,7 +7,10 @@
 cmd + shift - return [
   "emacs" : osascript ~/bin/chrome-new-tab.applescript
   "google chrome" : osascript ~/bin/chrome-new-tab.applescript
+  "slack" : osascript ~/bin/chrome-new-tab.applescript
+  "iterm" : osascript ~/bin/chrome-new-tab.applescript
   "finder" : osascript ~/bin/chrome-new-tab.applescript
+  "intellij idea" : ~
 ]
 
 cmd + shift + alt - return : open -na Google\ Chrome --args --profile-directory=Profile\ 1 "chrome://newtab" # --new-window
@@ -16,9 +19,12 @@ cmd + alt + ctrl - e : emacsclient --socket-name torgemacs --eval "(emacs-everyw
 
 cmd - return [
   # "emacs" : # dont catch this, s-return is bound in emacs
-  "zoom.us" : osascript ~/bin/iterm-new-tab.applescript
-  "finder" : osascript ~/bin/iterm-new-tab.applescript
-  "google chrome" : osascript ~/bin/iterm-new-tab.applescript
+  "slack" : emacsclient --socket-name torgemacs --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
+  "google chrome" : emacsclient --socket-name torgemacs --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
+  "finder" : folder=$(osascript -e 'tell application "Finder" to return (POSIX path of (folder of the front window as alias))') ; emacsclient --socket-name torgemacs --eval "(let ((default-directory \"$folder\")) (+vterm/here t))" ;  osascript -e 'tell application "Emacs" to activate';
+  "zoom.us" : emacsclient --socket-name torgemacs --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
+  "intellij idea" : emacsclient --socket-name torgemacs --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
+  "iterm" : osascript ~/bin/iterm-new-tab.applescript
 ]
 
 cmd + shift - h : open -a Finder -- ~/
