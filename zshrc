@@ -50,7 +50,8 @@ esac
 # jump around like z
 case $(uname) in
   Linux)
-    [[ -s /etc/profile.d/autojump.zsh ]] && source /etc/profile.d/autojump.zsh
+    [[ -s /home/torgeir/.autojump/etc/profile.d/autojump.sh ]] && source /home/torgeir/.autojump/etc/profile.d/autojump.sh
+    autoload -U compinit && compinit -u
     ;;
   Darwin)
     [ -f /usr/local/etc/profile.d/autojump.sh ] && source /usr/local/etc/profile.d/autojump.sh
