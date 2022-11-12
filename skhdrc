@@ -8,7 +8,7 @@ cmd + shift - return [
   "emacs" : osascript ~/bin/chrome-new-tab.applescript
   "google chrome" : osascript ~/bin/chrome-new-tab.applescript
   "slack" : osascript ~/bin/chrome-new-tab.applescript
-  "iterm" : osascript ~/bin/chrome-new-tab.applescript
+  "iterm2" : osascript ~/bin/chrome-new-tab.applescript
   "finder" : osascript ~/bin/chrome-new-tab.applescript
   "intellij idea" : ~
 ]
@@ -24,7 +24,7 @@ cmd - return [
   "finder" : folder=$(osascript -e 'tell application "Finder" to return (POSIX path of (folder of the front window as alias))') ; emacsclient --socket-name torgemacs --eval "(let ((default-directory \"$folder\")) (+vterm/here t))" ;  osascript -e 'tell application "Emacs" to activate';
   "zoom.us" : emacsclient --socket-name torgemacs --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
   "intellij idea" : emacsclient --socket-name torgemacs --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
-  "iterm" : osascript ~/bin/iterm-new-tab.applescript
+  "iterm2" : osascript ~/bin/iterm-new-tab.applescript
 ]
 
 cmd + shift - h : open -a Finder -- ~/
