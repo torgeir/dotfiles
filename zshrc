@@ -42,7 +42,7 @@ esac
 # manually
 [[ -d "$HOME/Code/powerlevel10k" ]] && source $HOME/Code/powerlevel10k/powerlevel10k.zsh-theme
 # arch
-[[ -d "/usr/share/zsh-theme-powerlevel10k" ]] && source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+[[ -d "$HOME/powerlevel10k" ]] && source $HOME/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
