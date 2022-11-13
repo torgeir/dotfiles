@@ -75,6 +75,7 @@ case $(uname) in
         pipewire \
         MangoHud \
         rofi \
+        mako \
         dunst \
         sway \
         yabridgectl \

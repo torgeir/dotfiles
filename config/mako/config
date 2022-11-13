@@ -1,0 +1,5 @@
+default-timeout=5000
+font=UKWN Iosevka 10
+
+[urgency=high]
+text-color=#CD3F45
