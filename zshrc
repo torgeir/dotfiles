@@ -114,18 +114,26 @@ case $(uname) in
     source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
     # The next line enables zsh completion for gcloud.
     source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+
+    # don't type the password on every git pull
+    ssh-add -K ~/.ssh/id_rsa > /dev/null 2>&1
     ;;
   Linux)
     if command -v ssh-agent &> /dev/null
     then
+      #SSH_AGENT_PID=""
+      #SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
+
       # launch ssh agent before ssh-add
-      eval `ssh-agent -s` > /dev/null 2>&1
+      #eval `ssh-agent -s` > /dev/null 2>&1
+
+      # https://wiki.archlinux.org/title/SSH_keys
+      # https://linuxhint.com/solve-gpg-decryption-failed-no-secret-key-error/
+      eval $(keychain --eval --quiet id_ed25519)
+      gpg-connect-agent updatestartuptty /bye >/dev/null
     fi
     ;;
 esac
-
-# don't type the password on every git pull
-ssh-add -K ~/.ssh/id_rsa > /dev/null 2>&1
 
 # https://github.com/akermu/emacs-libvterm#directory-tracking-and-prompt-tracking
 if command -v autoload &> /dev/null
