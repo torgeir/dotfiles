@@ -228,6 +228,18 @@ exec swayidle -w \
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+Ctrl+a scratchpad show
 
+# Screenshots
+    set $mode_screenshot "Screenshot: (s)election|(d)isplay|(w)indow|(p)ixel value"
+    mode $mode_screenshot {
+      bindsym s exec ~/dotfiles/config/sway/screenshot.sh s; mode "default"
+      bindsym d exec ~/dotfiles/config/sway/screenshot.sh d; mode "default"
+      bindsym w exec ~/dotfiles/config/sway/screenshot.sh w; mode "default"
+      bindsym p exec ~/dotfiles/config/sway/screenshot.sh p; mode "default"
+      bindsym Escape mode "default"
+
+    }
+    bindsym $mod+ctrl+Mod1+s mode $mode_screenshot
+
 bindsym Ctrl+$mod+Left resize shrink width 100px
 bindsym Ctrl+$mod+Down resize grow height 100px
 bindsym Ctrl+$mod+Up resize shrink height 100px
