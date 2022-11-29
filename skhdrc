@@ -179,5 +179,7 @@ alt + shift - 5: yabai -m window --space 5; skhd -k "shift + ctrl - 5"
 alt + shift - 6: yabai -m window --space 6; skhd -k "shift + ctrl - 6"
 
 # kanbanize url
-#
 shift + ctrl + alt + cmd - k: osascript -l JavaScript -e '[].slice.call(((app) => (app && app.windows && app.windows[0] && app.windows[0].tabs) || [])(Application("Google Chrome"))).map((t) => t.url()).filter((url) => url.includes("kanbanize")).map((url) => new RegExp("([0-9]{4,})").exec(url)).filter((matches) => matches != null).map(([kbid]) => `KB-${kbid}`).join(" ").replace(/\r\n/g, "")' | pbcopy && osascript -e 'tell application "System Events" to keystroke "v" using command down';
+
+# trello url
+shift + ctrl + alt + cmd - t: osascript -l JavaScript -e '[].slice.call(((app) => (app && app.windows && app.windows[0] && app.windows[0].tabs) || [])(Application("Google Chrome"))).map((t) => t.url()).filter((url) => url.includes("trello.com/c/")).map((url) => url.toString()).join(" ").replace(/\r\n/g, "")' | pbcopy && osascript -e 'tell application "System Events" to keystroke "v" using command down';
