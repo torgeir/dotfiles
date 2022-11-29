@@ -162,15 +162,21 @@ ctrl + alt + cmd - right : yabai -m window --grid 1:2:1:0:1:1
 shift + ctrl + alt + cmd - h : yabai -m window --grid 12:12:0:0:3:12
 shift + ctrl + alt + cmd - l : yabai -m window --grid 12:12:9:0:3:12
 
-# move windows across spaces without the scripting addition
-alt - 1: skhd -k "shift + ctrl - 1" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 18 using option down'
-alt - 2: skhd -k "shift + ctrl - 2" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 19 using option down'
-alt - 3: skhd -k "shift + ctrl - 3" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 20 using option down'
-alt - 4: skhd -k "shift + ctrl - 4" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 21 using option down'
-alt + shift - 1: yabai -m window --space 1; skhd -k "shift + ctrl - 1" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 18 using option down'
-alt + shift - 2: yabai -m window --space 2; skhd -k "shift + ctrl - 2" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 19 using option down'
-alt + shift - 3: yabai -m window --space 3; skhd -k "shift + ctrl - 3" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 20 using option down'
-alt + shift - 4: yabai -m window --space 4; skhd -k "shift + ctrl - 4" # sleep 0.1 && osascript -e 'tell application "System Events" to key code 21 using option down'
+# move windows across spaces without the scripting addition, and focus display with space
+alt - 1: skhd -k "shift + ctrl - 1"; yabai -m display --focus $(yabai -m query --spaces --space 1 | jq .display)
+alt - 2: skhd -k "shift + ctrl - 2"; yabai -m display --focus $(yabai -m query --spaces --space 2 | jq .display)
+alt - 3: skhd -k "shift + ctrl - 3"; yabai -m display --focus $(yabai -m query --spaces --space 3 | jq .display)
+alt - 4: skhd -k "shift + ctrl - 4"; yabai -m display --focus $(yabai -m query --spaces --space 4 | jq .display)
+alt - 5: skhd -k "shift + ctrl - 5"; yabai -m display --focus $(yabai -m query --spaces --space 5 | jq .display)
+alt - 6: skhd -k "shift + ctrl - 6"; yabai -m display --focus $(yabai -m query --spaces --space 6 | jq .display)
+# 7 conflicts with | on a norwegian keyboard
+
+alt + shift - 1: yabai -m window --space 1; skhd -k "shift + ctrl - 1"
+alt + shift - 2: yabai -m window --space 2; skhd -k "shift + ctrl - 2"
+alt + shift - 3: yabai -m window --space 3; skhd -k "shift + ctrl - 3"
+alt + shift - 4: yabai -m window --space 4; skhd -k "shift + ctrl - 4"
+alt + shift - 5: yabai -m window --space 5; skhd -k "shift + ctrl - 5"
+alt + shift - 6: yabai -m window --space 6; skhd -k "shift + ctrl - 6"
 
 # kanbanize url
 #
