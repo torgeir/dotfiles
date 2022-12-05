@@ -11,6 +11,7 @@ brew cleanup
 brew install --cask 1password/tap/1password-cli
 brew install --cask temurin
 brew install --cask temurin17
+brew install webp
 brew install rg
 brew install pyenv
 brew install gh
