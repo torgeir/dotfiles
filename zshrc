@@ -18,6 +18,7 @@ export GPG_TTY=$(tty)
 
 # helps emacs vterm display the prompt
 echo
+echo
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
