@@ -294,6 +294,7 @@ for_window [class="Brave-browser" title="Picture in picture"] floating enable st
 
 workspace 7
 exec spotify
+exec com.slack.Slack
 
 workspace 6
 exec dropbox
