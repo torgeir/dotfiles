@@ -19,7 +19,7 @@ case $(uname) in
     ;;
 esac
 
-NODE=v16
+NODE=v18
 nvm install $NODE
 nvm alias default $NODE
 nvm use $NODE
@@ -29,10 +29,6 @@ npm install -g npm
 npm install -g http-server
 npm install -g npm-check-updates
 npm install -g browser-sync
-# emacs uses these
-# TODO no it doesnt, any more
-#npm install -g eslint babel-eslint jsonlint eslint-plugin-react prettier
-npm install -g prettier typescript-language-server
 
 echo installing dotfiles:
 case $(uname) in
