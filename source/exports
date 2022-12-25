@@ -30,8 +30,8 @@ case $(uname) in
 esac
 
 # git
-export VISUAL="emacsclient --socket-name torgemacs"
-export EDITOR="emacsclient --socket-name torgemacs"
+export VISUAL="emacsclient"
+export EDITOR="emacsclient"
 
 # local bin
 export PATH=$HOME/bin:$PATH

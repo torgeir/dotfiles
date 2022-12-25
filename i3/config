@@ -73,7 +73,7 @@ bindsym Mod1+space exec --no-startup-id morc_menu
 #bindsym Ctrl+space exec --no-startup-id "rofi -show run"
 
 # open emacs to edit text from everywhere
-bindsym $mod+ctrl+Mod1+e exec "/usr/bin/emacsclient --socket-name torgemacs --eval '(progn (emacs-everywhere))'"
+bindsym $mod+ctrl+Mod1+e exec "/usr/bin/emacsclient --eval '(progn (emacs-everywhere))'"
 
 # sound-section
 #exec --no-startup-id volumeicon

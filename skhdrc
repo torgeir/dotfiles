@@ -15,15 +15,15 @@ cmd + shift - return [
 
 cmd + shift + alt - return : open -na Google\ Chrome --args --profile-directory=Profile\ 1 "chrome://newtab" # --new-window
 
-cmd + alt + ctrl - e : emacsclient --socket-name torgemacs --eval "(emacs-everywhere)"
+cmd + alt + ctrl - e : emacsclient --eval "(emacs-everywhere)"
 
 cmd - return [
   # "emacs" : # dont catch this, s-return is bound in emacs
-  "slack" : emacsclient --socket-name torgemacs --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
-  "google chrome" : emacsclient --socket-name torgemacs --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
-  "finder" : folder=$(osascript -e 'tell application "Finder" to return (POSIX path of (folder of the front window as alias))') ; emacsclient --socket-name torgemacs --eval "(let ((default-directory \"$folder\")) (+vterm/here t))" ;  osascript -e 'tell application "Emacs" to activate';
-  "zoom.us" : emacsclient --socket-name torgemacs --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
-  "intellij idea" : emacsclient --socket-name torgemacs --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
+  "slack" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
+  "google chrome" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
+  "finder" : folder=$(osascript -e 'tell application "Finder" to return (POSIX path of (folder of the front window as alias))') ; emacsclient  --eval "(let ((default-directory \"$folder\")) (+vterm/here t))" ;  osascript -e 'tell application "Emacs" to activate';
+  "zoom.us" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
+  "intellij idea" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
   "iterm2" : osascript ~/bin/iterm-new-tab.applescript
 ]
 
