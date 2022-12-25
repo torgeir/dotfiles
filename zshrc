@@ -131,6 +131,8 @@ case $(uname) in
       # https://wiki.archlinux.org/title/SSH_keys
       # https://linuxhint.com/solve-gpg-decryption-failed-no-secret-key-error/
       eval $(keychain --eval --quiet id_ed25519)
+
+      # if you use multiple terminals simultaneously and want gpg-agent to ask for passphrase via pinentry-curses from the same terminal
       gpg-connect-agent updatestartuptty /bye >/dev/null
     fi
     ;;
@@ -154,3 +156,36 @@ then
   command  -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init -)"
 fi
+
+# gpg
+# 
+# Test decryption
+#   gpg --no-tty -q --batch -d ~/.authinfo.gpg
+#
+# Reload gpg agent
+#  killall gpg-agent && gpg-connect-agent reloadagent /bye 
+#
+# Sign something to check presens of cached key
+#   echo "1234" | gpg --local-user 77836712DAEA8B95 -as -
+#   echo "1234" | gpg --local-user 922E681804CA8D82F1FAFCB177836712DAEA8B95 -as -
+# 
+case $(uname) in
+  Darwin)
+
+    # Nescessary to make the following passphrase preset to work
+    gpg-connect-agent updatestartuptty /bye >/dev/null
+
+    # Preset it from 1password. Try signing with it first, only preset it if it fails.
+    # https://stackoverflow.com/questions/11381123/how-to-use-gpg-command-line-to-check-passphrase-is-correct
+    PRESET_KEY=$(gpg --pinentry-mode error --local-user 922E681804CA8D82F1FAFCB177836712DAEA8B95 -aso /dev/null <(echo 1234) 2>/dev/null && echo "yes" || echo "no")
+    if [ "$PRESET_KEY" = "no" ]; then
+      $(gpgconf --list-dirs libexecdir)/gpg-preset-passphrase \
+        -c \
+        -P "$(op item get keybase.io --format json | jq -j '.fields[] | select(.id == "password") | .value')" \
+        $(gpg --fingerprint --with-keygrip torgeir@keybase.io | awk '/Keygrip/ {print $3}' | tail -n 1)
+    fi
+
+    # I don't get this, but the first time around, after the initial signing (gpg -as) failed in the previous step, I need to actually use the key to make the agent cache it. Decrypt an encrypted file to make it stick.
+    gpg -q --batch -d ~/.authinfo.gpg > /dev/null
+  ;;
+esac

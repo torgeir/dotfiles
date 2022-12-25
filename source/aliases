@@ -111,6 +111,9 @@ alias generate-ssh-key="ssh-keygen -t rsa -b 4096 -o -a 100"
 # preview formatted xml, e.g. with xmlformat *.xml | less
 alias xmlformat="xmllint --format"
 
+# kill gpg agent
+alias kill-gpg-agent="killall gpg-agent && gpg-connect-agent reloadagent /bye"
+
 case $(uname) in
   Linux)
     # can't live without open . from os x

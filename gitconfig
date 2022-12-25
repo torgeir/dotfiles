@@ -1,8 +1,13 @@
 [init]
   defaultBranch = main
+
+[commit]
+  gpgsign = true
+
 [user]
   name = Torgeir Thoresen
   email = torgeir.thoresen@gmail.com
+  signingkey = 77836712DAEA8B95
 
 [alias]
   br = branch
