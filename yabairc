@@ -18,6 +18,8 @@ yabai -m rule --add app="^Slack" manage=on
 
 yabai -m rule --add app="IntelliJ IDEA" manage=off
 
+yabai -m rule --add app="Sonos S1 Controller" manage=off
+
 yabai -m rule --add app="^Google Chrome$" manage=on
 yabai -m rule --add app="^Google Chrome$" title="^Picture in Picture$" manage=off layer=above
 
