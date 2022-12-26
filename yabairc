@@ -1,36 +1,41 @@
 #!/usr/bin/env bash
-
-#yabai -m rule --add app="iTerm" space=1
+# yabai -m query --windows | jq '.[].app'
+# yabai -m query --windows | jq '.[] | select(.app == "iTerm2") | .title'
 
 # float some apps
+yabai -m rule --add app="^Emacs$" manage=off
+yabai -m rule --add app="^Emacs$" subrole="AXStandardWindow" manage=on
 
-yabai -m rule --add app="^Emacs$" manage=off # toggle it on manually instead
-yabai -m rule --add app="^Emacs$" title="^$" layer=above manage=off # don't manage popups, make (company +childframe) work in doom emacs
-yabai -m rule --add app="^Slack" manage=on
-yabai -m rule --add app="^Übersicht$" manage=off
-yabai -m rule --add app="^CloudApp$" manage=off
 yabai -m rule --add app="^App Store$" manage=off
-yabai -m rule --add app="^Microsoft" manage=on # Teams, Outlook
-yabai -m rule --add app="Reminders" manage=off # X Reminders
 yabai -m rule --add app="^Install" manage=off
 yabai -m rule --add app="^Dictionary" manage=off
 yabai -m rule --add app="^System" manage=off
 yabai -m rule --add app="^Problem Report" manage=off
+
+yabai -m rule --add app="^Microsoft" manage=on # Teams, Outlook
+yabai -m rule --add app="Reminders" manage=off # X Reminders
+yabai -m rule --add app="^Slack" manage=on
+
 yabai -m rule --add app="IntelliJ IDEA" manage=off
-yabai -m rule --add app="^Google Chrome$" title="^Picture in Picture$" manage=on
+
+yabai -m rule --add app="^Google Chrome$" manage=on
+yabai -m rule --add app="^Google Chrome$" title="^Picture in Picture$" manage=off layer=above
+
 # show digital colour meter topmost and on all spaces
 # sticky doesnt work without more liberal yabai scripting than you enabled..
 yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on layer=above manage=off
+
+yabai -m rule --add title="1Password$" manage=off layer=above
+yabai -m rule --add title="^Settings$" manage=off layer=above
 
 # make space switching work without disabling sip
 yabai -m config mouse_follows_focus off
 yabai -m config focus_follows_mouse off
 
 # move and resize with mouse
-# TODO torgeir cmd stjeler cmd+click i chrome...
-#yabai -m config mouse_modifier alt
-#yabai -m config mouse_action1 move
-#yabai -m config mouse_action2 resize
+yabai -m config mouse_modifier alt
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
 
 # set layout
 yabai -m config layout bsp
