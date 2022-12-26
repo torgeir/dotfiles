@@ -212,3 +212,10 @@ case $(uname) in
     gpg -q --batch -d ~/.authinfo.gpg > /dev/null
   ;;
 esac
+
+
+case $(uname) in
+  Darwin)
+    test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+;;
+esac
