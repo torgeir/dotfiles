@@ -93,6 +93,7 @@ alias merge-pdfs="/usr/local/bin/gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOut
 alias brew-list-installed="brew list | xargs brew desc --eval-all"
 
 alias gcloud-set-project="gcloud config set project"
+alias gcloud-get-project="gcloud config get project"
 alias gcloud-describe-role="gcloud iam roles describe"
 alias sourcegauth="source $HOME/Code/gauth/gauth.sh"
 
