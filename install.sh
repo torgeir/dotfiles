@@ -74,6 +74,7 @@ case $(uname) in
         mako \
         dunst \
         sway \
+        xkb \
         yabridgectl \
         qt5ct \
         dmenu-recent;

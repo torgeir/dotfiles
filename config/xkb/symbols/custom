@@ -1,0 +1,14 @@
+# setxkbmap -model applealu_iso -layout no -print > .xkb/symbols/custom
+xkb_keymap {
+	xkb_keycodes  { include "evdev+aliases(qwerty)"	};
+	xkb_types     { include "complete+numpad(mac)"	};
+	xkb_compat    { include "complete"	};
+	xkb_symbols   {
+      include "macintosh_vndr/apple(alukbd)+macintosh_vndr/no+inet(evdev)"
+
+      # torgeir: The quote key on a norwegian mac keyboard is somehow fixed by this.
+      # I have no idea why it returns a tilde.
+      replace key <TLDE> { [ apostrophe ] };
+    };
+	xkb_geometry  { include "macintosh(applealu_iso)"	};
+};
