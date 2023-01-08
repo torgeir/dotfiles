@@ -4,10 +4,12 @@ case $(uname) in
   Linux)
     alias l="ls -GF --color"
     alias la="ls -laGFh --color"
+    alias ll="ls -laGFh --color"
     ;;
   Darwin)
     alias l="ls -GF"
     alias la="ls -laGFh"
+    alias ll="ls -laGFh"
     ;;
 esac
 alias grep="grep --color=always"
