@@ -285,6 +285,7 @@ for_window [class="REAPER" title="^LV2.*"] floating enable
 for_window [class="REAPER" title="^JS.*"] floating enable
 for_window [class="REAPER" title="^VST.*"] floating enable
 
+for_window [title="^Psensor.*"] resize set height 200px
 
 # todo
 # funktitj
