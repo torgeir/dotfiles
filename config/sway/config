@@ -34,7 +34,8 @@ output HDMI-A-1 {
 }
 output DP-2 {
   # torgeir: this is buggy with sway, sept 2022
-  #position 2560,-1150
+  # torgeir: still not ok, 2023-01
+  # position 2560,-1150
   #position 0,0
   bg ~/Documents/Backgrounds/Flat/firewatch-deer-forest-night-games-1567.jpg fill
   transform 270
