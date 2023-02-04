@@ -18,11 +18,14 @@ set $browser brave
 # on the original workspace that the command was run on.
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
+# List inputs
+#   swaymsg -t get_inputs
 input type:keyboard {
   xkb_file "~/.config/xkb/symbols/custom"
 }
 
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+# List outputs
+#   swaymsg -t get_outputs
 output * {
   #bg ~/Pictures/Backgrounds/2020/firewatch-landscape-forest-minimalistic-games-6993.jpg fill
   bg ~/Documents/Backgrounds/Flat/minimalism-scenic-toon-colors-deer-sun-forest-trees-mountain-others-5458.jpg fill
@@ -71,19 +74,10 @@ exec swayidle -w \
          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f -c 000000'
 
-### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
+# Focus a window
+#   swaymsg "[class=Emacs] focus"
+# More
+#   man 5 sway-input
 
 ### Key bindings
     # Start a terminal
@@ -108,8 +102,7 @@ exec swayidle -w \
     #bindsym $mod+Shift+c reload
     bindsym $mod+Ctrl+c reload
 
-    # Exit sway (logs you out of your Wayland session)
-    #bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    # Exit
     bindsym $mod+Ctrl+e exec 'swaymsg exit'
     bindsym $mod+Ctrl+s exec 'systemctl suspend'
     bindsym $mod+Ctrl+p exec 'systemctl poweroff'
@@ -119,6 +112,7 @@ exec swayidle -w \
     bindsym XF86AudioPlay exec playerctl play-pause
     bindsym XF86AudioNext exec playerctl next
     bindsym XF86AudioPrev exec playerctl previous
+
 #
 # Moving around:
 #
@@ -143,6 +137,7 @@ exec swayidle -w \
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
+
 #
 # Workspaces:
 #
