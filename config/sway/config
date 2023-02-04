@@ -82,7 +82,7 @@ exec swayidle -w \
 ### Key bindings
     # Start a terminal
     #bindsym $mod+Return exec $term
-    bindsym $mod+Return exec emacsclient --eval '(let ((default-directory (t/read-file "~/.cur"))) (with-selected-frame (make-frame) (+vterm/here t)))'
+    bindsym $mod+Return exec emacsclient --eval '(let ((default-directory (t/read-file "~/.cur"))) (if (frame-focus-state) (+vterm/here t) (with-selected-frame (make-frame) (+vterm/here t))))'
     # swaymsg "[class=Emacs] focus"
     bindsym $mod+Shift+Return exec $browser
     bindsym $mod+n exec dolphin
