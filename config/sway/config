@@ -297,9 +297,9 @@ exec dropbox
 exec corectrl
 
 workspace 5
-exec alacritty -e btop
-exec psensor
 exec alacritty -e journalctl -f
+exec psensor
+exec alacritty -e btop
 
 workspace 4
 exec qpwgraph
