@@ -94,6 +94,7 @@ alias gcloud-set-project="gcloud config set project"
 alias gcloud-get-project="gcloud config get project"
 alias gcloud-describe-role="gcloud iam roles describe"
 alias sourcegauth="source $HOME/Code/gauth/gauth.sh"
+alias tg="terragrunt"
 
 # -i turns on the itemized format, which shows more information than the default format
 # -b makes rsync backup files that exist in both folders, appending ~ to the old file. You can control this suffix with --suffix .suf
