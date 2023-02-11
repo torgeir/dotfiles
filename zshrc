@@ -14,7 +14,10 @@ umask 77
 # linux likes this.
 # Note, needs to happen before powerlevel10 instant prompt, it redirects too /dev/null
 # so tty says "not a tty" if it happens after.
-export GPG_TTY=$(tty)
+# export GPG_TTY=$(tty)
+# TODO this is supposed to be faster?
+# https://github.com/romkatv/powerlevel10k#how-do-i-export-gpg_tty-when-using-instant-prompt
+export GPG_TTY=$TTY
 
 # helps emacs vterm display the prompt
 echo
