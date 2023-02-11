@@ -29,6 +29,7 @@ brew tap d12frosted/emacs-plus
 brew install emacs-plus@28 --with-modern-black-variant-icon --with-native-comp
 #brew install homebrew/emacs/w3
 brew install jq # cmd line json parsing
+brew install exa
 brew install glances
 brew install gnupg
 brew install tmux

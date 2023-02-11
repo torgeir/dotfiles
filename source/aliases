@@ -1,19 +1,10 @@
 #!/bin/bash
 # ls
-case $(uname) in
-  Linux)
-    alias l="ls -GF --color"
-    alias la="ls -laGFh --color"
-    alias ll="ls -laGFh --color"
-    ;;
-  Darwin)
-    alias l="ls -GF"
-    alias la="ls -laGFh"
-    alias ll="ls -laGFh"
-    ;;
-esac
+alias l="exa --icons"
+alias la="exa --icons --long --all --group --classify"
+alias ll="exa --icons --long --all --group --classify"
+
 alias grep="grep --color=always"
-#alias ls="ls -GF --color"
 
 # local ip
 alias whatsmyip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -73,9 +64,14 @@ alias gadd-origin-pr='git config --add remote.origin.fetch \"+refs/pull/*/head:r
 # go to git root
 alias gr='cd $(git rev-parse --show-toplevel)'
 
-alias ..='cd ..'
-alias ...='cd ../..'
+alias   ..='cd ..'
+alias  ...='cd ../..'
 alias ....='cd ../../..'
+
+alias    t='exa --tree --level 1'
+alias   tt='exa --tree --level 2'
+alias  ttt='exa --tree --level 3'
+alias tttt='exa --tree --level 4'
 
 # less
 #alias less='less -m -N -g -i -J --underline-special --SILENT'
