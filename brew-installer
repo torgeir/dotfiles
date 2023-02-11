@@ -18,6 +18,7 @@ brew install gh
 brew install borkdude/brew/babashka
 brew install babashka/brew/obb # cljs scripting, like babashka
 brew install coreutils # os x ones are outdated
+brew install gnu-sed
 #brew install findutils
 #brew install bash # bash 4
 brew install grip
