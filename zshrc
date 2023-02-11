@@ -19,10 +19,6 @@ umask 77
 # https://github.com/romkatv/powerlevel10k#how-do-i-export-gpg_tty-when-using-instant-prompt
 export GPG_TTY=$TTY
 
-# helps emacs vterm display the prompt
-echo
-echo
-
 # load zsh plugins
 for plug in \
   $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh \
