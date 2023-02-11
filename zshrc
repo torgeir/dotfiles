@@ -246,3 +246,16 @@ setopt AUTO_PUSHD PUSHD_SILENT PUSHD_TO_HOME
 setopt PUSHD_IGNORE_DUPS
 ## This reverts the +/- operators.
 setopt PUSHD_MINUS
+
+# directory keybindings, c-up and c-down
+cd_undo()   { popd     && zle accept-line }
+cd_parent() { pushd .. && zle accept-line }
+zle -N cd_parent
+zle -N cd_undo
+bindkey '^[[1;5A' cd_parent
+bindkey '^[[1;5B' cd_undo
+
+# exit even with content written
+exit_zsh() { exit }
+zle -N exit_zsh
+bindkey '^D' exit_zsh
