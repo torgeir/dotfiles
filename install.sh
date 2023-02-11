@@ -21,7 +21,12 @@ echo installing modules:
 npm install -g npm \
   http-server \
   npm-check-updates \
+  eslint \
+  eslint-plugin-react \
+  nodemon \
+  npm-check-updates \
   prettier \
+  pyright \
   ts-node \
   typescript \
   typescript-language-server \
