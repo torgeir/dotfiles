@@ -70,14 +70,6 @@ function prompt_t_gcloud () {
   local cyan='#9AEDFE'
   local white='#F1F1F0'
 
-  # TODO torgeir
-  # typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
-  
-  typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=39
-  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=10
-  typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=true
-  # typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
-
   typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_ON_COMMAND="python|python3|pip|pip3"
   typeset -g POWERLEVEL9K_T_TERRAFORM_SHOW_ON_COMMAND="terraform|tfenv"
   typeset -g POWERLEVEL9K_T_TERRAGRUNT_SHOW_ON_COMMAND="terragrunt|tgenv"
@@ -114,7 +106,7 @@ function prompt_t_gcloud () {
     t_java
     t_node
 
-    # TODO torgeir too slow
+    # torgeir too slow
     # t_terraform
     # t_terragrunt
     # =========================[ Line #2 ]=========================
@@ -183,30 +175,26 @@ function prompt_t_gcloud () {
   # Cyan ahead/behind arrows.
   typeset -g POWERLEVEL9K_VCS_{INCOMING,OUTGOING}_CHANGESFORMAT_FOREGROUND=$cyan
 
-  # TODO torgeir
   # Don't show remote branch, current tag or stashes.
   # typeset -g POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind)
   # 
-  # Don't show the branch icon.
-  # TODO torgeir
-  # typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=
+  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON="%F{green} "
   # When in detached HEAD state, show @commit where branch normally goes.
   typeset -g POWERLEVEL9K_VCS_COMMIT_ICON='@'
 
   # Don't show staged, unstaged, untracked indicators.
-  # TODO torgeir
-  # typeset -g POWERLEVEL9K_VCS_{STAGED,UNSTAGED,UNTRACKED}_ICON=
   # 
   # Show '*' when there are staged, unstaged or untracked files.
-  typeset -g POWERLEVEL9K_VCS_DIRTY_ICON='*'
-  # Show '⇣' if local branch is behind remote.
-  typeset -g POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=':⇣'
-  # Show '⇡' if local branch is ahead of remote.
-  typeset -g POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=':⇡'
-  # Don't show the number of commits next to the ahead/behind arrows.
+  typeset -g POWERLEVEL9K_VCS_DIRTY_ICON='%F{red}*'
+  typeset -g POWERLEVEL9K_VCS_STAGED_ICON="%F{yellow}+"
+  typeset -g POWERLEVEL9K_VCS_UNSTAGED_ICON="%F{blue}!"
+  typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON="%F{cyan}?"
+  typeset -g POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='⇣'
+  typeset -g POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='⇡'
   typeset -g POWERLEVEL9K_VCS_{COMMITS_AHEAD,COMMITS_BEHIND}_MAX_NUM=10
-  # Remove space between '⇣' and '⇡' and all trailing spaces.
-  typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION='${${${P9K_CONTENT/⇣* :⇡/⇣⇡}// }//:/ }'
+  # Keep space before * and after branch symbol
+  typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION='${${${P9K_CONTENT// /}//\*/ *}/// }'
+
 
   # Grey current time.
   typeset -g POWERLEVEL9K_TIME_FOREGROUND=$cyan
@@ -215,7 +203,7 @@ function prompt_t_gcloud () {
   # If set to true, time will update when you hit enter. This way prompts for the past
   # commands will contain the start times of their commands rather than the end times of
   # their preceding commands.
-  typeset -g POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=false
+  typeset -g POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=true
 
   # Transient prompt works similarly to the builtin transient_rprompt option. It trims down prompt
   # when accepting a command line. Supported values:
