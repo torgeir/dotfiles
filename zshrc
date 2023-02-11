@@ -41,8 +41,11 @@ fi
 
 # prompt install
 if [[ ! -d "$HOME/powerlevel10k" ]]; then
+  pushd $HOME
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git
+  source $HOME/powerlevel10k/powerlevel10k.zsh-theme
   p10k configure
+  popd
 fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
