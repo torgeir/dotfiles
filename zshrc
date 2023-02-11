@@ -38,6 +38,11 @@ if [ -f $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
   bindkey "^N" history-substring-search-down
 fi
 
+if [ -f $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+  # accept with <tab>
+  bindkey "^I" autosuggest-toggle
+fi
+
 # prompt install
 if [[ ! -d "$HOME/powerlevel10k" ]]; then
   pushd $HOME
