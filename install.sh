@@ -6,18 +6,11 @@ case $(uname) in
     sudo xcodebuild -license accept
 
     echo "installing nvm:"
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
     ;;
 esac
 
-case $(uname) in
-  Darwin)
-    source "~/.nvm/nvm.sh"
-    ;;
-  Linux)
-    source "/usr/share/nvm/nvm.sh"
-    ;;
-esac
+source $HOME/.nvm/nvm.sh
 
 NODE=v18
 nvm install $NODE
@@ -25,10 +18,14 @@ nvm alias default $NODE
 nvm use $NODE
 
 echo installing modules:
-npm install -g npm
-npm install -g http-server
-npm install -g npm-check-updates
-npm install -g browser-sync
+npm install -g npm \
+  http-server \
+  npm-check-updates \
+  prettier \
+  ts-node \
+  typescript \
+  typescript-language-server \
+  bash-language-server;
 
 echo installing dotfiles:
 case $(uname) in
