@@ -53,7 +53,6 @@ case $(uname) in
         gtkrc-2.0 \
         inputrc \
         profile \
-        zshrc \
         zlogin;
     do
       echo installing ~/.$dotfile
@@ -88,12 +87,17 @@ esac
 # everywhere
 for dotfile in \
   inputrc \
+    zsh \
+    zshrc \
     gitconfig \
     tmux.conf;
 do
   echo installing ~/.$dotfile
   ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
 done
+
+echo installing zsh plugins
+bash $HOME/.zsh/install.sh
 
 # preloads for boot clj
 mkdir -p $HOME/.boot

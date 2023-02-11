@@ -20,6 +20,25 @@ export GPG_TTY=$(tty)
 echo
 echo
 
+# load zsh plugins
+for plug in \
+  $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh \
+  $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+  $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh ;
+do
+  if [ -f $plug ]; then
+    #echo "Loading plugin $plug"
+    source $plug
+  fi
+
+done
+
+if [ -f $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh ]; then
+  # debug these codes with cat -v
+  bindkey "^P" history-substring-search-up
+  bindkey "^N" history-substring-search-down
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
