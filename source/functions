@@ -204,6 +204,12 @@ function share-vid-as-gif () {
   echo "public.wa.gd/$1.gif" | pbcopy
 }
 
+function yabai-query-windows () {
+  yabai -m query --windows | jq ".[] | .app, .title"
+  # TODO if $1
+  #yabai -m query --windows | jq ".[] | select(.app == \"$1\") | .title"
+}
+
 # Change working directory to the top-most Finder window location
 function cdf () {
   cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
