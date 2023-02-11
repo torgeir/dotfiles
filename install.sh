@@ -84,6 +84,7 @@ esac
 # everywhere
 for dotfile in \
   inputrc \
+    p10k.zsh \
     zsh \
     zshrc \
     gitconfig \
