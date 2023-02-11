@@ -102,18 +102,5 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 export DVM_DIR="$HOME/.dvm"
 export PATH="$DVM_DIR/bin:$PATH"
 
-# TODO is this needed after python3 venvs?
-# python virtualenv
-case $(uname) in
-  Darwin)
-    export WORKON_HOME="$HOME/.virtualenvs"
-    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
-    export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
-    # its too slow
-    #source /usr/local/bin/virtualenvwrapper.sh
-    ;;
-esac
-
-
 # https://github.com/GoogleCloudPlatform/gsutil/issues/576#issuecomment-559613825
 export CLOUDSDK_PYTHON=python3
