@@ -39,6 +39,12 @@ if [ -f $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
   bindkey "^N" history-substring-search-down
 fi
 
+# prompt install
+if [[ ! -d "$HOME/powerlevel10k" ]]; then
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git
+  p10k configure
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -57,11 +63,9 @@ case $(uname) in
     ;;
 esac
 
+# TODO delete?
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# manually
-[[ -d "$HOME/Code/powerlevel10k" ]] && source $HOME/Code/powerlevel10k/powerlevel10k.zsh-theme
-# arch
 [[ -d "$HOME/powerlevel10k" ]] && source $HOME/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
