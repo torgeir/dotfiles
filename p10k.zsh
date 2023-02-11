@@ -168,6 +168,8 @@ function prompt_t_gcloud () {
   # indistinguishable from large Git repositories without known state.
   typeset -g POWERLEVEL9K_VCS_LOADING_TEXT=
 
+  typeset -g POWERLEVEL9K_VCS_TAG_ICON="X"
+
   # Don't wait for Git status even for a millisecond, so that prompt always updates
   # asynchronously when Git state changes.
   typeset -g POWERLEVEL9K_VCS_MAX_SYNC_LATENCY_SECONDS=0
@@ -178,22 +180,22 @@ function prompt_t_gcloud () {
   # Don't show remote branch, current tag or stashes.
   # typeset -g POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind)
   # 
-  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON="%F{green} "
+  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON="%F{green}X"
   # When in detached HEAD state, show @commit where branch normally goes.
   typeset -g POWERLEVEL9K_VCS_COMMIT_ICON='@'
 
   # Don't show staged, unstaged, untracked indicators.
   # 
   # Show '*' when there are staged, unstaged or untracked files.
-  typeset -g POWERLEVEL9K_VCS_DIRTY_ICON='%F{red}*'
+  typeset -g POWERLEVEL9K_VCS_DIRTY_ICON='X%F{red}*'
   typeset -g POWERLEVEL9K_VCS_STAGED_ICON="%F{yellow}+"
   typeset -g POWERLEVEL9K_VCS_UNSTAGED_ICON="%F{blue}!"
   typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON="%F{cyan}?"
   typeset -g POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='⇣'
   typeset -g POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='⇡'
   typeset -g POWERLEVEL9K_VCS_{COMMITS_AHEAD,COMMITS_BEHIND}_MAX_NUM=10
-  # Keep space before * and after branch symbol
-  typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION='${${${P9K_CONTENT// /}//\*/ *}/// }'
+  # Remove all spaces, replace X with spaces
+  typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION='${${P9K_CONTENT// /}//\X/ }'
 
 
   # Grey current time.

@@ -38,6 +38,7 @@ if [ -f $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
   bindkey "^N" history-substring-search-down
 fi
 
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 if [ -f $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
   # toggle off with <s-tab>
   bindkey "^[[Z" autosuggest-toggle
@@ -128,9 +129,9 @@ setopt interactivecomments
 setopt HIST_IGNORE_SPACE
 
 autoload -Uz compinit && compinit -u
+
 # enable ctrl-x-e to edit command line
 autoload -U edit-command-line
-
 # emacs style
 zle -N edit-command-line
 bindkey '^xe' edit-command-line
