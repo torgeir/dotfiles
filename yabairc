@@ -7,13 +7,15 @@ yabai -m rule --add app="^Emacs$" manage=off
 yabai -m rule --add app="^Emacs$" subrole="AXStandardWindow" manage=on
 
 yabai -m rule --add app="^App Store$" manage=off
+yabai -m rule --add app="^Archive Utility$" manage=off
 yabai -m rule --add app="^Install" manage=off
 yabai -m rule --add app="^Dictionary" manage=off
+yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^System" manage=off
 yabai -m rule --add app="^Problem Report" manage=off
 
 yabai -m rule --add app="^Microsoft" manage=on # Teams, Outlook
-yabai -m rule --add app="Reminders" manage=off # X Reminders
+yabai -m rule --add app="^Microsoft" title="Reminders?$" manage=off # n Reminder[s]
 yabai -m rule --add app="^Slack" manage=on
 
 yabai -m rule --add app="IntelliJ IDEA" manage=off
