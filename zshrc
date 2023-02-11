@@ -39,8 +39,8 @@ if [ -f $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 fi
 
 if [ -f $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
-  # accept with <tab>
-  bindkey "^I" autosuggest-toggle
+  # toggle off with <s-tab>
+  bindkey "^[[Z" autosuggest-toggle
 fi
 
 # prompt install
@@ -135,6 +135,9 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
+
+# find new executables in $PATH automatically
+zstyle ':completion:*' rehash true
 
 # peder sin gauth
 # source $HOME/Code/gauth/gauth.sh
