@@ -15,9 +15,9 @@ export USER_FULLNAME=Torgeir\ Thoresen
 
 # node
 export NODE_ENV=development
-#export NODE_PATH=/usr/local/lib/jsctags/:$NODE_PATH
 # set the default nvm node by hand
-export PATH="$HOME/.nvm/versions/node/v16.13.1/bin:$PATH"
+export NODE_VERSION=v18.14.0
+export PATH="$HOME/.nvm/versions/node/$NODE_VERSION/bin:$PATH"
 
 # utf-8!
 case $(uname) in
