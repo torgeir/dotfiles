@@ -128,13 +128,15 @@ zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 autoload -U select-word-style
 select-word-style bash
 
+# load custom completions, e.g. from brew
+fpath=(~/.zsh $fpath)
+
 case $(uname) in
   Darwin)
     # zsh git completion needs git-completion.bash
     zstyle ':completion:*:*:git:*' script /usr/local/Cellar/git/$(git --version | awk '{print $3}')/share/zsh/site-functions/git-completion.bash
-    # load completions from brew
-    fpath=(~/.zsh $fpath)
-    fpath=($(brew --prefix)/share/zsh/5.8/site-functions $fpath)
+    # TODO torgeir still works after extracting 5.8?
+    fpath=($(brew --prefix)/share/zsh/$(zsh --version | cut -d " " -f2)/site-functions $fpath)
     ;;
 esac
 
