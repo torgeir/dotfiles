@@ -44,6 +44,10 @@ if [ -f $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
   bindkey "^T" autosuggest-toggle
 fi
 
+# e.g. C-o describe-key-briefly <ret>
+bindkey '^O' execute-named-cmd
+bindkey '^H' describe-key-briefly
+
 # prompt install
 if [[ ! -d "$HOME/powerlevel10k" ]]; then
   pushd $HOME
