@@ -313,7 +313,7 @@ jdk() {
       ;;
     Linux)
       sudo archlinux-java set $version
-      echo "jdk $(sudo archlinux get $version)"
+      echo "jdk $(archlinux-java get)"
       ;;
   esac
 }
