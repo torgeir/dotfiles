@@ -40,8 +40,8 @@ fi
 
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 if [ -f $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
-  # toggle off with <s-tab>
-  bindkey "^[[Z" autosuggest-toggle
+  # toggle off with <s-tab> - no, s-tab to complete backwards is useful
+  bindkey "^T" autosuggest-toggle
 fi
 
 # prompt install
