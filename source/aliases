@@ -1,8 +1,8 @@
 #!/bin/bash
 # ls
 alias l="exa"
-alias la="exa --oneline --all --group --classify"
-alias ll="exa --all --group --classify"
+alias ll="exa --oneline --all --group --classify"
+alias la="exa --all --group --classify"
 
 alias grep="grep --color=always"
 
