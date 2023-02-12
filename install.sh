@@ -36,6 +36,7 @@ echo installing dotfiles:
 case $(uname) in
   Darwin)
     for dotfile in \
+      ideavimrc \
       eslintrc \
         gpg-agent.conf \
         screenrc \
