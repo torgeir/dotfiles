@@ -5,7 +5,14 @@ function prompt_t_node () {
 }
 
 function prompt_t_java () {
-  p10k segment -t "%F{green}$(/usr/libexec/java_home | tr "/" " " | awk '{print $4}')"
+  case $(uname) in
+    Linux)
+      p10k segment -t "%F{green}$(archlinux-java get)"
+      ;;
+    Darwin)
+      p10k segment -t "%F{green}$(/usr/libexec/java_home | tr "/" " " | awk '{print $4}')"
+    ;;
+  esac
 }
 
 function prompt_t_terraform () {
