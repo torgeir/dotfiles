@@ -105,8 +105,25 @@ case $(uname) in
     ;;
 esac
 
-# complete directories
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+# https://thevaluable.dev/zsh-completion-guide-examples/
+
+# find new executables in $PATH automatically
+zstyle ':completion:*' rehash true
+zstyle ':completion:*' menu select
+zstyle ':completion:*' file-list all
+zstyle ':completion:*' group-name ''
+# cd fuzzy
+zstyle ':completion:*' matcher-list '' '' 'm:{[:lower:]}={[:upper:]} m:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=** l:|=*'
+# cd case insensitive
+# zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*:*:cp:*' file-sort modification
+zstyle ':completion:*' file-sort modification
+zstyle ':completion:*' completer _extensions _expand _complete _ignored _approximate
+zstyle ':completion:*:options' list-colors '=^(-- *)=34'
+zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
+zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 
 autoload -U select-word-style
 select-word-style bash
@@ -135,9 +152,6 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
-
-# find new executables in $PATH automatically
-zstyle ':completion:*' rehash true
 
 # peder sin gauth
 # source $HOME/Code/gauth/gauth.sh
@@ -231,8 +245,6 @@ case $(uname) in
 esac
 
 # dir stack: list with dirs -v, skip back with cd -N
-#TODO torgeir allerede kalt lenger opp
-#autoload -Uz add-zsh-hook
 DIRSTACKFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/dirs"
 if [[ -f "$DIRSTACKFILE" ]] && (( ${#dirstack} == 0 )); then
 	dirstack=("${(@f)"$(< "$DIRSTACKFILE")"}")
