@@ -83,7 +83,6 @@ esac
 case $(uname) in
   Linux)
     [[ -s /home/torgeir/.autojump/etc/profile.d/autojump.sh ]] && source /home/torgeir/.autojump/etc/profile.d/autojump.sh
-    autoload -U compinit && compinit -u
     ;;
   Darwin)
     [ -f /usr/local/etc/profile.d/autojump.sh ] && source /usr/local/etc/profile.d/autojump.sh
