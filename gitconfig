@@ -29,6 +29,7 @@
   precomposeunicode = true
   editor = emacsclient
   excludesfile = ~/.gitignore_global
+  attributesfile = ~/.gitattributes
 
 [color]
   branch = auto
@@ -53,3 +54,9 @@
 
 [github]
   user = torgeir
+
+[diff "org"]
+  xfuncname="^\\*+ +(.*)$"
+
+[diff "elisp"]
+  xfuncname="^\\((((def\\S+)|use-package)\\s+\\S+)"

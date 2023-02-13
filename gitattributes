@@ -1,0 +1,2 @@
+*.org diff=org
+*.el diff=elisp

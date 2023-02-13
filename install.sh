@@ -94,6 +94,7 @@ for dotfile in \
     zsh \
     zshrc \
     gitconfig \
+    gitattributes \
     tmux.conf;
 do
   echo installing ~/.$dotfile
