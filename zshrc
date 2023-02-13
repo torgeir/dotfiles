@@ -203,12 +203,9 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
 
+# pyenv
 export PYENV_ROOT="$HOME/.pyenv"
-if command -v pyenv &> /dev/null
-then
-  command  -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
-fi
+# init-pyenv
 
 # gpg
 # 
