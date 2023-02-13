@@ -247,21 +247,7 @@ case $(uname) in
 ;;
 esac
 
-# dir stack: list with dirs -v, skip back with cd -N
-DIRSTACKFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/dirs"
-if [[ -f "$DIRSTACKFILE" ]] && (( ${#dirstack} == 0 )); then
-	dirstack=("${(@f)"$(< "$DIRSTACKFILE")"}")
-	[[ -d "${dirstack[1]}" ]] && cd -- "${dirstack[1]}"
-fi
-chpwd_dirstack() {print -l -- "$PWD" "${(u)dirstack[@]}" > "$DIRSTACKFILE"}
-add-zsh-hook -Uz chpwd chpwd_dirstack
-DIRSTACKSIZE='20'
-setopt AUTO_PUSHD PUSHD_SILENT PUSHD_TO_HOME
-## Remove duplicate entries
-setopt PUSHD_IGNORE_DUPS
-## This reverts the +/- operators.
-setopt PUSHD_MINUS
-
+# debug escape codes with cat
 # directory keybindings, c-up and c-down
 cd_undo()   { popd     && zle accept-line }
 cd_parent() { pushd .. && zle accept-line }
@@ -269,8 +255,3 @@ zle -N cd_parent
 zle -N cd_undo
 bindkey '^[[1;5A' cd_parent
 bindkey '^[[1;5B' cd_undo
-
-# exit even with content written
-exit_zsh() { exit }
-zle -N exit_zsh
-bindkey '^D' exit_zsh
