@@ -1,4 +1,7 @@
-if [ -n "${INSIDE_EMACS+1}" ]; then
+# bash what does -f, -s, -n etc mean
+# man [
+
+if [[ -n "${INSIDE_EMACS+1}" ]]; then
   # don't
 else
   [[ -f "$HOME/.cache/wal/sequences" ]] && cat ~/.cache/wal/sequences
@@ -25,21 +28,21 @@ for plug in \
   $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
   $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh ;
 do
-  if [ -f $plug ]; then
+  if [[ -f $plug ]]; then
     #echo "Loading plugin $plug"
     source $plug
   fi
 
 done
 
-if [ -f $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh ]; then
+if [[ -f $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh ]]; then
   # debug these codes with cat -v
   bindkey "^P" history-substring-search-up
   bindkey "^N" history-substring-search-down
 fi
 
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-if [ -f $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+if [[ -f $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
   # toggle off with <s-tab> - no, s-tab to complete backwards is useful
   bindkey "^T" autosuggest-toggle
 fi
@@ -66,7 +69,7 @@ fi
 
 # nvm use x is too slow for every shell
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
+[[ -s "$NVM_DIR/nvm.sh" ]] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
 # default is set by hand in exports
 
 case $(uname) in
@@ -76,7 +79,7 @@ case $(uname) in
 esac
 
 # Loads nvm bash_completion
-[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
+[[ -s "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"
 
 [[ -d "$HOME/powerlevel10k" ]] && source $HOME/powerlevel10k/powerlevel10k.zsh-theme
 
@@ -89,7 +92,7 @@ case $(uname) in
     [[ -s /home/torgeir/.autojump/etc/profile.d/autojump.sh ]] && source /home/torgeir/.autojump/etc/profile.d/autojump.sh
     ;;
   Darwin)
-    [ -f /usr/local/etc/profile.d/autojump.sh ] && source /usr/local/etc/profile.d/autojump.sh
+    [[ -s /usr/local/etc/profile.d/autojump.sh ]] && source /usr/local/etc/profile.d/autojump.sh
     ;;
 esac
 
@@ -101,8 +104,8 @@ case $(uname) in
     fi
 
     # movement bindings in Thunar, like in os x Finder
-    [[ -f "$HOME/.config/Thunar/" ]] && echo '(gtk_accel_path "<Actions>/ThunarWindow/open-parent" "BackSpace")' >> $HOME/.config/Thunar/accels.scm
-    [[ -f "$HOME/.config/Thunar/" ]] && echo '(gtk_accel_path "<Actions>/ThunarWindow/open-parent" "<Alt>Up")' >> $HOME/.config/Thunar/accels.scm
+    [[ -d "$HOME/.config/Thunar/" ]] && echo '(gtk_accel_path "<Actions>/ThunarWindow/open-parent" "BackSpace")' >> $HOME/.config/Thunar/accels.scm
+    [[ -d "$HOME/.config/Thunar/" ]] && echo '(gtk_accel_path "<Actions>/ThunarWindow/open-parent" "<Alt>Up")' >> $HOME/.config/Thunar/accels.scm
     [[ -f "$HOME/.config/Thunar/" ]] && echo '(gtk_accel_path "<Actions>/ThunarLauncher/open" "<Alt>Down")' >> $HOME/.config/Thunar/accels.scm
     ;;
   Darwin)
@@ -228,7 +231,7 @@ case $(uname) in
     # Preset it from 1password. Try signing with it first, only preset it if it fails.
     # https://stackoverflow.com/questions/11381123/how-to-use-gpg-command-line-to-check-passphrase-is-correct
     PRESET_KEY=$(gpg --pinentry-mode error --local-user 922E681804CA8D82F1FAFCB177836712DAEA8B95 -aso /dev/null <(echo 1234) 2>/dev/null && echo "yes" || echo "no")
-    if [ "$PRESET_KEY" = "no" ]; then
+    if [[ "$PRESET_KEY" = "no" ]]; then
       $(gpgconf --list-dirs libexecdir)/gpg-preset-passphrase \
         -c \
         -P "$(op item get keybase.io --format json | jq -j '.fields[] | select(.id == "password") | .value')" \
