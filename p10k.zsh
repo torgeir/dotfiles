@@ -1,6 +1,6 @@
 # prompt segments, see .p10k.zsh
 function prompt_t_node () {
-  NPM_VERSION=$(cat ~/.nvm/versions/node/v18.14.0/lib/node_modules/npm/package.json | jq -r .version)
+  NPM_VERSION=$(cat ~/.nvm/versions/node/$NODE_VERSION/lib/node_modules/npm/package.json | jq -r .version)
   p10k segment -t "%F{green}$NODE_VERSION %F{yellow}$NPM_VERSION" 
 }
 
