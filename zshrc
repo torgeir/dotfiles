@@ -117,14 +117,14 @@ esac
 # find new executables in $PATH automatically
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' menu select
-zstyle ':completion:*' file-list all
+# zstyle ':completion:*' file-list all
 zstyle ':completion:*' group-name ''
 # cd fuzzy
 zstyle ':completion:*' matcher-list '' '' 'm:{[:lower:]}={[:upper:]} m:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=** l:|=*'
 # cd case insensitive
 # zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-zstyle ':completion:*:*:cp:*' file-sort modification
-zstyle ':completion:*' file-sort modification
+# zstyle ':completion:*:*:cp:*' file-sort modification
+# zstyle ':completion:*' file-sort modification
 # TODO torgeir var denne noe lur da? autocompleter andre ting enn match
 # zstyle ':completion:*' completer _extensions _expand _complete _ignored _approximate
 zstyle ':completion:*:options' list-colors '=^(-- *)=34'
