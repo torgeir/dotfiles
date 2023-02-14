@@ -137,3 +137,6 @@ case $(uname) in
     alias ports="sudo lsof -i -n -P | rg -i tcp | rg -i listen"
     ;;
 esac
+
+# git
+alias git-remove-merged-branches="git branch --merged main | grep -v '^[ *]*main$' | xargs -r git branch -d"
