@@ -6,6 +6,7 @@
 yabai -m rule --add app="^Emacs$" manage=off
 yabai -m rule --add app="^Emacs$" subrole="AXStandardWindow" manage=on
 
+yabai -m rule --add title="Info$" manage=off
 yabai -m rule --add app="^App Store$" manage=off
 yabai -m rule --add app="^Archive Utility$" manage=off
 yabai -m rule --add app="^Install" manage=off
