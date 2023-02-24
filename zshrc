@@ -138,6 +138,9 @@ zstyle ':completion:*' matcher-list '' '' 'm:{[:lower:]}={[:upper:]} m:{[:lower:
 
 autoload -U select-word-style
 select-word-style bash
+# removed _-=
+# original "*?._-=[]~/&;!#$%^(^(){}<>"
+export WORDCHARS="_"
 
 # load custom completions, e.g. from brew
 fpath=(~/.zsh $fpath)
