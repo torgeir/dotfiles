@@ -1,6 +1,7 @@
-# profiling
-# zmodload zsh/zprof
 # https://htr3n.github.io/2018/07/faster-zsh/
+# profiling
+#zmodload zsh/zprof
+# type zprof when the shell has loaded
 
 # -z True if the length of string is zero.
 # -n True if the length of string is non-zero.
