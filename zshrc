@@ -292,3 +292,5 @@ then
   autoload -U add-zsh-hook
   add-zsh-hook chpwd _jdk_autoload_hook
 fi
+
+eval "$(direnv hook zsh)"

@@ -34,9 +34,11 @@ function prompt_t_terragrunt () {
 }
 
 function prompt_t_gcloud () {
-  if [ -f $HOME/.config/gcloud/configurations/config_default ]; then
-    project=$(cat $HOME/.config/gcloud/configurations/config_default | rg project | sed -e "s/project = //")
-    email=$(cat $HOME/.config/gcloud/configurations/config_default | rg account | sed -e "s/account = //")
+  # https://cloud.google.com/sdk/docs/configurations#activating_a_configuration
+  env=${CLOUDSDK_ACTIVE_CONFIG_NAME:-default}
+  if [ -f "$HOME/.config/gcloud/configurations/config_$env" ]; then
+    project=$(cat $HOME/.config/gcloud/configurations/config_$env | rg project | sed -e "s/project = //")
+    email=$(cat $HOME/.config/gcloud/configurations/config_$env | rg account | sed -e "s/account = //")
     p10k segment -t "%F{green}${email}%F{red}@%F{yellow}${project}"
   fi
 }
@@ -94,7 +96,7 @@ function prompt_t_gcloud () {
   typeset -g POWERLEVEL9K_T_TERRAGRUNT_SHOW_ON_COMMAND="terragrunt|tgenv"
   typeset -g POWERLEVEL9K_T_NODE_SHOW_ON_COMMAND="node|nvm|npm|npx|ts-node|tsc"
   typeset -g POWERLEVEL9K_T_JAVA_SHOW_ON_COMMAND="java|javac|javap|kotlin|clj|clojure|jdk|jdks|gradle|gw"
-  typeset -g POWERLEVEL9K_T_GCLOUD_SHOW_ON_COMMAND="gcloud|gsutil"
+  typeset -g POWERLEVEL9K_T_GCLOUD_SHOW_ON_COMMAND="gcloud|gsutil|gcs"
   typeset -g POWERLEVEL9K_T_GIT_SHOW_ON_COMMAND="git"
 
   # Left prompt segments.
@@ -116,7 +118,6 @@ function prompt_t_gcloud () {
     # command_execution_time    # previous command duration
     # context                   # user@host
     # background_jobs
-    # gcloud
     # google_app_cred
     time                      # current time
     newline
@@ -134,6 +135,8 @@ function prompt_t_gcloud () {
     # t_terragrunt
     # =========================[ Line #2 ]=========================
   )
+
+  typeset -g POWERLEVEL9K_GCLOUD_FOREGROUND=30
 
   # Basic style options that define the overall prompt look.
   typeset -g POWERLEVEL9K_BACKGROUND=                            # transparent background
