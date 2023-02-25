@@ -1,8 +1,20 @@
 #!/bin/bash
 # ls
-alias l="exa"
-alias ll="exa --oneline --all --group --classify"
-alias la="exa --all --group --classify"
+alias  ls=exa
+alias   l="exa -1    --tree -L 1  --classify --group --group-directories-first"
+alias  la="exa -1 -a --tree -L 1 --classify --group --group-directories-first"
+alias  ll="exa -l -a --classify --group --group-directories-first"
+alias lal="exa -l -a --classify --group --group-directories-first"
+
+alias   lt="exa -l -1 --group --classify --tree -L 1"
+alias  ltt="exa -l -1 --group --classify --tree -L 2"
+alias lttt="exa -l -1 --group --classify --tree -L 3"
+
+alias   lat="exa -l -1 -a --group --classify --tree -L 1"
+alias  latt="exa -l -1 -a --group --classify --tree -L 2"
+alias lattt="exa -l -1 -a --group --classify --tree -L 3"
+# alias lla="exa -l --all --group --classify"
+# alias lal="exa -l --all --group --classify"
 
 alias grep="grep --color=always"
 
