@@ -134,7 +134,7 @@ setopt HIST_IGNORE_SPACE
 
 # faster compinit
 autoload -Uz compinit
-if [ $(date +'%j') != $(/usr/bin/stat -f '%Sm' -t '%j' ${ZDOTDIR:-$HOME}/.zcompdump) ]; then
+if [ $(date +'%j') != $(date -r ${ZDOTDIR:-$HOME}/.zcompdump +'%j') ]; then
   compinit
 else
   compinit -C
@@ -142,9 +142,6 @@ fi
 
 # faster compdump
 {
-  # TODO torgeir bring back
-  exit 0
-
   # Compile zcompdump, if modified, to increase startup speed.
   zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
   if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
