@@ -1,0 +1,4 @@
+
+ORIG=`cat "$1" | wc -c | sed -E "s/ //g"`
+GZIP=`gzip -c "$1" | wc -c | sed -E "s/ //g"`
+echo "$ORIG => $GZIP"

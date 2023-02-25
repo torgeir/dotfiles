@@ -1,0 +1,2 @@
+# take a photo, use this to find the interface. ffmpeg -f avfoundation -list_devices true -i ""
+ffmpeg -ss 0.5 -r 10 -f avfoundation -i 0 -frames:v 1 -s 1280x720 ~/Desktop/capture.jpg

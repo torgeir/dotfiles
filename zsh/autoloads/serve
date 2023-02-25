@@ -1,0 +1,3 @@
+# serve as web root
+open http://localhost:3000/ &
+http-server . -p 3000

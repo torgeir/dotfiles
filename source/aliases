@@ -21,6 +21,9 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "$method"="lwp-request -m '$method'"
 done
 
+if [[ -n "$INSIDE_EMACS" ]]; then
+  alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
+fi
 
 case $(uname) in
   Darwin)

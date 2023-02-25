@@ -1,0 +1,4 @@
+# list yabai apps and titles
+yabai -m query --windows | jq ".[] | .app, .title"
+# TODO if $1
+#yabai -m query --windows | jq ".[] | select(.app == \"$1\") | .title"

@@ -1,0 +1,2 @@
+# update vterm directory
+vterm_cmd update-pwd "$PWD/"

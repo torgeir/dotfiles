@@ -1,0 +1,6 @@
+if [ -z "$1" ]
+then
+  date +%V
+else
+  date -d $1 +%V
+fi

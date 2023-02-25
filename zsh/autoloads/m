@@ -1,0 +1,2 @@
+# unmarks and marks the current directory
+echo $PWD > ~/.cur

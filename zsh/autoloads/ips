@@ -1,0 +1,4 @@
+# list ips
+ifconfig | grep 'inet ' | grep -v 127 | awk '{print $2}'
+# TODO ?
+# ip

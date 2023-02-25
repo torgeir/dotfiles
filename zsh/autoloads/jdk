@@ -1,0 +1,12 @@
+# set global java version
+local version=$1
+case $(uname) in
+  Darwin)
+    export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+    echo "jdk: $(echo $JAVA_HOME | tr "/" " " | awk '{print $4}')"
+    ;;
+  Linux)
+    sudo archlinux-java set $version
+    echo "jdk $(archlinux-java get)"
+    ;;
+esac

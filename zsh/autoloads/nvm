@@ -1,0 +1,14 @@
+if [[ -z "$NVM_VERSION" ]] ; then
+  unfunction nvm
+
+  # nvm use x is too slow for every shell
+  export NVM_DIR="$HOME/.nvm"
+  [[ -s "$NVM_DIR/nvm.sh" ]] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
+
+  # default is set by hand in exports
+
+  # loads nvm bash_completion
+  [[ -s "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"
+fi
+
+nvm "$@"

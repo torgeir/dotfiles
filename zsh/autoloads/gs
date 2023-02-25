@@ -1,0 +1,2 @@
+# magit-status
+vterm_cmd magit-status "$(/usr/local/opt/coreutils/libexec/gnubin/realpath "${@:-.}")"

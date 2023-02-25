@@ -1,0 +1,6 @@
+# move to current directory
+if [ -f "$HOME/.cur" ]; then
+  builtin cd "$(cat ~/.cur)"
+else
+  echo "No current directory set."
+fi

@@ -1,0 +1,3 @@
+# decode \x{ABCD} unicode escape sequences
+perl -e "binmode(STDOUT, ':utf8'); print \"$@\""
+echo # newline

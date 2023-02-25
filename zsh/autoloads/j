@@ -1,0 +1,9 @@
+# jump around like z
+case $(uname) in
+Linux)
+  [[ -s /home/torgeir/.autojump/etc/profile.d/autojump.sh ]] && source /home/torgeir/.autojump/etc/profile.d/autojump.sh
+;;
+Darwin)
+  [[ -s /usr/local/share/autojump/autojump.zsh ]] && source /usr/local/share/autojump/autojump.zsh
+;;
+esac

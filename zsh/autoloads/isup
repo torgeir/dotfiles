@@ -1,0 +1,2 @@
+# check if host on port is up
+nc -zG 3 -L 2 $1 $2 &> /dev/null && echo "$1:$2 up"

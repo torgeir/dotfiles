@@ -1,0 +1,5 @@
+echo reloading zshrc..
+source $HOME/.zshenv
+source $HOME/.p10k.zsh
+source $HOME/.zshrc
+echo done.

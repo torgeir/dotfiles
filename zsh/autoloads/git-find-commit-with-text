@@ -1,0 +1,1 @@
+git log -S $1 --source --all --reverse

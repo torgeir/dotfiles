@@ -1,14 +1,18 @@
-# bash what does -f, -s, -n etc mean
-# man [
+# profiling
+# zmodload zsh/zprof
+# https://htr3n.github.io/2018/07/faster-zsh/
 
-if [[ -n "${INSIDE_EMACS+1}" ]]; then
+# -z True if the length of string is zero.
+# -n True if the length of string is non-zero.
+
+# man [
+if [[ -n "$INSIDE_EMACS" ]]; then
   # don't
 else
   [[ -f "$HOME/.cache/wal/sequences" ]] && cat ~/.cache/wal/sequences
 fi
 
 source $HOME/dotfiles/source/aliases
-source $HOME/dotfiles/source/functions
 
 # default owner rw
 umask 77
@@ -17,15 +21,13 @@ umask 77
 # linux likes this.
 # Note, needs to happen before powerlevel10 instant prompt, it redirects too /dev/null
 # so tty says "not a tty" if it happens after.
-# export GPG_TTY=$(tty)
-# TODO this is supposed to be faster?
 # https://github.com/romkatv/powerlevel10k#how-do-i-export-gpg_tty-when-using-instant-prompt
 export GPG_TTY=$TTY
 
 # load zsh plugins
 for plug in \
-  $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh \
   $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+  $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh \
   $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh ;
 do
   if [[ -f $plug ]]; then
@@ -37,8 +39,8 @@ done
 
 if [[ -f $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh ]]; then
   # debug these codes with cat -v
-  bindkey "^P" history-substring-search-up
-  bindkey "^N" history-substring-search-down
+  bindkey "^[p" history-substring-search-up
+  bindkey "^[n" history-substring-search-down
 fi
 
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
@@ -67,34 +69,16 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# nvm use x is too slow for every shell
-export NVM_DIR="$HOME/.nvm"
-[[ -s "$NVM_DIR/nvm.sh" ]] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
-# default is set by hand in exports
-
-case $(uname) in
-  Linux)
-    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-    ;;
-esac
-
-# Loads nvm bash_completion
-[[ -s "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"
+# register autoloads
+fpath=(~/.zsh/autoloads $fpath)
+for f in $(ls $HOME/.zsh/autoloads); do
+  autoload $f
+done
 
 [[ -d "$HOME/powerlevel10k" ]] && source $HOME/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# jump around like z
-case $(uname) in
-  Linux)
-    [[ -s /home/torgeir/.autojump/etc/profile.d/autojump.sh ]] && source /home/torgeir/.autojump/etc/profile.d/autojump.sh
-    ;;
-  Darwin)
-    [[ -s /usr/local/etc/profile.d/autojump.sh ]] && source /usr/local/etc/profile.d/autojump.sh
-    ;;
-esac
 
 case $(uname) in
   Linux)
@@ -113,12 +97,12 @@ case $(uname) in
 esac
 
 # https://thevaluable.dev/zsh-completion-guide-examples/
-
 # find new executables in $PATH automatically
 zstyle ':completion:*' rehash true
 zstyle ':completion:*' menu select
-# zstyle ':completion:*' file-list all
+zstyle ':completion:*' file-list all
 zstyle ':completion:*' group-name ''
+
 # cd fuzzy
 zstyle ':completion:*' matcher-list '' '' 'm:{[:lower:]}={[:upper:]} m:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=** l:|=*'
 # cd case insensitive
@@ -130,29 +114,16 @@ zstyle ':completion:*' matcher-list '' '' 'm:{[:lower:]}={[:upper:]} m:{[:lower:
 # TODO torgeir var denne noe lur da? autocompleter andre ting enn match
 # zstyle ':completion:*' completer _extensions _expand _complete _ignored _approximate
 
-# zstyle ':completion:*:options' list-colors '=^(-- *)=34'
-# zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+zstyle ':completion:*:options' list-colors '=^(-- *)=34'
+zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
 # zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
 # zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
-# zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 
 autoload -U select-word-style
 select-word-style bash
-# removed _-=
-# original "*?._-=[]~/&;!#$%^(^(){}<>"
-export WORDCHARS="_"
-
-# load custom completions, e.g. from brew
-fpath=(~/.zsh $fpath)
-
-case $(uname) in
-  Darwin)
-    # zsh git completion needs git-completion.bash
-    zstyle ':completion:*:*:git:*' script /usr/local/Cellar/git/$(git --version | awk '{print $3}')/share/zsh/site-functions/git-completion.bash
-    # TODO torgeir still works after extracting 5.8?
-    fpath=($(brew --prefix)/share/zsh/$(zsh --version | cut -d " " -f2)/site-functions $fpath)
-    ;;
-esac
+# export WORDCHARS="*?._-=[]~/&;!#$%^(^(){}<>"
+export WORDCHARS=""
 
 # allow bash style comments in interactive shells
 setopt interactivecomments
@@ -160,7 +131,26 @@ setopt interactivecomments
 # dont store space prefixex commands in history
 setopt HIST_IGNORE_SPACE
 
-autoload -Uz compinit && compinit -u
+# faster compinit
+autoload -Uz compinit
+if [ $(date +'%j') != $(/usr/bin/stat -f '%Sm' -t '%j' ${ZDOTDIR:-$HOME}/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
+
+# faster compdump
+{
+  # TODO torgeir bring back
+  exit 0
+
+  # Compile zcompdump, if modified, to increase startup speed.
+  zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
+  if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
+    zcompile "$zcompdump"
+  fi
+  # Execute code in the background to not affect the current session
+} &!
 
 # enable ctrl-x-e to edit command line
 autoload -U edit-command-line
@@ -213,10 +203,6 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-# init-pyenv
-
 # gpg
 # 
 # Test decryption
@@ -251,11 +237,13 @@ case $(uname) in
 esac
 
 
-case $(uname) in
-  Darwin)
-    test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-;;
-esac
+if [[ -z "$INSIDE_EMACS" ]]; then
+  case $(uname) in
+    Darwin)
+      test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+      ;;
+  esac
+fi
 
 # debug escape codes with cat
 # directory keybindings, c-up and c-down
@@ -265,3 +253,44 @@ zle -N cd_parent
 zle -N cd_undo
 bindkey '^[[1;5A' cd_parent
 bindkey '^[[1;5B' cd_undo
+
+# vi like completion menu select
+zmodload zsh/complist
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+
+# TODO
+# disable which key in some buffers, on bugffer enter?
+
+# zsh vim bindings
+# bindkey -v
+
+if [[ -n "$INSIDE_EMACS" ]]; then
+  function e () {
+    case $(uname) in
+      Darwin)
+        # torgeir: realpath is from brew coreutils
+        vterm_cmd find-file "$(/usr/local/opt/coreutils/libexec/gnubin/realpath "${@:-.}")"
+        ;;
+      Linux)
+        vterm_cmd find-file "$(/usr/bin/realpath "${@:-.}")"
+        ;;
+    esac
+  }
+fi
+#
+# automatically change java version from .java-version file
+_jdk_autoload_hook() {
+  if [[ -f .java-version ]]; then
+    echo "Found local .java-version in folder, switching to java version $(cat .java-version)"
+    jdk "$(cat .java-version)"
+  fi
+}
+
+if command -v autoload &> /dev/null
+then
+  autoload -U add-zsh-hook
+  add-zsh-hook chpwd _jdk_autoload_hook
+fi

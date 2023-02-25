@@ -1,0 +1,9 @@
+# list available Java versions
+case $(uname) in
+  Darwin)
+    /usr/libexec/java_home -V 2>&1 | sed 1d | sed '$d' | cut -d, -f1
+    ;;
+  Linux)
+    ls $(readlink -f /usr/bin/javac | sed "s:/bin/javac::")/.. | grep java-
+    ;;
+esac
