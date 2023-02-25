@@ -11,6 +11,8 @@ fi
 
 if [ ! -d zsh-history-substring-search ]; then
     git clone https://github.com/zsh-users/zsh-history-substring-search
+if [ ! -d gradle-completion ]; then
+  git clone https://github.com/gradle/gradle-completion
 fi
 
 popd

@@ -70,8 +70,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# gradle autocomplete
+fpath=($HOME/.zsh/gradle-completion $fpath)
+
 # register autoloads
-fpath=(~/.zsh/autoloads $fpath)
+fpath=($HOME/.zsh/autoloads $fpath)
 for f in $(ls $HOME/.zsh/autoloads); do
   autoload $f
 done
