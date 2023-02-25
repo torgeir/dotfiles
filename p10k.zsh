@@ -159,8 +159,8 @@ function prompt_t_gcloud () {
   # Prompt symbol in overwrite vi mode is the same as in command mode.
   typeset -g POWERLEVEL9K_PROMPT_CHAR_OVERWRITE_STATE=false
 
-  # Grey Python Virtual Environment.
-  typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=$grey
+  # Python Virtual Environment.
+  typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=$green
   # Don't show Python version.
   typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=true
   typeset -g POWERLEVEL9K_VIRTUALENV_{LEFT,RIGHT}_DELIMITER=
