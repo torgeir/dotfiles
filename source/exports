@@ -15,7 +15,7 @@ export USER_FULLNAME=Torgeir\ Thoresen
 
 # node
 export NODE_ENV=development
-export NODE_VERSION=v18.14.0
+export NODE_VERSION=v18.14.2
 export PATH="$HOME/.nvm/versions/node/$NODE_VERSION/bin:$PATH"
 
 # utf-8!

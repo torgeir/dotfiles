@@ -1,0 +1,22 @@
+OLD=$(node --version)
+NEW=$(nvm ls-remote --lts --no-colors | tail -n 1 | awk '{print $1}')
+read -q "REPLY?Bump $OLD to latest lts node $NEW? y/n"
+if [[ "$REPLY" = "y" ]]; then
+
+    echo
+    PKGS=$(/bin/ls -1 $HOME/.nvm/versions/node/$OLD/lib/node_modules | tr '\n' ' ')
+    nvm install $NEW
+
+    read -q "R?Reinstall existing global packages: $PKGS? y/n"
+    if [[ "$R" = "y" ]]; then
+        /bin/ls -1 $HOME/.nvm/versions/node/$OLD/lib/node_modules | xargs npm install -g
+    fi
+
+    nvm use $NEW
+    nvm alias default $NEW
+
+    echo "Remember to bump NODE_VERSION in ~/dotfiles/exports"
+else
+    echo
+    echo bye.
+fi
