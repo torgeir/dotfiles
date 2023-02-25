@@ -1,7 +1,7 @@
 OLD=$(node --version)
 NEW=$(nvm ls-remote --lts --no-colors | tail -n 1 | awk '{print $1}')
-read -q "REPLY?Bump $OLD to latest lts node $NEW? y/n"
-if [[ "$REPLY" = "y" ]]; then
+read -q "R?Bump $OLD to latest lts node $NEW? y/n"
+if [[ "$R" = "y" ]]; then
 
     echo
     PKGS=$(/bin/ls -1 $HOME/.nvm/versions/node/$OLD/lib/node_modules | tr '\n' ' ')
@@ -10,6 +10,11 @@ if [[ "$REPLY" = "y" ]]; then
     read -q "R?Reinstall existing global packages: $PKGS? y/n"
     if [[ "$R" = "y" ]]; then
         /bin/ls -1 $HOME/.nvm/versions/node/$OLD/lib/node_modules | xargs npm install -g
+    fi
+
+    read -q "R?Update npm? y/n"
+    if [[ "$R" = "y" ]]; then
+      npm install -g npm
     fi
 
     nvm use $NEW
