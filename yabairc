@@ -34,8 +34,8 @@ yabai -m rule --add title="1Password$" manage=off layer=above
 yabai -m rule --add title="^Settings$" manage=off layer=above
 
 # make space switching work without disabling sip
-yabai -m config mouse_follows_focus off
-yabai -m config focus_follows_mouse off
+yabai -m config mouse_follows_focus on
+yabai -m config focus_follows_mouse autoraise
 
 # move and resize with mouse
 # TODO interferes with opt+click in macos menubar
@@ -46,13 +46,12 @@ yabai -m config mouse_action2 resize
 # set layout
 yabai -m config layout bsp
 
-# floating windows are topmost
+# floating windows are topmost, new right, botton
 yabai -m config window_topmost on
-
-# yabai -m config auto_balance
+yabai -m config window_placement second_child
 
 yabai -m config top_padding    0
 yabai -m config right_padding  0
 yabai -m config bottom_padding 0
 yabai -m config left_padding   0
-yabai -m config window_gap     0
+yabai -m config window_gap     5

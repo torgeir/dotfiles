@@ -29,23 +29,8 @@ cmd - return [
 
 cmd + shift - h : open -a Finder -- ~/
 
-fn - i : open -a IntelliJ
-fn - d : open -a Dash
-fn - n : open -a Finder
-fn - e : open -a Emacs
-fn - o : open -a 'Microsoft Outlook'
-fn - z : open -a Zoom.us
-
-hyper - i : open -a IntelliJ
-hyper - d : open -a Dash
-hyper - n : open -a Finder
-hyper - e : open -a Emacs
-hyper - o : open -a 'Microsoft Outlook'
-hyper - z : open -a Zoom.us
-
 # reload keybindings
-hyper - q : cd && skhd -r
-fn - q: cd && skhd -r
+alt + shift - q : cd && skhd -r
 
 # move window focus
 alt - h : yabai -m window --focus west  || yabai -m display --focus west
@@ -59,46 +44,31 @@ alt + shift - l : yabai -m window --warp east || $(WIN_ID=$(yabai -m query --win
 alt + shift - k : yabai -m window --warp north || $(WIN_ID=$(yabai -m query --windows --window | jq '.id') && yabai -m window --display north && yabai -m window --focus $WIN_ID);
 alt + shift - j : yabai -m window --warp south || $(WIN_ID=$(yabai -m query --windows --window | jq '.id') && yabai -m window --display south && yabai -m window --focus $WIN_ID);
 
-fn - 0 : yabai -m space --balance
-fn - r : yabai -m space --rotate 90
+alt + shift - 0 : yabai -m space --balance
+
+# rotations
+alt + shift - r : yabai -m space --rotate 270
+alt + shift - y : yabai -m space --mirror y-axis
+alt + shift - x : yabai -m space --mirror x-axis
 
 # float and center on screen
-# alt + shift - f : yabai -m window --toggle float;\
-#                   yabai -m window --grid 11:11:3:1:6:8
-hyper - c : yabai -m window --toggle float;\
-            yabai -m window --grid 11:11:3:1:6:8
-fn - c : yabai -m window --toggle float;\
-         yabai -m window --grid 11:11:1:1:9:9
+alt + shift - f : yabai -m window --toggle float;\
+                   yabai -m window --grid 11:11:3:1:6:8
 
-# float and column in center of screen
-hyper - u : yabai -m window --toggle float;\
+# Float and column in center of screen
+alt + shift - u : yabai -m window --toggle float;\
             yabai -m window --grid 11:11:2:0:7:11
-fn - u : yabai -m window --toggle float;\
-         yabai -m window --grid 11:11:2:0:7:11
 
 # fullscreen
-hyper - f : yabai -m window --toggle zoom-fullscreen
-fn - f : yabai -m window --toggle zoom-fullscreen
+alt + shift - m : yabai -m window --toggle zoom-fullscreen
 
 # toggle fill parent column
-hyper - p : yabai -m window --toggle zoom-parent
-fn - p : yabai -m window --toggle zoom-parent
+alt + shift - z : yabai -m window --toggle zoom-parent
 
 # change split direction
-alt - s : yabai -m window --toggle split
-# alt - g : yabai -m window --insert east
-alt - v : yabai -m window --insert south
-fn - s : yabai -m window --toggle split
-fn - g : yabai -m window --insert east
-fn - v : yabai -m window --insert south
-
-# mirror window tree
-# alt y steals paste from kill ring emacs
-#alt - y : yabai -m space --mirror y-axis
-# alt x is m-x in emacs
-alt - u : yabai -m space --mirror x-axis
-fn - y : yabai -m space --mirror y-axis
-fn - x : yabai -m space --mirror x-axis
+alt + shift - s : yabai -m window --toggle split
+# alt + shift - g : yabai -m window --insert east
+# alt + shift - v : yabai -m window --insert south
 
 # turn of border when returning to default
 :: default : yabai -m window --toggle border
@@ -137,10 +107,8 @@ ctrl + shift + cmd - up :    yabai -m window --move rel:0:-50
 ctrl + shift + cmd - down  : yabai -m window --move rel:0:50
 
 # center single window
-ctrl + alt + cmd - c: yabai -m window --grid 7:7:2:1:3:4
-
-# fullscreen single window
-ctrl + alt + cmd - f: yabai -m window --grid 1:1:1:1:1:1
+alt + shift - c: yabai -m window --toggle float;\
+                 yabai -m window --grid 7:7:2:1:3:4
 
 # move to other display, cycles monitors
 ctrl + alt + cmd - d: WIN_ID=$(yabai -m query --windows --window | jq '.id') && (yabai -m window --display next || yabai -m window --display first) && yabai -m window --focus $WIN_ID
@@ -171,6 +139,9 @@ alt - 5: skhd -k "shift + ctrl - 5"; yabai -m display --focus $(yabai -m query -
 alt - 6: skhd -k "shift + ctrl - 6"; yabai -m display --focus $(yabai -m query --spaces --space 6 | jq .display)
 # 7 conflicts with | on a norwegian keyboard
 
+shift + alt - p : yabai -m window --space prev;
+shift + alt - n : yabai -m window --space next;
+
 alt + shift - 1: yabai -m window --space 1; skhd -k "shift + ctrl - 1"
 alt + shift - 2: yabai -m window --space 2; skhd -k "shift + ctrl - 2"
 alt + shift - 3: yabai -m window --space 3; skhd -k "shift + ctrl - 3"
@@ -178,8 +149,7 @@ alt + shift - 4: yabai -m window --space 4; skhd -k "shift + ctrl - 4"
 alt + shift - 5: yabai -m window --space 5; skhd -k "shift + ctrl - 5"
 alt + shift - 6: yabai -m window --space 6; skhd -k "shift + ctrl - 6"
 
-# kanbanize url
-shift + ctrl + alt + cmd - k: osascript -l JavaScript -e '[].slice.call(((app) => (app && app.windows && app.windows[0] && app.windows[0].tabs) || [])(Application("Google Chrome"))).map((t) => t.url()).filter((url) => url.includes("kanbanize")).map((url) => new RegExp("([0-9]{4,})").exec(url)).filter((matches) => matches != null).map(([kbid]) => `KB-${kbid}`).join(" ").replace(/\r\n/g, "")' | pbcopy && osascript -e 'tell application "System Events" to keystroke "v" using command down';
-
 # trello url
 shift + ctrl + alt + cmd - t: osascript -l JavaScript -e '[].slice.call(((app) => (app && app.windows && app.windows[0] && app.windows[0].tabs) || [])(Application("Google Chrome"))).map((t) => t.url()).filter((url) => url.includes("trello.com/c/")).map((url) => url.toString()).join(" ").replace(/\r\n/g, "")' | pbcopy && osascript -e 'tell application "System Events" to keystroke "v" using command down';
+
+shift + alt - t : osascript -l JavaScript -e ' [].slice.call(((app) => (app && app.windows) || [])(Application("Google Chrome"))) .map((w) => [w, [].slice .call(w.tabs) .map((t, idx) => [idx + 1, t.url()]) .filter(([index, url]) => url.includes("trello.com/c/")) .map(([index, url]) => index),]) .forEach(([w, indices]) => indices.forEach((index) => w.activeTabIndex.set(index)));' && osascript -e 'tell application "Google Chrome" to activate'
