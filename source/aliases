@@ -1,7 +1,7 @@
 #!/bin/bash
 # ls
-alias  ls=exa
-alias   l="exa -1    --tree -L 1  --classify --group --group-directories-first"
+alias  ls="exa --group-directories-first"
+alias   l="exa -a --group-directories-first"
 alias  la="exa -1 -a --tree -L 1 --classify --group --group-directories-first"
 alias  ll="exa -l -a --classify --group --group-directories-first"
 alias lal="exa -l -a --classify --group --group-directories-first"
