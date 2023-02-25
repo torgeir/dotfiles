@@ -1,6 +1,9 @@
 # prompt segments, see .p10k.zsh
 function prompt_t_node () {
-  NPM_VERSION=$(cat ~/.nvm/versions/node/$NODE_VERSION/lib/node_modules/npm/package.json | jq -r .version)
+  NVM_NODE_VERSION=$(echo $NVM_BIN | sed -e "s#$HOME/.nvm/versions/node/##" | cut -d "/" -f1)
+  # fall back to $NODE_VERSION from ~/dotfiles/source/exports
+  NODE_VERSION=${NVM_NODE_VERSION:-$NODE_VERSION}
+  NPM_VERSION=$(cat $HOME/.nvm/versions/node/$NODE_VERSION/lib/node_modules/npm/package.json | jq -r .version)
   p10k segment -t "%F{green}$NODE_VERSION %F{yellow}$NPM_VERSION" 
 }
 
@@ -10,7 +13,9 @@ function prompt_t_java () {
       p10k segment -t "%F{green}$(archlinux-java get)"
       ;;
     Darwin)
-      p10k segment -t "%F{green}$(/usr/libexec/java_home | tr "/" " " | awk '{print $4}')"
+      DEFAULT_JAVA=$(/usr/libexec/java_home)
+      JAVA_VERSION=$(echo ${JAVA_HOME:-DEFAULT_JAVA} | tr "/" " " | awk '{print $4}')
+      p10k segment -t "%F{green}$JAVA_VERSION"
     ;;
   esac
 }
