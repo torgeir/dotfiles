@@ -87,7 +87,7 @@ function prompt_t_gcloud () {
   typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_ON_COMMAND="python|python3|pip|pip3"
   typeset -g POWERLEVEL9K_T_TERRAFORM_SHOW_ON_COMMAND="terraform|tfenv"
   typeset -g POWERLEVEL9K_T_TERRAGRUNT_SHOW_ON_COMMAND="terragrunt|tgenv"
-  typeset -g POWERLEVEL9K_T_NODE_SHOW_ON_COMMAND="node|nvm|npm|npx"
+  typeset -g POWERLEVEL9K_T_NODE_SHOW_ON_COMMAND="node|nvm|npm|npx|ts-node|tsc"
   typeset -g POWERLEVEL9K_T_JAVA_SHOW_ON_COMMAND="java|javac|javap|kotlin|clj|clojure|jdk|jdks|gradle|gw"
   typeset -g POWERLEVEL9K_T_GCLOUD_SHOW_ON_COMMAND="gcloud|gsutil"
 
