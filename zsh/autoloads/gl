@@ -1,0 +1,2 @@
+# magit-log, these correspond to mappings in ~/.doom.d/readme.org
+vterm_cmd magit-log "$(/usr/local/opt/coreutils/libexec/gnubin/realpath "${@:-.}")"

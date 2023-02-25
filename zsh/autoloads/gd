@@ -1,0 +1,2 @@
+# magit-diff, these correspond to mappings in ~/.doom.d/readme.org
+vterm_cmd magit-diff "$(/usr/local/opt/coreutils/libexec/gnubin/realpath "${@:-.}")"
