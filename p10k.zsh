@@ -115,6 +115,8 @@ function prompt_t_gcloud () {
     t_java
     t_node
 
+    direnv
+
     # torgeir too slow
     # t_terraform
     # t_terragrunt

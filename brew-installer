@@ -25,6 +25,7 @@ brew install grip
 brew install git
 brew install gifsicle
 brew install neovim
+brew install direnv
 #brew install boot-clj
 brew tap d12frosted/emacs-plus
 brew install emacs-plus@28 --with-modern-black-variant-icon --with-native-comp
