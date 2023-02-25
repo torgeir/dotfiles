@@ -20,6 +20,11 @@ function prompt_t_java () {
   esac
 }
 
+function prompt_t_git () {
+  GIT_VERSION=$(command -v git 2>&1 > /dev/null && git --version | awk '{print $3}')
+  p10k segment -t "%F{green}$GIT_VERSION"
+}
+
 function prompt_t_terraform () {
   p10k segment -t "%F{green}$(terraform --version | head -n1 | cut -d " " -f2)"
 }
@@ -84,12 +89,13 @@ function prompt_t_gcloud () {
   local cyan='#9AEDFE'
   local white='#F1F1F0'
 
-  typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_ON_COMMAND="python|python3|pip|pip3"
+  typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_ON_COMMAND="python|python3|pip|pip3|pyenv"
   typeset -g POWERLEVEL9K_T_TERRAFORM_SHOW_ON_COMMAND="terraform|tfenv"
   typeset -g POWERLEVEL9K_T_TERRAGRUNT_SHOW_ON_COMMAND="terragrunt|tgenv"
   typeset -g POWERLEVEL9K_T_NODE_SHOW_ON_COMMAND="node|nvm|npm|npx|ts-node|tsc"
   typeset -g POWERLEVEL9K_T_JAVA_SHOW_ON_COMMAND="java|javac|javap|kotlin|clj|clojure|jdk|jdks|gradle|gw"
   typeset -g POWERLEVEL9K_T_GCLOUD_SHOW_ON_COMMAND="gcloud|gsutil"
+  typeset -g POWERLEVEL9K_T_GIT_SHOW_ON_COMMAND="git"
 
   # Left prompt segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
@@ -119,6 +125,7 @@ function prompt_t_gcloud () {
     t_gcloud
     t_java
     t_node
+    t_git
 
     direnv
 
