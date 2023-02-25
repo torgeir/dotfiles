@@ -34,8 +34,11 @@ set timeoutlen=200
 set ignorecase
 set smartcase
 set scrolloff=5
-set surround " emulated plugins
-set commentary " emulate vim-commentary
+"https://github.com/JetBrains/ideavim/blob/master/doc/IdeaVim%20Plugins.md
+"set surround " emulated plugins
+Plug 'tpope/vim-surround'
+"set commentary " emulate vim-commentary
+Plug 'tpope/vim-commentary'
 set ideajoin " join smartly
 set clipboard+=unnamed " copy to system clipboard
 
