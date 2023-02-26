@@ -1,8 +1,8 @@
 [theme]
-file = "native"
+theme = "native"
 
 [icons]
-file = "awesome"
+icons = "awesome4"
 
 # hostname
 [[block]]
@@ -47,7 +47,9 @@ interval = 1
 block = "custom"
 command = "sed 's/  //' <(curl 'https://wttr.in/trondheim?format=1' -s)"
 interval = 600
-on_click = "brave 'https://wttr.in/trondheim'"
+[[block.click]]
+button = "left"
+cmd = "brave 'https://wttr.in/trondheim'"
 
 [[block]]
 block = "custom"
@@ -61,20 +63,21 @@ interval = 200
 
 [[block]]
 block = "cpu"
+format = "$icon $utilization"
 
 [[block]]
 block = "memory"
-display_type = "memory"
+format = "$icon $mem_used/$mem_total"
 
 [[block]]
 block = "disk_space"
 path = "/"
 info_type = "available"
-unit = "GB"
+alert_unit = "GB"
 interval = 20
 warning = 20.0
 alert = 10.0
-format = "{icon} {used}/{total} ({available} free)"
+format = "$icon $used/$total ($available.eng(w:2) free)"
 
 [[block]]
 block = "sound"
@@ -82,4 +85,8 @@ block = "sound"
 [[block]]
 block = "time"
 interval = 5
-format = "%a %d/%m %R"
+format = "$timestamp.datetime(f:'%a %d/%m %R')"
+
+[[block]]
+block = "pacman"
+signal = 1
