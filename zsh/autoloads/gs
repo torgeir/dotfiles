@@ -1,2 +1,2 @@
 # magit-status, these correspond to mappings in ~/.doom.d/readme.org
-vterm_cmd magit-status "$(/usr/local/opt/coreutils/libexec/gnubin/realpath "${@:-.}")"
+vterm_cmd magit-status "$(PATH=/usr/local/opt/coreutils/libexec/gnubin/:$PATH realpath "${@:-.}")"

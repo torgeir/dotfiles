@@ -270,15 +270,8 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 
 if [[ -n "$INSIDE_EMACS" ]]; then
   function e () {
-    case $(uname) in
-      Darwin)
-        # torgeir: realpath is from brew coreutils
-        vterm_cmd find-file "$(/usr/local/opt/coreutils/libexec/gnubin/realpath "${@:-.}")"
-        ;;
-      Linux)
-        vterm_cmd find-file "$(/usr/bin/realpath "${@:-.}")"
-        ;;
-    esac
+    # torgeir: on mac realpath is from brew coreutils
+    vterm_cmd find-file "$(PATH=/usr/local/opt/coreutils/libexec/gnubin/:$PATH realpath "${@:-.}")"
   }
 fi
 #
