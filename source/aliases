@@ -91,6 +91,8 @@ alias tttt='exa --tree --level 4'
 # less
 #alias less='less -m -N -g -i -J --underline-special --SILENT'
 
+# gdate can do more, e.g.
+# gdate -u -d '-10 min' +%Y-%m-%dT%H:%M:%SZ
 alias isodate="date +'%Y-%m-%dT%H:%M:%SZ'"
 
 alias latest-changes="find . -type f -printf '%T@ %p\n' | sort -k1,1nr | head -10"
