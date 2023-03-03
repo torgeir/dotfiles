@@ -8,5 +8,5 @@ if [ "$is_float" = "true" ]; then
       | map(.id)
       | .[(index($id)+($pos))%length]')
 else
-  yabai -m window --focus west  || yabai -m display --focus west
+  yabai -m window --focus west || yabai -m display --focus west
 fi
