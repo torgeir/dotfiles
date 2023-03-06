@@ -115,6 +115,7 @@ alt + shift - c: yabai -m window --toggle float;\
 # move to other display, cycles monitors
 ctrl + alt + cmd - d: WIN_ID=$(yabai -m query --windows --window | jq '.id') && (yabai -m window --display next || yabai -m window --display first) && yabai -m window --focus $WIN_ID
 ctrl + alt + cmd - p: WIN_ID=$(yabai -m query --windows --window | jq '.id') && (yabai -m window --display next || yabai -m window --display first) && yabai -m window --focus $WIN_ID
+ctrl + alt + cmd + shift - p: WIN_ID=$(yabai -m query --windows --window | jq '.id') && (yabai -m window --display prev || yabai -m window --display last) && yabai -m window --focus $WIN_ID
 
 # move windows to screen corners
 ctrl + alt + cmd - i : yabai -m window --grid 8:8:0:0:4:4
