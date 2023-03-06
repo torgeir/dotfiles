@@ -55,11 +55,11 @@ alt + shift - x : yabai -m space --mirror x-axis
 
 # float and center on screen
 alt + shift - f : yabai -m window --toggle float;\
-                   yabai -m window --grid 11:11:3:1:6:8
+                  yabai -m window --grid 11:11:3:1:6:8
 
 # Float and column in center of screen
 alt + shift - u : yabai -m window --toggle float;\
-            yabai -m window --grid 11:11:2:0:7:11
+                  yabai -m window --grid 11:11:2:0:7:11
 
 # fullscreen
 alt + shift - m : yabai -m window --toggle zoom-fullscreen
