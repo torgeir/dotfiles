@@ -112,12 +112,6 @@ zstyle ':completion:*' matcher-list '' '' 'm:{[:lower:]}={[:upper:]} m:{[:lower:
 # cd case insensitive
 # zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
-# zstyle ':completion:*:*:cp:*' file-sort modification
-# zstyle ':completion:*' file-sort modification
-
-# TODO torgeir var denne noe lur da? autocompleter andre ting enn match
-# zstyle ':completion:*' completer _extensions _expand _complete _ignored _approximate
-
 zstyle ':completion:*:options' list-colors '=^(-- *)=34'
 zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
 # zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'

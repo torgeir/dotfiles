@@ -81,6 +81,9 @@ format = "$icon $used/$total ($available.eng(w:2) free)"
 
 [[block]]
 block = "sound"
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
 
 [[block]]
 block = "time"
