@@ -165,7 +165,7 @@ case $(uname) in
     source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 
     # don't type the password on every git pull
-    ssh-add -K ~/.ssh/id_rsa > /dev/null 2>&1
+    ssh-add -K ~/.ssh/id_ed25519 > /dev/null 2>&1
     ;;
   Linux)
     if command -v ssh-agent &> /dev/null
