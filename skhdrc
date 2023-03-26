@@ -65,12 +65,12 @@ alt + shift - u : yabai -m window --toggle float;\
 alt + shift - m : yabai -m window --toggle zoom-fullscreen
 
 # toggle fill parent column
-alt + shift - z : yabai -m window --toggle zoom-parent
+alt + shift - a : yabai -m window --toggle zoom-parent
 
 # change split direction
 alt + shift - s : yabai -m window --toggle split
-# alt + shift - g : yabai -m window --insert east
-# alt + shift - v : yabai -m window --insert south
+alt + shift - g : yabai -m window --insert east
+alt + shift - v : yabai -m window --insert south
 
 # turn of border when returning to default
 :: default : yabai -m window --toggle border
@@ -107,10 +107,6 @@ ctrl + shift + cmd - right : yabai -m window --move rel:+50:0
 ctrl + shift + cmd - left :  yabai -m window --move rel:-50:0
 ctrl + shift + cmd - up :    yabai -m window --move rel:0:-50
 ctrl + shift + cmd - down  : yabai -m window --move rel:0:50
-
-# center single window
-alt + shift - c: yabai -m window --toggle float;\
-                 yabai -m window --grid 7:7:2:1:3:4
 
 # move to other display, cycles monitors
 ctrl + alt + cmd - d: WIN_ID=$(yabai -m query --windows --window | jq '.id') && (yabai -m window --display next || yabai -m window --display first) && yabai -m window --focus $WIN_ID

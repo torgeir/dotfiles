@@ -7,10 +7,11 @@ xkb_keymap {
 	xkb_symbols   {
       include "macintosh_vndr/apple(alukbd)+macintosh_vndr/no+inet(evdev)"
 
-      # torgeir: The quote key on a norwegian mac keyboard is somehow fixed by this.
+      # torgeir: The quote key ' on a norwegian mac keyboard is somehow fixed by this.
       # I have no idea why it returns a tilde.
       replace key <TLDE> { [ apostrophe ] };
 
+      # torgeir: Make money symbol not be a euro
       # found by 'rg dollar /usr/share/X11/*'
       replace key <AE04> { [ 4, dollar ] };
     };

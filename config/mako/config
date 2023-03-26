@@ -1,5 +1,10 @@
 default-timeout=5000
-font=UKWN Iosevka 10
+
+# Try it
+#  notify-send "test"
+#  notify-send 'Hello world!' 'This is an example notification.' --icon=dialog-information
+
+font=JetBrains Mono 13
 
 [urgency=high]
 text-color=#CD3F45

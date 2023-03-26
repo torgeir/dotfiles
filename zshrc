@@ -63,6 +63,64 @@ if [[ ! -d "$HOME/powerlevel10k" ]]; then
   popd
 fi
 
+# gpg
+
+function gpg_sign_something_to_check_cached_key_presens() {
+  echo "1234" | gpg --local-user 922E681804CA8D82F1FAFCB177836712DAEA8B95 -as -
+}
+
+function gpg_restart_agent() {
+  killall gpg-agent && gpg-connect-agent reloadagent /bye
+}
+
+function gpg_test_cache() {
+  gpg -q --batch -d ~/.authinfo.gpg
+}
+
+function gpg_cache () {
+
+  # Nescessary to make the following passphrase preset to work
+  gpg-connect-agent updatestartuptty /bye >/dev/null
+
+  # Preset it from 1password. Try signing with it first, only preset it if it fails.
+  # https://stackoverflow.com/questions/11381123/how-to-use-gpg-command-line-to-check-passphrase-is-correct
+  PRESET_KEY=$(gpg --pinentry-mode error --local-user 922E681804CA8D82F1FAFCB177836712DAEA8B95 -aso /dev/null <(echo 1234) 2>/dev/null && echo "yes" || echo "no")
+
+  case $(uname) in
+    Linux)
+      eval $(op signin --account my)
+    ;;
+    Darwin)
+      true # fingerprint prompt when op item get
+    ;;
+  esac
+
+
+  if [[ "$PRESET_KEY" = "no" ]]; then
+    $(gpgconf --list-dirs libexecdir)/gpg-preset-passphrase \
+    -c \
+    -P "$(op item get keybase.io --format json | jq -j '.fields[] | select(.id == "password") | .value')" \
+    $(gpg --fingerprint --with-keygrip torgeir@keybase.io | awk '/Keygrip/ {print $3}' | tail -n 1)
+
+  fi
+
+  # I don't get this, but the first time around, after the initial signing (gpg -as) failed in the previous step, I need to actually use the key to make the agent cache it. Decrypt an encrypted file to make it stick.
+  gpg_test_cache > /dev/null
+}
+
+
+if [[ -z "$INSIDE_EMACS" ]]; then
+  case $(uname) in
+    Darwin)
+      # Without a fingerprint reader on linux this is annoying, keep it macos only
+      gpg_cache
+
+      # TODO Unused?
+      test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+      ;;
+  esac
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -84,22 +142,6 @@ done
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-case $(uname) in
-  Linux)
-    if command -v xmodmap &> /dev/null
-    then
-      xmodmap ~/.Xmodmap
-    fi
-
-    # movement bindings in Thunar, like in os x Finder
-    [[ -d "$HOME/.config/Thunar/" ]] && echo '(gtk_accel_path "<Actions>/ThunarWindow/open-parent" "BackSpace")' >> $HOME/.config/Thunar/accels.scm
-    [[ -d "$HOME/.config/Thunar/" ]] && echo '(gtk_accel_path "<Actions>/ThunarWindow/open-parent" "<Alt>Up")' >> $HOME/.config/Thunar/accels.scm
-    [[ -f "$HOME/.config/Thunar/" ]] && echo '(gtk_accel_path "<Actions>/ThunarLauncher/open" "<Alt>Down")' >> $HOME/.config/Thunar/accels.scm
-    ;;
-  Darwin)
-    ;;
-esac
-
 # https://thevaluable.dev/zsh-completion-guide-examples/
 # find new executables in $PATH automatically
 zstyle ':completion:*' rehash true
@@ -109,13 +151,9 @@ zstyle ':completion:*' group-name ''
 
 # cd fuzzy
 zstyle ':completion:*' matcher-list '' '' 'm:{[:lower:]}={[:upper:]} m:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=** r:|=** l:|=*'
-# cd case insensitive
-# zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 zstyle ':completion:*:options' list-colors '=^(-- *)=34'
 zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
-# zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
-# zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
 zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 
 autoload -U select-word-style
@@ -154,9 +192,6 @@ zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
-# peder sin gauth
-# source $HOME/Code/gauth/gauth.sh
-
 case $(uname) in
   Darwin)
     # The next line updates PATH for the Google Cloud SDK.
@@ -170,12 +205,6 @@ case $(uname) in
   Linux)
     if command -v ssh-agent &> /dev/null
     then
-      #SSH_AGENT_PID=""
-      #SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
-
-      # launch ssh agent before ssh-add
-      #eval `ssh-agent -s` > /dev/null 2>&1
-
       # https://wiki.archlinux.org/title/SSH_keys
       # https://linuxhint.com/solve-gpg-decryption-failed-no-secret-key-error/
       eval $(keychain --eval --quiet id_ed25519)
@@ -198,48 +227,6 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
 
-# gpg
-# 
-# Test decryption
-#   gpg --no-tty -q --batch -d ~/.authinfo.gpg
-#
-# Reload gpg agent
-#  killall gpg-agent && gpg-connect-agent reloadagent /bye 
-#
-# Sign something to check presens of cached key
-#   echo "1234" | gpg --local-user 77836712DAEA8B95 -as -
-#   echo "1234" | gpg --local-user 922E681804CA8D82F1FAFCB177836712DAEA8B95 -as -
-# 
-case $(uname) in
-  Darwin)
-
-    # Nescessary to make the following passphrase preset to work
-    gpg-connect-agent updatestartuptty /bye >/dev/null
-
-    # Preset it from 1password. Try signing with it first, only preset it if it fails.
-    # https://stackoverflow.com/questions/11381123/how-to-use-gpg-command-line-to-check-passphrase-is-correct
-    PRESET_KEY=$(gpg --pinentry-mode error --local-user 922E681804CA8D82F1FAFCB177836712DAEA8B95 -aso /dev/null <(echo 1234) 2>/dev/null && echo "yes" || echo "no")
-    if [[ "$PRESET_KEY" = "no" ]]; then
-      $(gpgconf --list-dirs libexecdir)/gpg-preset-passphrase \
-        -c \
-        -P "$(op item get keybase.io --format json | jq -j '.fields[] | select(.id == "password") | .value')" \
-        $(gpg --fingerprint --with-keygrip torgeir@keybase.io | awk '/Keygrip/ {print $3}' | tail -n 1)
-    fi
-
-    # I don't get this, but the first time around, after the initial signing (gpg -as) failed in the previous step, I need to actually use the key to make the agent cache it. Decrypt an encrypted file to make it stick.
-    gpg -q --batch -d ~/.authinfo.gpg > /dev/null
-  ;;
-esac
-
-
-if [[ -z "$INSIDE_EMACS" ]]; then
-  case $(uname) in
-    Darwin)
-      test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-      ;;
-  esac
-fi
-
 # debug escape codes with cat
 # directory keybindings, c-up and c-down
 cd_undo()   { popd     && zle accept-line }
@@ -261,7 +248,7 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 
 if [[ -n "$INSIDE_EMACS" ]]; then
   function e () {
-    # torgeir: on mac realpath is from brew coreutils
+    # on mac realpath is from brew coreutils
     vterm_cmd find-file "$(PATH=/usr/local/opt/coreutils/libexec/gnubin/:$PATH realpath "${@:-.}")"
   }
 fi

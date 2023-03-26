@@ -50,8 +50,6 @@ case $(uname) in
   Linux)
     for dotfile in \
       Xresources \
-        conky.lua \
-        conkyrc.base \
         gitconfig \
         gtkrc-2.0 \
         inputrc \
@@ -67,8 +65,6 @@ case $(uname) in
     for config_folder in \
       alacritty \
         mimeapps.list \
-        monitors.xml \
-        picom.conf \
         i3status-rust \
         pipewire \
         MangoHud \
