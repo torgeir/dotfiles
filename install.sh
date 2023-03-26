@@ -51,6 +51,7 @@ case $(uname) in
     for dotfile in \
       Xresources \
         gitconfig \
+        gpg-agent.conf \
         gtkrc-2.0 \
         inputrc \
         profile \
