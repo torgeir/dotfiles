@@ -65,7 +65,7 @@ alt + shift - u : yabai -m window --toggle float;\
 alt + shift - m : yabai -m window --toggle zoom-fullscreen
 
 # toggle fill parent column
-alt + shift - a : yabai -m window --toggle zoom-parent
+alt + shift - p : yabai -m window --toggle zoom-parent
 
 # change split direction
 alt + shift - s : yabai -m window --toggle split
