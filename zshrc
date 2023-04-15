@@ -27,9 +27,9 @@ export GPG_TTY=$TTY
 
 # load zsh plugins
 for plug in \
-  $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
   $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh \
-  $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh ;
+  $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh \
+  $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh;
 do
   if [[ -f $plug ]]; then
     #echo "Loading plugin $plug"
