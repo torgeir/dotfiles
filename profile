@@ -7,6 +7,9 @@ case $(uname) in
     export QT_QPA_PLATFORMTHEME="qt5ct"
     #export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
+    # sudo pacman -Syu arc-gtk-theme
+    export GTK_THEME=Arc:dark
+
     export BROWSER=/usr/bin/brave
 
     # Shader caching is a strategy to reduce stuttering and improve overall performance by ‘prebaking’ some of the work your GPU has to do before it has to do so in-game.

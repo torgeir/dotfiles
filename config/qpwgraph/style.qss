@@ -1,0 +1,18 @@
+QMainWindow *  {
+  color: #eee;
+  background-color: #334;
+  selection-color: white;
+  selection-background-color: #445;
+}
+
+QScrollBar:vertical,
+QScrollBar::handle:vertical,
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical,
+QScrollBar:horizontal,
+QScrollBar::handle:horizontal,
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+  border: 1px solid #445;
+  background: #334;
+}

@@ -193,7 +193,7 @@ bindsym $mod+Shift+f floating toggle
 bindsym $mod+Ctrl+f focus mode_toggle
 
 # Move focus to the parent container
-bindsym Mod1+Shift+a focus parent
+bindsym Mod1+Shift+p focus parent
 
 # Scratch
 bindsym $mod+Ctrl+m move scratchpad
@@ -237,6 +237,15 @@ bar {
 bindsym $mod+p sticky toggle;exec notify-send 'sticky'
 
 # Window classes (swaymsg -t get_tree | rg class)
+# What goes where
+
+for_window [title="Picture-in-Picture"] floating enable sticky enable border none
+
+assign [class="Brave-browser"] 1
+for_window [class="Brave-browser" title="Picture in picture"] floating enable sticky enable border none
+
+# assign [class="Emacs"] 2
+
 assign [class="REAPER"] 3
 for_window [class="REAPER"] floating disable
 for_window [class="REAPER" title="REAPER Query"] floating enable
@@ -249,40 +258,42 @@ for_window [class="REAPER" title="^Controls.*"] floating enable
 for_window [class="REAPER" title="^Choose.*"] floating enable
 for_window [class="REAPER" title="FX"] floating enable
 for_window [class="REAPER" title="^LV2.*"] floating enable
-for_window [class="REAPER" title="^JS.*"] floating enable
+for_window [class="REAPER" title=".*JS.*"] floating enable
 for_window [class="REAPER" title="^VST.*"] floating enable
-for_window [title="^Psensor.*"] resize set height 200px
-for_window [title="Picture-in-Picture"] floating enable sticky enable border none
-for_window [class="Brave-browser" title="Picture in picture"] floating enable sticky enable border none
 
-# What goes where
-workspace 7
-exec spotify
-exec com.slack.Slack
+assign [title="^Psensor.*"] 5
+for_window [title="^Psensor.*"] resize set height 400px
+for_window [title="^alacritty-btop"] resize set height 1200px
+
+assign [class="Slack"] 7
+assign [class="Spotify"] 8
+
+exec mako
+exec dropbox
+
+exec reaper -ignoreerrors
+
+exec "com.slack.Slack"
+exec "com.spotify.Client"
+
+exec 'alacritty --title alacritty-btop -e btop'
+exec 'env -u WAYLAND_DISPLAY psensor'
+exec 'alacritty --title alacritty-journalctl -e journalctl -f'
 
 workspace 6
-exec dropbox
 exec corectrl
 
-workspace 5
-exec alacritty -e journalctl -f
-exec psensor
-exec alacritty -e btop
-
 workspace 4
-exec qpwgraph
+exec qpwgraph -stylesheet ~/dotfiles/config/qpwgraph/style.qss ~/graph-setup3.qpwgraph
 
-workspace 3
-exec reaper
-
-workspace 2
-exec emacs
-
+# set screen 2 workspace
+workspace 5
+# set screen 1 workspace
 workspace 1
 exec brave
-exec mako
 
-# TODO torgeir port over whats left of i3
-# ~/dotfiles/i3/config
+workspace 2
+exec emacs ~/dotfiles/config/sway/config
+# exec 'sleep 2 && swaymsg move container to workspace 2'
 
 include /etc/sway/config.d/*
