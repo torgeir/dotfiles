@@ -46,6 +46,7 @@ brew install unrar
 brew tap gdubw/gng
 brew install gng
 
+#brew install swi-prolog
 #brew install redis
 #brew install ffmpeg
 #brew install ctags
