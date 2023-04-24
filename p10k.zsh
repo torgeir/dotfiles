@@ -96,7 +96,7 @@ function prompt_t_gcloud () {
   typeset -g POWERLEVEL9K_T_TERRAGRUNT_SHOW_ON_COMMAND="terragrunt|tgenv"
   typeset -g POWERLEVEL9K_T_NODE_SHOW_ON_COMMAND="node|nvm|npm|npx|ts-node|tsc"
   typeset -g POWERLEVEL9K_T_JAVA_SHOW_ON_COMMAND="java|javac|javap|kotlin|clj|clojure|jdk|jdks|gradle|gw"
-  typeset -g POWERLEVEL9K_T_GCLOUD_SHOW_ON_COMMAND="gcloud|gsutil|gcs"
+  typeset -g POWERLEVEL9K_T_GCLOUD_SHOW_ON_COMMAND="gcloud|gsutil|gcs|terragrunt|terraform"
   typeset -g POWERLEVEL9K_T_GIT_SHOW_ON_COMMAND="git"
 
   # Left prompt segments.
