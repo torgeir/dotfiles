@@ -55,3 +55,6 @@ yabai -m config right_padding  0
 yabai -m config bottom_padding 0
 yabai -m config left_padding   0
 yabai -m config window_gap     5
+
+# TODO still not work for tooltips
+#yabai -m signal --add event=window_created action=~/bin/yabai-float-small-windows.sh
