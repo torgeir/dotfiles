@@ -87,8 +87,9 @@ gaps outer 0
 #swaymsg gaps outer all set 0
 
 # Borders
-default_border pixel 3
+default_border pixel 4
 default_floating_border normal
+client.focused #00aaff #ff00aa #00ffaa
 #hide_edge_borders smart
 
 # Idle configuration
