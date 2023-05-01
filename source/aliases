@@ -143,6 +143,8 @@ case $(uname) in
       alias open="dolphin"
     fi
 
+    alias reload-xresources=xrdb -merge ~/Xresources
+
     alias bios="systemctl reboot --firmware-setup"
     # dont use grun/win any longer
     #alias rebootwin="sudo grub-reboot 2 && sudo reboot"
