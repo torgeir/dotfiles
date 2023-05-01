@@ -1,2 +1,4 @@
 window:
   opacity: 1
+font:
+  size: 13
