@@ -17,6 +17,12 @@ case $(uname) in
     __GL_SHADER_DISK_CACHE=1 #to create a shader cache for a game
     __GL_SHADER_DISK_CACHE_PATH=/home/torgeir/Games/shader-cache # to set the location for the shader cache.
 
+
+    # https://wiki.archlinux.org/title/Vulkan#Switching_between_AMD_drivers
+    # As of amdvlk 2021.Q3.4, a new switching logic was implemented which enforces AMDVLK as the default and mandates you either
+    # set AMD_VULKAN_ICD=RADV to switch from the AMDVLK default,
+    export AMD_VULKAN_ICD=RADV
+
     export WINEFSYNC=1
 
     # To enable compatibility with high-resolution displays, set the following environment variables accordingly:

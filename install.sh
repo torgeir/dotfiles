@@ -69,6 +69,7 @@ case $(uname) in
         i3status-rust \
         pipewire \
         MangoHud \
+        environment.d \
         rofi \
         mako \
         dunst \

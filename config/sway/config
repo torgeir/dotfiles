@@ -18,6 +18,10 @@ set $right l
 set $term alacritty
 set $browser brave
 
+
+## TODO
+#xwayland disable
+
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -34,28 +38,39 @@ output * {
   bg ~/Documents/Backgrounds/Flat/minimalism-scenic-toon-colors-deer-sun-forest-trees-mountain-others-5458.jpg fill
   resolution 2560x1440
 }
-output HDMI-A-1 {
+
+output DP-2 {
   position 0,0
   transform 0
+
+  # 2023-05-01: freesync still flickers on the
+  # 'Samsung Electric Company C32HG7x H4ZM800200'
+  #adaptive_sync on
+  adaptive_sync off
+
+  #mode 1920x1080@120Hz
+  #mode 2560x1440@99.946Hz
+  mode 2560x1440@143.998Hz
 }
-output DP-2 {
+output DP-1 {
   # torgeir: this is buggy with sway, sept 2022
   # torgeir: still not ok, 2023-01
   # position 2560,-1150
   #position 0,0
   bg ~/Documents/Backgrounds/Flat/firewatch-deer-forest-night-games-1567.jpg fill
   transform 270
+  mode 2560x1440@59.951Hz
 }
-workspace 1 output HDMI-A-1
-workspace 2 output HDMI-A-1
-workspace 3 output HDMI-A-1
-workspace 4 output HDMI-A-1
-workspace 5 output DP-2
-workspace 6 output DP-2
-workspace 7 output DP-2
-workspace 8 output DP-2
-workspace 9 output DP-2
-workspace 10 output DP-2
+workspace 1 output DP-2
+workspace 2 output DP-2
+workspace 3 output DP-2
+workspace 4 output DP-2
+workspace  5 output DP-1
+workspace  6 output DP-1
+workspace  7 output DP-1
+workspace  8 output DP-1
+workspace  9 output DP-1
+workspace 10 output DP-1
 
 # Opacity
 set $opacity 0.97
@@ -237,6 +252,7 @@ bar {
 bindsym $mod+p sticky toggle;exec notify-send 'sticky'
 
 # Window classes (swaymsg -t get_tree | rg class)
+# Lookup windows: https://gist.github.com/dshoreman/278091a17c08e30c46c7e7988b7c2f7d
 # What goes where
 
 for_window [title="Picture-in-Picture"] floating enable sticky enable border none
@@ -262,8 +278,26 @@ for_window [class="REAPER" title=".*JS.*"] floating enable
 for_window [class="REAPER" title="^VST.*"] floating enable
 
 assign [title="^Psensor.*"] 5
-for_window [title="^Psensor.*"] resize set height 400px
-for_window [title="^alacritty-btop"] resize set height 1200px
+for_window [title="^Psensor.*"] resize set height 512px
+for_window [title="^alacritty-journalctl"] resize set height 300px
+
+for_window [title="^alacritty-amdgpu-top"] resize set height 1450px
+
+##
+## gaming
+##
+## hack to fake disabled vsync
+for_window [class="steam_app.*"] fullscreen enable
+for_window [class="steam_app*"] inhibit_idle focus
+# FH5: move the black window off screen
+# FH5: keep the one with the game
+assign [class="steam_app_1551360"] 2
+assign [title="Forza Horizon 5"] 1
+for_window [class="steam_app_1551360"] move window to workspace number 2
+for_window [title="Forza Horizon 5"] move window to workspace number 1
+
+# for_window [app_id="^.*"] floating enable, border none
+# for_window [app_id="^.*"] fullscreen enable
 
 assign [class="Slack"] 7
 assign [class="Spotify"] 8
@@ -281,6 +315,7 @@ exec 'env -u WAYLAND_DISPLAY psensor'
 exec 'alacritty --title alacritty-journalctl -e journalctl -f'
 
 workspace 6
+exec 'alacritty --title alacritty-amdgpu-top -e amdgpu_top'
 exec corectrl
 
 workspace 4
