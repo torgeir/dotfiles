@@ -37,11 +37,19 @@ yabai -m rule --add title="^Settings$" manage=off layer=above
 yabai -m config mouse_follows_focus on
 yabai -m config focus_follows_mouse false
 
+yabai -m config window_shadow float
+
 # move and resize with mouse
 # TODO interferes with opt+click in macos menubar
 yabai -m config mouse_modifier alt
 yabai -m config mouse_action1 move
 yabai -m config mouse_action2 resize
+
+yabai -m config window_border off
+yabai -m config window_border_width 4
+yabai -m config active_window_border_color 0xffff0066
+yabai -m config active_window_border_color 0xff00ff66
+# yabai -m config normal_window_border_color 0xffffffff
 
 # set layout
 yabai -m config layout bsp
@@ -54,7 +62,7 @@ yabai -m config top_padding    0
 yabai -m config right_padding  0
 yabai -m config bottom_padding 0
 yabai -m config left_padding   0
-yabai -m config window_gap     5
+yabai -m config window_gap     0
 
 # TODO still not work for tooltips
 #yabai -m signal --add event=window_created action=~/bin/yabai-float-small-windows.sh
