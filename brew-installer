@@ -20,7 +20,7 @@ brew install babashka/brew/obb # cljs scripting, like babashka
 brew install coreutils # os x ones are outdated
 brew install gnu-sed
 #brew install findutils
-#brew install bash # bash 4
+brew install bash # macos one is outdated
 brew install grip
 brew install git
 brew install gifsicle
@@ -36,6 +36,7 @@ brew install glances
 brew install gnupg
 brew install tmux
 brew install tree
+brew install tldr
 brew install watch
 brew install hashicorp/tap/terraform-ls # terraform lsp
 brew install webkit2png
