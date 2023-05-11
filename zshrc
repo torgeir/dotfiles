@@ -3,6 +3,9 @@
 #zmodload zsh/zprof
 # type zprof when the shell has loaded
 
+# emacs tramp mode
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+
 # -z True if the length of string is zero.
 # -n True if the length of string is non-zero.
 
