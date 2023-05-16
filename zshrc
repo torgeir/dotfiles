@@ -251,7 +251,8 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
 # zsh vim bindings
-# bindkey -v
+# set -o vi
+# set -o emacs
 
 if [[ -n "$INSIDE_EMACS" ]]; then
   function e () {
