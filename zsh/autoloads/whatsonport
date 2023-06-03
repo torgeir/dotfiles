@@ -1,0 +1,13 @@
+port=$1
+if [[ -z "$port" ]]; then
+    echo "Usage: whatsonport <port>" 1>&2
+    return 1
+else
+    pid=$(lsof -n -i4TCP:$port | grep LISTEN | awk '{ print $2 }')
+    if [[ -z "$pid" ]]; then
+        echo "Nothing is running on port $port." 1>&2
+        return 1
+    else
+        echo $pid
+    fi
+fi
