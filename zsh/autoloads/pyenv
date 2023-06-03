@@ -1,6 +1,6 @@
 if [[ -z "$PYENV_SHELL" ]]; then
   unfunction pyenv
+  echo "initializing pyenv"
   eval "$(pyenv init -)"
+  command pyenv "$@"
 fi
-
-command pyenv "$@"
