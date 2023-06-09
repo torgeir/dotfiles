@@ -79,7 +79,7 @@ nmap <leader>Jw :action PrevSplitter<cr>
 " TODO SPC c d
 
 " insert
-nmap it O// TODO torgeir<esc>
+nmap <leader>it O// TODO torgeir<esc>
 
 " recenter
 noremap <C-l> zz
