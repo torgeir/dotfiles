@@ -51,6 +51,10 @@ export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 if [[ -f $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
   # toggle off with <s-tab> - no, s-tab to complete backwards is useful
   bindkey "^T" autosuggest-toggle
+
+  # no good: bindkey "^I" autosuggest-accept _files
+  # tab is a bad idea, it prevents triggering complete of directories
+  # you should learn to use right arrow or c-e instead
 fi
 
 # e.g. C-o describe-key-briefly <ret>
