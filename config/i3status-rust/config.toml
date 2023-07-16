@@ -40,7 +40,7 @@ command = "echo jnct $(sensors | grep junct | awk '{print $2}')"
 interval = 1
 [[block]]
 block = "custom"
-command = "echo gpufan $(sensors | head -n 5 | grep fan1 | awk '{print $2}')"
+command = "echo gpufan $(sensors | sed '0,/amdgpu/d' | grep fan1 | awk '{print $2}')"
 interval = 1
 
 [[block]]
