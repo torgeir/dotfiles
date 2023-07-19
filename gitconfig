@@ -28,10 +28,11 @@
   editor = emacsclient
   excludesfile = ~/.gitignore_global
   attributesfile = ~/.gitattributes
-  pager = delta
+# TODO torgeir litt uoversiktlig
+# pager = delta
 
-[interactive]
-  diffFilter = delta --color-only
+#[interactive]
+#  diffFilter = delta --color-only
 
 [color]
   branch = auto
