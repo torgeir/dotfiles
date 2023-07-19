@@ -35,8 +35,16 @@ case $(uname) in
     #export QT_DEVICE_PIXEL_RATIO=1
     #export QT_AUTO_SCREEN_SCALE_FACTOR=true
 
+    # Set SSH to use gpg-agent
+    unset SSH_AGENT_PID
+    if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+      # export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+      export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+    fi
+
     if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
       exec dbus-launch sway
     fi
+
     ;;
 esac

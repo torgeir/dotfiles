@@ -210,28 +210,15 @@ case $(uname) in
     ssh-add -K ~/.ssh/id_ed25519 > /dev/null 2>&1
     ;;
   Linux)
-    # https://github.com/bfrg/gpg-guide/blob/master/gpg-agent.conf
-    # start gpg-agent if not already running
-    if ! pgrep -x -u "${USER}" gpg-agent &> /dev/null; then
-      gpg-connect-agent /bye &> /dev/null
-    fi
-
-    # set SSH to use gpg-agent
-    unset SSH_AGENT_PID
-    if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-      # export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-      export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-    fi
 
     # if you use multiple terminals simultaneously and want gpg-agent to
-    # ask for passphrase via pinentry-curses from the same terminal
+    # # ask for passphrase via pinentry-curses from the same terminal
     gpg-connect-agent updatestartuptty /bye >/dev/null
 
-    # arch needs
-    #  sudo ln -sf /usr/bin/pinentry-tty /usr/local/bin/pinentry-tty
-    #  sudo ln /usr/bin/ksshaskpass /usr/lib/ssh/ssh-askpass
+    # # arch needs
+    # #  sudo ln -sf /usr/bin/pinentry-tty /usr/local/bin/pinentry-tty
+    # #  sudo ln /usr/bin/ksshaskpass /usr/lib/ssh/ssh-askpass
 
-    ssh-add > /dev/null 2>&1
     ;;
 esac
 
