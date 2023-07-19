@@ -48,6 +48,8 @@ set number
 " Move like in the terminal
 nnoremap <M-f> w
 nnoremap <M-b> b
+inoremap <M-f> <C-o>w
+inoremap <M-b> <C-o>b
 
 " Run :actionlist to see the full list, or https://gist.github.com/zchee/9c78f91cc5ad771c1f5d
 nmap <C-Left> :action PreviousTab<cr>
