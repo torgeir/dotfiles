@@ -17,6 +17,12 @@ cmd + shift + alt - return : open -na Google\ Chrome --args --profile-directory=
 
 cmd + alt + ctrl - e : emacsclient --eval "(emacs-everywhere)"
 
+alt - e : open -a /Applications/Emacs.app
+alt - i : open -a /Applications/IntelliJ\ IDEA.app
+alt - c : open -a /Applications/Google\ Chrome.app --args --profile-directory=Default
+alt + cmd - c : open -na /Applications/Google\ Chrome.app --args --profile-directory=Profile\ 1
+alt - o : open -a /Applications/Microsoft\ Outlook.app
+
 cmd - return [
   # "emacs" : # dont catch this, s-return is bound in emacs
   "slack" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
