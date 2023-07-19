@@ -1,8 +1,8 @@
 [theme]
-theme = "native"
+theme = "slick"
 
 [icons]
-icons = "awesome4"
+icons = "awesome6"
 
 # hostname
 [[block]]
@@ -95,4 +95,4 @@ block = "pacman"
 signal = 1
 [[block.click]]
 button = "left"
-cmd = "exec alacritty -e sudo pacman -Syu"
+cmd = "exec alacritty --hold -e sudo pacman -Syu"
