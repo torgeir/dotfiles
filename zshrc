@@ -129,7 +129,7 @@ if [[ -z "$INSIDE_EMACS" ]]; then
       gpg_cache
 
       # TODO Unused?
-      test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+      #test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
       ;;
   esac
 fi
