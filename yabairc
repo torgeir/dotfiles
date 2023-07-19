@@ -41,7 +41,7 @@ yabai -m config window_shadow float
 
 # move and resize with mouse
 # TODO interferes with opt+click in macos menubar
-yabai -m config mouse_modifier alt
+#yabai -m config mouse_modifier alt
 yabai -m config mouse_action1 move
 yabai -m config mouse_action2 resize
 
