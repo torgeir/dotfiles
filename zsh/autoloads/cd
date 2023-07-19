@@ -1,2 +1,2 @@
 # a smarter cd
-builtin cd "$@" && l
+builtin cd "$@" && l && m
