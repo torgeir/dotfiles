@@ -20,6 +20,8 @@ source $HOME/dotfiles/source/aliases
 
 # default owner rw
 umask 77
+# umask -S
+#   u=rwx,g=,o=
 
 # make gpg from emacs prompt in shell (may need to open emacs from command line)
 # linux likes this.
