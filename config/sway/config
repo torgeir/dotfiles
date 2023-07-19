@@ -128,6 +128,7 @@ bindsym $mod+Ctrl+c reload
 # Exit
 bindsym $mod+Ctrl+e exec 'swaymsg exit'
 bindsym $mod+Ctrl+s exec 'systemctl suspend'
+bindsym $mod+Ctrl+r exec 'systemctl reboot'
 bindsym $mod+Ctrl+p exec 'systemctl poweroff'
 bindsym $mod+Ctrl+l exec 'swaylock -f -c 000000'
 
