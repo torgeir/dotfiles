@@ -63,6 +63,10 @@ fi
 bindkey '^O' execute-named-cmd
 bindkey '^H' describe-key-briefly
 
+# up and down dir with cmd-<up|down>
+bindkey "^[^[[A" cd_parent
+bindkey "^[^[[B" cd_undo
+
 # prompt install
 if [[ ! -d "$HOME/powerlevel10k" ]]; then
   pushd $HOME
