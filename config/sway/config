@@ -107,11 +107,9 @@ bindsym $mod+Return exec emacsclient --eval '\
   (if (frame-focus-state)\
     (with-current-buffer (buffer-name (window-buffer (frame-selected-window)))\
       (t/vterm-here))\
-    (progn\
-      (message "d: %s" default-directory)\
-      (with-selected-frame (make-frame)\
-        (let ((default-directory (t/read-file (t/user-file ".cur"))))\
-          (+vterm/here t)))))'
+    (with-selected-frame (make-frame)\
+      (let ((default-directory (t/read-file (t/user-file ".cur"))))\
+        (+vterm/here t))))'
 bindsym $mod+Shift+Return exec $browser
 bindsym $mod+n exec dolphin
 
