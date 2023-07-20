@@ -213,7 +213,10 @@ case $(uname) in
     source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 
     # don't type the password on every git pull
-    ssh-add -K ~/.ssh/id_ed25519 > /dev/null 2>&1
+    # only add keys if theyre not already added
+    if [ -z "$(ssh-add -l)" ]; then
+      ssh-add -K ~/.ssh/id_ed25519 > /dev/null 2>&1
+    fi
     ;;
   Linux)
 
@@ -225,6 +228,11 @@ case $(uname) in
     # #  sudo ln -sf /usr/bin/pinentry-tty /usr/local/bin/pinentry-tty
     # #  sudo ln /usr/bin/ksshaskpass /usr/lib/ssh/ssh-askpass
 
+    # don't type the password on every git pull
+    # only add keys if theyre not already added
+    if [ -z "$(ssh-add -l)" ]; then
+      ssh-add
+    fi
     ;;
 esac
 
