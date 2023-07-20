@@ -312,6 +312,7 @@ for_window [title="Forza Horizon 5"] move window to workspace number 1
 # for_window [app_id="^.*"] fullscreen enable
 
 assign [class="Slack"] 7
+assign [class="Signal"] 7
 assign [class="Spotify"] 8
 
 exec mako
@@ -319,7 +320,7 @@ exec dropbox
 
 exec reaper -ignoreerrors
 
-exec "com.slack.Slack"
+exec "signal-desktop"
 exec "com.spotify.Client"
 
 exec 'alacritty --title alacritty-btop -e btop'
