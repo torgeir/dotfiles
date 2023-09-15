@@ -22,6 +22,7 @@ alt - i : open -a /Applications/IntelliJ\ IDEA.app
 alt - c : open -a /Applications/Google\ Chrome.app --args --profile-directory=Default
 alt + cmd - c : open -na /Applications/Google\ Chrome.app --args --profile-directory=Profile\ 1
 alt - o : open -a /Applications/Microsoft\ Outlook.app
+alt - s : open -a /Applications/Slack.app
 
 cmd - return [
   # "emacs" : # dont catch this, s-return is bound in emacs
@@ -29,7 +30,8 @@ cmd - return [
   "google chrome" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
   "finder" : folder=$(osascript -e 'tell application "Finder" to return (POSIX path of (folder of the front window as alias))') ; emacsclient  --eval "(let ((default-directory \"$folder\")) (+vterm/here t))" ;  osascript -e 'tell application "Emacs" to activate';
   "zoom.us" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
-  "intellij idea" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
+# conflicts with "complete brackets at end of line"
+#  "intellij idea" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
   "iterm2" : osascript ~/bin/iterm-new-tab.applescript
 ]
 
