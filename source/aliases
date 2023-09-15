@@ -58,7 +58,7 @@ case $(uname) in
 esac
 
 # wait for internet connection
-alias waitforinternet='while true; do ping -c 1 -t 2 nrk.no; say "we gotz internet"; date; break; sleep 2; done'
+alias waitforinternet='while true; do ping -c 1 -t 2 nrk.no && say "gotz internet" && date && break; sleep 2; done'
 
 # restart a hanging os x touch bar
 alias killtouchbar="sudo pkill TouchBarServer; sudo killall ControlStrip"
