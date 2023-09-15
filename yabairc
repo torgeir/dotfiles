@@ -19,9 +19,10 @@ yabai -m rule --add app="^Microsoft" manage=off # Teams, Outlook
 yabai -m rule --add app="^Microsoft" title="Reminders?$" manage=off # n Reminder[s]
 yabai -m rule --add app="^Slack" manage=on
 yabai -m rule --add app="^Zoom" manage=on
-yabai -m rule --add app="^Code with me" manage=off
 
-yabai -m rule --add app="IntelliJ IDEA" manage=off
+yabai -m rule --add app="IntelliJ IDEA" manage=on
+yabai -m rule --add app="IntelliJ IDEA" title="^Code with me" manage=off
+yabai -m rule --add app="IntelliJ IDEA" title="^Convert Code" manage=off
 
 yabai -m rule --add app="Sonos S1 Controller" manage=off
 
