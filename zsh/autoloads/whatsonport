@@ -1,6 +1,6 @@
 port=$1
 if [[ -z "$port" ]]; then
-    echo "Usage: whatsonport <port>" 1>&2
+    echo "Usage: $0 <port>" 1>&2
     return 1
 else
     pid=$(lsof -n -i4TCP:$port | grep LISTEN | awk '{ print $2 }')
