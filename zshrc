@@ -128,8 +128,8 @@ if [[ -z "$INSIDE_EMACS" ]]; then
       # Without a fingerprint reader on linux this is annoying, keep it macos only
       gpg_cache
 
-      # TODO Unused?
-      #test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+      # Install from Iterm2 -> Install Shell Integration
+      test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
       ;;
   esac
 fi
