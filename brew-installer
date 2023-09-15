@@ -7,6 +7,9 @@
 brew upgrade
 brew cleanup
 
+# https://github.com/caskroom/homebrew-cask
+brew tap homebrew/cask
+
 # stuff
 brew install --cask 1password/tap/1password-cli
 brew install --cask temurin
@@ -71,9 +74,6 @@ brew services start yabai
 brew install koekeishiya/formulae/skhd
 brew services start skhd
 brew install --cask easy-move-plus-resize # and bring back cmd + mouse to move and resize windows
-
-# https://github.com/caskroom/homebrew-cask
-brew tap homebrew/cask
 
 # applications
 brew install --cask alfred
