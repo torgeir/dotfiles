@@ -157,6 +157,6 @@ alt + shift - 5: yabai -m window --space 5; skhd -k "shift + ctrl - 5"
 alt + shift - 6: yabai -m window --space 6; skhd -k "shift + ctrl - 6"
 
 # trello url
-shift + ctrl + alt + cmd - t: osascript -l JavaScript -e '[].slice.call(((app) => (app && app.windows && app.windows[0] && app.windows[0].tabs) || [])(Application("Google Chrome"))).map((t) => t.url()).filter((url) => url.includes("trello.com/c/")).map((url) => url.toString()).join(" ").replace(/\r\n/g, "")' | pbcopy && osascript -e 'tell application "System Events" to keystroke "v" using command down';
+# not alt t as it conflicts with transpose
+alt + shift - t : osascript -l JavaScript -e ' [].slice.call(((app) => (app && app.windows) || [])(Application("Google Chrome"))) .map((w) => [w, [].slice .call(w.tabs) .map((t, idx) => [idx + 1, t.url()]) .filter(([index, url]) => url.includes("trello.com/c/")) .map(([index, url]) => index),]) .forEach(([w, indices]) => indices.forEach((index) => w.activeTabIndex.set(index)));' && osascript -e 'tell application "Google Chrome" to activate'
 
-shift + alt - t : osascript -l JavaScript -e ' [].slice.call(((app) => (app && app.windows) || [])(Application("Google Chrome"))) .map((w) => [w, [].slice .call(w.tabs) .map((t, idx) => [idx + 1, t.url()]) .filter(([index, url]) => url.includes("trello.com/c/")) .map(([index, url]) => index),]) .forEach(([w, indices]) => indices.forEach((index) => w.activeTabIndex.set(index)));' && osascript -e 'tell application "Google Chrome" to activate'
