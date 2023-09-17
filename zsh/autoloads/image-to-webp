@@ -1,0 +1,9 @@
+# converts image file $1 to webp
+# optionally specify quality as $2
+file=$1
+basename="${file%.*}"
+quality=${2:-25}
+sips -s format jpeg $file --out $basename.jpeg
+docker run --rm -v "$PWD":/here -w /here ghcr.io/toy/image_optim $basename.jpeg
+cwebp -q $quality $basename.jpeg -o $basename.webp
+rm $basename.jpeg
