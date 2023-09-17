@@ -40,7 +40,7 @@
   status = auto
 
 [include]
-  path = ~/.gitconfig-private
+  path = ~/.gitconfig.private
 
 [includeIf "gitdir:/Users/Torgeir/Code/saga/"]
   path = /Users/Torgeir/Dropbox/dotfiles-work/.gitconfig
