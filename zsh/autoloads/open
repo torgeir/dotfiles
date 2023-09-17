@@ -1,0 +1,19 @@
+# can't live without open . from os x
+unfunction open
+case $(uname) in
+    Linux)
+        if [[ "$1" =~ "^http" ]]
+        then
+            xdg-open "$@"
+        elif command -v thunar &> /dev/null
+        then
+            thunar "$@"
+        elif command -v dolphin &> /dev/null
+        then
+            dolphin "$@"
+        fi
+        ;;
+    Darwin)
+        open "$@"
+        ;;
+esac

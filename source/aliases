@@ -133,16 +133,6 @@ alias kill-gpg-agent="killall gpg-agent && gpg-connect-agent reloadagent /bye"
 
 case $(uname) in
   Linux)
-    # can't live without open . from os x
-    if command -v thunar &> /dev/null
-    then
-      alias open=thunar
-    fi
-    if command -v dolphin &> /dev/null
-    then
-      alias open="dolphin"
-    fi
-
     alias reload-xresources=xrdb -merge ~/Xresources
 
     alias bios="systemctl reboot --firmware-setup"
