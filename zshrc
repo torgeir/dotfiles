@@ -207,9 +207,9 @@ bindkey '^x^e' edit-command-line
 
 case $(uname) in
   Darwin)
-    # The next line updates PATH for the Google Cloud SDK.
+    # Update PATH for the Google Cloud SDK.
     source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-    # The next line enables zsh completion for gcloud.
+    # Enable zsh completion for gcloud.
     source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 
     # don't type the password on every git pull
