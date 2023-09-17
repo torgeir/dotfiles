@@ -160,3 +160,6 @@ alt + shift - 6: yabai -m window --space 6; skhd -k "shift + ctrl - 6"
 # not alt t as it conflicts with transpose
 alt + shift - t : osascript -l JavaScript -e ' [].slice.call(((app) => (app && app.windows) || [])(Application("Google Chrome"))) .map((w) => [w, [].slice .call(w.tabs) .map((t, idx) => [idx + 1, t.url()]) .filter(([index, url]) => url.includes("trello.com/c/")) .map(([index, url]) => index),]) .forEach(([w, indices]) => indices.forEach((index) => w.activeTabIndex.set(index)));' && osascript -e 'tell application "Google Chrome" to activate'
 
+fn - m: yabai -m window --space 5; yabai -m display --focus 5; yabai -m window --grid 1:1:1:1:0:0; yabai -m window --resize abs:1000:500;
+fn - p: yabai -m window --space 1; yabai -m display --focus 1; yabai -m window --toggle zoom-fullscreen;
+hyper - p: yabai -m window --space 1; yabai -m display --focus 1; yabai -m window --toggle zoom-fullscreen;
