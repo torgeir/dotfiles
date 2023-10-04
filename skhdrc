@@ -38,6 +38,7 @@ cmd - return [
 ]
 
 cmd + shift - h : open -a Finder -- ~/
+cmd + shift - w : open -a Finder -- ~/Downloads
 
 # reload keybindings
 alt + shift - q : cd && skhd -r
