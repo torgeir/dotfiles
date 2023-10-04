@@ -1,17 +1,17 @@
 #!/bin/bash
 # ls
-alias  ls="exa --group-directories-first"
-alias   l="exa -a --group-directories-first"
-alias  la="exa -1 -a --tree -L 1 --classify --group --group-directories-first"
-alias  ll="exa -l -a --classify --group --group-directories-first"
+alias ls="exa --group-directories-first"
+alias l="exa -a --group-directories-first"
+alias la="exa -1 -a --tree -L 1 --classify --group --group-directories-first"
+alias ll="exa -l -a --classify --group --group-directories-first"
 alias lal="exa -l -a --classify --group --group-directories-first"
 
-alias   lt="exa -l -1 --group --classify --tree -L 1 --group-directories-first"
-alias  ltt="exa -l -1 --group --classify --tree -L 2 --group-directories-first"
+alias lt="exa -l -1 --group --classify --tree -L 1 --group-directories-first"
+alias ltt="exa -l -1 --group --classify --tree -L 2 --group-directories-first"
 alias lttt="exa -l -1 --group --classify --tree -L 3 --group-directories-first"
 
-alias   lat="exa -l -1 -a --group --classify --tree -L 1 --group-directories-first"
-alias  latt="exa -l -1 -a --group --classify --tree -L 2 --group-directories-first"
+alias lat="exa -l -1 -a --group --classify --tree -L 1 --group-directories-first"
+alias latt="exa -l -1 -a --group --classify --tree -L 2 --group-directories-first"
 alias lattt="exa -l -1 -a --group --classify --tree -L 3 --group-directories-first"
 # alias lla="exa -l --all --group --classify"
 # alias lal="exa -l --all --group --classify"
@@ -30,31 +30,31 @@ alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 # @janmoesen’s protip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-  alias "$method"="lwp-request -m '$method'"
+    alias "$method"="lwp-request -m '$method'"
 done
 
 if [[ -n "$INSIDE_EMACS" ]]; then
-  alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
+    alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
 fi
 
 case $(uname) in
-  Darwin)
-  # empty all the Trash
-  alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash"
+    Darwin)
+        # empty all the Trash
+        alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash"
 
-  # hide/show all desktop icons (useful when presenting)
-  alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-  alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+        # hide/show all desktop icons (useful when presenting)
+        alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+        alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
-  # hide/show hidden files
-  alias hidehidden="defaults write com.apple.finder AppleShowAllFiles -boolean false && killall Finder"
-  alias showhidden="defaults write com.apple.finder AppleShowAllFiles -boolean true && killall Finder"
+        # hide/show hidden files
+        alias hidehidden="defaults write com.apple.finder AppleShowAllFiles -boolean false && killall Finder"
+        alias showhidden="defaults write com.apple.finder AppleShowAllFiles -boolean true && killall Finder"
 
-  alias flushyosemitedns="sudo discoveryutil mdnsflushcache;sudo discoveryutil udnsflushcaches"
+        alias flushyosemitedns="sudo discoveryutil mdnsflushcache;sudo discoveryutil udnsflushcaches"
 
-  # logout os x
-  alias lout="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-;;
+        # logout os x
+        alias lout="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+        ;;
 esac
 
 # wait for internet connection
@@ -79,13 +79,13 @@ alias gadd-origin-pr='git config --add remote.origin.fetch \"+refs/pull/*/head:r
 # go to git root
 alias gr='cd $(git rev-parse --show-toplevel)'
 
-alias   ..='cd ..'
-alias  ...='cd ../..'
+alias ..='cd ..'
+alias ...='cd ../..'
 alias ....='cd ../../..'
 
-alias    t='exa --tree --level 1'
-alias   tt='exa --tree --level 2'
-alias  ttt='exa --tree --level 3'
+alias t='exa --tree --level 1'
+alias tt='exa --tree --level 2'
+alias ttt='exa --tree --level 3'
 alias tttt='exa --tree --level 4'
 
 # less
@@ -98,7 +98,7 @@ alias isodate="date +'%Y-%m-%dT%H:%M:%SZ'"
 alias latest-changes="find . -type f -printf '%T@ %p\n' | sort -k1,1nr | head -10"
 
 alias yabai-restart="brew services restart yabai"
-alias yabai-window-name="while true; do yabai -m query --windows --window | jq .title; sleep 1; done"
+alias yabai-window-name="while true; do yabai -m query --windows --window | jq \"(.title), (.role), (.subrole)\"; sleep 1; done"
 
 alias jq-paths="jq -c 'path(..)|[.[]|tostring]|join(\"/\")'"
 
@@ -132,19 +132,19 @@ alias xmlformat="xmllint --format"
 alias kill-gpg-agent="killall gpg-agent && gpg-connect-agent reloadagent /bye"
 
 case $(uname) in
-  Linux)
-    alias reload-xresources=xrdb -merge ~/Xresources
+    Linux)
+        alias reload-xresources=xrdb -merge ~/Xresources
 
-    alias bios="systemctl reboot --firmware-setup"
-    # dont use grun/win any longer
-    #alias rebootwin="sudo grub-reboot 2 && sudo reboot"
+        alias bios="systemctl reboot --firmware-setup"
+        # dont use grun/win any longer
+        #alias rebootwin="sudo grub-reboot 2 && sudo reboot"
 
-    # open ports
-    alias ports="sudo lsof -i -P -n | rg -i listen"
-    ;;
-  Darwin)
-    alias ports="sudo lsof -i -n -P | rg -i tcp | rg -i listen"
-    ;;
+        # open ports
+        alias ports="sudo lsof -i -P -n | rg -i listen"
+        ;;
+    Darwin)
+        alias ports="sudo lsof -i -n -P | rg -i tcp | rg -i listen"
+        ;;
 esac
 
 # git
