@@ -13,14 +13,16 @@ cmd + shift - return [
   "intellij idea" : ~
 ]
 
-cmd + shift + alt - return : open -na Google\ Chrome --args --profile-directory=Profile\ 1 "chrome://newtab" # --new-window
+# cmd + shift + alt - return : open -na Google\ Chrome --args --profile-directory=Profile\ 2 "chrome://newtab" # --new-window
 
 cmd + alt + ctrl - e : emacsclient --eval "(emacs-everywhere)"
 
 alt - e : open -a /Applications/Emacs.app
 alt - i : open -a /Applications/IntelliJ\ IDEA.app
-alt - c : open -a /Applications/Google\ Chrome.app --args --profile-directory=Default
-shift + alt - c : open -na /Applications/Google\ Chrome.app --args --profile-directory=Profile\ 2
+alt - c : skhd -k "alt - 1";\
+          open -a /Applications/Google\ Chrome.app --args --profile-directory=Default
+shift + alt - c : skhd -k "alt - 4";\
+                  open -na /Applications/Google\ Chrome.app --args --profile-directory=Profile\ 2
 alt - o : open -a /Applications/Microsoft\ Outlook.app
 alt - s : open -a /Applications/Slack.app
 
