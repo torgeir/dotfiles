@@ -2,9 +2,17 @@
 # yabai -m query --windows | jq '.[].app'
 # yabai -m query --windows | jq '.[] | select(.app == "iTerm2") | .title'
 
+# DO NOT add defaults to manage=on for whole apps in this file, it borks
+# popups/hovers e.g. in Chrome , as it will force yabai to handle these windows
+# as well. Layout bsp will suffice to make yabai default to tile window for apps.
+
 # float some apps
 yabai -m rule --add app="^Emacs$" manage=off
 yabai -m rule --add app="^Emacs$" subrole="AXStandardWindow" manage=on
+
+# zoom breakout room windows do not tile automatically
+# try manage=on for all its windows
+yabai -m rule --add app="^Zoom" manage=on
 
 yabai -m rule --add title="Info$" manage=off
 yabai -m rule --add app="^App Store$" manage=off
@@ -15,18 +23,15 @@ yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^System" manage=off
 yabai -m rule --add app="^Problem Report" manage=off
 
-yabai -m rule --add app="^Microsoft" manage=off # Teams, Outlook
+yabai -m rule --add app="^Microsoft" manage=off                     # Teams, Outlook
 yabai -m rule --add app="^Microsoft" title="Reminders?$" manage=off # n Reminder[s]
-yabai -m rule --add app="^Slack" manage=on
-yabai -m rule --add app="^Zoom" manage=on
+#yabai -m rule --add app="^Slack" manage=off
 
-yabai -m rule --add app="IntelliJ IDEA" manage=on
 yabai -m rule --add app="IntelliJ IDEA" title="^Code with me" manage=off
 yabai -m rule --add app="IntelliJ IDEA" title="^Convert Code" manage=off
 
 yabai -m rule --add app="Sonos S1 Controller" manage=off
 
-yabai -m rule --add app="^Google Chrome$" manage=on
 yabai -m rule --add app="^Google Chrome$" title="^Picture in Picture$" manage=off layer=above
 
 # show digital colour meter topmost and on all spaces
