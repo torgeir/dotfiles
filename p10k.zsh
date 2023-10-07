@@ -1,11 +1,18 @@
+#!/usr/bin/env bash
 # prompt segments, see .p10k.zsh
 function prompt_t_node () {
   NVM_NODE_VERSION=$(echo $NVM_BIN | sed -e "s#$HOME/.nvm/versions/node/##" | cut -d "/" -f1)
   # fall back to $NODE_VERSION from ~/dotfiles/source/exports
   NODE_VERSION=${NVM_NODE_VERSION:-$NODE_VERSION}
   NPM_VERSION=$(cat $HOME/.nvm/versions/node/$NODE_VERSION/lib/node_modules/npm/package.json | jq -r .version)
-  p10k segment -t "%F{green}$NODE_VERSION %F{yellow}$NPM_VERSION" 
+  p10k segment -t "%F{green}$NODE_VERSION %F{yellow}$NPM_VERSION"
 }
+
+function prompt_t_npm () {
+  NPM_SCRIPTS=$([[ -f package.json ]] && cat package.json | jq -r '.scripts | keys | sort | join(" ")')
+  p10k segment -t "%F{orange}$NPM_SCRIPTS"
+}
+
 
 function prompt_t_java () {
   case $(uname) in
@@ -94,7 +101,8 @@ function prompt_t_gcloud () {
   typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_ON_COMMAND="python|python3|pip|pip3|pyenv"
   typeset -g POWERLEVEL9K_T_TERRAFORM_SHOW_ON_COMMAND="terraform|tfenv"
   typeset -g POWERLEVEL9K_T_TERRAGRUNT_SHOW_ON_COMMAND="terragrunt|tgenv"
-  typeset -g POWERLEVEL9K_T_NODE_SHOW_ON_COMMAND="node|nvm|npm|npx|ts-node|tsc"
+  typeset -g POWERLEVEL9K_T_NODE_SHOW_ON_COMMAND="node|npm|nvm|npx|ts-node|tsc"
+  typeset -g POWERLEVEL9K_T_NPM_SHOW_ON_COMMAND="npm"
   typeset -g POWERLEVEL9K_T_JAVA_SHOW_ON_COMMAND="java|javac|javap|kotlin|clj|clojure|jdk|jdks|gradle|gw"
   typeset -g POWERLEVEL9K_T_GCLOUD_SHOW_ON_COMMAND="gcloud|gsutil|gcs|terragrunt|terraform"
   typeset -g POWERLEVEL9K_T_GIT_SHOW_ON_COMMAND="git"
@@ -120,15 +128,19 @@ function prompt_t_gcloud () {
     # background_jobs
     # google_app_cred
     time                      # current time
+
     newline
 
     virtualenv                # python virtual environment
     t_gcloud
     t_java
-    t_node
     t_git
-
+    t_node
     direnv
+
+    newline
+
+    t_npm
 
     # torgeir too slow
     # t_terraform

@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
+# details in available commands
+# https://github.com/koekeishiya/yabai/blob/master/src/message.c
+#
 # yabai -m query --windows | jq '.[].app'
 # yabai -m query --windows | jq '.[] | select(.app == "iTerm2") | .title'
 
 # DO NOT add defaults to manage=on for whole apps in this file, it borks
 # popups/hovers e.g. in Chrome , as it will force yabai to handle these windows
 # as well. Layout bsp will suffice to make yabai default to tile window for apps.
-
-# float some apps
-yabai -m rule --add app="^Emacs$" manage=off
-yabai -m rule --add app="^Emacs$" subrole="AXStandardWindow" manage=on
 
 # zoom breakout room windows do not tile automatically
 # try manage=on for all its windows
@@ -23,12 +22,16 @@ yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^System" manage=off
 yabai -m rule --add app="^Problem Report" manage=off
 
-yabai -m rule --add app="^Microsoft" manage=off                     # Teams, Outlook
+yabai -m rule --add app="^Microsoft Teams" manage=off               # Teams, Outlook
 yabai -m rule --add app="^Microsoft" title="Reminders?$" manage=off # n Reminder[s]
-#yabai -m rule --add app="^Slack" manage=off
+# TODO does this fix all popup windows?
+yabai -m rule --add app="^Microsoft" subrole=AXStandardWindow manage=off
 
 yabai -m rule --add app="IntelliJ IDEA" title="^Code with me" manage=off
 yabai -m rule --add app="IntelliJ IDEA" title="^Convert Code" manage=off
+yabai -m rule --add app="IntelliJ IDEA" title="^(Copy|Add) Code" manage=off
+# TODO does this fix all popup windows?
+yabai -m rule --add app="IntelliJ IDEA" subrole=AXStandardWindow manage=off
 
 yabai -m rule --add app="Sonos S1 Controller" manage=off
 
@@ -45,7 +48,8 @@ yabai -m rule --add title="^Settings$" manage=off layer=above
 yabai -m config mouse_follows_focus on
 yabai -m config focus_follows_mouse off
 
-yabai -m config window_shadow float
+#yabai -m config window_shadow float
+yabai -m config window_shadow off
 
 # move and resize with mouse
 # TODO interferes with opt+click in macos menubar
@@ -54,10 +58,14 @@ yabai -m config mouse_action1 move
 yabai -m config mouse_action2 resize
 
 yabai -m config window_border on
-yabai -m config window_border_width 4
-yabai -m config active_window_border_color 0xffff0066
-yabai -m config active_window_border_color 0xff00ff66
-# yabai -m config normal_window_border_color 0xffffffff
+yabai -m config window_border_width 2
+#yabai -m config active_window_border_color 0xffff6600 # o
+#yabai -m config active_window_border_color 0xff00ff66 # g
+#yabai -m config active_window_border_color 0xffff0066 # r
+#yabai -m config active_window_border_color 0xff6600ff
+yabai -m config active_window_border_color 0xffffffff
+yabai -m config active_window_border_color 0x88ffffff # argb
+yabai -m config normal_window_border_color 0xff000000
 
 # set layout
 yabai -m config layout bsp
@@ -66,8 +74,8 @@ yabai -m config layout bsp
 yabai -m config window_topmost on
 yabai -m config window_placement second_child
 
-yabai -m config top_padding 1
-yabai -m config right_padding 1
-yabai -m config bottom_padding 1
-yabai -m config left_padding 1
-yabai -m config window_gap 1
+yabai -m config top_padding 2
+yabai -m config right_padding 2
+yabai -m config bottom_padding 2
+yabai -m config left_padding 2
+yabai -m config window_gap 2
