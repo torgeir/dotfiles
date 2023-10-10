@@ -8,12 +8,6 @@ function prompt_t_node () {
   p10k segment -t "%F{green}$NODE_VERSION %F{yellow}$NPM_VERSION"
 }
 
-function prompt_t_npm () {
-  NPM_SCRIPTS=$([[ -f package.json ]] && cat package.json | jq -r '.scripts | keys | sort | join(" ")')
-  p10k segment -t "%F{orange}$NPM_SCRIPTS"
-}
-
-
 function prompt_t_java () {
   case $(uname) in
     Linux)
@@ -23,7 +17,7 @@ function prompt_t_java () {
       DEFAULT_JAVA=$(/usr/libexec/java_home)
       JAVA_VERSION=$(echo ${JAVA_HOME:-DEFAULT_JAVA} | tr "/" " " | awk '{print $4}')
       p10k segment -t "%F{green}$JAVA_VERSION"
-    ;;
+      ;;
   esac
 }
 
@@ -44,9 +38,22 @@ function prompt_t_gcloud () {
   # https://cloud.google.com/sdk/docs/configurations#activating_a_configuration
   env=${CLOUDSDK_ACTIVE_CONFIG_NAME:-default}
   if [ -f "$HOME/.config/gcloud/configurations/config_$env" ]; then
-    project=$(cat $HOME/.config/gcloud/configurations/config_$env | rg project | sed -e "s/project = //")
-    email=$(cat $HOME/.config/gcloud/configurations/config_$env | rg account | sed -e "s/account = //")
-    p10k segment -t "%F{green}${email}%F{red}@%F{yellow}${project}"
+  project=$(cat $HOME/.config/gcloud/configurations/config_$env | rg project | sed -e "s/project = //")
+  email=$(cat $HOME/.config/gcloud/configurations/config_$env | rg account | sed -e "s/account = //")
+  p10k segment -t "%F{green}${email}%F{red}@%F{yellow}${project}"
+  fi
+}
+
+function prompt_t_npm () {
+  NPM_SCRIPTS=$([[ -f package.json ]] && cat package.json | jq -r '.scripts | keys | sort | join(" ")' || echo "no package.json")
+  p10k segment -t "%F{orange}$NPM_SCRIPTS"
+}
+
+function p10k-on-post-widget() {
+  if [[ $PREBUFFER$BUFFER == 'npm run' || $PREBUFFER$BUFFER == 'npm run ' ]]; then
+    p10k display '*/t_npm'=show
+  else
+    p10k display '*/t_npm'=hide
   fi
 }
 
