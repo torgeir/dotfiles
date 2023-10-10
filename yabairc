@@ -59,14 +59,11 @@ yabai -m config mouse_action2 resize
 
 yabai -m config window_border on
 yabai -m config window_border_width 3
-#yabai -m config active_window_border_color 0xffffaa00 # o
-#yabai -m config active_window_border_color 0xff00ffaa # g
-#yabai -m config active_window_border_color 0xffff00aa # r
-#yabai -m config active_window_border_color 0xffaa00ff
-yabai -m config active_window_border_color 0xffffffff
-yabai -m config active_window_border_color 0x88ffffff # argb
-yabai -m config active_window_border_color 0xffff00aa # argb
-yabai -m config normal_window_border_color 0x11000000
+# yabai -m config active_window_border_color 0xffffffff # white
+# yabai -m config active_window_border_color 0x88ffffff # dim
+# yabai -m config active_window_border_color 0xffff00aa # pink
+yabai -m config active_window_border_color 0xffffbb00 # orange
+yabai -m config normal_window_border_color 0x22000000
 
 # set layout
 yabai -m config layout bsp
