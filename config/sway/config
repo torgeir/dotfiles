@@ -37,8 +37,7 @@ input type:keyboard {
 
 # Outputs (swaymsg -t get_outputs)
 output * {
-  #bg ~/Pictures/Backgrounds/2020/firewatch-landscape-forest-minimalistic-games-6993.jpg fill
-  bg ~/Documents/Backgrounds/Flat/minimalism-scenic-toon-colors-deer-sun-forest-trees-mountain-others-5458.jpg fill
+  bg ~/bg.jpg fill
   resolution 2560x1440
 }
 
@@ -60,7 +59,7 @@ output DP-1 {
   # torgeir: still not ok, 2023-01
   # position 2560,-1150
   #position 0,0
-  bg ~/Documents/Backgrounds/Flat/firewatch-deer-forest-night-games-1567.jpg fill
+  bg ~/bg.jpg fill
   transform 270
   mode 2560x1440@59.951Hz
 }
