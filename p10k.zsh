@@ -3,15 +3,21 @@
 function prompt_t_node () {
   NVM_NODE_VERSION=$(echo $NVM_BIN | sed -e "s#$HOME/.nvm/versions/node/##" | cut -d "/" -f1)
   # fall back to $NODE_VERSION from ~/dotfiles/source/exports
-  NODE_VERSION=${NVM_NODE_VERSION:-$NODE_VERSION}
-  NPM_VERSION=$(cat $HOME/.nvm/versions/node/$NODE_VERSION/lib/node_modules/npm/package.json | jq -r .version)
-  p10k segment -t "%F{green}$NODE_VERSION %F{yellow}$NPM_VERSION"
+  if [ -f $HOME/.nvm ] &> /dev/null
+  then
+    NODE_VERSION=${NVM_NODE_VERSION:-$NODE_VERSION}
+    NPM_VERSION=$(cat $HOME/.nvm/versions/node/$NODE_VERSION/lib/node_modules/npm/package.json | jq -r .version)
+    p10k segment -t "%F{green}$NODE_VERSION %F{yellow}$NPM_VERSION"
+  fi
 }
 
 function prompt_t_java () {
   case $(uname) in
     Linux)
-      p10k segment -t "%F{green}$(archlinux-java get)"
+      if command -v archlinux-java &> /dev/null
+      then
+        p10k segment -t "%F{green}$(archlinux-java get)"
+      fi
       ;;
     Darwin)
       DEFAULT_JAVA=$(/usr/libexec/java_home)

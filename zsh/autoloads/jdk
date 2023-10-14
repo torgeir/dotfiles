@@ -6,7 +6,10 @@ case $(uname) in
     echo "jdk: $(echo $JAVA_HOME | tr "/" " " | awk '{print $4}')"
     ;;
   Linux)
-    sudo archlinux-java set $version
-    echo "jdk $(archlinux-java get)"
+    if command -v archlinux-java &> /dev/null
+    then
+      sudo archlinux-java set $version
+      echo "jdk $(archlinux-java get)"
+    fi
     ;;
 esac
