@@ -41,7 +41,7 @@ case $(uname) in
       export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
     fi
 
-    if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+    if [ "$(tty)" = "/dev/tty1" ]; then
       exec dbus-launch sway
     fi
 
