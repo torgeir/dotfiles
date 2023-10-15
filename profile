@@ -42,7 +42,7 @@ case $(uname) in
     fi
 
     if [ "$(tty)" = "/dev/tty1" ]; then
-      exec dbus-launch sway
+      dbus-run-session sway
     fi
 
     ;;
