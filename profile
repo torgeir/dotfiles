@@ -1,4 +1,4 @@
-[[ -f "$HOME/.profile.priv" ]] && source ~/.profile.priv
+source $HOME/.profile.priv 2>&1 &>/dev/null
 
 case $(uname) in
   Linux)
