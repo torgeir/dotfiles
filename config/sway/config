@@ -305,7 +305,8 @@ assign [class="Signal"] 7
 assign [class="Spotify"] 8
 
 exec mako
-exec dropbox
+#TODO try without on nix
+#exec dropbox
 
 exec reaper -ignoreerrors
 

@@ -4,7 +4,9 @@ default-timeout=5000
 #  notify-send "test"
 #  notify-send 'Hello world!' 'This is an example notification.' --icon=dialog-information
 
-font=JetBrains Mono 13
+font=JetBrainsMono Nerd Font 13
+icons=1
+icon-path=/etc/profiles/per-user/torgeir/share/icons/Paper-Mono-Dark/
 
 [urgency=high]
 text-color=#CD3F45
