@@ -141,6 +141,9 @@ case $(uname) in
 
         # open ports
         alias ports="sudo lsof -i -P -n | rg -i listen"
+
+        # nix
+        alias rebuild-switch-torgnix="sudo bash -c 'pushd /etc/nixos; git fetch; git reset --hard origin/main; nixos-rebuild --flake .#torgnix switch; popd'"
         ;;
     Darwin)
         alias ports="sudo lsof -i -n -P | rg -i tcp | rg -i listen"
