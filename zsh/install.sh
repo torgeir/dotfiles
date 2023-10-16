@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-pushd $HOME/.zsh
+mkdir -p $HOME/.local/state/zsh
+pushd $HOME/.local/state/zsh
 
 if [ ! -d zsh-autosuggestions ]; then
   git clone https://github.com/zsh-users/zsh-autosuggestions
