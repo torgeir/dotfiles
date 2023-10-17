@@ -305,13 +305,12 @@ assign [class="Signal"] 7
 assign [class="Spotify"] 8
 
 exec mako
-#TODO try without on nix
-#exec dropbox
+exec dropbox
 
 exec reaper -ignoreerrors
 
 exec "signal-desktop"
-exec "com.spotify.Client"
+exec "spotify"
 
 exec 'alacritty --title alacritty-btop -e btop'
 exec 'env -u WAYLAND_DISPLAY psensor'
