@@ -59,6 +59,7 @@ yabai -m config mouse_action2 resize
 
 yabai -m config window_border on
 yabai -m config window_border_width 3
+yabai -m config window_border_blur off
 # yabai -m config active_window_border_color 0xffffffff # white
 # yabai -m config active_window_border_color 0x88ffffff # dim
 # yabai -m config active_window_border_color 0xffff00aa # pink
