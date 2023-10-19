@@ -177,9 +177,6 @@ export WORDCHARS=""
 # allow bash style comments in interactive shells
 setopt interactivecomments
 
-# dont store space prefixex commands in history
-setopt HIST_IGNORE_SPACE
-
 # faster compinit
 autoload -Uz compinit
 if [ $(date +'%j') != $(date -r ${ZDOTDIR:-$HOME}/.zcompdump +'%j') ]; then
@@ -244,9 +241,14 @@ then
 fi
 
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt appendhistory
+setopt hist_expire_dups_first
+HISTSIZE=1000
+SAVEHIST=800
+# dont store space prefixed commands in history
+setopt hist_ignore_space
+# flush to file as commands are written
+# read it always so other tabs see it
+setopt sharehistory
 
 # debug escape codes with cat
 # directory keybindings, c-up and c-down
