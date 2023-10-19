@@ -3,7 +3,7 @@
 function prompt_t_node () {
   NVM_NODE_VERSION=$(echo $NVM_BIN | sed -e "s#$HOME/.nvm/versions/node/##" | cut -d "/" -f1)
   # fall back to $NODE_VERSION from ~/dotfiles/source/exports
-  if [ -f $HOME/.nvm ] &> /dev/null
+  if [[ -d $HOME/.nvm ]] &> /dev/null
   then
     NODE_VERSION=${NVM_NODE_VERSION:-$NODE_VERSION}
     NPM_VERSION=$(cat $HOME/.nvm/versions/node/$NODE_VERSION/lib/node_modules/npm/package.json | jq -r .version)
@@ -21,7 +21,7 @@ function prompt_t_java () {
       ;;
     Darwin)
       DEFAULT_JAVA=$(/usr/libexec/java_home)
-      JAVA_VERSION=$(echo ${JAVA_HOME:-DEFAULT_JAVA} | tr "/" " " | awk '{print $4}')
+      JAVA_VERSION=$(echo ${JAVA_HOME:-$DEFAULT_JAVA} | tr "/" " " | awk '{print $4}')
       p10k segment -t "%F{green}$JAVA_VERSION"
       ;;
   esac
@@ -44,9 +44,9 @@ function prompt_t_gcloud () {
   # https://cloud.google.com/sdk/docs/configurations#activating_a_configuration
   env=${CLOUDSDK_ACTIVE_CONFIG_NAME:-default}
   if [ -f "$HOME/.config/gcloud/configurations/config_$env" ]; then
-  project=$(cat $HOME/.config/gcloud/configurations/config_$env | rg project | sed -e "s/project = //")
-  email=$(cat $HOME/.config/gcloud/configurations/config_$env | rg account | sed -e "s/account = //")
-  p10k segment -t "%F{green}${email}%F{red}@%F{yellow}${project}"
+    project=$(cat $HOME/.config/gcloud/configurations/config_$env | rg project | sed -e "s/project = //")
+    email=$(cat $HOME/.config/gcloud/configurations/config_$env | rg account | sed -e "s/account = //")
+    p10k segment -t "%F{green}${email}%F{red}@%F{yellow}${project}"
   fi
 }
 
@@ -55,11 +55,26 @@ function prompt_t_npm () {
   p10k segment -t "%F{orange}$NPM_SCRIPTS"
 }
 
+# https://github.com/romkatv/powerlevel10k/issues/2445
 function p10k-on-post-widget() {
-  if [[ $PREBUFFER$BUFFER == 'npm run' || $PREBUFFER$BUFFER == 'npm run ' ]]; then
+  if [[ $PREBUFFER$BUFFER =~ '^(java|javac|javap|kotlin|clj|clojure|jdk|jdks|gradle|gw)\ ?' ]]; then
+    p10k display '*/t_java'=show
+  elif [[ $PREBUFFER$BUFFER =~ '^(python|python3|pip|pip3|pyenv)' ]]; then
+    p10k display '*/virtualenv'=show
+  elif [[ $PREBUFFER$BUFFER =~ '^(terraform|tfenv)' ]]; then
+    p10k display '*/t_terraform'=show
+  elif [[ $PREBUFFER$BUFFER =~ '^(terragrunt|tgenv)' ]]; then
+    p10k display '*/t_terragrunt'=show
+  elif [[ $PREBUFFER$BUFFER =~ '^npm run' ]]; then
     p10k display '*/t_npm'=show
+  elif [[ $PREBUFFER$BUFFER =~ '^(node|npm|nvm|npx|ts-node|tsc)' ]]; then
+    p10k display '*/t_node'=show
+  elif [[ $PREBUFFER$BUFFER =~ '^(gcloud|gsutil|gcs|terragrunt|terraform)' ]]; then
+    p10k display '*/t_gloud'=show
+  elif [[ $PREBUFFER$BUFFER =~ '^git' ]]; then
+    p10k display '*/t_git'=show
   else
-    p10k display '*/t_npm'=hide
+    p10k display '*/t_*'=hide
   fi
 }
 
@@ -110,15 +125,6 @@ function p10k-on-post-widget() {
   local magenta='#FF6AC1'
   local cyan='#9AEDFE'
   local white='#F1F1F0'
-
-  typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_ON_COMMAND="python|python3|pip|pip3|pyenv"
-  typeset -g POWERLEVEL9K_T_TERRAFORM_SHOW_ON_COMMAND="terraform|tfenv"
-  typeset -g POWERLEVEL9K_T_TERRAGRUNT_SHOW_ON_COMMAND="terragrunt|tgenv"
-  typeset -g POWERLEVEL9K_T_NODE_SHOW_ON_COMMAND="node|npm|nvm|npx|ts-node|tsc"
-  typeset -g POWERLEVEL9K_T_NPM_SHOW_ON_COMMAND="npm"
-  typeset -g POWERLEVEL9K_T_JAVA_SHOW_ON_COMMAND="java|javac|javap|kotlin|clj|clojure|jdk|jdks|gradle|gw"
-  typeset -g POWERLEVEL9K_T_GCLOUD_SHOW_ON_COMMAND="gcloud|gsutil|gcs|terragrunt|terraform"
-  typeset -g POWERLEVEL9K_T_GIT_SHOW_ON_COMMAND="git"
 
   # Left prompt segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
