@@ -38,11 +38,11 @@ input type:keyboard {
 
 # Outputs (swaymsg -t get_outputs)
 output * {
-  bg ~/bg.jpg fill
   resolution 2560x1440
 }
 
 output DP-2 {
+  bg ~/bg.jpg fill
   position 0,0
   transform 0
 
