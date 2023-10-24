@@ -306,10 +306,7 @@ assign [class="Slack"] 7
 assign [class="Signal"] 7
 assign [class="Spotify"] 8
 
-exec mako
 exec dropbox
-
-exec reaper -ignoreerrors
 
 exec "signal-desktop"
 exec "spotify"
@@ -323,7 +320,7 @@ exec 'alacritty --title alacritty-amdgpu-top -e amdgpu_top'
 exec corectrl
 
 workspace 4
-exec qpwgraph -stylesheet ~/dotfiles/config/qpwgraph/style.qss ~/graph-setup3.qpwgraph
+exec qpwgraph -stylesheet ~/dotfiles/config/qpwgraph/style.qss ~/graph-setup.qpwgraph
 
 # set screen 2 workspace
 workspace 5
