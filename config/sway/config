@@ -17,6 +17,7 @@ set $right l
 
 set $term alacritty
 set $browser brave
+set $filemanager thunar
 
 # hide mouse
 #seat * hide_cursor 8000
@@ -112,7 +113,7 @@ bindsym $mod+Return exec emacsclient --eval '\
       (let ((default-directory (t/read-file (t/user-file ".cur"))))\
         (+vterm/here t))))'
 bindsym $mod+Shift+Return exec $browser
-bindsym $mod+n exec dolphin
+bindsym $mod+n exec $filemanager
 
 # Kill
 bindsym $mod+Shift+q kill
