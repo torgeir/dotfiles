@@ -6,9 +6,9 @@ alias la="exa -1 -a --tree -L 1 --classify --group --group-directories-first"
 alias ll="exa -l -a --classify --group --group-directories-first"
 alias lal="exa -l -a --classify --group --group-directories-first"
 
-alias lt="exa -l -1 --group --classify --tree -L 1 --group-directories-first"
-alias ltt="exa -l -1 --group --classify --tree -L 2 --group-directories-first"
-alias lttt="exa -l -1 --group --classify --tree -L 3 --group-directories-first"
+alias lt="exa -1 --group --classify --tree -L 1 --group-directories-first"
+alias ltt="exa -1 --group --classify --tree -L 2 --group-directories-first"
+alias lttt="exa -1 --group --classify --tree -L 3 --group-directories-first"
 
 alias lat="exa -l -1 -a --group --classify --tree -L 1 --group-directories-first"
 alias latt="exa -l -1 -a --group --classify --tree -L 2 --group-directories-first"
