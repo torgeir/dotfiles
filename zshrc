@@ -13,7 +13,8 @@
 if [[ -n "$INSIDE_EMACS" ]]; then
   # don't
 else
-  [[ -f "$HOME/.cache/wal/sequences" ]] && cat ~/.cache/wal/sequences
+  # TODO try catppuccin-mocha
+  # [[ -f "$HOME/.cache/wal/sequences" ]] && cat ~/.cache/wal/sequences
 fi
 
 source $HOME/dotfiles/source/aliases
