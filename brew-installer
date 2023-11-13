@@ -79,7 +79,7 @@ brew install koekeishiya/formulae/yabai
 brew services start yabai
 brew install koekeishiya/formulae/skhd
 brew services start skhd
-brew install --cask easy-move-plus-resize # and bring back cmd + mouse to move and resize windows
+#brew install --cask easy-move-plus-resize # and bring back cmd + mouse to move and resize windows
 
 brew tap homebrew/cask-fonts
 brew install font-iosevka-curly-slab font-iosevka-etoile
