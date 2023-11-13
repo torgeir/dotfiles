@@ -30,8 +30,14 @@ brew install gifsicle
 brew install neovim
 brew install direnv
 #brew install boot-clj
+
 brew tap d12frosted/emacs-plus
-brew install emacs-plus@28 --with-modern-black-variant-icon --with-native-comp
+brew install emacs-plus@29 \
+    --with-no-frame-refocus \
+    --with-native-comp \
+    --with-imagemagick \
+    --with-modern-doom-icon
+
 #brew install homebrew/emacs/w3
 brew install jq # cmd line json parsing
 brew install exa
@@ -74,6 +80,9 @@ brew services start yabai
 brew install koekeishiya/formulae/skhd
 brew services start skhd
 brew install --cask easy-move-plus-resize # and bring back cmd + mouse to move and resize windows
+
+brew tap homebrew/cask-fonts
+brew install font-iosevka-curly-slab font-iosevka-etoile
 
 # applications
 #brew install --cask alfred
