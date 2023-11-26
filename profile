@@ -7,11 +7,7 @@ case $(uname) in
     export QT_QPA_PLATFORMTHEME="qt5ct"
     #export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
-    # TODO not needed with nix?
-    # sudo pacman -Syu arc-gtk-theme
-    # export GTK_THEME=Arc:dark
-
-    export BROWSER=/usr/bin/brave
+    export BROWSER=$(which firefox)
 
     # Shader caching is a strategy to reduce stuttering and improve overall performance by ‘prebaking’ some of the work your GPU has to do before it has to do so in-game.
     __GL_THREADED_OPTIMIZATION=1                                 # for OpenGL games

@@ -15,8 +15,8 @@ set $down j
 set $up k
 set $right l
 
-set $term alacritty
-set $browser brave
+set $term foot
+set $browser firefox
 set $filemanager thunar
 
 # hide mouse
@@ -113,6 +113,7 @@ bindsym $mod+Return exec emacsclient --eval '\
       (let ((default-directory (t/read-file (t/user-file ".cur"))))\
         (+vterm/here t))))'
 bindsym $mod+Shift+Return exec $browser
+bindsym $mod+Ctrl+Return exec $term
 bindsym $mod+n exec $filemanager
 
 # Kill
@@ -309,7 +310,6 @@ assign [class="Spotify"] 8
 exec dropbox
 
 exec "signal-desktop"
-exec "spotify"
 
 exec 'alacritty --title alacritty-btop -e btop'
 exec 'env -u WAYLAND_DISPLAY psensor'
@@ -326,7 +326,7 @@ exec qpwgraph -stylesheet ~/dotfiles/config/qpwgraph/style.qss ~/graph-setup.qpw
 workspace 5
 # set screen 1 workspace
 workspace 1
-exec brave
+exec $browser
 
 workspace 2
 exec emacs ~/dotfiles/config/sway/config
