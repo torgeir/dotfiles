@@ -99,19 +99,19 @@ client.focused #00aaff #ff00aa #00ffaa
 # Idle configuration
 #   Lock and later turn off display. Turn screen on resume. Lock before sleep.
 exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 350 'swaymsg "output * dpms off"' \
-         resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000'
+  timeout 300 'swaylock -f -c 000000' \
+  timeout 350 'swaymsg "output * dpms off"' \
+  resume 'swaymsg "output * dpms on"' \
+  before-sleep 'swaylock -f -c 000000'
 
 ### Bindings
 bindsym $mod+Return exec emacsclient --eval '\
   (if (frame-focus-state)\
-    (with-current-buffer (buffer-name (window-buffer (frame-selected-window)))\
-      (t/vterm-here))\
-    (with-selected-frame (make-frame)\
-      (let ((default-directory (t/read-file (t/user-file ".cur"))))\
-        (+vterm/here t))))'
+  (with-current-buffer (buffer-name (window-buffer (frame-selected-window)))\
+  (t/vterm-here))\
+  (with-selected-frame (make-frame)\
+  (let ((default-directory (t/read-file (t/user-file ".cur"))))\
+  (+vterm/here t))))'
 bindsym $mod+Shift+Return exec $browser
 bindsym $mod+Ctrl+Return exec $term
 bindsym $mod+n exec $filemanager
@@ -221,11 +221,11 @@ bindsym $mod+Ctrl+a scratchpad show
 # Screenshots
 set $mode_screenshot "Screenshot: (s)election|(d)isplay|(w)indow|(p)ixel value"
 mode $mode_screenshot {
-    bindsym s exec ~/dotfiles/config/sway/screenshot.sh s; mode "default"
-    bindsym d exec ~/dotfiles/config/sway/screenshot.sh d; mode "default"
-    bindsym w exec ~/dotfiles/config/sway/screenshot.sh w; mode "default"
-    bindsym p exec ~/dotfiles/config/sway/screenshot.sh p; mode "default"
-    bindsym Escape mode "default"
+  bindsym s exec ~/dotfiles/config/sway/screenshot.sh s; mode "default"
+  bindsym d exec ~/dotfiles/config/sway/screenshot.sh d; mode "default"
+  bindsym w exec ~/dotfiles/config/sway/screenshot.sh w; mode "default"
+  bindsym p exec ~/dotfiles/config/sway/screenshot.sh p; mode "default"
+  bindsym Escape mode "default"
 
 }
 bindsym $mod+ctrl+Mod1+s mode $mode_screenshot
@@ -237,19 +237,18 @@ bindsym Ctrl+$mod+Right resize grow width 100px
 
 ### Status Bar (man 5 sway-bar)
 bar {
-    position bottom
-    font pango:DejaVu Sans Mono, FontAwesome 10
-    status_command i3status-rs ~/.config/i3status-rust/config.toml
-    colors {
-        separator #666666
-        background #222222
-        statusline #dddddd
-        focused_workspace #0088CC #0088CC #ffffff
-        active_workspace #333333 #333333 #ffffff
-        inactive_workspace #333333 #333333 #888888
-        urgent_workspace #2f343a #900000 #ffffff
-
-    }
+  position bottom
+  font pango:DejaVu Sans Mono, FontAwesome 10
+  status_command i3status-rs ~/.config/i3status-rust/config.toml
+  colors {
+    separator #666666
+    background #222222
+    statusline #dddddd
+    focused_workspace #0088CC #0088CC #ffffff
+    active_workspace #333333 #333333 #ffffff
+    inactive_workspace #333333 #333333 #888888
+    urgent_workspace #2f343a #900000 #ffffff
+  }
 }
 
 # Sticky
