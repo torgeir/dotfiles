@@ -24,12 +24,12 @@ set $filemanager thunar
 seat * hide_cursor when-typing enable
 
 ## TODO
-#xwayland disable
+# xwayland disable
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu dmenu-wl_run -i
 
 # Inputs (swaymsg -t get_inputs)
 input type:keyboard {
