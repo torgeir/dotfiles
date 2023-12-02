@@ -328,7 +328,7 @@ workspace 1
 exec $browser
 
 workspace 2
-exec emacs ~/dotfiles/config/sway/config
+exec emacs ~/nixos-config/configuration.nix
 # exec 'sleep 2 && swaymsg move container to workspace 2'
 
 include /etc/sway/config.d/*
