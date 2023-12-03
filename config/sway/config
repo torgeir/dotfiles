@@ -23,8 +23,9 @@ set $filemanager thunar
 #seat * hide_cursor 8000
 seat * hide_cursor when-typing enable
 
-## TODO
+## TODO reaper, psensor and signal is not yet wayland
 # xwayland disable
+# killall Xwayland
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -283,7 +284,7 @@ for_window [class="REAPER" title="^VST.*"] floating enable
 assign [title="^Psensor.*"] 5
 for_window [title="^Psensor.*"] resize set height 512px
 for_window [title="^alacritty-journalctl"] resize set height 300px
-
+for_window [title="^alacritty-htop"] resize set height 300px
 for_window [title="^alacritty-amdgpu-top"] resize set height 1450px
 
 ##
@@ -308,15 +309,20 @@ assign [class="Spotify"] 8
 
 exec dropbox
 
-exec "signal-desktop"
+# https://github.com/signalapp/Signal-Desktop/issues/5719
+#for_window [app_id="signal"] floating enable
+#assign [app_id="signal*"] 6
+#exec "signal-desktop --ozone-platform=wayland"
 
-exec 'alacritty --title alacritty-btop -e btop'
+exec 'alacritty --title alacritty-journalctl -e btop'
 exec 'env -u WAYLAND_DISPLAY psensor'
 exec 'alacritty --title alacritty-journalctl -e journalctl -f'
 
 workspace 6
-exec 'alacritty --title alacritty-amdgpu-top -e amdgpu_top'
+# TODO torgeir
+# exec 'alacritty --title alacritty-amdgpu-top -e amdgpu_top'
 exec corectrl
+exec 'alacritty --title alacritty-htop -e htop'
 
 workspace 4
 exec qpwgraph -stylesheet ~/dotfiles/config/qpwgraph/style.qss ~/graph-setup.qpwgraph
