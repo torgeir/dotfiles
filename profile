@@ -2,10 +2,8 @@ source $HOME/.profile.priv 2>&1 &>/dev/null
 
 case $(uname) in
   Linux)
-    # needs to be in .profile to load the theme correctly on manjaro
     unset QT_STYLE_OVERRIDE
-    export QT_QPA_PLATFORMTHEME="qt5ct"
-    #export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+    export QT_QPA_PLATFORMTHEME="gtk3" # qpwgraph dark
 
     export BROWSER=$(which firefox)
 
