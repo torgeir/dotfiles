@@ -86,6 +86,10 @@ alt + shift - v : yabai -m window --insert south
 # turn of border when returning to default
 :: default : yabai -m window --toggle border
 
+# support throwing floated windows with limited size to the sides
+fn - h : yabai -m window --grid 11:11:0:0:5:11
+fn - l : yabai -m window --grid 11:11:6:0:5:11
+
 # gap mode
 :: gap @ : yabai -m window --toggle border
 hyper - g ; gap
