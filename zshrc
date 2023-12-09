@@ -92,10 +92,6 @@ function gpg_test_cache() {
 }
 
 function gpg_cache () {
-
-  # Nescessary to make the following passphrase preset to work
-  gpg-connect-agent updatestartuptty /bye >/dev/null
-
   # Preset it from 1password. Try signing with it first, only preset it if it fails.
   # https://stackoverflow.com/questions/11381123/how-to-use-gpg-command-line-to-check-passphrase-is-correct
   PRESET_KEY=$(gpg --pinentry-mode error --local-user 922E681804CA8D82F1FAFCB177836712DAEA8B95 -aso /dev/null <(echo 1234) 2>/dev/null && echo "yes" || echo "no")
@@ -109,13 +105,16 @@ function gpg_cache () {
     ;;
   esac
 
-
   if [[ "$PRESET_KEY" = "no" ]]; then
+    # Nescessary to make the following passphrase preset to work
+    # TODO restart agent
+    #gpg_restart_agent
+    # or is this better
+    gpg-connect-agent updatestartuptty /bye >/dev/null
     $(gpgconf --list-dirs libexecdir)/gpg-preset-passphrase \
-    -c \
-    -P "$(op item get keybase.io --format json | jq -j '.fields[] | select(.id == "password") | .value')" \
-    $(gpg --fingerprint --with-keygrip torgeir@keybase.io | awk '/Keygrip/ {print $3}' | tail -n 1)
-
+      -c \
+      -P "$(op item get keybase.io --format json | jq -j '.fields[] | select(.id == "password") | .value')" \
+      $(gpg --fingerprint --with-keygrip torgeir@keybase.io | awk '/Keygrip/ {print $3}' | tail -n 1)
   fi
 
   # I don't get this, but the first time around, after the initial signing (gpg -as) failed in the previous step, I need to actually use the key to make the agent cache it. Decrypt an encrypted file to make it stick.
@@ -124,8 +123,8 @@ function gpg_cache () {
 
 
 if [[ -z "$INSIDE_EMACS" ]]; then
-  case $(uname) in
-    Darwin)
+case $(uname) in
+  Darwin)
       # Without a fingerprint reader on linux this is annoying, keep it macos only
       gpg_cache
 
