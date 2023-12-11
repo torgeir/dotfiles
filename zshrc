@@ -92,6 +92,9 @@ function gpg_test_cache() {
 }
 
 function gpg_cache () {
+  # Nescessary to make the following passphrase preset to work
+  gpg-connect-agent updatestartuptty /bye >/dev/null
+
   # Preset it from 1password. Try signing with it first, only preset it if it fails.
   # https://stackoverflow.com/questions/11381123/how-to-use-gpg-command-line-to-check-passphrase-is-correct
   PRESET_KEY=$(gpg --pinentry-mode error --local-user 922E681804CA8D82F1FAFCB177836712DAEA8B95 -aso /dev/null <(echo 1234) 2>/dev/null && echo "yes" || echo "no")
@@ -99,18 +102,14 @@ function gpg_cache () {
   case $(uname) in
     Linux)
       eval $(op signin --account my)
-    ;;
+      ;;
     Darwin)
       true # fingerprint prompt when op item get
-    ;;
+      ;;
   esac
 
   if [[ "$PRESET_KEY" = "no" ]]; then
-    # Nescessary to make the following passphrase preset to work
-    # TODO restart agent
-    #gpg_restart_agent
-    # or is this better
-    gpg-connect-agent updatestartuptty /bye >/dev/null
+    gpg_restart_agent
     $(gpgconf --list-dirs libexecdir)/gpg-preset-passphrase \
       -c \
       -P "$(op item get keybase.io --format json | jq -j '.fields[] | select(.id == "password") | .value')" \
