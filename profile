@@ -18,6 +18,8 @@ case $(uname) in
     export AMD_VULKAN_ICD=RADV
 
     export WINEFSYNC=1
+    # prevent lots of 98 priority winedbg processes
+    export WINEDEBUG=-all
 
     # To enable compatibility with high-resolution displays, set the following environment variables accordingly:
     # https://wiki.archlinux.org/title/DaVinci_Resolve
