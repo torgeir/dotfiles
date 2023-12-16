@@ -276,6 +276,7 @@ for_window [class="REAPER" title="^Routing.*"] floating enable
 for_window [class="REAPER" title="^Build.*"] floating enable
 for_window [class="REAPER" title="^Controls.*"] floating enable
 for_window [class="REAPER" title="^Choose.*"] floating enable
+for_window [class="REAPER" title="^Import.*"] floating enable
 for_window [class="REAPER" title="FX"] floating enable
 for_window [class="REAPER" title="^LV2.*"] floating enable
 for_window [class="REAPER" title=".*JS.*"] floating enable
@@ -283,9 +284,9 @@ for_window [class="REAPER" title="^VST.*"] floating enable
 
 assign [title="^Psensor.*"] 5
 for_window [title="^Psensor.*"] resize set height 512px
-for_window [title="^alacritty-journalctl"] resize set height 300px
-for_window [title="^alacritty-htop"] resize set height 300px
-for_window [title="^alacritty-amdgpu-top"] resize set height 1450px
+for_window [title="^term-journalctl"] resize set height 800px
+for_window [title="^term-top"] resize set height 800px
+for_window [title="^term-amdgpu-top"] resize set height 1450px
 
 ##
 ## gaming
@@ -314,15 +315,15 @@ exec dropbox
 #assign [app_id="signal*"] 6
 #exec "signal-desktop --ozone-platform=wayland"
 
-exec 'alacritty --title alacritty-journalctl -e btop'
+exec "$term --title term-top btop"
 exec 'env -u WAYLAND_DISPLAY psensor'
-exec 'alacritty --title alacritty-journalctl -e journalctl -f'
+exec "$term --title term-journalctl journalctl -f"
 
 workspace 6
 # TODO torgeir
-# exec 'alacritty --title alacritty-amdgpu-top -e amdgpu_top'
+# exec "$term --title term-amdgpu-top amdgpu_top"
 exec corectrl
-exec 'alacritty --title alacritty-htop -e htop'
+exec "$term --title term-htop htop"
 
 workspace 4
 exec qpwgraph -stylesheet ~/dotfiles/config/qpwgraph/style.qss ~/graph-setup.qpwgraph
