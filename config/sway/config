@@ -30,7 +30,8 @@ seat * hide_cursor when-typing enable
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu-wl_run -i
+set $menu tofi-run | xargs swaymsg exec --
+set $menusecondary tofi-drun --drun-launch=true
 
 # Inputs (swaymsg -t get_inputs)
 input type:keyboard {
@@ -122,6 +123,7 @@ bindsym $mod+Shift+q kill
 
 # Launcher
 bindsym $mod+Space exec $menu
+bindsym $mod+Shift+Space exec $menusecondary
 
 # Mouse move window
 floating_modifier $mod normal
