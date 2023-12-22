@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#
+# this file is largely unused after testing out nix
+# 
+
 case $(uname) in
   Darwin)
     echo "accepting xcode license.."
@@ -44,7 +48,7 @@ case $(uname) in
         skhdrc;
     do
       echo installing ~/.$dotfile
-      ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
+      ln -sf $HOME/.config/dotfiles/$dotfile $HOME/.$dotfile
     done
     ;;
   Linux)
@@ -58,9 +62,9 @@ case $(uname) in
         zlogin;
     do
       echo installing ~/.$dotfile
-      ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
+      ln -sf $HOME/.config/dotfiles/$dotfile $HOME/.$dotfile
     done
-    ln -sf $HOME/dotfiles/profile $HOME/.zprofile
+    ln -sf $HOME/.config/dotfiles/profile $HOME/.zprofile
 
     # ~/.config/<configs>
     for config_folder in \
@@ -80,7 +84,7 @@ case $(uname) in
         dmenu-recent;
     do
       echo installing ~/.config/$config_folder
-      ln -sf $HOME/dotfiles/config/$config_folder $HOME/.config/
+      ln -sf $HOME/.config/dotfiles/config/$config_folder $HOME/.config/
     done
     ;;
 esac
@@ -96,7 +100,7 @@ for dotfile in \
     tmux.conf;
 do
   echo installing ~/.$dotfile
-  ln -sf $HOME/dotfiles/$dotfile $HOME/.$dotfile
+  ln -sf $HOME/.config/dotfiles/$dotfile $HOME/.$dotfile
 done
 
 echo installing zsh plugins
@@ -104,4 +108,4 @@ bash $HOME/.zsh/install.sh
 
 # preloads for boot clj
 mkdir -p $HOME/.boot
-ln -sf $HOME/dotfiles/profile.boot $HOME/.boot/profile.boot
+ln -sf $HOME/.config/dotfiles/profile.boot $HOME/.boot/profile.boot
