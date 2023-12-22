@@ -2,7 +2,7 @@
 # prompt segments, see .p10k.zsh
 function prompt_t_node () {
   NVM_NODE_VERSION=$(echo $NVM_BIN | sed -e "s#$HOME/.nvm/versions/node/##" | cut -d "/" -f1)
-  # fall back to $NODE_VERSION from ~/dotfiles/source/exports
+  # fall back to $NODE_VERSION from ~/.config/dotfiles/source/exports
   if [[ -d $HOME/.nvm ]] &> /dev/null
   then
     NODE_VERSION=${NVM_NODE_VERSION:-$NODE_VERSION}
