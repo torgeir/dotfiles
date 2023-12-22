@@ -224,10 +224,10 @@ bindsym $mod+Ctrl+a scratchpad show
 # Screenshots
 set $mode_screenshot "Screenshot: (s)election|(d)isplay|(w)indow|(p)ixel value"
 mode $mode_screenshot {
-  bindsym s exec ~/dotfiles/config/sway/screenshot.sh s; mode "default"
-  bindsym d exec ~/dotfiles/config/sway/screenshot.sh d; mode "default"
-  bindsym w exec ~/dotfiles/config/sway/screenshot.sh w; mode "default"
-  bindsym p exec ~/dotfiles/config/sway/screenshot.sh p; mode "default"
+  bindsym s exec ~/.config/dotfiles/config/sway/screenshot.sh s; mode "default"
+  bindsym d exec ~/.config/dotfiles/config/sway/screenshot.sh d; mode "default"
+  bindsym w exec ~/.config/dotfiles/config/sway/screenshot.sh w; mode "default"
+  bindsym p exec ~/.config/dotfiles/config/sway/screenshot.sh p; mode "default"
   bindsym Escape mode "default"
 
 }
@@ -328,7 +328,7 @@ exec corectrl
 exec "$term --title term-htop htop"
 
 workspace 4
-exec qpwgraph -stylesheet ~/dotfiles/config/qpwgraph/style.qss ~/graph-setup.qpwgraph
+exec qpwgraph -stylesheet ~/.config/dotfiles/config/qpwgraph/style.qss ~/graph-setup.qpwgraph
 
 # set screen 2 workspace
 workspace 5
