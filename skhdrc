@@ -37,7 +37,7 @@ cmd - return [
   "iterm2" : osascript ~/bin/iterm-new-tab.applescript
 ]
 
-cmd + ctrl - return : open -a alacritty
+cmd + ctrl - return : open -na alacritty
 cmd + shift - h : open -a Finder -- ~/
 cmd + shift - w : open -a Finder -- ~/Downloads
 
