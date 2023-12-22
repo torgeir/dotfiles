@@ -1,4 +1,5 @@
 window:
   opacity: 1
 font:
-  size: 11
+  family: IosevkaTermCurlySlab Nerd Font
+  size: 18
