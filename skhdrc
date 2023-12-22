@@ -47,8 +47,8 @@ alt + shift - q : cd && skhd -r
 # move window focus
 # https://github.com/koekeishiya/yabai/discussions/1326
 # https://github.com/koekeishiya/yabai/discussions/1381
-alt - h : ~/bin/yabai-left.sh
-alt - l : ~/bin/yabai-right.sh
+alt - h : ~/.config/dotfiles/yabai/yabai-left.sh
+alt - l : ~/.config/dotfiles/yabai/yabai-right.sh
 alt - k : yabai -m window --focus north || yabai -m display --focus north
 alt - j : yabai -m window --focus south || yabai -m display --focus south
 
