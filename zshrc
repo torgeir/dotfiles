@@ -17,8 +17,7 @@ else
   # [[ -f "$HOME/.cache/wal/sequences" ]] && cat ~/.cache/wal/sequences
 fi
 
-# source dotfiles/source/aliases
-source "$(dirname "$(readlink -f "$0")")/source/aliases"
+source "$HOME/.config/dotfiles/source/aliases"
 
 # default owner rw
 umask 77
