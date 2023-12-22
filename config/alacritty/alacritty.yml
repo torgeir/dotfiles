@@ -1,5 +1,7 @@
 window:
   opacity: 1
 font:
-  family: IosevkaTermCurlySlab Nerd Font
-  size: 18
+  normal:
+    family: IosevkaTermCurlySlab Nerd Font
+    style: Regular
+  size: 20
