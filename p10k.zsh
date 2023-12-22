@@ -20,9 +20,11 @@ function prompt_t_java () {
       fi
       ;;
     Darwin)
-      DEFAULT_JAVA=$(/usr/libexec/java_home)
-      JAVA_VERSION=$(echo ${JAVA_HOME:-$DEFAULT_JAVA} | tr "/" " " | awk '{print $4}')
-      p10k segment -t "%F{green}$JAVA_VERSION"
+      if [ $(ls /Library/Java/JavaVirtualMachines/ | wc -l) != 0 ]; then
+        DEFAULT_JAVA=$(/usr/libexec/java_home)
+        JAVA_VERSION=$(echo ${JAVA_HOME:-$DEFAULT_JAVA} | tr "/" " " | awk '{print $4}')
+        p10k segment -t "%F{green}$JAVA_VERSION"
+      fi
       ;;
   esac
 }
