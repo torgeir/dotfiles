@@ -17,14 +17,14 @@ cmd + shift - return [
 
 cmd + alt + ctrl - e : emacsclient --eval "(emacs-everywhere)"
 
-alt - e : open -a /Applications/Emacs.app
-alt - i : open -a /Applications/IntelliJ\ IDEA.app
+alt - e : open -a Emacs
+alt - i : open -a IntelliJ\ IDEA
 alt - c : skhd -k "alt - 1";\
-          open -a /Applications/Google\ Chrome.app --args --profile-directory=Default
+          open -a Google\ Chrome --args --profile-directory=Default
 shift + alt - c : skhd -k "alt - 4";\
-                  open -na /Applications/Google\ Chrome.app --args --profile-directory=Profile\ 2
-alt - o : open -a /Applications/Microsoft\ Outlook.app
-alt - s : open -a /Applications/Slack.app
+                  open -na Google\ Chrome --args --profile-directory=Profile\ 2
+alt - o : open -a Microsoft\ Outlook
+alt - s : open -a Slack
 
 cmd - return [
   # "emacs" : # dont catch this, s-return is bound in emacs
