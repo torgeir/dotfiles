@@ -23,8 +23,8 @@
 
 
     /* Meta shortcuts */
-    "$~|" = ("insertText:", "\\")
-    "$~7" = ("insertText:", "\\")
+    "$~|" = ("insertText:", "\\");
+    "$~7" = ("insertText:", "\\");
     "~f" = "moveWordForward:"; /* M-f Move forward word */
     "~b" = "moveWordBackward:"; /* M-b Move backward word */
     "~<" = "moveToBeginningOfDocument:"; /* M-< Move to beginning of document */
