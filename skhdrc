@@ -18,7 +18,8 @@ cmd + shift - return [
 cmd + alt + ctrl - e : emacsclient --eval "(emacs-everywhere)"
 
 alt - e : open -a Emacs
-alt - i : open -a IntelliJ\ IDEA
+alt - i : open -a Safari
+alt - j : open -a IntelliJ\ IDEA
 alt - c : skhd -k "alt - 1";\
           open -a Google\ Chrome --args --profile-directory=Default
 shift + alt - c : skhd -k "alt - 4";\
