@@ -57,20 +57,10 @@ yabai -m config window_shadow off
 yabai -m config mouse_action1 move
 yabai -m config mouse_action2 resize
 
-yabai -m config window_border on
-yabai -m config window_border_width 3
-yabai -m config window_border_blur off
-# yabai -m config active_window_border_color 0xffffffff # white
-# yabai -m config active_window_border_color 0x88ffffff # dim
-# yabai -m config active_window_border_color 0xffff00aa # pink
-yabai -m config active_window_border_color 0xffffbb00 # orange
-yabai -m config normal_window_border_color 0x22000000
-
 # set layout
 yabai -m config layout bsp
 
 # floating windows are topmost, new right, botton
-yabai -m config window_topmost on
 yabai -m config window_placement second_child
 
 yabai -m config top_padding 3
