@@ -5,11 +5,13 @@
 # *          : command    key is bound in all apps
 # "terminal" ~            key is unbound in terminal
 cmd + shift - return [
-  "emacs" : osascript ~/bin/chrome-new-tab.applescript
-  "google chrome" : osascript ~/bin/chrome-new-tab.applescript
-  "slack" : osascript ~/bin/chrome-new-tab.applescript
-  "iterm2" : osascript ~/bin/chrome-new-tab.applescript
-  "finder" : osascript ~/bin/chrome-new-tab.applescript
+  "emacs" : ~/.config/dotfiles/new-tab.sh
+  "slack" : ~/.config/dotfiles/new-tab.sh
+  "iterm2" : ~/.config/dotfiles/new-tab.sh
+  "finder" : ~/.config/dotfiles/new-tab.sh
+  "firefox" : ~/.config/dotfiles/new-tab.sh
+  "alacritty" : ~/.config/dotfiles/new-tab.sh
+  "google chrome" : ~/.config/dotfiles/new-tab.sh
   "intellij idea" : ~
 ]
 
@@ -17,28 +19,28 @@ cmd + shift - return [
 
 cmd + alt + ctrl - e : emacsclient --eval "(emacs-everywhere)"
 
+alt - a : open -a Alacritty
 alt - e : open -a Emacs
-alt - i : open -a Safari
+alt - i : open -a Firefox
 alt - j : open -a IntelliJ\ IDEA
-alt - c : skhd -k "alt - 1";\
-          open -a Google\ Chrome --args --profile-directory=Default
-shift + alt - c : skhd -k "alt - 4";\
-                  open -na Google\ Chrome --args --profile-directory=Profile\ 2
 alt - o : open -a Microsoft\ Outlook
 alt - s : open -a Slack
 
 cmd - return [
   # "emacs" : # dont catch this, s-return is bound in emacs
-  "slack" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
-  "google chrome" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
-  "finder" : folder=$(osascript -e 'tell application "Finder" to return (POSIX path of (folder of the front window as alias))') ; emacsclient  --eval "(let ((default-directory \"$folder\")) (+vterm/here t))" ;  osascript -e 'tell application "Emacs" to activate';
-  "zoom.us" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
+  "finder" : folder=$(osascript -e 'tell application "Finder" to return (POSIX path of (folder of the front window as alias))') ; emacsclient  --eval "(let ((default-directory \"$folder\")) (+vterm/here t))" ;  open -a Emacs;
+  "slack" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; open -a Emacs;
+  "firefox" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; open -a Emacs;
+  "zoom.us" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; open -a Emacs;
+  "alacritty" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; open -a Emacs;
+  "google chrome" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; open -a Emacs;
 # conflicts with "complete brackets at end of line"
 #  "intellij idea" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
   "iterm2" : osascript ~/bin/iterm-new-tab.applescript
 ]
 
-cmd + ctrl - return : open -na alacritty
+cmd + ctrl - return : open -a alacritty
+cmd + ctrl + shift - return : open -na alacritty
 cmd + shift - h : open -a Finder -- ~/
 cmd + shift - w : open -a Finder -- ~/Downloads
 
