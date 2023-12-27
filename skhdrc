@@ -22,7 +22,7 @@ cmd + alt + ctrl - e : emacsclient --eval "(emacs-everywhere)"
 alt - a : open -a Alacritty
 alt - e : open -a Emacs
 alt - i : open -a Firefox
-alt - j : open -a IntelliJ\ IDEA
+alt - c : open -a IntelliJ\ IDEA
 alt - o : open -a Microsoft\ Outlook
 alt - s : open -a Slack
 
