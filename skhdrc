@@ -45,7 +45,7 @@ cmd + shift - h : open -a Finder -- ~/
 cmd + shift - w : open -a Finder -- ~/Downloads
 
 # reload keybindings
-alt + shift - q : cd && skhd -r
+alt + shift - c : cd && skhd -r
 
 # move window focus
 # https://github.com/koekeishiya/yabai/discussions/1326
