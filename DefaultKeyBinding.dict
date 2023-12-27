@@ -21,7 +21,6 @@
     "^w" = "deleteToMark:"; /* C-w Delete to mark */
     "^u" = "deleteToBeginningOfLine:"; /* C-u Delete to beginning of line */
 
-
     /* Meta shortcuts */
     "$~|" = ("insertText:", "\\");
     "$~7" = ("insertText:", "\\");
@@ -43,16 +42,4 @@
     "^~h" = "deleteWordBackward:"; /* M-C-h Delete word backward */
     "~\U007F" = "deleteWordBackward:"; /* M-Bksp Delete word backward */
     "~t" = "transposeWords:"; /* M-t Transpose words */
-
-    /* C-x shortcuts */
-    "^x" = {
-        "u" = "undo:"; /* C-x u Undo */
-        "k" = "performClose:"; /* C-x k Close */
-        "^f" = "openDocument:"; /* C-x C-f Open (find file) */
-        "^x" = "swapWithMark:"; /* C-x C-x Swap with mark */
-        "^m" = "selectToMark:"; /* C-x C-m Select to mark*/
-        "^s" = "saveDocument:"; /* C-x C-s Save */
-        "^w" = "saveDocumentAs:"; /* C-x C-w Save as */
-    };
-
 }
