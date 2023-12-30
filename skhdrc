@@ -19,7 +19,7 @@ cmd + shift - return [
 
 cmd + alt + ctrl - e : emacsclient --eval "(emacs-everywhere)"
 
-alt - a : open -a Alacritty
+alt - a : open -a $(realpath ~/Applications/Home\ Manager\ Apps/Alacritty.app)
 alt - e : open -a Emacs
 alt - i : open -a Firefox
 alt - c : open -a IntelliJ\ IDEA
@@ -39,8 +39,8 @@ cmd - return [
   "iterm2" : osascript ~/bin/iterm-new-tab.applescript
 ]
 
-cmd + ctrl - return : open -a alacritty
-cmd + ctrl + shift - return : open -na alacritty
+cmd + ctrl - return : open -a $(realpath ~/Applications/Home\ Manager\ Apps/Alacritty.app)
+cmd + ctrl + shift - return : open -na $(realpath ~/Applications/Home\ Manager\ Apps/Alacritty.app)
 cmd + shift - h : open -a Finder -- ~/
 cmd + shift - w : open -a Finder -- ~/Downloads
 
