@@ -119,15 +119,15 @@ function p10k-on-post-widget() {
   # Zsh >= 5.1 is required.
   autoload -Uz is-at-least && is-at-least 5.1 || return
 
-  # Prompt colors.
+  # Prompt colors, catpuccin ish
   local grey='242'
-  local red='#FF5C57'
-  local yellow='#F3F99D'
-  local blue='#57C7FF'
-  local magenta='#FF6AC1'
-  local cyan='#9AEDFE'
-  local white='#F1F1F0'
-  local green='#30FFc0'
+  local red='#EA746F'
+  local yellow='##E2BE82'
+  local blue='##69ABE6'
+  local magenta='#B97BD5'
+  local cyan='#8EDCF8'
+  local white='#DCDCDC'
+  local green='#9EBB6F'
 
   # Left prompt segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
