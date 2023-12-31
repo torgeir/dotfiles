@@ -93,6 +93,8 @@ function gpg_test_cache() {
 
 function gpg_cache () {
   # Nescessary to make the following passphrase preset to work
+  # TODO should this instead be?
+  # gpgconf --launch gpg-agent
   gpg-connect-agent updatestartuptty /bye >/dev/null
 
   # Preset it from 1password. Try signing with it first, only preset it if it fails.
