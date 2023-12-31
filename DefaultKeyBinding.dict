@@ -16,7 +16,7 @@
 
     /* Ctrl shortcuts */
     "^l" = "centerSelectionInVisibleArea:"; /* C-l Recenter */
-    "^_" = "undo:"; /* C-_ Undo */
+    "^@-" = "undo:"; /* C-_ Undo */
     "^ " = "setMark:"; /* C-Spc Set mark */
     "^w" = "deleteToMark:"; /* C-w Delete to mark */
     "^u" = "deleteToBeginningOfLine:"; /* C-u Delete to beginning of line */
