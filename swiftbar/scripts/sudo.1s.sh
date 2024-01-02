@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 if [[ "$1" = "toggle" ]]; then
     open -a Toggle\ Privileges
 fi
