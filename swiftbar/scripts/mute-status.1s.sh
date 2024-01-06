@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
-if [[ "$(osascript ~/.config/dotfiles/swiftbar/zoom-mute-status.scpt)" == "Muted" ]]
+if ps -ef | grep zoom.us.app | grep -v grep > /dev/null 2>&1
 then
-    echo "🔴"
+    if [[ "$(osascript ~/.config/dotfiles/swiftbar/zoom-mute-status.scpt)" == "Muted" ]]
+    then
+        echo "🔴"
+    else
+        echo "🟢"
+    fi
 else
-    echo "🟢"
+    echo "💤"
 fi
