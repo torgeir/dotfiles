@@ -19,7 +19,8 @@ cmd + shift - return [
 
 cmd + alt + ctrl - e : emacsclient --eval "(emacs-everywhere)"
 
-alt - a : open -a Alacritty
+# conflicts with editing s-experssions
+# alt - a : open -a Alacritty
 alt - e : open -a Emacs
 alt - i : open -a Firefox
 alt - c : open -a IntelliJ\ IDEA
