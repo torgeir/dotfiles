@@ -19,6 +19,7 @@ key_bindings:
   - { key: Up,    mods: Alt|Super, chars: "\x1b[1;11A" } # make work with tmux user-keys[2] binding
   - { key: Right, mods: Alt|Super, chars: "\x1b[1;11C" } # make work with tmux user-keys[3] binding
 
+  - { key: A, mods: Alt, chars: "\x1ba" } # fix m-a, run keep cmd
   - { key: B, mods: Alt, chars: "\x1bb" } # fix m-b, backward word
   - { key: D, mods: Alt, chars: "\x1bd" } # fix m-d, delete word
   - { key: F, mods: Alt, chars: "\x1bf" } # fix m-f, forward word
