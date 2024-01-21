@@ -1,55 +1,17 @@
-"" Source your .vimrc
-"source ~/.vimrc
-
-"" -- Suggested options --
-" Show a few lines of context around the cursor. Note that this makes the
-" text scroll if you mouse-click near the start or end of the window.
-set scrolloff=5
-
-" Do incremental searching.
-set incsearch
+source ~/.vimrc
 
 " nerd tree for intellij
 set NERDTree
-nmap <leader>op :NERDTree<cr>
+nmap <leader>fl :NERDTreeToggle<cr>
+nmap <leader>fL :NERDTreeFind<cr>
 
-" Don't use Ex mode, use Q for formatting.
-map Q gq
-
-"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
-"" Map \r to the Reformat Code action
-"map \r <Action>(ReformatCode)
-
-"" Map <leader>d to start debug
-"map <leader>d <Action>(Debug)
-
-"" Map \b to toggle the breakpoint on the current line
-"map \b <Action>(ToggleLineBreakpoint)
-
-" torgeir
-let mapleader = " "
-imap jk <esc>
-set timeoutlen=200
-
-set ignorecase
-set smartcase
-set scrolloff=5
 "https://github.com/JetBrains/ideavim/blob/master/doc/IdeaVim%20Plugins.md
-"set surround " emulated plugins
+" emulated plugins
 Plug 'tpope/vim-surround'
-"set commentary " emulate vim-commentary
+" emulate vim-commentary
 Plug 'tpope/vim-commentary'
 set ideajoin " join smartly
 set clipboard+=unnamed " copy to system clipboard
-
-set relativenumber
-set number
-
-" Move like in the terminal
-nnoremap <M-f> w
-nnoremap <M-b> b
-inoremap <M-f> <C-o>w
-inoremap <M-b> <C-o>b
 
 " Run :actionlist to see the full list, or https://gist.github.com/zchee/9c78f91cc5ad771c1f5d
 nmap <C-Left> :action PreviousTab<cr>
@@ -59,15 +21,6 @@ imap <C-Right> <esc>:action NextTab<cr>
 
 nmap <leader>bd :action CloseContent<cr>
 nmap <leader>bd :action CloseContent<cr>
-
-nnoremap <leader>hN #
-nnoremap <leader>hn *
-
-" https://gist.github.com/zchee/9c78f91cc5ad771c1f5d?permalink_comment_id=3212171#gistcomment-3212171
-nnoremap <leader>wh <C-w>h
-nnoremap <leader>wj <C-w>j
-nnoremap <leader>wk <C-w>k
-nnoremap <leader>wl <C-w>l
 
 nmap <leader>wv :action SplitVertically<cr>
 nmap <leader>ws :action SplitHorizontally<cr>
@@ -79,12 +32,6 @@ nmap <leader>Jw :action PrevSplitter<cr>
 
 " TODO collapse all zm
 " TODO SPC c d
-
-" insert
-nmap <leader>it O// TODO torgeir<esc>
-
-" recenter
-noremap <C-l> zz
 
 " Moving
 nmap <A-p> :action MethodUp<cr>
