@@ -3,7 +3,7 @@
 
 # inside [], the following means
 # *          : command    key is bound in all apps
-# "terminal" ~            key is unbound in terminal
+# "terminal" ~            key is unbound in terminal (without the : command separator)
 cmd + shift - return [
   "emacs" : ~/.config/dotfiles/new-tab.sh
   "slack" : ~/.config/dotfiles/new-tab.sh
@@ -12,16 +12,17 @@ cmd + shift - return [
   "firefox" : ~/.config/dotfiles/new-tab.sh
   "alacritty" : ~/.config/dotfiles/new-tab.sh
   "google chrome" : ~/.config/dotfiles/new-tab.sh
-  "intellij idea" : ~
+  "intellij idea" ~
 ]
 
 # cmd + shift + alt - return : open -na Google\ Chrome --args --profile-directory=Profile\ 2 "chrome://newtab" # --new-window
 
 cmd + alt + ctrl - e : emacsclient --eval "(emacs-everywhere)"
 
-# conflicts with editing s-experssions
-# alt - a : open -a Alacritty
-alt - e : open -a Emacs
+alt - e [
+  "emacs" ~ # end of sentence
+  * : open -a Emacs
+]
 alt - i : open -a Firefox
 alt - c : open -a IntelliJ\ IDEA
 alt - o : open -a Microsoft\ Outlook
