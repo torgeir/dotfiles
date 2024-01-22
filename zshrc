@@ -41,8 +41,13 @@ do
     #echo "Loading plugin $plug"
     source $plug
   fi
-
 done
+
+folder=$(fzf-share 2> /dev/null)
+if [ -d "$folder" ]; then
+   source "$folder"/completion.zsh
+   source "$folder"/key-bindings.zsh
+fi
 
 if [[ -f $HOME/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh ]]; then
   # debug these codes with cat -v
