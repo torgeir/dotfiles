@@ -14,8 +14,12 @@
   ci = commit
   co = "!f() { git checkout ${1-$(git branch -a | fzf)}; }; f"
   df = diff
+  dft = "!GIT_EXTERNAL_DIFF=difft git diff \"$@\";"
+  dfp = "!GIT_PAGER=delta git diff \"$@\";"
   lg = log --branches --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
   log = log --branches --graph --decorate=full --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  lgp = "!GIT_EXTERNAL_DIFF=difft git log -p --ext-diff \"$@\";"
+  lgd = "!GIT_PAGER=delta git log -p --ext-diff \"$@\";"
   serve = daemon --reuseaddr --verbose  --port=4000 --base-path=. --export-all ./.git
   st = status -sb
   pr = pull --rebase
@@ -28,11 +32,6 @@
   editor = emacsclient
   excludesfile = ~/.gitignore_global
   attributesfile = ~/.gitattributes
-# TODO torgeir litt uoversiktlig
-# pager = delta
-
-#[interactive]
-#  diffFilter = delta --color-only
 
 [color]
   branch = auto
