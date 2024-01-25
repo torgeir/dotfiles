@@ -12,7 +12,7 @@
 [alias]
   br = branch
   ci = commit
-  co = "!f() { git checkout ''${1-$(git branch -a | fzf)}; }; f"
+  co = "!f() { git checkout ${1-$(git branch -a | fzf)}; }; f"
   df = diff
   lg = log --branches --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
   log = log --branches --graph --decorate=full --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
