@@ -8,5 +8,5 @@ then
         echo "🔴"
     fi
 else
-    echo "💤"
+    echo "◌"
 fi
