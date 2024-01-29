@@ -53,7 +53,7 @@ function prompt_t_gcloud () {
 }
 
 function prompt_t_npm () {
-  NPM_SCRIPTS=$([[ -f package.json ]] && cat package.json | jq -r '.scripts | keys | sort | join(" ")' || echo "no package.json")
+  NPM_SCRIPTS=$([[ -f package.json ]] && cat package.json | jq -er '.scripts | keys? | sort | join(" ")' || echo "no package.json")
   p10k segment -t "%F{orange}$NPM_SCRIPTS"
 }
 
