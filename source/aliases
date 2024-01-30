@@ -88,10 +88,11 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-alias t='exa --tree --level 1'
-alias tt='exa --tree --level 2'
-alias ttt='exa --tree --level 3'
-alias tttt='exa --tree --level 4'
+alias t='exa --tree --level 1 --group-directories-first'
+alias tt='exa --tree --level 2 --group-directories-first'
+alias ttt='exa --tree --level 3 --group-directories-first'
+alias tttt='exa --tree --level 4 --group-directories-first'
+alias ttttt='exa --tree --level 5 --group-directories-first'
 
 # less
 #alias less='less -m -N -g -i -J --underline-special --SILENT'
