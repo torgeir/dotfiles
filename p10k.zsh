@@ -120,14 +120,14 @@ function p10k-on-post-widget() {
   autoload -Uz is-at-least && is-at-least 5.1 || return
 
   # Prompt colors, catpuccin ish
-  local grey='242'
-  local red='#EA746F'
-  local yellow='##E2BE82'
-  local blue='##69ABE6'
-  local magenta='#B97BD5'
-  local cyan='#8EDCF8'
-  local white='#DCDCDC'
-  local green='#9EBB6F'
+  local grey='#45475A'
+  local red='#F38BA8'
+  local green='#A6E3A1'
+  local yellow='#F9E2AF'
+  local blue='#89B4FA'
+  local magenta='#F5C2E7'
+  local cyan='#94E2D5'
+  local white='#BAC2DE'
 
   # Left prompt segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
