@@ -12,7 +12,7 @@
 [alias]
   br = branch
   ci = commit
-  co = "!f() { git checkout ${1-$(git branch -a | fzf)}; }; f"
+  co = "!f() { if [ $# -eq 0 ]; then git checkout $(git branch -a | fzf); else git checkout $@; fi }; f"
   df = diff
   dft = "!GIT_EXTERNAL_DIFF=difft git diff \"$@\";"
   dfp = "!GIT_PAGER=delta git diff \"$@\";"

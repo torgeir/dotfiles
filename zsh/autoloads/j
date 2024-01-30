@@ -1,19 +1,20 @@
 # jump around like z
-unfunction j
 
-case $(uname) in
-  Linux)
-    [[ -s /home/torgeir/.autojump/etc/profile.d/autojump.sh ]] \
-      && source /home/torgeir/.autojump/etc/profile.d/autojump.sh
-    [[ -f /etc/profiles/per-user/torgeir/share/zsh/site-functions/autojump.zsh ]] \
-      && source /etc/profiles/per-user/torgeir/share/zsh/site-functions/autojump.zsh
-    ;;
-  Darwin)
-    [[ -s /usr/local/share/autojump/autojump.zsh ]] \
-      && source /usr/local/share/autojump/autojump.zsh
-    [[ -f /etc/profiles/per-user/torgeir/share/zsh/site-functions/autojump.zsh ]] \
-      && source /etc/profiles/per-user/torgeir/share/zsh/site-functions/autojump.zsh
-    ;;
-esac
+# hack around not actually sourcing it,
+# then create a custom version of it using fzf
+export AUTOJUMP_SOURCED=1
 
-j "$@"
+if [ $# -eq 0 ]; then
+  cd $(autojump -s |\
+    sort -k1gr |\
+    gawk -F : '$1 ~ /[0-9]/ && $2 ~ /^\s*\// {print $1 $2}' |\
+    fzf --height 40% \
+        --reverse \
+        --inline-info \
+        --preview "eza -1 -a --color=always --tree -L 1 --classify --group --group-directories-first {2}" \
+        --preview-window 50% |\
+    cut -d$'\t' -f2- |\
+    sed 's/^\s*//')
+else
+  cd $(autojump $@)
+fi
