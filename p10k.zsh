@@ -132,6 +132,7 @@ function p10k-on-post-widget() {
   # Left prompt segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
+    background_jobs
     context                   # user@host
     dir                       # current directory
     vcs                       # git status
@@ -147,7 +148,6 @@ function p10k-on-post-widget() {
     # =========================[ Line #1 ]=========================
     # command_execution_time    # previous command duration
     # context                   # user@host
-    # background_jobs
     # google_app_cred
     time                      # current time
 
@@ -195,6 +195,11 @@ function p10k-on-post-widget() {
   typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIVIS_CONTENT_EXPANSION='<'
   # Prompt symbol in overwrite vi mode is the same as in command mode.
   typeset -g POWERLEVEL9K_PROMPT_CHAR_OVERWRITE_STATE=false
+
+  # show background_jobs
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
+  # even if there's only 1
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE_ALWAYS=true
 
   # Python Virtual Environment.
   typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=$green
