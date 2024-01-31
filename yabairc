@@ -9,10 +9,6 @@
 # popups/hovers e.g. in Chrome , as it will force yabai to handle these windows
 # as well. Layout bsp will suffice to make yabai default to tile window for apps.
 
-# zoom breakout room windows do not tile automatically
-# try manage=on for all its windows
-yabai -m rule --add app="^Zoom" manage=on
-
 yabai -m rule --add title="Info$" manage=off
 yabai -m rule --add app="^App Store$" manage=off
 yabai -m rule --add app="^Archive Utility$" manage=off
