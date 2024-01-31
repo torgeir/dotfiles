@@ -245,7 +245,10 @@ esac
 if command -v autoload &> /dev/null
 then
   autoload -U add-zsh-hook
-  add-zsh-hook -Uz chpwd (){ vterm_set_directory }
+  add-zsh-hook -Uz chpwd (){
+    vterm_set_directory
+    autojump --add "$(pwd)" >/dev/null &!
+  }
 fi
 
 HISTFILE=~/.zsh_history
