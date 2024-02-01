@@ -41,9 +41,6 @@
 [include]
   path = ~/.gitconfig.private
 
-[includeIf "gitdir:~/Projects/saga/"]
-  path = ~/Dropbox/dotfiles-work/.gitconfig
-
 [merge]
   #Gtool = vimdiff
   tool = ediff
