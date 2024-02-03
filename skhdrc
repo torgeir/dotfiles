@@ -23,6 +23,10 @@ alt - e [
   "emacs" ~ # end of sentence
   * : open -a Emacs
 ]
+alt - t [
+  "alacritty" ~ # transpose words
+  * : open -a Alacritty
+]
 alt - i : open -a Firefox
 alt - c : open -a IntelliJ\ IDEA
 alt - o : open -a Microsoft\ Outlook
