@@ -76,7 +76,7 @@ colors:
     red: "#F38BA8" # red
     green: "#A6E3A1" # green
     yellow: "#F9E2AF" # yellow
-    blue: "#89B4FA" # blue
+    blue: "#69B4FA" # blue
     magenta: "#F5C2E7" # pink
     cyan: "#94E2D5" # teal
     white: "#BAC2DE" # subtext1
@@ -86,7 +86,7 @@ colors:
     red: "#F38BA8" # red
     green: "#A6E3A1" # green
     yellow: "#F9E2AF" # yellow
-    blue: "#89B4FA" # blue
+    blue: "#69B4FA" # blue
     magenta: "#F5C2E7" # pink
     cyan: "#94E2D5" # teal
     white: "#A6ADC8" # subtext0
@@ -96,7 +96,7 @@ colors:
     red: "#F38BA8" # red
     green: "#A6E3A1" # green
     yellow: "#F9E2AF" # yellow
-    blue: "#89B4FA" # blue
+    blue: "#69B4FA" # blue
     magenta: "#F5C2E7" # pink
     cyan: "#94E2D5" # teal
     white: "#BAC2DE" # subtext1

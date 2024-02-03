@@ -124,7 +124,7 @@ function p10k-on-post-widget() {
   local red='#F38BA8'
   local green='#A6E3A1'
   local yellow='#F9E2AF'
-  local blue='#89B4FA'
+  local blue='#69B4FA'
   local magenta='#F5C2E7'
   local cyan='#94E2D5'
   local white='#BAC2DE'

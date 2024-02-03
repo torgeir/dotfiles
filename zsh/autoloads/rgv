@@ -1,6 +1,8 @@
 # fzf trickery to open line at column in vim
 fzf --bind "start:reload:rg --column --line-number --no-heading --color=always --smart-case ''" \
-        --bind "change:reload:rg --column --line-number --no-heading --color=always --smart-case {q} || true" \
-        --bind 'enter:become(vim "+normal $(echo {1} | cut -d : -f2)G$(echo {1} | cut -d : -f3)|" $(echo {1} | cut -d : -f1))' \
-        --ansi --disabled \
-        --height=50% --layout=reverse
+    --bind "change:reload:rg --column --line-number --no-heading --color=always --smart-case {q} || true" \
+    --delimiter : \
+    --bind 'enter:become(vim "+call cursor({2},{3})" {1})' \
+    --ansi --disabled \
+    --layout=reverse \
+    --preview 'bat --color=always {1} --highlight-line {2}:{3}'
