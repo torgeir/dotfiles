@@ -14,7 +14,7 @@ function prompt_t_node () {
 function prompt_t_java () {
   case $(uname) in
     Linux)
-      if command -v archlinux-java &> /dev/null
+      if command -v archlinux-java &>/dev/null
       then
         p10k segment -t "%F{green}$(archlinux-java get)"
       fi
@@ -30,7 +30,7 @@ function prompt_t_java () {
 }
 
 function prompt_t_git () {
-  GIT_VERSION=$(command -v git 2>&1 > /dev/null && git --version | awk '{print $3}')
+  GIT_VERSION=$(command -v git &>/dev/null && git --version | awk '{print $3}')
   p10k segment -t "%F{green}$GIT_VERSION"
 }
 

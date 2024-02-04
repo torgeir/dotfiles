@@ -14,7 +14,7 @@ elif [[ "$1" = "stop" ]]; then
 fi
 
 # check if its running
-pgrep yabai 1>/dev/null 2>&1
+pgrep yabai &>/dev/null
 if [[ $? -eq 0 ]]; then
     echo $(yabai -m query --spaces --display | jq -r 'sort_by(.index) | map(select(."has-focus" == true)) | first | .index')
     echo "---"

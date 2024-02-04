@@ -220,14 +220,14 @@ case $(uname) in
     # don't type the password on every git pull
     # only add keys if theyre not already added
     if [ -z "$(ssh-add -l)" ]; then
-      ssh-add -K ~/.ssh/id_ed25519 > /dev/null 2>&1
+      ssh-add -K ~/.ssh/id_ed25519 &>/dev/null
     fi
     ;;
   Linux)
 
     # if you use multiple terminals simultaneously and want gpg-agent to
     # ask for passphrase via pinentry-curses from the same terminal
-    gpg-connect-agent updatestartuptty /bye >/dev/null
+    gpg-connect-agent updatestartuptty /bye &>/dev/null
 
     # arch needs
     #  sudo ln -sf /usr/bin/pinentry-tty /usr/local/bin/pinentry-tty

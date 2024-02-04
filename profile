@@ -1,4 +1,4 @@
-source $HOME/.profile.priv 2>&1 &>/dev/null
+source $HOME/.profile.priv &>/dev/null
 
 case $(uname) in
   Linux)
