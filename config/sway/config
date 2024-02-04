@@ -15,7 +15,7 @@ set $down j
 set $up k
 set $right l
 
-set $term foot
+set $term alacritty
 set $browser firefox
 set $filemanager thunar
 
@@ -317,15 +317,15 @@ exec dropbox
 #assign [app_id="signal*"] 6
 #exec "signal-desktop --ozone-platform=wayland"
 
-exec "$term --title term-top btop"
+exec "$term --title term-top -e btop"
 exec 'env -u WAYLAND_DISPLAY psensor'
-exec "$term --title term-journalctl journalctl -f"
+exec "$term --title term-journalctl -e journalctl -f"
 
 workspace 6
 # TODO torgeir
 # exec "$term --title term-amdgpu-top amdgpu_top"
 exec corectrl
-exec "$term --title term-htop htop"
+exec "$term --title term-htop -e htop"
 
 workspace 4
 exec qpwgraph -stylesheet ~/.config/dotfiles/config/qpwgraph/style.qss ~/graph-setup.qpwgraph
