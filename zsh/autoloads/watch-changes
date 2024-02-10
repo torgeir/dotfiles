@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+now=$(mktemp);
+while true; do
+    while [ -z "$(find  -L . -type f -newer $now)" ]; do
+        sleep 1;
+    done;
+    eval "$@";
+    touch $now;
+done;
