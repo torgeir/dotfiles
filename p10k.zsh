@@ -7,6 +7,9 @@ function prompt_t_node () {
   then
     NODE_VERSION=${NVM_NODE_VERSION:-$NODE_VERSION}
     NPM_VERSION=$(cat $HOME/.nvm/versions/node/$NODE_VERSION/lib/node_modules/npm/package.json | jq -r .version)
+  else
+    NPM_VERSION=$(npm --version)
+    NODE_VERSION=$(node --version)
     p10k segment -t "%F{green}$NODE_VERSION %F{yellow}$NPM_VERSION"
   fi
 }
@@ -14,8 +17,7 @@ function prompt_t_node () {
 function prompt_t_java () {
   case $(uname) in
     Linux)
-      if command -v archlinux-java &>/dev/null
-      then
+      if command -v archlinux-java &> /dev/null; then
         p10k segment -t "%F{green}$(archlinux-java get)"
       fi
       ;;
@@ -23,6 +25,9 @@ function prompt_t_java () {
       if [ $(ls /Library/Java/JavaVirtualMachines/ | wc -l) != 0 ]; then
         DEFAULT_JAVA=$(/usr/libexec/java_home)
         JAVA_VERSION=$(echo ${JAVA_HOME:-$DEFAULT_JAVA} | tr "/" " " | awk '{print $4}')
+        p10k segment -t "%F{green}$JAVA_VERSION"
+      else
+        JAVA_VERSION=$(java --version | head -n 1 | awk '{print $1 " " $2}')
         p10k segment -t "%F{green}$JAVA_VERSION"
       fi
       ;;
@@ -136,7 +141,7 @@ function p10k-on-post-widget() {
     context                   # user@host
     dir                       # current directory
     vcs                       # git status
-    command_execution_time  # previous command duration
+    time                      # current time
     # =========================[ Line #2 ]=========================
     newline                   # \n
     # virtualenv              # python virtual environment
@@ -146,37 +151,29 @@ function p10k-on-post-widget() {
   # Right prompt segments.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
-    # command_execution_time    # previous command duration
-    # context                   # user@host
     # google_app_cred
-    time                      # current time
-
-    newline
-
     virtualenv                # python virtual environment
     t_gcloud
     t_java
     t_git
     t_node
     direnv
-
+    # =========================[ Line #2 ]=========================
     newline
-
     t_npm
-
+    command_execution_time   # previous command duration
     # torgeir too slow
     # t_terraform
     # t_terragrunt
-    # =========================[ Line #2 ]=========================
   )
 
   typeset -g POWERLEVEL9K_GCLOUD_FOREGROUND=30
 
   # Basic style options that define the overall prompt look.
   typeset -g POWERLEVEL9K_BACKGROUND=                            # transparent background
-  typeset -g POWERLEVEL9K_{LEFT,RIGHT}_{LEFT,RIGHT}_WHITESPACE=  # no surrounding whitespace
+  typeset -g POWERLEVEL9K_{LEFT,RIGHT}_{LEFT,RIGHT}_WHITESPACE=''  # no surrounding whitespace
   typeset -g POWERLEVEL9K_{LEFT,RIGHT}_SUBSEGMENT_SEPARATOR=' '  # separate segments with a space
-  typeset -g POWERLEVEL9K_{LEFT,RIGHT}_SEGMENT_SEPARATOR=        # no end-of-line symbol
+  typeset -g POWERLEVEL9K_{LEFT,RIGHT}_SEGMENT_SEPARATOR=''        # no end-of-line symbol
   typeset -g POWERLEVEL9K_VISUAL_IDENTIFIER_EXPANSION=           # no segment icons
 
   # Add an empty line before each prompt except the first. This doesn't emulate the bug
@@ -233,7 +230,7 @@ function p10k-on-post-widget() {
   # indistinguishable from large Git repositories without known state.
   typeset -g POWERLEVEL9K_VCS_LOADING_TEXT=
 
-  typeset -g POWERLEVEL9K_VCS_TAG_ICON="X"
+  typeset -g POWERLEVEL9K_VCS_TAG_ICON='⁌'
 
   # Don't wait for Git status even for a millisecond, so that prompt always updates
   # asynchronously when Git state changes.
@@ -245,14 +242,14 @@ function p10k-on-post-widget() {
   # Don't show remote branch, current tag or stashes.
   # typeset -g POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind)
   # 
-  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON="%F{green}X"
+  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON="%F{green}"
   # When in detached HEAD state, show @commit where branch normally goes.
   typeset -g POWERLEVEL9K_VCS_COMMIT_ICON='@'
 
   # Don't show staged, unstaged, untracked indicators.
   # 
   # Show '*' when there are staged, unstaged or untracked files.
-  typeset -g POWERLEVEL9K_VCS_DIRTY_ICON='X%F{red}*'
+  typeset -g POWERLEVEL9K_VCS_DIRTY_ICON="%F{red}*"
   typeset -g POWERLEVEL9K_VCS_STAGED_ICON="%F{yellow}+"
   typeset -g POWERLEVEL9K_VCS_UNSTAGED_ICON="%F{blue}!"
   typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON="%F{cyan}?"
@@ -260,11 +257,10 @@ function p10k-on-post-widget() {
   typeset -g POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='⇡'
   typeset -g POWERLEVEL9K_VCS_{COMMITS_AHEAD,COMMITS_BEHIND}_MAX_NUM=10
   # Remove all spaces, replace X with spaces
-  typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION='${${P9K_CONTENT// /}//\X/ }'
-
+  typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION='${${P9K_CONTENT// /}//⁌/ ⁌}'
 
   # Grey current time.
-  typeset -g POWERLEVEL9K_TIME_FOREGROUND=$cyan
+  typeset -g POWERLEVEL9K_TIME_FOREGROUND=$grey
   # Format for the current time: 09:51:02. See `man 3 strftime`.
   typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M:%S}'
   # If set to true, time will update when you hit enter. This way prompts for the past
