@@ -58,8 +58,8 @@ function prompt_t_gcloud () {
 }
 
 function prompt_t_npm () {
-  NPM_SCRIPTS=$([[ -f package.json ]] && cat package.json | jq -er '.scripts | keys? | sort | join(" ")' || echo "no package.json")
-  p10k segment -t "%F{orange}$NPM_SCRIPTS"
+  NPM_SCRIPTS=$([[ -f package.json ]] && cat package.json | jq -er '.scripts | keys? | sort | join(" ")' || echo "no scripts/package.json")
+  p10k segment -t "%F{red}$NPM_SCRIPTS"
 }
 
 # https://github.com/romkatv/powerlevel10k/issues/2445
@@ -230,7 +230,7 @@ function p10k-on-post-widget() {
   # indistinguishable from large Git repositories without known state.
   typeset -g POWERLEVEL9K_VCS_LOADING_TEXT=
 
-  typeset -g POWERLEVEL9K_VCS_TAG_ICON='⁌'
+  typeset -g POWERLEVEL9K_VCS_TAG_ICON='%F{black}⁌'
 
   # Don't wait for Git status even for a millisecond, so that prompt always updates
   # asynchronously when Git state changes.
@@ -257,7 +257,7 @@ function p10k-on-post-widget() {
   typeset -g POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='⇡'
   typeset -g POWERLEVEL9K_VCS_{COMMITS_AHEAD,COMMITS_BEHIND}_MAX_NUM=10
   # Remove all spaces, replace X with spaces
-  typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION='${${P9K_CONTENT// /}//⁌/ ⁌}'
+  typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION='${P9K_CONTENT}'
 
   # Grey current time.
   typeset -g POWERLEVEL9K_TIME_FOREGROUND=$grey

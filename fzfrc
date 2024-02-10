@@ -7,7 +7,9 @@ _fzf_complete_npm() {
   if [[ "$@" == "npm run"* ]]; then
     _fzf_complete -m \
         --header-lines=0 \
-        --preview 'cat package.json | jq -er ".scripts | .$(echo {})"' \
+        --preview '
+          cat package.json | jq -er ".scripts | .$(echo {})"
+        ' \
         -- "$@" < <(
           cat package.json | jq -er '.scripts | keys? | sort | .[]'
         )
@@ -43,17 +45,26 @@ _fzf_complete_gw() {
 }
 
 # complete git co
+# inspiration https://github.com/junegunn/fzf-git.sh/blob/main/fzf-git.sh#L149
 _fzf_complete_git() {
   if [[ "$@" == "git co"* ]]; then
-
-  # TODO --bind 'enter:execute-silent(git checkout {})+become(accept-line)' \
-  _fzf_complete -m \
-      --header-lines=0 \
-      --preview 'GIT_PAGER=delta git diff {1}^ {1}' \
-      --ansi \
-      -- "$@" < <(
-        # remove leading spaces and current branch
-        git branch -a --color | sed -E 's/^\s+//' | grep -vE "^\* "
-      )
+    _fzf_complete -m \
+        --header-lines=0 \
+        --height 100% \
+        --preview-window 70%,right \
+        --preview 'git log -p --color=always {}' \
+        --bind "alt-p:preview-half-page-up" \
+        --bind "alt-n:preview-half-page-down" \
+        --bind "enter:execute(git checkout {})+accept" \
+        --ansi -- "$@" < <(
+      git branch -a --color \
+        | sed -E 's/^\s+//' \
+        | grep -vE "^\* " \
+        | grep -v "\->"
+    )
+    # whipe line and refresh p10k vcs prompt
+    zle kill-whole-line
+    _p9k_vcs_status_purge $PWD
+    _p9k_vcs_resume
   fi
 }
