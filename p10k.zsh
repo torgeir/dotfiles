@@ -230,7 +230,7 @@ function p10k-on-post-widget() {
   # indistinguishable from large Git repositories without known state.
   typeset -g POWERLEVEL9K_VCS_LOADING_TEXT=
 
-  typeset -g POWERLEVEL9K_VCS_TAG_ICON='%F{black}⁌'
+  typeset -g POWERLEVEL9K_VCS_TAG_ICON='%F{yellow}⁌'
 
   # Don't wait for Git status even for a millisecond, so that prompt always updates
   # asynchronously when Git state changes.
@@ -244,12 +244,12 @@ function p10k-on-post-widget() {
   # 
   typeset -g POWERLEVEL9K_VCS_BRANCH_ICON="%F{green}"
   # When in detached HEAD state, show @commit where branch normally goes.
-  typeset -g POWERLEVEL9K_VCS_COMMIT_ICON='@'
+  typeset -g POWERLEVEL9K_VCS_COMMIT_ICON='%F{cyan}@ %F{black}'
 
   # Don't show staged, unstaged, untracked indicators.
   # 
   # Show '*' when there are staged, unstaged or untracked files.
-  typeset -g POWERLEVEL9K_VCS_DIRTY_ICON="%F{red}*"
+  typeset -g POWERLEVEL9K_VCS_DIRTY_ICON=" %F{red}*"
   typeset -g POWERLEVEL9K_VCS_STAGED_ICON="%F{yellow}+"
   typeset -g POWERLEVEL9K_VCS_UNSTAGED_ICON="%F{blue}!"
   typeset -g POWERLEVEL9K_VCS_UNTRACKED_ICON="%F{cyan}?"
