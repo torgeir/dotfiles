@@ -304,10 +304,7 @@ fi
 
 eval "$(direnv hook zsh)"
 
-_fzf_complete_npm() {
-  if [[ "$@" == "npm run"* ]]; then
-    _fzf_complete -m --header-lines=1 --preview 'cat package.json | jq -er ".scripts | .$(echo {})"' -- "$@" < <(
-      cat package.json | jq -er '.scripts | keys? | sort | .[]'
-    )
-  fi
-}
+source $HOME/.fzfrc
+
+PROMPT_COMMAND='echo -ne "\033]2;$(whoami)@$(hostname)\033\\"'
+precmd() { eval "$PROMPT_COMMAND" }

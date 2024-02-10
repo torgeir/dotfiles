@@ -1,0 +1,59 @@
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'ctrl-k:kill-line' --bind='ctrl-j:accept'"
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=bg+:008,fg+:007,fg:007,hl+:009,hl:004,pointer:009,info:002"
+
+
+# complete npm run
+_fzf_complete_npm() {
+  if [[ "$@" == "npm run"* ]]; then
+    _fzf_complete -m \
+        --header-lines=0 \
+        --preview 'cat package.json | jq -er ".scripts | .$(echo {})"' \
+        -- "$@" < <(
+          cat package.json | jq -er '.scripts | keys? | sort | .[]'
+        )
+  fi
+}
+
+
+# complete env
+_fzf_complete_env() {
+  if [[ "$@" == "env"* ]]; then
+  _fzf_complete -m \
+      --header-lines=0 \
+      --bind 'enter:become(echo \${1})' \
+      --delimiter '=' \
+      -- "$@" < <(env)
+  fi
+}
+
+
+# complete gradle tasks
+_fzf_complete_gw() {
+  if [[ "$@" == "gw"* ]]; then
+  _fzf_complete -m \
+      --header-lines=0 \
+      --bind 'enter:become(echo {1})' \
+      --preview 'echo {2}' \
+      --delimiter '-' \
+      --ansi \
+      -- "$@" < <(
+        gw tasks | grep -E "^[a-zA-Z0-9-]+ -"
+      )
+  fi
+}
+
+# complete git co
+_fzf_complete_git() {
+  if [[ "$@" == "git co"* ]]; then
+
+  # TODO --bind 'enter:execute-silent(git checkout {})+become(accept-line)' \
+  _fzf_complete -m \
+      --header-lines=0 \
+      --preview 'GIT_PAGER=delta git diff {1}^ {1}' \
+      --ansi \
+      -- "$@" < <(
+        # remove leading spaces and current branch
+        git branch -a --color | sed -E 's/^\s+//' | grep -vE "^\* "
+      )
+  fi
+}
