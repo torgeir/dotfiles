@@ -5,13 +5,14 @@ set NERDTree
 nmap <leader>fl :NERDTreeToggle<cr>
 nmap <leader>fL :NERDTreeFind<cr>
 
-"https://github.com/JetBrains/ideavim/blob/master/doc/IdeaVim%20Plugins.md
-" emulated plugins
+" https://github.com/JetBrains/ideavim/blob/master/doc/IdeaVim%20Plugins.md
+" https://github.com/JetBrains/ideavim/wiki/set-commands
 Plug 'tpope/vim-surround'
 " emulate vim-commentary
 Plug 'tpope/vim-commentary'
 set ideajoin " join smartly
 set clipboard+=unnamed " copy to system clipboard
+set highlightedyank
 
 " Run :actionlist to see the full list, or https://gist.github.com/zchee/9c78f91cc5ad771c1f5d
 nmap <C-Left> :action PreviousTab<cr>
@@ -36,6 +37,10 @@ nmap <leader>Jw :action PrevSplitter<cr>
 " Moving
 nmap <A-p> :action MethodUp<cr>
 nmap <A-n> :action MethodDown<cr>
+noremap <C-a> :action EditorLineStart<cr>
+noremap <C-e> :action EditorLineEnd<cr>
+vmap <C-a> <Esc>:action EditorLineStart<cr>gi
+vmap <C-e> <Esc>:action EditorLineEnd<cr>gi
 
 " Errors
 nmap <leader>en :action GotoNextError<cr>
