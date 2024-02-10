@@ -1,5 +1,6 @@
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'ctrl-k:kill-line' --bind='ctrl-j:accept'"
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'alt-p:preview-half-page-up' --bind 'alt-n:preview-half-page-down'"
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'alt-t:change-preview-window(right,50%|right,70%|down,50%|down,70%|hidden)'"
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=bg+:008,fg+:007,fg:007,hl+:009,hl:004,pointer:009,info:002"
 
 
