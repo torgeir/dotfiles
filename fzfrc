@@ -58,7 +58,7 @@ _fzf_complete_git() {
         --bind "enter:execute(git checkout {})+accept" \
         --ansi -- "$@" < <(
       git branch -a --color \
-        | sed -E 's/^\s+//' \
+        | sed -E 's/^[ ]+//' \
         | grep -vE "^\* " \
         | grep -v "\->"
     )
