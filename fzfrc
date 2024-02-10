@@ -1,4 +1,5 @@
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'ctrl-k:kill-line' --bind='ctrl-j:accept'"
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'alt-p:preview-half-page-up' --bind 'alt-n:preview-half-page-down'"
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=bg+:008,fg+:007,fg:007,hl+:009,hl:004,pointer:009,info:002"
 
 
@@ -7,9 +8,7 @@ _fzf_complete_npm() {
   if [[ "$@" == "npm run"* ]]; then
     _fzf_complete -m \
         --header-lines=0 \
-        --preview '
-          cat package.json | jq -er ".scripts | .$(echo {})"
-        ' \
+        --preview 'cat package.json | jq -er ".scripts | .$(echo {})"' \
         -- "$@" < <(
           cat package.json | jq -er '.scripts | keys? | sort | .[]'
         )
@@ -20,7 +19,7 @@ _fzf_complete_npm() {
 # complete env
 _fzf_complete_env() {
   if [[ "$@" == "env"* ]]; then
-  _fzf_complete -m \
+    _fzf_complete -m \
       --header-lines=0 \
       --bind 'enter:become(echo \${1})' \
       --delimiter '=' \
@@ -32,7 +31,7 @@ _fzf_complete_env() {
 # complete gradle tasks
 _fzf_complete_gw() {
   if [[ "$@" == "gw"* ]]; then
-  _fzf_complete -m \
+    _fzf_complete -m \
       --header-lines=0 \
       --bind 'enter:become(echo {1})' \
       --preview 'echo {2}' \
@@ -53,8 +52,6 @@ _fzf_complete_git() {
         --height 100% \
         --preview-window 70%,right \
         --preview 'git log -p --color=always {}' \
-        --bind "alt-p:preview-half-page-up" \
-        --bind "alt-n:preview-half-page-down" \
         --bind "enter:execute(git checkout {})+accept" \
         --ansi -- "$@" < <(
       git branch -a --color \
