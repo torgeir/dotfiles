@@ -1,0 +1,192 @@
+[window]
+opacity = 0.97
+
+[font]
+size = 18
+
+[font.normal]
+family = "IosevkaTermCurlySlab Nerd Font"
+style = "Regular"
+
+# https://github.com/alacritty/alacritty/issues/62#issuecomment-347552058
+# \x1b is escape in hex
+# debug what alacritty receives with
+#  alacritty --print-events | grep Key
+[[keyboard.bindings]]
+# make work with tmux binding C-Tab
+chars = "\u001B[27;5;9~"
+key = "Tab"
+mods = "Control"
+
+[[keyboard.bindings]]
+# make work with tmux binding C-Shift-Tab
+chars = "\u001B[27;6;9~"
+key = "Tab"
+mods = "Shift|Control"
+
+[[keyboard.bindings]]
+# make work with tmux user-keys[0] binding
+chars = "\u001B[1;11D"
+key = "Left"
+mods = "Alt|Super"
+
+[[keyboard.bindings]]
+# make work with tmux user-keys[1] binding
+chars = "\u001B[1;11B"
+key = "Down"
+mods = "Alt|Super"
+
+[[keyboard.bindings]]
+# make work with tmux user-keys[2] binding
+chars = "\u001B[1;11A"
+key = "Up"
+mods = "Alt|Super"
+
+[[keyboard.bindings]]
+# make work with tmux user-keys[3] binding
+chars = "\u001B[1;11C"
+key = "Right"
+mods = "Alt|Super"
+
+[[keyboard.bindings]]
+# fix m-a, run keep cmd
+chars = "\u001Ba"
+key = "A"
+mods = "Alt"
+
+[[keyboard.bindings]]
+# fix m-b, backward word
+chars = "\u001Bb"
+key = "B"
+mods = "Alt"
+
+[[keyboard.bindings]]
+# fix m-d, delete word
+chars = "\u001Bd"
+key = "D"
+mods = "Alt"
+
+[[keyboard.bindings]]
+# fix m-f, forward word
+chars = "\u001Bf"
+key = "F"
+mods = "Alt"
+
+[[keyboard.bindings]]
+# fix m-l, lowercase word
+chars = "\u001Bl"
+key = "L"
+mods = "Alt"
+
+[[keyboard.bindings]]
+# fix m-p, prev
+chars = "\u001Bp"
+key = "P"
+mods = "Alt"
+
+[[keyboard.bindings]]
+# fix m-n, next
+chars = "\u001Bn"
+key = "N"
+mods = "Alt"
+
+[[keyboard.bindings]]
+# fix m-t, transpose word
+chars = "\u001Bt"
+key = "T"
+mods = "Alt"
+
+[[keyboard.bindings]]
+# fix m-u, uppercase word
+chars = "\u001Bu"
+key = "U"
+mods = "Alt"
+
+[[keyboard.bindings]]
+# m->
+chars = "\u001B>"
+key = "Period"
+mods = "Alt|Shift"
+
+[[keyboard.bindings]]
+# m-<
+chars = "\u001B<"
+key = "Comma"
+mods = "Alt"
+
+# https://github.com/catppuccin/alacritty/blob/main/catppuccin-mocha.yml
+[colors.primary]
+background = "#1E1E2E"
+foreground = "#CDD6F4"
+dim_foreground = "#CDD6F4"
+bright_foreground = "#CDD6F4"
+
+[colors.cursor]
+cursor = "#F5E0DC"
+text = "#1E1E2E"
+
+[colors.vi_mode_cursor]
+cursor = "#B4BEFE"
+text = "#1E1E2E"
+
+[colors.normal]
+black = "#45475A"
+blue = "#69B4FA"
+cyan = "#94E2D5"
+green = "#A6E3A1"
+magenta = "#F5C2E7"
+red = "#F38BA8"
+white = "#BAC2DE"
+yellow = "#F9E2AF"
+
+[colors.bright]
+black = "#585B70"
+blue = "#69B4FA"
+cyan = "#94E2D5"
+green = "#A6E3A1"
+magenta = "#F5C2E7"
+red = "#F38BA8"
+white = "#A6ADC8"
+yellow = "#F9E2AF"
+
+[colors.dim]
+black = "#45475A"
+blue = "#69B4FA"
+cyan = "#94E2D5"
+green = "#A6E3A1"
+magenta = "#F5C2E7"
+red = "#F38BA8"
+white = "#BAC2DE"
+yellow = "#F9E2AF"
+
+[[colors.indexed_colors]]
+color = "#FAB387"
+index = 16
+
+[[colors.indexed_colors]]
+color = "#F5E0DC"
+index = 17
+
+[colors.hints.start]
+background = "#F9E2AF"
+foreground = "#1E1E2E"
+
+[colors.hints.end]
+background = "#A6ADC8"
+foreground = "#1E1E2E"
+
+[colors.selection]
+background = "#F5E0DC"
+text = "#1E1E2E"
+
+[colors.search.matches]
+background = "#A6ADC8"
+foreground = "#1E1E2E"
+
+[colors.search.focused_match]
+background = "#A6E3A1"
+foreground = "#1E1E2E"
+
+[colors.footer_bar]
+background = "#A6ADC8"
+foreground = "#1E1E2E"
