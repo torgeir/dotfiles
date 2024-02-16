@@ -194,9 +194,10 @@ function p10k-on-post-widget() {
   typeset -g POWERLEVEL9K_PROMPT_CHAR_OVERWRITE_STATE=false
 
   # show background_jobs
-  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
   # even if there's only 1
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE_ALWAYS=true
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=$red
 
   # Python Virtual Environment.
   typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=$green
