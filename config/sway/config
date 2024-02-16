@@ -318,13 +318,13 @@ exec dropbox
 #exec "signal-desktop --ozone-platform=wayland"
 
 exec "$term --title term-top -e btop"
-exec 'env -u WAYLAND_DISPLAY psensor'
+exec 'env -u WAYLAND_DISPLAY psensor &> /dev/null'
 exec "$term --title term-journalctl -e journalctl -f"
 
 workspace 6
 # TODO torgeir
 # exec "$term --title term-amdgpu-top amdgpu_top"
-exec corectrl
+exec "corectrl &> /dev/null"
 exec "$term --title term-htop -e htop"
 
 workspace 4
