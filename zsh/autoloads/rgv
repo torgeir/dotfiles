@@ -4,6 +4,5 @@ fzf --bind "start:reload:rg --column --line-number --no-heading --color=always -
     --delimiter : \
     --bind 'enter:become(vim "+call cursor({2},{3})" {1})' \
     --ansi \
-    --disabled \
     --layout=reverse \
     --preview 'bat --color=always {1} --highlight-line {2}:{3}'
