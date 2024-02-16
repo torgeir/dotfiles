@@ -1,1 +1,7 @@
-find . -name "$1"
+fzf --bind "start:reload:fd ''" \
+    --bind "change:reload:fd --glob {q} || true" \
+    --bind 'enter:become(vim {1})' \
+    --ansi \
+    --disabled \
+    --layout=reverse \
+    --preview 'bat --color=always {1}'
