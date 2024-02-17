@@ -1,6 +1,0 @@
-fzf --bind "start:reload:fd ''" \
-    --bind "change:reload:fd -t d \$(echo {q} | sed -E 's/ /\.\*/') || true" \
-    --bind 'enter:become(vim {1})' \
-    --ansi \
-    --layout=reverse \
-    --preview "eza -1 -a --color=always --tree -L 1 --classify --group --group-directories-first {2}"

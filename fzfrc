@@ -1,8 +1,13 @@
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'ctrl-k:kill-line' --bind='ctrl-j:accept'"
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'alt-p:preview-half-page-up' --bind 'alt-n:preview-half-page-down'"
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'alt-t:change-preview-window(right,50%|right,70%|down,50%|down,70%|hidden)'"
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'alt-t:change-preview-window(right,50%|right,80%|down,50%|down,80%|hidden)'"
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=bg+:008,fg+:007,fg:007,hl+:009,hl:004,pointer:009,info:002"
 
+# show preview when c-t is used for looking up files
+export FZF_CTRL_T_OPTS="$FZF_CTRL_T_OPTS --height 100% --preview 'bat --color=always {1}'"
+
+# show preview when m-c is used for looking up directories
+export FZF_ALT_C_OPTS="$FZF_ALT_C_OPTS --height 100% --preview 'eza -1 -a --color=always --tree -L 1 --classify --group --group-directories-first {1}'"
 
 # complete npm run
 _fzf_complete_npm() {
