@@ -119,6 +119,11 @@ bindsym $mod+Shift+Return exec $browser
 bindsym $mod+Ctrl+Return exec $term
 bindsym $mod+n exec $filemanager
 
+# focus apps directly no matter the workspace
+bindsym $meta+i exec ~/.config/dotfiles/config/sway/swayfocus.sh $browser
+bindsym $meta+e exec ~/.config/dotfiles/config/sway/swayfocus.sh emacs
+bindsym $meta+s exec ~/.config/dotfiles/config/sway/swayfocus.sh Slack
+
 # Kill
 bindsym $mod+Shift+q kill
 
