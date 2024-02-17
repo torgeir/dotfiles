@@ -8,6 +8,7 @@
 
 # Super. Use Mod1 for Alt.
 set $mod Mod4
+set $meta Mod1
 
 # Home row
 set $left h
@@ -145,10 +146,10 @@ bindsym XF86AudioPrev exec playerctl previous
 
 ### Move around
 # Move focus
-bindsym Mod1+$left focus left
-bindsym Mod1+$down focus down
-bindsym Mod1+$up focus up
-bindsym Mod1+$right focus right
+bindsym $meta+$left focus left
+bindsym $meta+$down focus down
+bindsym $meta+$up focus up
+bindsym $meta+$right focus right
 # Ditto, super
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -156,10 +157,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # Move window
-bindsym Mod1+Shift+$left move left
-bindsym Mod1+Shift+$down move down
-bindsym Mod1+Shift+$up move up
-bindsym Mod1+Shift+$right move right
+bindsym $meta+Shift+$left move left
+bindsym $meta+Shift+$down move down
+bindsym $meta+Shift+$up move up
+bindsym $meta+Shift+$right move right
 # Ditto, super
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
@@ -189,24 +190,24 @@ bindsym $mod+Shift+7 move container to workspace number 7; workspace 7
 bindsym $mod+Shift+8 move container to workspace number 8; workspace 8
 bindsym $mod+Shift+9 move container to workspace number 9; workspace 9
 bindsym $mod+Shift+0 move container to workspace number 10; workspace 10
-bindsym Mod1+Shift+1 move container to workspace number 1; workspace 1
-bindsym Mod1+Shift+2 move container to workspace number 2; workspace 2
-bindsym Mod1+Shift+3 move container to workspace number 3; workspace 3
-bindsym Mod1+Shift+4 move container to workspace number 4; workspace 4
-bindsym Mod1+Shift+5 move container to workspace number 5; workspace 5
-bindsym Mod1+Shift+6 move container to workspace number 6; workspace 6
-bindsym Mod1+Shift+7 move container to workspace number 7; workspace 7
-bindsym Mod1+Shift+8 move container to workspace number 8; workspace 8
-bindsym Mod1+Shift+9 move container to workspace number 9; workspace 9
-bindsym Mod1+Shift+0 move container to workspace number 10; workspace 10
+bindsym $meta+Shift+1 move container to workspace number 1; workspace 1
+bindsym $meta+Shift+2 move container to workspace number 2; workspace 2
+bindsym $meta+Shift+3 move container to workspace number 3; workspace 3
+bindsym $meta+Shift+4 move container to workspace number 4; workspace 4
+bindsym $meta+Shift+5 move container to workspace number 5; workspace 5
+bindsym $meta+Shift+6 move container to workspace number 6; workspace 6
+bindsym $meta+Shift+7 move container to workspace number 7; workspace 7
+bindsym $meta+Shift+8 move container to workspace number 8; workspace 8
+bindsym $meta+Shift+9 move container to workspace number 9; workspace 9
+bindsym $meta+Shift+0 move container to workspace number 10; workspace 10
 
 ### Layout stuff
-bindsym Mod1+Shift+s layout toggle split #tabbed stacking
-bindsym Mod1+Shift+g splith
-bindsym Mod1+Shift+v splitv
+bindsym $meta+Shift+s layout toggle split #tabbed stacking
+bindsym $meta+Shift+g splith
+bindsym $meta+Shift+v splitv
 
 # Maximize
-bindsym Mod1+Shift+m fullscreen
+bindsym $meta+Shift+m fullscreen
 
 # Toggle the current focus between tiling and floating mode
 bindsym $mod+Shift+f floating toggle
@@ -215,7 +216,7 @@ bindsym $mod+Shift+f floating toggle
 bindsym $mod+Ctrl+f focus mode_toggle
 
 # Move focus to the parent container
-bindsym Mod1+Shift+p focus parent
+bindsym $meta+Shift+p focus parent
 
 # Scratch
 bindsym $mod+Ctrl+m move scratchpad
@@ -231,7 +232,7 @@ mode $mode_screenshot {
   bindsym Escape mode "default"
 
 }
-bindsym $mod+ctrl+Mod1+s mode $mode_screenshot
+bindsym $mod+ctrl+$meta+s mode $mode_screenshot
 
 bindsym Ctrl+$mod+Left resize shrink width 100px
 bindsym Ctrl+$mod+Down resize grow height 100px
