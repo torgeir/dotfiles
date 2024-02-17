@@ -241,8 +241,9 @@ bindsym Ctrl+$mod+Right resize grow width 100px
 ### Status Bar (man 5 sway-bar)
 bar {
   position bottom
-  font pango:DejaVu Sans Mono, FontAwesome 10
+  font pango:IosevkaTermCurlySlab Nerd Font, FontAwesome 12
   status_command i3status-rs ~/.config/i3status-rust/config.toml
+  icon_theme Adwaita
   colors {
     separator #666666
     background #222222
@@ -318,13 +319,13 @@ exec dropbox
 #exec "signal-desktop --ozone-platform=wayland"
 
 exec "$term --title term-top -e btop"
-exec 'env -u WAYLAND_DISPLAY psensor &> /dev/null'
+exec 'env -u WAYLAND_DISPLAY psensor'
 exec "$term --title term-journalctl -e journalctl -f"
 
 workspace 6
 # TODO torgeir
 # exec "$term --title term-amdgpu-top amdgpu_top"
-exec "corectrl &> /dev/null"
+exec "corectrl"
 exec "$term --title term-htop -e htop"
 
 workspace 4
