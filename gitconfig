@@ -16,6 +16,9 @@
 [log]
   date = iso
 
+[branch]
+  sort = -committerdate
+
 [alias]
   br = branch
   ci = commit
