@@ -63,3 +63,12 @@
 
 [diff "elisp"]
   xfuncname="^\\((((def\\S+)|use-package)\\s+\\S+)"
+
+[transfer]
+fsckobjects = true
+
+[fetch]
+fsckobjects = true
+
+[receive]
+fsckObjects = true
