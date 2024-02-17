@@ -49,7 +49,7 @@ command = "sed 's/  //' <(curl 'https://wttr.in/trondheim?format=1' -s)"
 interval = 600
 [[block.click]]
 button = "left"
-cmd = "brave 'https://wttr.in/trondheim'"
+cmd = "firefox 'https://wttr.in/trondheim'"
 
 [[block]]
 block = "custom"
