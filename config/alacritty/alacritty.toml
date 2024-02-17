@@ -64,6 +64,12 @@ key = "B"
 mods = "Alt"
 
 [[keyboard.bindings]]
+# fix m-c, fzf find dir
+chars = "\u001Bc"
+key = "C"
+mods = "Alt"
+
+[[keyboard.bindings]]
 # fix m-d, delete word
 chars = "\u001Bd"
 key = "D"
