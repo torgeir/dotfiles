@@ -9,6 +9,9 @@
   email = torgeir.thoresen@gmail.com
   signingkey = 77836712DAEA8B95
 
+[github]
+  user = torgeir
+
 [alias]
   br = branch
   ci = commit
@@ -50,9 +53,6 @@
 
 [rerere]
   enabled = true
-
-[github]
-  user = torgeir
 
 [diff]
   colorMoved = default
