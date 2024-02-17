@@ -13,6 +13,9 @@
 [github]
   user = torgeir
 
+[log]
+  date = iso
+
 [alias]
   br = branch
   ci = commit
