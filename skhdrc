@@ -29,7 +29,7 @@ alt - t [
   * : open -a Alacritty
 ]
 alt - i : open -a Firefox
-alt - j : open -a IntelliJ\ IDEA
+alt - v : open -a IntelliJ\ IDEA
 alt - o : open -a Microsoft\ Outlook
 alt - s : open -a Slack
 
