@@ -41,10 +41,10 @@ _fzf_complete_gw() {
       --header-lines=0 \
       --bind 'enter:become(echo {1})' \
       --preview 'echo {2}' \
-      --delimiter '-' \
+      --delimiter "-" \
       --ansi \
       -- "$@" < <(
-        gw tasks | grep -E "^[a-zA-Z0-9-]+ -"
+        gw tasks --all | awk '$1 ~ "^[a-z].*:" { print ":"$1 }'
       )
   fi
 }
