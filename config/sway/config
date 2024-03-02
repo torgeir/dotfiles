@@ -20,6 +20,8 @@ set $term alacritty
 set $browser firefox
 set $filemanager thunar
 
+set $status_term_font_size 10
+
 # hide mouse
 #seat * hide_cursor 8000
 seat * hide_cursor when-typing enable
@@ -72,7 +74,7 @@ workspace 1 output DP-2
 workspace 2 output DP-2
 workspace 3 output DP-2
 workspace 4 output DP-2
-workspace  5 output DP-1
+workspace 5 output DP-2
 workspace  6 output DP-1
 workspace  7 output DP-1
 workspace  8 output DP-1
@@ -291,7 +293,7 @@ for_window [class="REAPER" title="^LV2.*"] floating enable
 for_window [class="REAPER" title=".*JS.*"] floating enable
 for_window [class="REAPER" title="^VST.*"] floating enable
 
-assign [title="^Psensor.*"] 5
+assign [title="^Psensor.*"] 6
 for_window [title="^Psensor.*"] resize set height 512px
 for_window [title="^term-journalctl"] resize set height 800px
 for_window [title="^term-top"] resize set height 800px
@@ -317,29 +319,31 @@ assign [class="Slack"] 7
 assign [class="Signal"] 7
 assign [class="Spotify"] 8
 
-exec dropbox
-
 # https://github.com/signalapp/Signal-Desktop/issues/5719
 #for_window [app_id="signal"] floating enable
 #assign [app_id="signal*"] 6
 #exec "signal-desktop --ozone-platform=wayland"
 
-exec "$term --title term-top -e btop"
-exec 'env -u WAYLAND_DISPLAY psensor'
-exec "$term --title term-journalctl -e journalctl -f"
-
 workspace 6
+exec "$term --title term-top -o font.size=$status_term_font_size -e btop"
+exec 'env -u WAYLAND_DISPLAY psensor'
+exec "$term --title term-journalctl -o font.size=$status_term_font_size -e journalctl -f "
+
+workspace 7
 # TODO torgeir
 # exec "$term --title term-amdgpu-top amdgpu_top"
 exec "corectrl"
-exec "$term --title term-htop -e htop"
+exec "$term --title term-htop -o font.size=$status_term_font_size -e htop"
+
+workspace 8
+exec dropbox
+exec spotify
 
 workspace 4
 exec qpwgraph -stylesheet ~/.config/dotfiles/config/qpwgraph/style.qss ~/graph-setup.qpwgraph
 
-# set screen 2 workspace
 workspace 5
-# set screen 1 workspace
+
 workspace 1
 exec $browser
 
