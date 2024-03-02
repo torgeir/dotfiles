@@ -33,6 +33,7 @@
   serve = daemon --reuseaddr --verbose  --port=4000 --base-path=. --export-all ./.git
   st = status -sb
   pr = pull --rebase
+  mb = "!f() { if [ $# -eq 0 ]; then git merge-base main $(git branch -a | fzf); else git merge-base $@; fi }; f"
 
 [core]
   autocrlf = input
