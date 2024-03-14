@@ -34,6 +34,9 @@ nmap <leader>Jw :action PrevSplitter<cr>
 " TODO collapse all zm
 " TODO SPC c d
 
+" Undo
+imap <C-S--> <C-o>u
+
 " Moving
 nmap <A-p> :action MethodUp<cr>
 nmap <A-n> :action MethodDown<cr>
