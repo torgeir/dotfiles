@@ -315,9 +315,9 @@ for_window [title="Forza Horizon 5"] move window to workspace number 1
 # for_window [app_id="^.*"] floating enable, border none
 # for_window [app_id="^.*"] fullscreen enable
 
-assign [class="Slack"] 7
-assign [class="Signal"] 7
-assign [class="Spotify"] 8
+assign [class="Signal"] 8
+assign [app_id="Slack"] 8
+assign [title="Spotify Premium"] 8
 
 # https://github.com/signalapp/Signal-Desktop/issues/5719
 #for_window [app_id="signal"] floating enable
