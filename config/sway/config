@@ -131,7 +131,7 @@ bindsym $mod+Shift+q kill
 
 # Launcher
 bindsym $mod+Space exec $menu
-bindsym $mod+Shift+Space exec $menusecondary
+bindsym $mod+$meta+Shift+Space exec $menusecondary
 
 # Mouse move window
 floating_modifier $mod normal
