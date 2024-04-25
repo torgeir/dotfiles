@@ -9,7 +9,7 @@ cmd + shift - return [
   "slack" : ~/.config/dotfiles/new-tab.sh
   "iterm2" : ~/.config/dotfiles/new-tab.sh
   "finder" : ~/.config/dotfiles/new-tab.sh
-  "firefox" : ~/.config/dotfiles/new-tab.sh
+  "firefox developer edition" : ~/.config/dotfiles/new-tab.sh
   "alacritty" : ~/.config/dotfiles/new-tab.sh
   "google chrome" : ~/.config/dotfiles/new-tab.sh
   "intellij idea" ~
@@ -28,7 +28,7 @@ alt - t [
   "intellij idea" ~ # conflicts with show type on extract variable
   * : open -a Alacritty
 ]
-alt - i : open -a Firefox
+alt - i : open -a Firefox\ Developer\ Edition
 alt - v : open -a IntelliJ\ IDEA
 alt - o : open -a Microsoft\ Outlook
 alt - s : open -a Slack
