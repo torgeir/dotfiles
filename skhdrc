@@ -5,14 +5,8 @@
 # *          : command    key is bound in all apps
 # "terminal" ~            key is unbound in terminal (without the : command separator)
 cmd + shift - return [
-  "emacs" : ~/.config/dotfiles/new-tab.sh
-  "slack" : ~/.config/dotfiles/new-tab.sh
-  "iterm2" : ~/.config/dotfiles/new-tab.sh
-  "finder" : ~/.config/dotfiles/new-tab.sh
-  "firefox developer edition" : ~/.config/dotfiles/new-tab.sh
-  "alacritty" : ~/.config/dotfiles/new-tab.sh
-  "google chrome" : ~/.config/dotfiles/new-tab.sh
   "intellij idea" ~
+  * : ~/.config/dotfiles/new-tab.sh
 ]
 
 # cmd + shift + alt - return : open -na Google\ Chrome --args --profile-directory=Profile\ 2 "chrome://newtab" # --new-window
@@ -34,16 +28,10 @@ alt - o : open -a Microsoft\ Outlook
 alt - s : open -a Slack
 
 cmd - return [
-  # "emacs" : # dont catch this, s-return is bound in emacs
+  "emacs" ~ # dont catch this, s-return is bound in emacs
+  "intellij idea" ~ # conflicts with "complete brackets at end of line"
   "finder" : folder=$(osascript -e 'tell application "Finder" to return (POSIX path of (folder of the front window as alias))') ; emacsclient  --eval "(let ((default-directory \"$folder\")) (+vterm/here t))" ;  open -a Emacs;
-  "slack" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; open -a Emacs;
-  "firefox" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; open -a Emacs;
-  "zoom.us" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; open -a Emacs;
-  "alacritty" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; open -a Emacs;
-  "google chrome" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; open -a Emacs;
-# conflicts with "complete brackets at end of line"
-#  "intellij idea" : emacsclient  --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; osascript -e 'tell application "Emacs" to activate';
-  "iterm2" : osascript ~/bin/iterm-new-tab.applescript
+  * : emacsclient --eval '(let ((default-directory (t/read-file "~/.cur"))) (+vterm/here t))'; open -a Emacs;
 ]
 
 cmd + ctrl - return : open -a Alacritty
