@@ -51,10 +51,10 @@ alt - k : yabai -m window --focus north || yabai -m display --focus north
 alt - j : yabai -m window --focus south || yabai -m display --focus south
 
 # swap location with window in direction
-alt + shift - h : yabai -m window --warp west  || $(WIN_ID=$(yabai -m query --windows --window | jq '.id') && yabai -m window --display west && yabai -m window --focus $WIN_ID);
-alt + shift - l : yabai -m window --warp east || $(WIN_ID=$(yabai -m query --windows --window | jq '.id') && yabai -m window --display east && yabai -m window --focus $WIN_ID);
-alt + shift - k : yabai -m window --warp north || $(WIN_ID=$(yabai -m query --windows --window | jq '.id') && yabai -m window --display north && yabai -m window --focus $WIN_ID);
-alt + shift - j : yabai -m window --warp south || $(WIN_ID=$(yabai -m query --windows --window | jq '.id') && yabai -m window --display south && yabai -m window --focus $WIN_ID);
+alt + shift - h : yabai -m window --warp west  || WIN_ID=$(yabai -m query --windows --window | jq '.id') && yabai -m window --display west  && yabai -m window --focus $WIN_ID;
+alt + shift - l : yabai -m window --warp east  || WIN_ID=$(yabai -m query --windows --window | jq '.id') && yabai -m window --display east  && yabai -m window --focus $WIN_ID;
+alt + shift - k : yabai -m window --warp north || WIN_ID=$(yabai -m query --windows --window | jq '.id') && yabai -m window --display north && yabai -m window --focus $WIN_ID;
+alt + shift - j : yabai -m window --warp south || WIN_ID=$(yabai -m query --windows --window | jq '.id') && yabai -m window --display south && yabai -m window --focus $WIN_ID;
 
 alt + shift - 0 : yabai -m space --balance
 
