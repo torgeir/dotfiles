@@ -17,11 +17,6 @@ alt - e [
   "emacs" ~ # end of sentence
   * : open -a Emacs
 ]
-alt - t [
-  "alacritty" ~ # transpose words
-  "intellij idea" ~ # conflicts with show type on extract variable
-  * : open -a Alacritty
-]
 alt - i : open -a Firefox\ Developer\ Edition
 alt - v : open -a IntelliJ\ IDEA
 alt - o : open -a Microsoft\ Outlook
