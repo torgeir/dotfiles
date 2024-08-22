@@ -1,5 +1,9 @@
+# https://alacritty.org/config-alacritty.html
 [window]
 opacity = 0.97
+padding.x = 10
+padding.y = 10
+decorations = "Buttonless"
 
 [font]
 size = 18
