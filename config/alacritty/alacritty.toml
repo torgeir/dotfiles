@@ -1,4 +1,4 @@
 import = [
-    "~/.config/alacritty/main.toml"
-    "~/.config/alacritty/catppuccin-mocha.toml",
+    "~/.config/alacritty/main.toml",
+    "~/.config/alacritty/catppuccin-mocha.toml"
 ]
