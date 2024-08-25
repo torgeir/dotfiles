@@ -21,16 +21,16 @@ yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^System" manage=off
 yabai -m rule --add app="^Problem Report" manage=off
 
-yabai -m rule --add app="^Microsoft Teams" manage=off               # Teams, Outlook
+yabai -m rule --add app="^Microsoft Teams" manage=off               # Teams
 yabai -m rule --add app="^Microsoft" title="Reminders?$" manage=off # n Reminder[s]
 # TODO does this fix all popup windows?
-yabai -m rule --add app="^Microsoft" subrole=AXStandardWindow manage=off
+#yabai -m rule --add app="^Microsoft" subrole=AXStandardWindow manage=off
 
 yabai -m rule --add app="IntelliJ IDEA" title="^Code with me" manage=off
 yabai -m rule --add app="IntelliJ IDEA" title="^Convert Code" manage=off
 yabai -m rule --add app="IntelliJ IDEA" title="^(Copy|Add) Code" manage=off
 # TODO does this fix all popup windows?
-yabai -m rule --add app="IntelliJ IDEA" subrole=AXStandardWindow manage=off
+#yabai -m rule --add app="IntelliJ IDEA" subrole=AXStandardWindow manage=off
 
 yabai -m rule --add app="Sonos S1 Controller" manage=off
 
