@@ -279,6 +279,7 @@ for_window [class="Brave-browser" title="Picture in picture"] floating enable st
 
 assign [class="REAPER"] 3
 for_window [class="REAPER"] floating disable
+for_window [class="REAPER" title=".*Helix.*"] floating disable
 for_window [class="REAPER" title="REAPER Query"] floating enable
 for_window [class="REAPER" title="REAPER \(loading\)"] floating enable
 for_window [class="REAPER" title="REAPER \(initializing\)"] floating enable
