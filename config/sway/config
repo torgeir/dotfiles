@@ -251,7 +251,7 @@ bar {
   position bottom
   font pango:IosevkaTermCurlySlab Nerd Font, FontAwesome 12
   status_command i3status-rs ~/.config/i3status-rust/config.toml
-  icon_theme Adwaita
+  icon_theme ctp-mocha
   colors {
     separator #666666
     background #222222
