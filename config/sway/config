@@ -249,7 +249,7 @@ bindsym Ctrl+$mod+Right resize grow width 100px
 ### Status Bar (man 5 sway-bar)
 bar {
   position bottom
-  font pango:IosevkaTermCurlySlab Nerd Font, FontAwesome 12
+  font pango:IosevkaTermCurlySlab Nerd Font, FontAwesome 11
   status_command i3status-rs ~/.config/i3status-rust/config.toml
   # colors {
   #   separator #666666
@@ -294,14 +294,15 @@ for_window [class="REAPER" title="^LV2.*"] floating enable
 for_window [class="REAPER" title=".*JS.*"] floating enable
 for_window [class="REAPER" title="^VST.*"] floating enable
 
-assign [title="^Resources.*"] 7
-for_window [title="^Resources.*"] resize set height 1000px
-
+assign [title="term-journalctl"] 6
 assign [title="^CoreCtrl"] 6
-assign [title="^term-journalctl"] 6
-for_window [title="^term-journalctl"] resize set height 1450px
-for_window [title="^term-top"] resize set height 400px
-for_window [title="^term-amdgpu-top"] resize set height 1450px
+for_window [title="term-journalctl"] resize set height 1560px
+for_window [title="CoreCtrl"] resize set height 1000px
+
+assign [title="^Resources"] 7
+assign [title="term-top"] 7
+for_window [title="Resources"] resize set height 1660px
+for_window [title="term-top"] resize set height 900px
 
 ##
 ## gaming
