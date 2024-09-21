@@ -26,7 +26,7 @@ set $status_term_font_size 10
 #seat * hide_cursor 8000
 seat * hide_cursor when-typing enable
 
-## TODO reaper, psensor and signal is not yet wayland
+##TODO reaper and signal is not yet wayland
 # xwayland disable
 # killall Xwayland
 
@@ -293,8 +293,9 @@ for_window [class="REAPER" title="^LV2.*"] floating enable
 for_window [class="REAPER" title=".*JS.*"] floating enable
 for_window [class="REAPER" title="^VST.*"] floating enable
 
-assign [title="^Psensor.*"] 6
-for_window [title="^Psensor.*"] resize set height 512px
+assign [title="^Resources.*"] 7
+for_window [title="^Resources.*"] resize set height 1000px
+
 for_window [title="^term-journalctl"] resize set height 800px
 for_window [title="^term-top"] resize set height 800px
 for_window [title="^term-amdgpu-top"] resize set height 1450px
@@ -325,15 +326,15 @@ assign [title="Spotify Premium"] 8
 #exec "signal-desktop --ozone-platform=wayland"
 
 workspace 6
-exec "$term --title term-top -o font.size=$status_term_font_size -e btop"
-exec 'env -u WAYLAND_DISPLAY psensor'
 exec "$term --title term-journalctl -o font.size=$status_term_font_size -e journalctl -f "
+exec "corectrl"
 
 workspace 7
-# TODO torgeir
+# don't really need these any longer
 # exec "$term --title term-amdgpu-top amdgpu_top"
-exec "corectrl"
-exec "$term --title term-htop -o font.size=$status_term_font_size -e htop"
+# exec "$term --title term-htop -o font.size=$status_term_font_size -e htop"
+exec "$term --title term-top -o font.size=$status_term_font_size -e btop"
+exec 'resources'
 
 workspace 8
 exec dropbox
