@@ -251,16 +251,16 @@ bar {
   position bottom
   font pango:IosevkaTermCurlySlab Nerd Font, FontAwesome 12
   status_command i3status-rs ~/.config/i3status-rust/config.toml
-  icon_theme ctp-mocha
-  colors {
-    separator #666666
-    background #222222
-    statusline #dddddd
-    focused_workspace #0088CC #0088CC #ffffff
-    active_workspace #333333 #333333 #ffffff
-    inactive_workspace #333333 #333333 #888888
-    urgent_workspace #2f343a #900000 #ffffff
-  }
+  # colors {
+  #   separator #666666
+  #   background #222222
+  #   statusline #dddddd
+  #   focused_workspace #0088CC #0088CC #ffffff
+  #   active_workspace #333333 #333333 #ffffff
+  #   inactive_workspace #333333 #333333 #888888
+  #   urgent_workspace #2f343a #900000 #ffffff
+  # }
+
 }
 
 # Sticky
@@ -297,8 +297,10 @@ for_window [class="REAPER" title="^VST.*"] floating enable
 assign [title="^Resources.*"] 7
 for_window [title="^Resources.*"] resize set height 1000px
 
-for_window [title="^term-journalctl"] resize set height 800px
-for_window [title="^term-top"] resize set height 800px
+assign [title="^CoreCtrl"] 6
+assign [title="^term-journalctl"] 6
+for_window [title="^term-journalctl"] resize set height 1450px
+for_window [title="^term-top"] resize set height 400px
 for_window [title="^term-amdgpu-top"] resize set height 1450px
 
 ##
