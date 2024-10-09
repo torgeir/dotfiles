@@ -1,0 +1,6 @@
+cat - | {
+  tee >(extract_jwt_part_1) \
+      >(extract_jwt_part_2) \
+      >(extract_jwt_part_3) \
+      > /dev/null
+}

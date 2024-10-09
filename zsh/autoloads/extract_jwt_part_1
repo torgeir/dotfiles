@@ -1,0 +1,1 @@
+cat - | cut -d. -f1 | base64 -d
