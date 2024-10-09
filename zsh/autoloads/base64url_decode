@@ -1,0 +1,14 @@
+# https://stackoverflow.com/a/55389212/3290677
+function base64url_decode {
+    local input=$(cat -)
+    # replace url-safe characters
+    input="${input//-/+}"       # replace - with +
+    input="${input//_/\/}"      # replace _ with /
+    case $((${#input} % 4)) in  # add padding
+        2) input+="==" ;;
+        3) input+="=" ;;
+    esac
+    echo "$input" | base64 -d
+}
+
+cat - | base64url_decode

@@ -1,6 +1,8 @@
-cat - | {
-  tee >(extract_jwt_part_1) \
-      >(extract_jwt_part_2) \
-      >(extract_jwt_part_3) \
-      > /dev/null
+function extract_jwt {
+  local input=$(cat -)
+  echo "$input" | cut -d. -f1 | base64url_decode
+  echo "$input" | cut -d. -f2 | base64url_decode
+  echo "$input" | cut -d. -f3
 }
+
+cat - | extract_jwt

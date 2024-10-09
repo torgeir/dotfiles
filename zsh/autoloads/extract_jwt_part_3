@@ -1,1 +1,1 @@
-cat - | cut -d. -f3 | base64 -d
+cut -d. -f3 | base64url_decode
