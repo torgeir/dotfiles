@@ -53,8 +53,7 @@ export PATH=$HOME/.emacs.d/bin:$PATH
 #export DYLD_LIBRARY_PATH=/usr/local/Cellar/io/2011.09.12/lib/
 
 # docker
-#export DOCKER_HOST=tcp://torgqnap:2376 DOCKER_TLS_VERIFY=1 DOCKER_API_VERSION=1.23
-export DOCKER_HOST=unix://$HOME/.colima/default/docker.sock
+export DOCKER_HOST=unix://$HOME/.config/colima/default/docker.sock
 
 case $(uname) in
   Darwin)
