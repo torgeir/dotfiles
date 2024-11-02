@@ -32,6 +32,9 @@ yabai -m rule --add app="IntelliJ IDEA" title="^(Copy|Add) Code" manage=off
 # TODO does this fix all popup windows?
 #yabai -m rule --add app="IntelliJ IDEA" subrole=AXStandardWindow manage=off
 
+# don't tile those pesky java launchers
+yabai -m rule --add app="Launcher$" manage=off
+
 yabai -m rule --add app="Sonos S1 Controller" manage=off
 
 yabai -m rule --add app="^Google Chrome$" title="^Picture in Picture$" manage=off layer=above
