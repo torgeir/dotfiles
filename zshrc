@@ -247,7 +247,7 @@ then
   autoload -U add-zsh-hook
   add-zsh-hook -Uz chpwd (){
     vterm_set_directory
-    autojump --add "$(pwd)" >/dev/null &!
+    zoxide add "$(pwd)" >/dev/null &!
   }
 fi
 

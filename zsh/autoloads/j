@@ -1,18 +1,16 @@
-# jump around like z
+if ! type __zoxide_z &> /dev/null || ! type __zoxide_zi &> /dev/null
+then
+  eval "$(zoxide init zsh)"
 
-# hack around not actually sourcing it,
-# then create a custom version of it using fzf
-export AUTOJUMP_SOURCED=1
+  # use custom cd that lists files
+  unfunction __zoxide_cd
+  function __zoxide_cd {
+    builtin cd "$@" && lt && m
+  }
+fi
 
 if [ $# -eq 0 ]; then
-  cd $(autojump -s |\
-    sort -k1gr |\
-    gawk -F : '$1 ~ /[0-9]/ && $2 ~ /^\s*\// {print $1 $2}' |\
-    fzf --reverse \
-        --inline-info \
-        --preview "eza -1 -a --color=always --tree -L 1 --classify --group --group-directories-first {2}" |\
-    cut -d$'\t' -f2- |\
-    sed 's/^\s*//')
+  __zoxide_zi
 else
-  cd $(autojump $@)
+  __zoxide_z "$@"
 fi
