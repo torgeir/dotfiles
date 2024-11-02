@@ -8,8 +8,8 @@ function prompt_t_node () {
     NODE_VERSION=${NVM_NODE_VERSION:-$NODE_VERSION}
     NPM_VERSION=$(cat $HOME/.nvm/versions/node/$NODE_VERSION/lib/node_modules/npm/package.json | jq -r .version)
   else
-    NPM_VERSION=$(npm --version)
-    NODE_VERSION=$(node --version)
+    NPM_VERSION=$(npm --version &> /dev/null)
+    NODE_VERSION=$(node --version &> /dev/null)
     p10k segment -t "%F{green}$NODE_VERSION %F{yellow}$NPM_VERSION"
   fi
 }
