@@ -150,6 +150,7 @@ case $(uname) in
 
         # nix
         alias rebuild-switch-torgnix="pushd ~/nixos-config; sudo nixos-rebuild --flake .#torgnix switch; popd"
+        alias rollback-switch-torgnix="pushd ~/nixos-config; sudo nixos-rebuild --flake .#torgnix --rollback switch; popd"
         ;;
     Darwin)
         alias ports="sudo lsof -i -n -P | rg -i tcp | rg -i listen"
