@@ -15,7 +15,7 @@ case $(uname) in
     # https://wiki.archlinux.org/title/Vulkan#Switching_between_AMD_drivers
     # As of amdvlk 2021.Q3.4, a new switching logic was implemented which enforces AMDVLK as the default and mandates you either
     # set AMD_VULKAN_ICD=RADV to switch from the AMDVLK default,
-    export AMD_VULKAN_ICD=RADV
+    # export AMD_VULKAN_ICD=RADV
 
     export WINEFSYNC=1
     # prevent lots of 98 priority winedbg processes
