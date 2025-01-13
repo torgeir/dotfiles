@@ -20,7 +20,8 @@ fi
 source "$HOME/.config/dotfiles/source/aliases"
 
 # default owner rw
-umask 77
+DEFAULT_UMASK=77
+umask $DEFAULT_UMASK
 # umask -S
 #   u=rwx,g=,o=
 
@@ -241,16 +242,6 @@ case $(uname) in
     ;;
 esac
 
-# https://github.com/akermu/emacs-libvterm#directory-tracking-and-prompt-tracking
-if command -v autoload &> /dev/null
-then
-  autoload -U add-zsh-hook
-  add-zsh-hook -Uz chpwd (){
-    vterm_set_directory
-    zoxide add "$(pwd)" >/dev/null &!
-  }
-fi
-
 HISTFILE=~/.zsh_history
 setopt hist_expire_dups_first
 HISTSIZE=1000
@@ -287,7 +278,7 @@ if [[ -n "$INSIDE_EMACS" ]]; then
     vterm_cmd find-file "$(PATH=/usr/local/opt/coreutils/libexec/gnubin/:$PATH realpath "${@:-.}")"
   }
 fi
-#
+
 # automatically change java version from .java-version file
 _jdk_autoload_hook() {
   if [[ -f .java-version ]]; then
@@ -296,15 +287,30 @@ _jdk_autoload_hook() {
   fi
 }
 
-if command -v autoload &> /dev/null
-then
-  autoload -U add-zsh-hook
-  add-zsh-hook chpwd _jdk_autoload_hook
-fi
+# support setting umask for certain folders
+_umask_hook() {
+  if [[ -n $UMASK ]]; then
+    umask $UMASK
+  else
+    umask $DEFAULT_UMASK
+  fi
+}
 
 eval "$(direnv hook zsh)"
 
 source $HOME/.fzfrc
+
+# https://github.com/akermu/emacs-libvterm#directory-tracking-and-prompt-tracking
+if command -v autoload &> /dev/null
+then
+  autoload -U add-zsh-hook
+  add-zsh-hook -Uz chpwd (){
+    _jdk_autoload_hook
+    _umask_hook
+    vterm_set_directory
+    zoxide add "$(pwd)" >/dev/null &!
+  }
+fi
 
 PROMPT_COMMAND='echo -ne "\033]2;$(whoami)@$(hostname)\033\\"'
 precmd() { eval "$PROMPT_COMMAND" }

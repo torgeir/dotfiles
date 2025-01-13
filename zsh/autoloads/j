@@ -6,6 +6,7 @@ then
   unfunction __zoxide_cd
   function __zoxide_cd {
     builtin cd "$@" && lt && m
+    chpwd
   }
 fi
 
