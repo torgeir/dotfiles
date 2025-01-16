@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 if [[ "$1" = "toggle" ]]; then
-    open -a Toggle\ Privileges
+    open -a Privileges
 fi
 
 is_admin=$(groups torgeir | grep -q -w admin && echo "yes" || echo "no")
