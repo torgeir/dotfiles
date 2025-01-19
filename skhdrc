@@ -147,12 +147,12 @@ alt - 6: skhd -k "shift + ctrl - 6"; yabai -m display --focus $(yabai -m query -
 shift + alt - p : yabai -m window --space prev;
 shift + alt - n : yabai -m window --space next;
 
-alt + shift - 1: yabai -m window --space 1; skhd -k "shift + ctrl - 1"
-alt + shift - 2: yabai -m window --space 2; skhd -k "shift + ctrl - 2"
-alt + shift - 3: yabai -m window --space 3; skhd -k "shift + ctrl - 3"
-alt + shift - 4: yabai -m window --space 4; skhd -k "shift + ctrl - 4"
-alt + shift - 5: yabai -m window --space 5; skhd -k "shift + ctrl - 5"
-alt + shift - 6: yabai -m window --space 6; skhd -k "shift + ctrl - 6"
+alt + shift - 1: yabai -m window --space 1; skhd -k "shift + ctrl - 1"; yabai -m window --toggle float --grid 4:4:1:1:2:2; yabai -m window --toggle float --grid 4:4:1:1:2:2
+alt + shift - 2: yabai -m window --space 2; skhd -k "shift + ctrl - 2"; yabai -m window --toggle float --grid 4:4:1:1:2:2; yabai -m window --toggle float --grid 4:4:1:1:2:2
+alt + shift - 3: yabai -m window --space 3; skhd -k "shift + ctrl - 3"; yabai -m window --toggle float --grid 4:4:1:1:2:2; yabai -m window --toggle float --grid 4:4:1:1:2:2
+alt + shift - 4: yabai -m window --space 4; skhd -k "shift + ctrl - 4"; yabai -m window --toggle float --grid 4:4:1:1:2:2; yabai -m window --toggle float --grid 4:4:1:1:2:2
+alt + shift - 5: yabai -m window --space 5; skhd -k "shift + ctrl - 5"; yabai -m window --toggle float --grid 4:4:1:1:2:2; yabai -m window --toggle float --grid 4:4:1:1:2:2
+alt + shift - 6: yabai -m window --space 6; skhd -k "shift + ctrl - 6"; yabai -m window --toggle float --grid 4:4:1:1:2:2; yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 # trello url
 # not alt t as it conflicts with transpose
