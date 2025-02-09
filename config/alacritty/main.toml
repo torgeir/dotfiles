@@ -56,6 +56,18 @@ key = "Right"
 mods = "Alt|Super"
 
 [[keyboard.bindings]]
+# make work with tmux user-keys[4] binding
+chars = "\u001B[1;5D"
+key = "Left"
+mods = "Control"
+
+[[keyboard.bindings]]
+# make work with tmux user-keys[5] binding
+chars = "\u001B[1;5C"
+key = "Right"
+mods = "Control"
+
+[[keyboard.bindings]]
 # fix m-a, run keep cmd
 chars = "\u001Ba"
 key = "A"
