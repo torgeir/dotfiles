@@ -11,7 +11,7 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-    'exec-and-forget /etc/profiles/per-user/torgeir/bin/borders active_color=0xffff0099 inactive_color=0xff333333 width=5.0'
+    'exec-and-forget /etc/profiles/per-user/torgeir/bin/borders active_color=0xffff7700 inactive_color=0xff333333 width=5.0'
 ]
 
 # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
@@ -91,18 +91,21 @@ alt-v = 'exec-and-forget open -a IntelliJ\ IDEA'
 alt-o = 'exec-and-forget open -a Microsoft\ Outlook'
 alt-s = 'exec-and-forget open -a Slack'
 
+cmd-shift-enter = 'exec-and-forget open -na Firefox\ Developer\ Edition'
+
 cmd-ctrl-enter = 'exec-and-forget open -a Alacritty'
 cmd-ctrl-shift-enter = 'exec-and-forget open -na Alacritty'
 cmd-shift-h = 'exec-and-forget open -a Finder -- ~/'
 cmd-shift-w = 'exec-and-forget open -a Finder -- ~/Downloads'
+#cmd-shift-d = 'exec-and-forget open -a Finder -- ~/Desktop'
 
 alt-shift-m = 'fullscreen'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+alt-h = 'focus --boundaries all-monitors-outer-frame left'
+alt-j = 'focus --boundaries all-monitors-outer-frame down'
+alt-k = 'focus --boundaries all-monitors-outer-frame up'
+alt-l = 'focus --boundaries all-monitors-outer-frame right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 alt-shift-h = 'move left'
@@ -117,6 +120,7 @@ cmd-ctrl-up = 'resize height -50'
 cmd-ctrl-down = 'resize height +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+alt-0 = 'workspace 0'
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
@@ -124,21 +128,19 @@ alt-4 = 'workspace 4'
 alt-5 = 'workspace 5'
 alt-6 = 'workspace 6'
 # alt-7 conflicts with | on a norwegian keyboard
-# alt-8 = 'workspace 8'
-# alt-9 = 'workspace 9'
+# alt-8 conflicts with [
+# alt-9 confligts with ]
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+alt-shift-0 = ['move-node-to-workspace 0', "workspace 0"]
 alt-shift-1 = ['move-node-to-workspace 1', "workspace 1"]
 alt-shift-2 = ['move-node-to-workspace 2', "workspace 2"]
 alt-shift-3 = ['move-node-to-workspace 3', "workspace 3"]
 alt-shift-4 = ['move-node-to-workspace 4', "workspace 4"]
 alt-shift-5 = ['move-node-to-workspace 5', "workspace 5"]
 alt-shift-6 = ['move-node-to-workspace 6', "workspace 6"]
-#alt-shift-7 = ['move-node-to-workspace 7', "workspace 7"]
-# alt-shift-8 = ['move-node-to-workspace 8', "workspace 8"]
-# alt-shift-9 = ['move-node-to-workspace 9', "workspace 9"]
 
-alt-shift-0 = 'balance-sizes'
+#alt-shift-minus = 'balance-sizes'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 alt-tab = 'workspace-back-and-forth'
@@ -165,3 +167,14 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 cmd-ctrl-alt-p = 'move-node-to-monitor next'
+
+[workspace-to-monitor-force-assignment]
+1 = 'main'
+2 = 'main'
+3 = 'main'
+4 = 'main'
+5 = 'main'
+# aerospace list-monitors
+6 = ['benq', 'ls32', 'len', 'hp', 'main']
+# stop at >6 due to keybind coflicts on norwegian keyboards
+0 = ['built-in', 'main']
