@@ -26,7 +26,7 @@
   df = diff
   dft = "!f() { GIT_EXTERNAL_DIFF=difft git diff \"$@\"; }; f"
   dfp = "!f() { GIT_PAGER=delta git diff \"$@\"; }; f"
-  lg = log --branches --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+  lg = log --branches --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   log = log --branches --graph --decorate=full --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   lgp = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff \"$@\"; }; f"
   lgd = "!f() { GIT_PAGER=delta git log -p --ext-diff \"$@\"; }; f"
