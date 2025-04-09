@@ -90,6 +90,7 @@ alt-i = 'exec-and-forget open -a Firefox\ Developer\ Edition'
 alt-v = 'exec-and-forget open -a IntelliJ\ IDEA'
 alt-o = 'exec-and-forget open -a Microsoft\ Outlook'
 alt-s = 'exec-and-forget open -a Slack'
+alt-m = 'exec-and-forget open -a Spotify'
 
 cmd-shift-enter = 'exec-and-forget open -na Firefox\ Developer\ Edition'
 
