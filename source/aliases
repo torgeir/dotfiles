@@ -21,8 +21,6 @@ alias latttt="eza -l -1 -a --group --classify --tree --group-directories-first"
 alias tn="tmux new -s"
 alias ta='tmux attach-session -t $(tmux list-sessions | sed -E "s/:.*$//" | grep -v \"^$(tmux display-message -p \\"#S\\")\$\" | fzf --exit-0 --select-1 --reverse) || tmux new-session'
 
-alias grep="grep --color=always"
-
 # local ip
 alias whatsmyip="dig +short myip.opendns.com @resolver1.opendns.com"
 
