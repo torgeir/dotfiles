@@ -5,7 +5,7 @@ then
   # use custom cd that lists files
   unfunction __zoxide_cd
   function __zoxide_cd {
-    builtin cd "$@" && lt && m
+    builtin cd "$@" && l && m
     chpwd
   }
 fi
