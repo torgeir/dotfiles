@@ -101,25 +101,6 @@ function gpg_cache_test() {
      return 1
   fi
 }
-# Preset gpg passphrase from 1password. Try signing with it first, only preset it if it fails.
-# https://stackoverflow.com/questions/11381123/how-to-use-gpg-command-line-to-check-passphrase-is-correct
-function gpg_cache () {
-  if gpg_cache_test; then
-    return 0
-  fi
-  if [[ "Linux" = "$(uname)" ]]; then
-    if ! op item get keybase.io 1>/dev/null; then
-      eval $(op signin --account my)
-    fi
-  fi
-  $(gpgconf --list-dirs libexecdir)/gpg-preset-passphrase \
-    -c \
-    -P "$(op item get keybase.io --format json | jq -j '.fields[] | select(.id == "password") | .value')" \
-    $(gpg --fingerprint --with-keygrip torgeir@keybase.io | awk '/Keygrip/ {print $3}' | tail -n 1)
-  # I don't get this, but the first time around, after the gpg_cache_test in the previous step, I need to actually use the key to make the agent cache it. Decrypt an encrypted file to make it stick.
-  gpg_cache_test > /dev/null
-}
-
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -205,15 +186,6 @@ case $(uname) in
     fi
     ;;
   Linux)
-
-    # if you use multiple terminals simultaneously and want gpg-agent to
-    # ask for passphrase via pinentry-curses from the same terminal
-    # TODO does this mess up reusing the gpg agent?
-    #gpg-connect-agent updatestartuptty /bye &>/dev/null
-
-    # arch needs
-    #  sudo ln -sf /usr/bin/pinentry-tty /usr/local/bin/pinentry-tty
-    #  sudo ln /usr/bin/ksshaskpass /usr/lib/ssh/ssh-askpass
 
     # don't type the password on every git pull
     # only add keys if theyre not already added

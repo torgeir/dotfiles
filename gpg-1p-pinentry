@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# ensure we have proper file descriptors
+# exec 3>&1 4>&2
+
+if [[ "Linux" = "$(uname)" ]]; then
+  if ! op item get keybase.io 1>/dev/null; then
+    eval "$(op signin --account my)"
+  fi
+fi
+
+get_passphrase_from_1password() {
+  if PASSPHRASE=$(op item get keybase.io --format json | jq -j '.fields[] | select(.id == "password") | .value' 2>/dev/null); then
+    echo "D $PASSPHRASE"
+    echo "OK"
+    return 0
+  else
+    echo "ERR 83886179 Failed to retrieve passphrase <Pinentry>"
+    return 1
+  fi
+}
+
+# Send initial OK
+echo "OK Pleased to meet you"
+
+while IFS= read -r line; do
+  case "$line" in
+    "GETPIN")
+      get_passphrase_from_1password
+      ;;
+    "BYE")
+      echo "OK closing connection"
+      exit 0
+      ;;
+    *)
+      echo "OK"
+      ;;
+  esac
+done
