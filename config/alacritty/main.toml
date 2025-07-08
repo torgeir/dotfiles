@@ -158,3 +158,11 @@ mods = "Alt|Shift"
 chars = "\u001B<"
 key = "Comma"
 mods = "Alt"
+
+[[keyboard.bindings]]
+# c-j sends bracketed paste mode newline
+# allows for typing a literal newline, that
+# can be navigated across with arrow keys
+chars = "\u001B[200~\u000A\u001B[201~"
+key = "J"
+mods = "Control"
