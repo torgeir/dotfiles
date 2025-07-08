@@ -6,7 +6,7 @@ padding.y = 10
 decorations = "Buttonless"
 
 [font]
-size = 18
+size = 20
 
 [font.normal]
 family = "IosevkaTerm Nerd Font"
