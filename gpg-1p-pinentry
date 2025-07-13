@@ -3,14 +3,8 @@
 # ensure we have proper file descriptors
 # exec 3>&1 4>&2
 
-if [[ "Linux" = "$(uname)" ]]; then
-  if ! op item get keybase.io 1>/dev/null; then
-    eval "$(op signin --account my)"
-  fi
-fi
-
 get_passphrase_from_1password() {
-  if PASSPHRASE=$(timeout 10 op item get keybase.io --format json | jq -j '.fields[] | select(.id == "password") | .value' 2>/dev/null); then
+  if PASSPHRASE=$(op item get keybase.io --format json | jq -j '.fields[] | select(.id == "password") | .value' 2>/dev/null); then
     echo "D $PASSPHRASE"
     echo "OK"
     return 0
