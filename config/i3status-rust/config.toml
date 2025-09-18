@@ -16,6 +16,42 @@ block = "custom"
 command = "echo `uname` `uname -r`"
 interval = "once"
 
+[[block]]
+block = "custom"
+command = "sed 's/  //' <(curl 'https://wttr.in/trondheim?format=1' -s)"
+interval = 600
+[[block.click]]
+button = "left"
+cmd = "firefox 'https://wttr.in/trondheim'"
+
+[[block]]
+block = "custom"
+command = "echo ip $(ip a | rg /24 | awk '{print $2}')"
+interval = 1
+
+[[block]]
+block = "cpu"
+format = "$icon $utilization"
+
+[[block]]
+block = "memory"
+format = "$icon $mem_used/$mem_total"
+
+[[block]]
+block = "disk_space"
+path = "/"
+info_type = "available"
+alert_unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+format = "$icon $used/$total ($available.eng(w:2) free)"
+
+[[block]]
+block = "custom"
+command = "echo ip $(drill -V0 myip.opendns.com @resolver1.opendns.com | grep ^myip | awk '{print $5}')"
+interval = 200
+
 # cpu
 [[block]]
 block = "custom"
@@ -42,42 +78,6 @@ interval = 1
 block = "custom"
 command = "echo gpufan $(sensors | sed '0,/amdgpu/d' | grep fan1 | awk '{print $2}')"
 interval = 1
-
-[[block]]
-block = "custom"
-command = "sed 's/  //' <(curl 'https://wttr.in/trondheim?format=1' -s)"
-interval = 600
-[[block.click]]
-button = "left"
-cmd = "firefox 'https://wttr.in/trondheim'"
-
-[[block]]
-block = "custom"
-command = "echo ip $(ip a | rg /24 | awk '{print $2}')"
-interval = 1
-
-[[block]]
-block = "custom"
-command = "echo ip $(drill -V0 myip.opendns.com @resolver1.opendns.com | grep ^myip | awk '{print $5}')"
-interval = 200
-
-[[block]]
-block = "cpu"
-format = "$icon $utilization"
-
-[[block]]
-block = "memory"
-format = "$icon $mem_used/$mem_total"
-
-[[block]]
-block = "disk_space"
-path = "/"
-info_type = "available"
-alert_unit = "GB"
-interval = 20
-warning = 20.0
-alert = 10.0
-format = "$icon $used/$total ($available.eng(w:2) free)"
 
 [[block]]
 block = "sound"
