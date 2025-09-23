@@ -119,6 +119,10 @@ cmd-ctrl-left = 'resize width -50'
 cmd-ctrl-right = 'resize width +50'
 cmd-ctrl-up = 'resize height -50'
 cmd-ctrl-down = 'resize height +50'
+cmd-ctrl-shift-left = 'resize width -50'
+cmd-ctrl-shift-right = 'resize width +50'
+cmd-ctrl-shift-up = 'resize height -50'
+cmd-ctrl-shift-down = 'resize height +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-0 = 'workspace 0'
