@@ -1,0 +1,1 @@
+nix repl --expr 'import <nixpkgs> {}'                                                                                                                        1m 21s
