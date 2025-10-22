@@ -165,4 +165,4 @@ mods = "Alt"
 # can be navigated across with arrow keys
 chars = "\u001B[200~\u000A\u001B[201~"
 key = "J"
-mods = "Control"
+mods = "Alt"
