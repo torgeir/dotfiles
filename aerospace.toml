@@ -180,6 +180,6 @@ cmd-ctrl-alt-p = 'move-node-to-monitor next'
 4 = 'main'
 5 = 'main'
 # aerospace list-monitors
-6 = ['benq', 'ls32', 'len', 'hp', 'main']
+6 = ['benq', 'ls32', 'len', 'hp', 'phl', 'main']
 # stop at >6 due to keybind coflicts on norwegian keyboards
 0 = ['built-in', 'main']
