@@ -5,6 +5,15 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=bg+:008,fg+:007,fg:007,hl+:00
 
 # show preview when c-t is used for looking up files
 export FZF_CTRL_T_OPTS="$FZF_CTRL_T_OPTS --height 100% --preview 'bat --color=always {1}'"
+# jump to editor from c-t
+case $(uname) in
+  Linux)
+    export FZF_CTRL_T_OPTS="$FZF_CTRL_T_OPTS --bind 'enter:become(swaymsg \"[app_id=emacs]\" focus; emacsclient -cnqu {}),alt-v:execute(vim {})'"
+    ;;
+  Darwin)
+    export FZF_CTRL_T_OPTS="$FZF_CTRL_T_OPTS --bind 'enter:execute(emacsclient -cnqu {} && open -a Emacs.app),ctrl-v:execute(vim {})'"
+    ;;
+esac
 
 # show preview when m-c is used for looking up directories
 export FZF_ALT_C_OPTS="$FZF_ALT_C_OPTS --height 100% --preview 'eza -1 -a --color=always --tree -L 1 --classify --group --group-directories-first {1}'"
