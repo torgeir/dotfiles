@@ -17,7 +17,7 @@ TERM = "xterm-256color"
 
 # detekt
 [[hints.enabled]]
-command = "/Users/torgeir/bin/alacritty-open"
+command = "alacritty-open"
 regex = "(/(?:[^/]+/)+[^:]+:\\d+:\\d+:)"
 mouse.enabled = true
 
@@ -30,9 +30,16 @@ mouse.enabled = true
 
 # folders
 [[hints.enabled]]
-command = { program = "open", args = ["-a", "Finder", "--"] }
+command = "alacritty-open-folder"
 post_processing = true
 regex = "(([^ ]+/)+/?)"
+mouse.enabled = true
+
+# urls
+[[hints.enabled]]
+command = "alacritty-open-url"
+post_processing = true
+regex = "https?://[^\\s]+"
 mouse.enabled = true
 
 # https://github.com/alacritty/alacritty/issues/62#issuecomment-347552058
