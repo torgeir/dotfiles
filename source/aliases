@@ -145,8 +145,8 @@ case $(uname) in
         alias ports="sudo lsof -i -P -n | rg -i listen"
 
         # nix
-        alias rebuild-switch-torgnix="pushd ~/nixos-config; sudo nixos-rebuild --flake .#torgnix switch; popd"
-        alias rollback-switch-torgnix="pushd ~/nixos-config; sudo nixos-rebuild --flake .#torgnix --rollback switch; popd"
+        alias rebuild-switch-torgnix="clear; pushd ~/nixos-config; ./untrack-secrets.sh && sudo nixos-rebuild --flake .#torgnix switch && notify-send nixos reloaded; popd"
+        alias rollback-switch-torgnix="clear; pushd ~/nixos-config; sudo nixos-rebuild --flake .#torgnix --rollback switch && notify-send nixos rolled back; popd"
         ;;
     Darwin)
         alias ports="sudo lsof -i -n -P | rg -i tcp | rg -i listen"
