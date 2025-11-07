@@ -140,8 +140,6 @@ case $(uname) in
         alias reload-xresources=xrdb -merge ~/Xresources
 
         alias bios="systemctl reboot --firmware-setup"
-        # dont use grun/win any longer
-        #alias rebootwin="sudo grub-reboot 2 && sudo reboot"
 
         # open ports
         alias ports="sudo lsof -i -P -n | rg -i listen"
