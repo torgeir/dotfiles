@@ -17,7 +17,7 @@ TERM = "xterm-256color"
 
 # detekt
 [[hints.enabled]]
-command = "alacritty-open"
+command = "/etc/profiles/per-user/torgeir/bin/alacritty-open"
 regex = "(/(?:[^/]+/)+[^:]+:\\d+:\\d+:)"
 mouse.enabled = true
 
@@ -30,14 +30,14 @@ mouse.enabled = true
 
 # folders
 [[hints.enabled]]
-command = "alacritty-open-folder"
+command = "/etc/profiles/per-user/torgeir/bin/alacritty-open-folder"
 post_processing = true
 regex = "(([^ ]+/)+/?)"
 mouse.enabled = true
 
 # urls
 [[hints.enabled]]
-command = "alacritty-open-url"
+command = "/etc/profiles/per-user/torgeir/bin/alacritty-open-url"
 post_processing = true
 regex = "https?://[^\\s]+"
 mouse.enabled = true
