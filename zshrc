@@ -27,9 +27,6 @@ umask $DEFAULT_UMASK
 
 # make gpg from emacs prompt in shell (may need to open emacs from command line)
 # linux likes this.
-# Note, needs to happen before powerlevel10 instant prompt, it redirects too /dev/null
-# so tty says "not a tty" if it happens after.
-# https://github.com/romkatv/powerlevel10k#how-do-i-export-gpg_tty-when-using-instant-prompt
 export GPG_TTY=$TTY
 
 # load zsh plugins
@@ -74,15 +71,6 @@ bindkey '^H' describe-key-briefly
 bindkey "^[^[[A" cd_parent
 bindkey "^[^[[B" cd_undo
 
-# prompt install
-if [[ ! -d "$HOME/powerlevel10k" ]]; then
-  pushd $HOME
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git
-  source $HOME/powerlevel10k/powerlevel10k.zsh-theme
-  p10k configure
-  popd
-fi
-
 # gpg
 function gpg_sign_something_to_check_cached_key_presens() {
   # alternatively,
@@ -102,13 +90,6 @@ function gpg_cache_test() {
   fi
 }
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # gradle autocomplete
 fpath=($HOME/.zsh/gradle-completion $fpath)
 
@@ -118,10 +99,11 @@ for f in $(ls $HOME/.zsh/autoloads); do
   autoload $f
 done
 
-[[ -d "$HOME/powerlevel10k" ]] && source $HOME/powerlevel10k/powerlevel10k.zsh-theme
+# prompt install
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/config.toml)"
+fi
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # https://thevaluable.dev/zsh-completion-guide-examples/
 # find new executables in $PATH automatically
@@ -267,3 +249,7 @@ fi
 
 PROMPT_COMMAND='echo -ne "\033]2;$(whoami)@$(hostname)\033\\"'
 precmd() { eval "$PROMPT_COMMAND" }
+
+if [[ -f "$HOME/.zshrc-extra" ]]; then
+  source "$HOME/.zshrc-extra"
+fi
