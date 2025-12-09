@@ -50,6 +50,9 @@ nmap <leader>en :action GotoNextError<cr>
 nmap <leader>eN :action GotoPreviousError<cr>
 nmap <leader>ep :action GotoPreviousError<cr>
 
+" goto implementation
+noremap gD :action GotoImplementation<cr>
+
 " recentf
 nmap <leader>fr :action RecentFiles<cr>
 
