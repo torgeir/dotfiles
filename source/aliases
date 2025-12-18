@@ -15,6 +15,10 @@ alias latt="eza -l -1 -a --group --classify --tree -L 2 --group-directories-firs
 alias lattt="eza -l -1 -a --group --classify --tree -L 3 --group-directories-first"
 alias latttt="eza -l -1 -a --group --classify --tree --group-directories-first"
 
+# joshuto
+alias d=joshuto
+
+# tmux
 alias tn="tmux new -s"
 alias ta='tmux attach-session -t $(tmux list-sessions | sed -E "s/:.*$//" | grep -v \"^$(tmux display-message -p \\"#S\\")\$\" | fzf --exit-0 --select-1 --reverse) || tmux new-session'
 
@@ -54,24 +58,26 @@ case $(uname) in
 
         # logout os x
         alias lout="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+        # restart a hanging os x touch bar
+        alias killtouchbar="sudo pkill TouchBarServer; sudo killall ControlStrip"
         ;;
 esac
 
 # wait for internet connection
 alias waitforinternet='while true; do ping -c 1 -t 2 nrk.no && say "gotz internet" && date && break; sleep 2; done'
 
-# restart a hanging os x touch bar
-alias killtouchbar="sudo pkill TouchBarServer; sudo killall ControlStrip"
-
-# run local module from node_modules/bin
-alias npm-exec='PATH=$(npm bin):$PATH'
-
 # kill emacs daemon
 alias emdkillhard="ps x | ack 'Emacs\ (-nw\ )?--daemon' | awk '{print \$1}' | xargs kill"
 alias emdkill="emacsclient -e '(kill-emacs)'"
 
-# macvim vim
+# vim
+alias v='nvim'
 alias vim='nvim'
+
+# git
+alias git-remove-merged-branches="git branch --merged main | grep -v '^[ *]*main$' | xargs -r git branch -d"
+alias git-merge-point="git merge-base main HEAD"
 
 # git add remote for prs
 alias gadd-origin-pr='git config --add remote.origin.fetch \"+refs/pull/*/head:refs/remotes/origin/pr/*\"'
@@ -82,6 +88,7 @@ alias gr='cd $(git rev-parse --show-toplevel)'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias .....='cd ../../../..'
 
 alias t='exa --tree --level 1 --group-directories-first'
 alias tt='exa --tree --level 2 --group-directories-first'
@@ -111,8 +118,6 @@ alias brew-list-installed="brew list | xargs brew desc --eval-all"
 alias gcloud-set-project="gcloud config set project"
 alias gcloud-get-project="gcloud config get project"
 alias gcloud-describe-role="gcloud iam roles describe"
-alias sourcegauth="source $HOME/Code/gauth/gauth.sh"
-alias tg="terragrunt"
 
 # -i turns on the itemized format, which shows more information than the default format
 # -b makes rsync backup files that exist in both folders, appending ~ to the old file. You can control this suffix with --suffix .suf
@@ -150,8 +155,5 @@ case $(uname) in
         ;;
 esac
 
-# git
-alias git-remove-merged-branches="git branch --merged main | grep -v '^[ *]*main$' | xargs -r git branch -d"
-alias git-merge-point="git merge-base main HEAD"
-
+# gradle
 alias kill-gradle-processes="ps x | grep gradle | grep -v 'grep.*gradle' | awk '{print $1}' | xargs kill"
