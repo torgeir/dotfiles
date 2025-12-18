@@ -15,8 +15,8 @@ alias latt="eza -l -1 -a --group --classify --tree -L 2 --group-directories-firs
 alias lattt="eza -l -1 -a --group --classify --tree -L 3 --group-directories-first"
 alias latttt="eza -l -1 -a --group --classify --tree --group-directories-first"
 
-# joshuto
-alias d=joshuto
+# browse files
+alias d=yazi
 
 # tmux
 alias tn="tmux new -s"
