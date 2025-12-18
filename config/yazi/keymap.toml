@@ -1,0 +1,16 @@
+# https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap-default.toml
+
+[mgr]
+prepend_keymap = [
+  { on = "?", run = "help", desc = "" },
+  { on = "<A-Up>", run = "cd ..", desc = "" },
+  { on = "<A-Down>", run = "enter", desc = "" },
+  { on = "<C-h>", run = "hidden toggle", desc = "" },
+  { on = "<C-Right>", run = "tag_switch -1 --relative", desc = "" },
+  { on = "<C-Left>", run = "tag_switch 1 --relative", desc = "" },
+  { on = ["g", "e"], run = 'shell -- emacsclient --no-wait "$@"', orphan = true, block = false, desc = "" },
+  { on = ["g", "v"], run = 'shell -- vim "$@"', orphan = true, block = false, desc = "" },
+  { on = ["g", "o"], run = 'shell -- thunar "$@"', desc = "" },
+  { on = ["g", "t"], run = 'shell -- alacritty --working-directory "$@"', desc = "spawn terminal", block = true },
+  { on = ["g", "T"], run = ['shell -- alacritty --working-directory "$@"'], desc = "spawn terminal", block = false, orphan = true },
+]

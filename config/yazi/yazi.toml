@@ -1,0 +1,11 @@
+# https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/yazi-default.toml
+[mgr]
+# . or c-h
+show_hidden = false
+
+[opener]
+edit = [
+  { run = 'emacsclient -n -c -a "" "$@"', desc = "$EDITOR", orphan = true, block = false },
+]
+
+
