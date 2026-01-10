@@ -32,10 +32,12 @@ case $(uname) in
     #export QT_AUTO_SCREEN_SCALE_FACTOR=true
 
     # Make ssh use the gpg-agent's ssh socket
-    unset SSH_AGENT_PID
-    if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-      # export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-      export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+    if command -v gpgconf >/dev/null 2>&1; then
+      unset SSH_AGENT_PID
+      if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+        # export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+        export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+      fi
     fi
 
     if [ "$(tty)" = "/dev/tty1" ]; then
