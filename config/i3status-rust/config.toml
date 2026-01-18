@@ -4,6 +4,19 @@ theme = "ctp-mocha"
 [icons]
 icons = "awesome6"
 
+# whats playing
+[[block]]
+block = "custom"
+command = "mpc current"
+interval = 5
+[[block.click]]
+button = "left"
+cmd = "mpc toggle"
+[[block.click]]
+button = "right"
+cmd = "[[ 50 = $(mpc volume | grep -o '[0-9]*') ]] && mpc volume 100 || mpc volume 50"
+
+
 # hostname
 [[block]]
 block = "custom"
