@@ -49,7 +49,7 @@ format = "$icon $used/$total ($available.eng(w:2) free)"
 
 [[block]]
 block = "custom"
-command = "echo ip $(drill -V0 myip.opendns.com @resolver1.opendns.com | grep ^myip | awk '{print $5}')"
+command = "echo ext $(curl -s http://whatismyip.akamai.com/)"
 interval = 200
 
 # cpu
