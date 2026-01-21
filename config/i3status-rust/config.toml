@@ -13,22 +13,22 @@ command = "mpc current"
 interval = 5
 [[block.click]]
 button = "left"
-cmd = "mpc toggle"
+command = "mpc toggle"
 [[block.click]]
 button = "right"
-cmd = "mpc stop"
+command = "mpc stop"
 [[block.click]]
 button = "wheel_up"
-cmd = "mpc volume +10"
+command = "mpc volume +10"
 [[block.click]]
 button = "wheel_down"
-cmd = "mpc volume -10"
+command = "mpc volume -10"
 [[block.click]]
 button = "forward"
-cmd = "mpc next"
+command = "mpc next"
 [[block.click]]
 button = "back"
-cmd = "mpc prev"
+command = "mpc prev"
 
 
 # hostname
@@ -49,7 +49,7 @@ command = "sed 's/  //' <(curl 'https://wttr.in/trondheim?format=1' -s)"
 interval = 600
 [[block.click]]
 button = "left"
-cmd = "swaymsg 'workspace 1' && firefox 'https://wttr.in/trondheim'"
+command = "swaymsg 'workspace 1' && firefox 'https://wttr.in/trondheim'"
 
 [[block]]
 block = "custom"
@@ -57,7 +57,7 @@ command = "echo ip $(ip a | rg /24 | awk '{print $2}')"
 interval = 1
 [[block.click]]
 button = "left"
-cmd = "swaymsg 'workspace 3' && alacritty --hold -e 'ip a'"
+command = "swaymsg 'workspace 3' && alacritty --hold -e 'ip a'"
 
 [[block]]
 block = "cpu"
@@ -78,13 +78,13 @@ alert = 10.0
 format = "$icon $used/$total ($available.eng(w:2) free)"
 [[block.click]]
 button = "left"
-cmd = "swaymsg 'workspace 3' && alacritty --hold -e 'df -h'"
+command = "swaymsg 'workspace 3' && alacritty --hold -e 'df -h'"
 
 [[block]]
 block = "custom"
 command = "echo ext $(curl -s http://whatismyip.akamai.com/)"
 interval = 200
-cmd = "swaymsg 'workspace 1' && firefox 'https://duckduckgo.com/?q=what+is+my+ip&ia=answer'"
+command = "swaymsg 'workspace 1' && firefox 'https://duckduckgo.com/?q=what+is+my+ip&ia=answer'"
 
 # cpu
 [[block]]
@@ -117,7 +117,7 @@ interval = 1
 block = "sound"
 [[block.click]]
 button = "left"
-cmd = "pavucontrol"
+command = "pavucontrol"
 
 [[block]]
 block = "time"
