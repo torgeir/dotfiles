@@ -24,7 +24,7 @@ command = "sed 's/  //' <(curl 'https://wttr.in/trondheim?format=1' -s)"
 interval = 600
 [[block.click]]
 button = "left"
-command = "swaymsg 'workspace 1' && firefox 'https://wttr.in/trondheim'"
+cmd = "swaymsg 'workspace 1' && firefox 'https://wttr.in/trondheim'"
 
 [[block]]
 block = "custom"
@@ -32,7 +32,7 @@ command = "echo ip $(ip a | rg /24 | awk '{print $2}')"
 interval = 1
 [[block.click]]
 button = "left"
-command = "swaymsg 'workspace 3' && alacritty --hold -e 'ip a'"
+cmd = "swaymsg 'workspace 3' && alacritty --hold -e 'ip a'"
 
 [[block]]
 block = "cpu"
@@ -53,7 +53,7 @@ alert = 10.0
 format = "$icon $used/$total ($available.eng(w:2) free)"
 [[block.click]]
 button = "left"
-command = "swaymsg 'workspace 3' && alacritty --hold -e 'df -h'"
+cmd = "swaymsg 'workspace 3' && alacritty --hold -e 'df -h'"
 
 [[block]]
 block = "custom"
@@ -61,7 +61,7 @@ command = "echo ext $(curl -s http://whatismyip.akamai.com/)"
 interval = 200
 [[block.click]]
 button = "left"
-command = "swaymsg 'workspace 1' && firefox 'https://duckduckgo.com/?q=what+is+my+ip&ia=answer'"
+cmd = "swaymsg 'workspace 1' && firefox 'https://duckduckgo.com/?q=what+is+my+ip&ia=answer'"
 
 # whats playing
 [[block]]
@@ -70,22 +70,22 @@ command = "mpc current"
 interval = 5
 [[block.click]]
 button = "left"
-command = "mpc toggle"
+cmd = "mpc toggle"
 [[block.click]]
 button = "right"
-command = "mpc stop"
+cmd = "mpc stop"
 [[block.click]]
 button = "wheel_up"
-command = "mpc volume +10"
+cmd = "mpc volume +10"
 [[block.click]]
 button = "wheel_down"
-command = "mpc volume -10"
+cmd = "mpc volume -10"
 [[block.click]]
 button = "forward"
-command = "mpc next"
+cmd = "mpc next"
 [[block.click]]
 button = "back"
-command = "mpc prev"
+cmd = "mpc prev"
 
 # cpu
 [[block]]
@@ -118,7 +118,7 @@ interval = 1
 block = "sound"
 [[block.click]]
 button = "left"
-command = "pavucontrol"
+cmd = "pavucontrol"
 
 [[block]]
 block = "time"
