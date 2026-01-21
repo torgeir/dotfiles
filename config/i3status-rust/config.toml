@@ -67,9 +67,14 @@ cmd = "swaymsg 'workspace 1' && firefox 'https://duckduckgo.com/?q=what+is+my+ip
 [[block]]
 block = "custom"
 command = '''
-echo "$(mpc current) ($(mpc volume | grep -o '[0-9]*')%)"
+echo -n "$(mpc current)"
+if [[ "100" != $(mpc volume | grep -o '[0-9]*') ]]; then
+  echo -n " ("
+  echo -n "$(mpc volume | grep -o '[0-9]*')"
+  echo -n "%)"
+fi
 '''
-interval = 5
+interval = 1
 [[block.click]]
 button = "left"
 cmd = "mpc toggle"
