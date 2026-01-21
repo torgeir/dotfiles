@@ -67,11 +67,23 @@ cmd = "swaymsg 'workspace 1' && firefox 'https://duckduckgo.com/?q=what+is+my+ip
 [[block]]
 block = "custom"
 command = '''
-echo -n "$(mpc current)"
-if [[ "100" != $(mpc volume | grep -o '[0-9]*') ]]; then
-  echo -n " ("
-  echo -n "$(mpc volume | grep -o '[0-9]*')"
-  echo -n "%)"
+mpc_volume=$(mpc volume | grep -o '[0-9]*')
+mpc_random=$(mpc status "%random%")
+mpc_random_str=""
+if [[ "on" == "$mpc_random" ]]; then
+  mpc_random_str=", random"
+fi
+mpc_volume_str=""
+if [[ "100" != "$mpc_volume" ]]; then
+  mpc_volume_str="($mpc_volume%$mpc_random_str)"
+fi
+mpc_status=$(mpc status '%state%')
+if [[ "paused" == "$mpc_status" ]]; then
+  echo -n "⏸ $(mpc current) $mpc_volume_str"
+elif [[ "stopped" == "$mpc_status" ]]; then
+  echo -n "⏹ $mpc_volume_str"
+else
+  echo -n "▶ $(mpc current) $mpc_volume_str"
 fi
 '''
 interval = 1
@@ -87,6 +99,9 @@ cmd = "mpc volume +10"
 [[block.click]]
 button = "wheel_down"
 cmd = "mpc volume -10"
+[[block.click]]
+button = "middle"
+cmd = "mpc random"
 [[block.click]]
 button = "forward"
 cmd = "mpc next"
