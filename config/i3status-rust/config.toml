@@ -1,3 +1,5 @@
+double_click_delay = 100
+
 [theme]
 theme = "ctp-mocha"
 
@@ -14,7 +16,19 @@ button = "left"
 cmd = "mpc toggle"
 [[block.click]]
 button = "right"
-cmd = "[[ 50 = $(mpc volume | grep -o '[0-9]*') ]] && mpc volume 100 || mpc volume 50"
+cmd = "mpc stop"
+[[block.click]]
+button = "wheel_up"
+cmd = "mpc volume +10"
+[[block.click]]
+button = "wheel_down"
+cmd = "mpc volume -10"
+[[block.click]]
+button = "forward"
+cmd = "mpc next"
+[[block.click]]
+button = "back"
+cmd = "mpc prev"
 
 
 # hostname
@@ -41,6 +55,9 @@ cmd = "swaymsg 'workspace 1' && firefox 'https://wttr.in/trondheim'"
 block = "custom"
 command = "echo ip $(ip a | rg /24 | awk '{print $2}')"
 interval = 1
+[[block.click]]
+button = "left"
+cmd = "swaymsg 'workspace 3' && alacritty --hold -e 'ip a'"
 
 [[block]]
 block = "cpu"
@@ -59,11 +76,15 @@ interval = 20
 warning = 20.0
 alert = 10.0
 format = "$icon $used/$total ($available.eng(w:2) free)"
+[[block.click]]
+button = "left"
+cmd = "swaymsg 'workspace 3' && alacritty --hold -e 'df -h'"
 
 [[block]]
 block = "custom"
 command = "echo ext $(curl -s http://whatismyip.akamai.com/)"
 interval = 200
+cmd = "swaymsg 'workspace 1' && firefox 'https://duckduckgo.com/?q=what+is+my+ip&ia=answer'"
 
 # cpu
 [[block]]
@@ -102,10 +123,3 @@ cmd = "pavucontrol"
 block = "time"
 interval = 5
 format = "$timestamp.datetime(f:'%a %d/%m %R')"
-
-#[[block]]
-#block = "pacman"
-#signal = 1
-#[[block.click]]
-#button = "left"
-#cmd = "exec alacritty --hold -e sudo pacman -Syu"
