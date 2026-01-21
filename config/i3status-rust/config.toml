@@ -6,31 +6,6 @@ theme = "ctp-mocha"
 [icons]
 icons = "awesome6"
 
-# whats playing
-[[block]]
-block = "custom"
-command = "mpc current"
-interval = 5
-[[block.click]]
-button = "left"
-command = "mpc toggle"
-[[block.click]]
-button = "right"
-command = "mpc stop"
-[[block.click]]
-button = "wheel_up"
-command = "mpc volume +10"
-[[block.click]]
-button = "wheel_down"
-command = "mpc volume -10"
-[[block.click]]
-button = "forward"
-command = "mpc next"
-[[block.click]]
-button = "back"
-command = "mpc prev"
-
-
 # hostname
 [[block]]
 block = "custom"
@@ -84,7 +59,33 @@ command = "swaymsg 'workspace 3' && alacritty --hold -e 'df -h'"
 block = "custom"
 command = "echo ext $(curl -s http://whatismyip.akamai.com/)"
 interval = 200
+[[block.click]]
+button = "left"
 command = "swaymsg 'workspace 1' && firefox 'https://duckduckgo.com/?q=what+is+my+ip&ia=answer'"
+
+# whats playing
+[[block]]
+block = "custom"
+command = "mpc current"
+interval = 5
+[[block.click]]
+button = "left"
+command = "mpc toggle"
+[[block.click]]
+button = "right"
+command = "mpc stop"
+[[block.click]]
+button = "wheel_up"
+command = "mpc volume +10"
+[[block.click]]
+button = "wheel_down"
+command = "mpc volume -10"
+[[block.click]]
+button = "forward"
+command = "mpc next"
+[[block.click]]
+button = "back"
+command = "mpc prev"
 
 # cpu
 [[block]]
