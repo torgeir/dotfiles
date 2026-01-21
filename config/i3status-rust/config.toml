@@ -32,7 +32,7 @@ command = "echo ip $(ip a | rg /24 | awk '{print $2}')"
 interval = 1
 [[block.click]]
 button = "left"
-cmd = "swaymsg 'workspace 3' && alacritty --hold -e 'ip a'"
+cmd = "swaymsg 'workspace 3' && exec alacritty --hold -e 'ip a'"
 
 [[block]]
 block = "cpu"
@@ -53,7 +53,7 @@ alert = 10.0
 format = "$icon $used/$total ($available.eng(w:2) free)"
 [[block.click]]
 button = "left"
-cmd = "swaymsg 'workspace 3' && alacritty --hold -e 'df -h'"
+cmd = "swaymsg 'workspace 3' && exec alacritty --hold -e 'df -h'"
 
 [[block]]
 block = "custom"
