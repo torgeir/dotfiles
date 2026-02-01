@@ -85,12 +85,13 @@ outer.right =      2
 # end tell'
 # '''……
 
-alt-e = 'exec-and-forget open -a Emacs'
-alt-i = 'exec-and-forget open -a Firefox\ Developer\ Edition'
-alt-v = 'exec-and-forget open -a IntelliJ\ IDEA'
-alt-o = 'exec-and-forget open -a Microsoft\ Outlook'
-alt-s = 'exec-and-forget open -a Slack'
-alt-m = 'exec-and-forget open -a Spotify'
+shift-alt-ctrl-cmd-e = 'exec-and-forget open -a emacs'
+shift-alt-ctrl-cmd-i = 'exec-and-forget open -a Firefox\ Developer\ Edition'
+shift-alt-ctrl-cmd-c = 'exec-and-forget open -a IntelliJ\ IDEA'
+shift-alt-ctrl-cmd-o = 'exec-and-forget open -a Microsoft\ Outlook'
+shift-alt-ctrl-cmd-t = 'exec-and-forget open -a Alacritty'
+shift-alt-ctrl-cmd-s = 'exec-and-forget open -a Slack'
+shift-alt-ctrl-cmd-m = 'exec-and-forget open -a Spotify'
 
 cmd-shift-enter = 'exec-and-forget open -na Firefox\ Developer\ Edition'
 
