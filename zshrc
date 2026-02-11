@@ -124,6 +124,9 @@ select-word-style bash
 # export WORDCHARS="*?._-=[]~/&;!#$%^(^(){}<>"
 export WORDCHARS=""
 
+# https://github.com/CeleritasCelery/emacs-native-shell-complete
+export HISTCONTROL=ignoreboth
+
 # allow bash style comments in interactive shells
 setopt interactivecomments
 
