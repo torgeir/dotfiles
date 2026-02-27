@@ -2,10 +2,8 @@
 [mgr]
 # . or c-h
 show_hidden = false
+cursor_blink = true
 
-[opener]
-edit = [
-  { run = 'emacsclient -n -c -a "" "$@"', desc = "$EDITOR", orphan = true, block = true },
-]
-
-
+[[opener.edit]]
+run = 'emacsclient -n -q -a "" "$@"'
+desc = "$EDITOR"

@@ -15,9 +15,6 @@ alias latt="eza -l -1 -a --group --classify --tree -L 2 --group-directories-firs
 alias lattt="eza -l -1 -a --group --classify --tree -L 3 --group-directories-first"
 alias latttt="eza -l -1 -a --group --classify --tree --group-directories-first"
 
-# browse files
-alias d=yazi
-
 # tmux
 alias tn="tmux new -s"
 alias ta='tmux attach-session -t $(tmux list-sessions | sed -E "s/:.*$//" | grep -v \"^$(tmux display-message -p \\"#S\\")\$\" | fzf --exit-0 --select-1 --reverse) || tmux new-session'

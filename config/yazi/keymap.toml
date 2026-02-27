@@ -33,37 +33,37 @@ desc = ""
 [[mgr.prepend_keymap]]
 on = "e"
 run = 'shell -- emacsclient --no-wait "$@"'
-desc = ""
+desc = "open with emacs (ext)"
 
 [[mgr.prepend_keymap]]
 on = ["g", "e"]
-run = 'shell --block -- emacsclient --no-wait "$@"'
-desc = ""
-
-[[mgr.prepend_keymap]]
-on = ["g", "E"]
 run = 'shell --block -- emacsclient -t "$@"'
-desc = ""
+desc = "open with emacs"
 
 [[mgr.prepend_keymap]]
 on = ["g", "v"]
 run = 'shell --block -- vim "$@"'
-desc = ""
+desc = "open with vim"
 
 [[mgr.prepend_keymap]]
 on = ["g", "o"]
 run = 'shell -- thunar "$@"'
-desc = ""
+desc = "open with file mgr"
 
 [[mgr.prepend_keymap]]
 on = ["g", "t"]
-run = 'shell --block -- ghostty --working-directory="$@"'
+run  = 'shell "$SHELL" --block'
 desc = "spawn terminal"
+
+[[mgr.prepend_keymap]]
+on   = "!"
+run  = 'shell "$SHELL" --block'
+desc = "Open $SHELL here"
 
 [[mgr.prepend_keymap]]
 on = ["g", "T"]
 run = ['shell -- ghostty --working-directory="$@"']
-desc = "spawn terminal"
+desc = "spawn new terminal"
 orphan = true
 
 # Remap ; to blocking interactive shell (what : used to do)
@@ -72,8 +72,12 @@ on = [ ";" ]
 run = "shell --interactive --block"
 desc = "Shell (block)"
 
-# Now use : for vim-style commands
+# quit to folder
 [[mgr.prepend_keymap]]
 on = [ ":", "q" ]
-run = "quit"
-desc = "Quit (vim-style)"
+run = ['shell -- ya emit cd "$@"', "quit"]
+desc = "quit to folder"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "r" ]
+run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"'
