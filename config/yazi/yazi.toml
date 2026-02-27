@@ -5,7 +5,7 @@ show_hidden = false
 
 [opener]
 edit = [
-  { run = 'emacsclient -n -c -a "" "$@"', desc = "$EDITOR", orphan = true, block = false },
+  { run = 'emacsclient -n -c -a "" "$@"', desc = "$EDITOR", orphan = true, block = true },
 ]
 
 
