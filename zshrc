@@ -27,7 +27,7 @@ umask $DEFAULT_UMASK
 
 # make gpg from emacs prompt in shell (may need to open emacs from command line)
 # linux likes this.
-export GPG_TTY=$TTY
+export GPG_TTY=$(tty)
 
 # load zsh plugins
 for plug in \

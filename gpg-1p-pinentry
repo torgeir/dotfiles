@@ -3,13 +3,28 @@
 # ensure we have proper file descriptors
 # exec 3>&1 4>&2
 
+assuan_encode() {
+  local value="$1"
+  value=${value//'%'/%25}
+  value=${value//$'\n'/%0A}
+  value=${value//$'\r'/%0D}
+  printf '%s' "$value"
+}
+
 get_passphrase_from_1password() {
-  if PASSPHRASE=$(op item get keybase.io --format json | jq -j '.fields[] | select(.id == "password") | .value' 2>/dev/null); then
-    echo "D $PASSPHRASE"
+  local passphrase timeout_cmd=()
+  if command -v timeout >/dev/null 2>&1; then
+    timeout_cmd=(timeout 1s)
+  fi
+
+  if passphrase=$("${timeout_cmd[@]}" op item get keybase.io --format json \
+    | jq -j '.fields[] | select(.id == "password") | .value' 2>/dev/null); then
+    passphrase=$(assuan_encode "$passphrase")
+    echo "D $passphrase"
     echo "OK"
     return 0
   else
-    echo "ERR 83886179 Failed to retrieve passphrase <Pinentry>"
+    echo "ERR 83886179 1Password locked/unavailable <Pinentry>"
     return 1
   fi
 }
@@ -26,8 +41,19 @@ while IFS= read -r line; do
       echo "OK closing connection"
       exit 0
       ;;
-    *)
+    GETINFO\ pid)
+      echo "D $$"
       echo "OK"
+      ;;
+    GETINFO\ flavor)
+      echo "D tty"
+      echo "OK"
+      ;;
+    OPTION*|SETDESC*|SETPROMPT*|SETTITLE*|SETOK*|SETCANCEL*|SETNOTOK*|SETERROR*|SETREPEAT*|SETREPEATOK*|SETREPEATERROR*|SETQUALITYBAR*|SETQUALITYBAR_T*)
+      echo "OK"
+      ;;
+    *)
+      echo "ERR 83886179 Command not supported <Pinentry>"
       ;;
   esac
 done
