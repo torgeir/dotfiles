@@ -4,3 +4,4 @@
 /zsh/zsh-syntax-highlighting/
 /zsh/_*
 /zsh/gradle-completion/
+/.agent-shell/
