@@ -53,7 +53,15 @@ _fzf_complete_gw() {
       --delimiter "-" \
       --ansi \
       -- "$@" < <(
-        gw tasks --all | awk '$1 ~ "^[a-z].*:" { print ":"$1 }'
+        tasks=$HOME/.gradletasks
+        # delete if >4h old
+        if [ -f "$tasks" ] && find "$tasks" -mmin +240 -print -quit | grep -q .; then
+          rm -f "$tasks" >/dev/null 2>&1 || true
+        fi
+        if [ ! -f $tasks ]; then 
+          gw tasks --all | awk '$1 ~ "^[a-z].*:" { print ":"$1 }' > $tasks
+        fi
+        cat $tasks
       )
   fi
 }
