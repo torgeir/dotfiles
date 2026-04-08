@@ -158,6 +158,8 @@ zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
+export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+
 case $(uname) in
   Darwin)
     if [[ -d /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk ]]; then
