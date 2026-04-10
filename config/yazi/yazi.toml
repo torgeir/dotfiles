@@ -5,5 +5,5 @@ show_hidden = false
 cursor_blink = true
 
 [[opener.edit]]
-run = 'emacsclient -n -q -a "" "$@"'
+run = 'emacsclient --socket-name $HOME/.emacs.d/server/server -n -q -a "" "$@"'
 desc = "$EDITOR"

@@ -32,12 +32,12 @@ desc = ""
 
 [[mgr.prepend_keymap]]
 on = "e"
-run = 'shell -- emacsclient --no-wait "$@"'
+run = 'shell -- emacsclient --socket-name $HOME/.emacs.d/server/server --no-wait "$@"'
 desc = "open with emacs (ext)"
 
 [[mgr.prepend_keymap]]
 on = ["g", "e"]
-run = 'shell --block -- emacsclient -t "$@"'
+run = 'shell --block -- emacsclient --socket-name $HOME/.emacs.d/server/server -t "$@"'
 desc = "open with emacs"
 
 [[mgr.prepend_keymap]]
