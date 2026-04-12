@@ -253,7 +253,7 @@ then
   add-zsh-hook -Uz chpwd (){
     _jdk_autoload_hook
     _umask_hook
-    vterm_set_directory
+    [[ -n $INSIDE_EMACS ]] && vterm_set_directory # only in vterm
     zoxide add "$(pwd)" >/dev/null &!
   }
 fi
