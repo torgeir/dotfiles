@@ -82,9 +82,5 @@ _fzf_complete_git() {
         | grep -vE "^\* " \
         | grep -v "\->"
     )
-    # whipe line and refresh p10k vcs prompt
-    zle kill-whole-line
-    _p9k_vcs_status_purge $PWD
-    _p9k_vcs_resume
   fi
 }
