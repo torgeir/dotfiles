@@ -84,7 +84,7 @@ function gpg_reload_agent() {
   echo RELOADAGENT | gpg-connect-agent > /dev/null
 }
 function gpg_cache_test() {
-  if ! timeout 0.3s gpg -q --batch -d ~/.authinfo.gpg; then
+  if ! timeout 5s gpg -q --batch -d ~/.authinfo.gpg; then
      echo "could not decrypt, password was not preset in gpg"
      return 1
   fi
@@ -260,6 +260,53 @@ fi
 
 PROMPT_COMMAND='echo -ne "\033]2;$(whoami)@$(hostname)\033\\"'
 precmd() { eval "$PROMPT_COMMAND" }
+
+function prompt_t_node () {
+  # fall back to $NODE_VERSION from ~/.config/dotfiles/source/exports
+  if [[ -d $HOME/.nvm ]] &> /dev/null
+  then
+    NVM_NODE_VERSION=$(echo $NVM_BIN | sed -e "s#$HOME/.nvm/versions/node/##" | cut -d "/" -f1)
+    export OMP_NODE_VERSION=${NVM_NODE_VERSION:-$NODE_VERSION}
+    export OMP_NPM_VERSION=$(cat $HOME/.nvm/versions/node/$NODE_VERSION/lib/node_modules/npm/package.json | jq -r .version)
+  else
+    export OMP_NPM_VERSION=$(npm --version 2> /dev/null)
+    export OMP_NODE_VERSION=$(node --version 2> /dev/null)
+  fi
+}
+
+function prompt_t_npm () {
+  export OMP_NPM_SCRIPTS=$([[ -f package.json ]] && cat package.json | jq -er '.scripts | keys? | sort | join(" ")' || echo "no scripts/package.json")
+}
+
+function prompt_t_java () {
+  case $(uname) in
+    Linux)
+        export OMP_JAVA_VERSION=$(command -v java &>/dev/null && java --version | head -n 1 | awk '{print $1 " " $2}')
+        #export OMP_GRADLE_VERSION=$(command -v gw &>/dev/null && gw --version | grep "Gradle" | awk '{print $1 " " $2}')
+      ;;
+    Darwin)
+      if [ $(ls /Library/Java/JavaVirtualMachines/ | wc -l) != 0 ]; then
+        export OMP_DEFAULT_JAVA=$(/usr/libexec/java_home)
+        export OMP_JAVA_VERSION=$(echo ${JAVA_HOME:-$OMP_DEFAULT_JAVA} | tr "/" " " | awk '{print $4}')
+      else
+        export OMP_JAVA_VERSION=$(command -v java &>/dev/null && java --version | head -n 1 | awk '{print $1 " " $2}')
+        #export OMP_GRADLE_VERSION=$(command -v gw &>/dev/null && gw --version | grep "Gradle" | awk '{print $1 " " $2}')
+      fi
+      ;;
+  esac
+}
+
+function prompt_t_git () {
+  export OMP_GIT_VERSION=$(command -v git &>/dev/null && git --version | awk '{print $3}')
+}
+
+function set_poshcontext() {
+  prompt_t_node
+  prompt_t_npm
+  prompt_t_java
+  prompt_t_git
+  export OMP_JOB_COUNT=${#jobstates}
+}
 
 if [[ -f "$HOME/.zshrc-extra" ]]; then
   source "$HOME/.zshrc-extra"

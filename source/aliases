@@ -138,7 +138,7 @@ alias kill-gpg-agent="killall gpg-agent && gpg-connect-agent reloadagent /bye"
 
 case $(uname) in
     Linux)
-        alias reload-xresources=xrdb -merge ~/Xresources
+        alias reload-xresources="xrdb -merge ~/Xresources"
 
         alias bios="systemctl reboot --firmware-setup"
 
