@@ -180,13 +180,13 @@ chars = "\u001B[200~\u000A\u001B[201~"
 key = "J"
 mods = "Alt"
 
-# TODO when main is merged
-#[[mouse.bindings]]
-#action = "IncreaseFontSize"
-#mouse = "WheelUp"
-#mods = "Control"
-#
-#[[mouse.bindings]]
-#action = "DecreaseFontSize"
-#mouse = "WheelDown"
-#mods = "Control"
+# mouse zoom
+[[mouse.bindings]]
+action = "IncreaseFontSize"
+mouse = "WheelUp"
+mods = "Control"
+
+[[mouse.bindings]]
+action = "DecreaseFontSize"
+mouse = "WheelDown"
+mods = "Control"
