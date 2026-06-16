@@ -211,6 +211,14 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
+if [[ -n "$INSIDE_EMACS" ]]; then
+  # don't
+else
+  self-insert-newline() { LBUFFER+=$'\n' }
+  zle -N self-insert-newline
+  bindkey '^J' self-insert-newline
+fi
+
 # zsh vim bindings
 # set -o vi
 # set -o emacs
