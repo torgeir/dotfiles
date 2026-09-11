@@ -17,6 +17,7 @@ nnoremap <leader>wl <C-w>l
 
 " close
 nmap <leader>wd :q<cr>
+nmap <leader>bd :bd<cr>
 
 " recenter
 noremap <C-l> zz
