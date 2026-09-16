@@ -258,12 +258,13 @@ source $HOME/.fzfrc
 if command -v autoload &> /dev/null
 then
   autoload -U add-zsh-hook
-  add-zsh-hook -Uz chpwd (){
+  my_chpwd_hook (){
     _jdk_autoload_hook
     _umask_hook
     [[ -n $INSIDE_EMACS ]] && vterm_set_directory # only in vterm
     zoxide add "$(pwd)" >/dev/null &!
   }
+  add-zsh-hook chpwd my_chpwd_hook
 fi
 
 PROMPT_COMMAND='echo -ne "\033]2;$(whoami)@$(hostname)\033\\"'
