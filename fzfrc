@@ -1,3 +1,6 @@
+#tmux
+export FZF_TMUX_OPTS="-d 80%"
+
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'ctrl-k:kill-line' --bind='ctrl-j:accept'"
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'alt-p:preview-half-page-up' --bind 'alt-n:preview-half-page-down'"
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'alt-t:change-preview-window(right,50%|right,80%|down,50%|down,80%|hidden)'"
@@ -11,7 +14,11 @@ case $(uname) in
     export FZF_CTRL_T_OPTS="$FZF_CTRL_T_OPTS --bind 'enter:become(swaymsg \"[app_id=emacs]\" focus; emacsclient -cnqu {}),alt-v:execute(vim {})'"
     ;;
   Darwin)
-    export FZF_CTRL_T_OPTS="$FZF_CTRL_T_OPTS --bind 'enter:execute(emacsclient -cnqu {} && open -a Emacs.app),ctrl-v:execute(vim {})'"
+    if [[ -n $TMUX ]]; then
+      export FZF_CTRL_T_OPTS="--bind 'enter:become(echo {}),ctrl-v:execute-silent(tmux send-keys \"nvim {}\" Enter)+abort,ctrl-e:execute-silent(tmux send-keys \"et {}\" Enter)+abort'"
+    else
+      export FZF_CTRL_T_OPTS="--bind 'enter:become(echo {}),ctrl-e:execute(emacsclient -cnqu {} && open -a Emacs.app),ctrl-v:become(vim {}),ctrl-e:become(et {})'"
+    fi
     ;;
 esac
 

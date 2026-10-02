@@ -317,6 +317,16 @@ function set_poshcontext() {
   export OMP_JOB_COUNT=${#jobstates}
 }
 
+# coreutils on path, gls etc.
+if [[ -z $HOMEBREW_PREFIX ]]; then
+  export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
+fi
+
+# enable homebrew fzf keybinds, c-t etc
+if [[ -f "/opt/homebrew/bin/fzf" ]]; then
+  source <(fzf --zsh)
+fi
+
 if [[ -f "$HOME/.zshrc-extra" ]]; then
   source "$HOME/.zshrc-extra"
 fi
