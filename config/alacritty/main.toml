@@ -15,16 +15,25 @@ style = "Regular"
 [env]
 TERM = "xterm-256color"
 
+# urls (must come first, first matching hint wins)
+[[hints.enabled]]
+command = "/etc/profiles/per-user/torgeir/bin/alacritty-open-url"
+post_processing = true
+regex = "https?://[^\\s)>\\]]+"
+mouse.enabled = true
+
 [[hints.enabled]]
 command = "/etc/profiles/per-user/torgeir/bin/alacritty-open"
 #some/path/file.kt
-regex = "^((?:[^/]+/)*[^.]+\\.[^ ]{1,4})"
+# no spaces/parens in match, or it grabs half the line
+regex = "(?:[^\\s:()]+/)*[^\\s:()/]+\\.[A-Za-z0-9]{1,4}(?::\\d+)?"
 mouse.enabled = true
 
 # detekt
+# no whitespace in path parts, or it spans words/lines
 [[hints.enabled]]
 command = "/etc/profiles/per-user/torgeir/bin/alacritty-open"
-regex = "(/(?:[^/]+/)+[^:]+:\\d+:\\d+:)"
+regex = "(/(?:[^/\\s]+/)+[^:\\s]+:\\d+:\\d+:)"
 mouse.enabled = true
 
 # # files
@@ -35,17 +44,11 @@ mouse.enabled = true
 # mouse.enabled = true
 
 # folders
+# no whitespace/parens/colons, or it starts at "(" and spans lines
 [[hints.enabled]]
 command = "/etc/profiles/per-user/torgeir/bin/alacritty-open-folder"
 post_processing = true
-regex = "(([^ ]+/)+/?)"
-mouse.enabled = true
-
-# urls
-[[hints.enabled]]
-command = "/etc/profiles/per-user/torgeir/bin/alacritty-open-url"
-post_processing = true
-regex = "https?://[^\\s]+"
+regex = "(?:[^\\s:()\"']+/)+"
 mouse.enabled = true
 
 # https://github.com/alacritty/alacritty/issues/62#issuecomment-347552058
