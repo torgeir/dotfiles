@@ -148,6 +148,9 @@ case $(uname) in
         # nix
         alias rebuild-switch-torgnix="clear; pushd ~/nixos-config; sudo nixos-rebuild --flake .#torgnix switch && notify-send nixos reloaded; popd"
         alias rollback-switch-torgnix="clear; pushd ~/nixos-config; sudo nixos-rebuild --flake .#torgnix --rollback switch && notify-send nixos rolled back; popd"
+        # tank is a host in ~/.ssh/config, the 1password agent is forwarded for
+        # this run only, sudo on tank authenticates with it, approved in 1password
+        alias rebuild-switch-tank="clear; pushd ~/nixos-config; NIX_SSHOPTS='-o ForwardAgent=$HOME/.1password/agent.sock' nixos-rebuild --flake .#tank --target-host tank --sudo switch && notify-send tank reloaded; popd"
         ;;
     Darwin)
         alias ports="sudo lsof -i -n -P | rg -i tcp | rg -i listen"
